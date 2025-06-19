@@ -9,12 +9,12 @@ import 'app_text_theme.dart';
 
 class AppTheme {
   static ThemeData get themeData => ThemeData(
-        primaryColor: AppColors.primaryColor,
-        cardTheme: AppCardTheme.cardTheme,
-        textTheme: AppTextTheme.textTheme,
-        colorScheme: AppColorScheme.colorScheme,
-        appBarTheme: AppBarThemes.appBarTheme,
-        bottomNavigationBarTheme:
-            AppBottomNavigationBarTheme.bottomNavigationBarTheme,
-      );
+      primaryColor: AppColors.primaryColor,
+      cardTheme: AppCardTheme.cardTheme,
+      textTheme: AppTextTheme.textTheme,
+      colorScheme: AppColorScheme.colorScheme,
+      appBarTheme: AppBarThemes.appBarTheme,
+      bottomNavigationBarTheme:
+          AppBottomNavigationBarTheme.bottomNavigationBarTheme,
+      iconTheme: const IconThemeData(color: Colors.white));
 }

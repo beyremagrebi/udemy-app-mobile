@@ -1,5 +1,5 @@
 import 'package:erudaxis/core/themes/app_theme.dart';
-import 'package:erudaxis/presentation/main/main_view.dart';
+import 'package:erudaxis/presentation/auth/login_view.dart';
 import 'package:flutter/material.dart';
 
 import 'core/constants/constant.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.themeData,
-      home: const MainView(),
+      home: const LoginView(),
     );
   }
 }
