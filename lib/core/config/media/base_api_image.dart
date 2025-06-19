@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+
+import '../../../interfaces/i_show_image_viewer.dart';
+import '../../styles/app_colors.dart';
+
+abstract class BaseApiImage extends StatelessWidget
+    implements IShowImageViewer {
+  final String? imageFileName;
+  final String? imageNetworUrl;
+  final BoxFit? fit;
+  final double width;
+  final double height;
+  final bool isProfilePicture;
+  final BorderRadius? borderRadius;
+
+  final bool hasImageView;
+  final Color color;
+  final String? placeholderAssetPath;
+
+  final Border? border;
+  final List<BoxShadow>? boxShadow;
+
+  const BaseApiImage({
+    super.key,
+    required this.imageFileName,
+    this.isProfilePicture = false,
+    this.imageNetworUrl,
+    this.fit,
+    this.height = 80.0,
+    this.width = 80.0,
+    this.hasImageView = false,
+    this.borderRadius,
+    this.border,
+    this.boxShadow,
+    this.color = AppColors.accentColor,
+    this.placeholderAssetPath,
+  });
+
+  Widget buildImage(
+    BuildContext context,
+    ImageProvider imageProvider,
+  ) {
+    return InkWell(
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+      onTap: hasImageView ? () => showImageViewer(context) : null,
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: color,
+          border: border,
+          boxShadow: boxShadow,
+          borderRadius: isProfilePicture ? null : borderRadius,
+          shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
+        ),
+        child: Image(
+          image: imageProvider,
+          fit: fit,
+          height: height,
+          width: width,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context);
+
+  @override
+  void showImageViewer(BuildContext context) {}
+
+  Widget placeHolderImage(BuildContext context, {bool isLoading = false});
+}
