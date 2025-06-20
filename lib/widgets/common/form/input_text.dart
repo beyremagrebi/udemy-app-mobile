@@ -57,18 +57,16 @@ class InputText extends StatelessWidget {
           onSubmitted: onSubmitted,
           onEditingComplete: onEditingComplete,
           enabled: enabled,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
           cursorColor: Colors.white,
           decoration: InputDecoration(
             hintText: hintText,
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-
+            isDense: true,
+            isCollapsed: true,
             filled: true,
-            fillColor: Colors.white.withOpacity(0.1), // Frosted glass look
+            fillColor: Colors.white.withOpacity(0.1),
             contentPadding: Dimensions.paddingAllLarge,
             enabledBorder: OutlineInputBorder(
               borderRadius: Dimensions.smallBorderRadius,
