@@ -1,6 +1,8 @@
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../presentation/utils/form/validate_helper.dart';
+
 class LoginViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -10,18 +12,9 @@ class LoginViewModel extends BaseViewModel {
   bool? rememberMe = false;
 
   LoginViewModel(super.context) {
-    emailController.addListener(checkInput);
-    passwordController.addListener(checkInput);
-  }
-
-  void checkInput() {
-    bool isValid =
-        emailController.text.isNotEmpty && passwordController.text.isNotEmpty;
-
-    if (isDisabled == isValid) {
-      isDisabled = !isValid;
-      update();
-    }
+    // Listen to input changes to update button state
+    emailController.addListener(_onInputChanged);
+    passwordController.addListener(_onInputChanged);
   }
 
   @override
@@ -31,7 +24,7 @@ class LoginViewModel extends BaseViewModel {
     super.dispose();
   }
 
-  void toggleRemmeber(bool? value) {
+  void toggleRemember(bool? value) {
     rememberMe = value;
     update();
   }
@@ -39,5 +32,17 @@ class LoginViewModel extends BaseViewModel {
   void toggleVisibility() {
     securePassword = !securePassword;
     update();
+  }
+
+  void _onInputChanged() {
+    final isValid =
+        ValidationHelpers.validateEmail(emailController.text) == null &&
+            ValidationHelpers.validatePassword(passwordController.text) == null;
+
+    // Only update if state has changed
+    if (isDisabled == isValid) {
+      isDisabled = !isValid;
+      update();
+    }
   }
 }

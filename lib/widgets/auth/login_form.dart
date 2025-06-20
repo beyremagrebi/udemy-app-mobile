@@ -3,67 +3,73 @@ import 'package:flutter/material.dart';
 
 import '../../core/styles/dimensions.dart';
 import '../../presentation/main/main_view.dart';
+import '../../presentation/utils/form/base_form.dart';
+import '../../presentation/utils/form/validate_helper.dart';
 import '../../presentation/utils/navigator_utils.dart';
 import '../common/form/input_text.dart';
 import '../common/gradient_button.dart';
 import 'login_footer_row.dart';
 
-class LoginForm extends StatelessWidget {
-  final LoginViewModel viewModel;
-  const LoginForm({
-    super.key,
-    required this.viewModel,
-  });
+class LoginForm extends BaseForm<LoginViewModel> {
+  LoginForm({super.key, required super.viewModel});
+
+  // @override
+  // Widget? buildFooter(BuildContext context) {
+  //   return LoginFooterRow(viewModel: viewModel);
+  // }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InputText(
-          controller: viewModel.emailController,
-          hintText: 'Enter email',
-          prefixIcon: const Icon(
-            Icons.email_outlined,
-            color: Colors.grey,
-            size: 20,
-          ),
-        ),
-        Dimensions.heightMedium,
-        InputText(
-          controller: viewModel.passwordController,
-          hintText: 'Enter password',
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: viewModel.securePassword,
-          suffixIcon: IconButton(
-            onPressed: () {
-              viewModel.toggleVisibility();
-            },
-            icon: const Icon(
-              Icons.visibility_outlined,
-              size: 20,
-              color: Colors.grey,
-            ),
-          ),
-          prefixIcon: const Icon(
-            Icons.lock_outlined,
+  List<Widget> buildFormFields(BuildContext context) {
+    return [
+      InputText(
+        controller: viewModel.emailController,
+        hintText: 'Enter email',
+        validator: ValidationHelpers.validateEmail,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        prefixIcon:
+            const Icon(Icons.email_outlined, color: Colors.grey, size: 20),
+      ),
+      Dimensions.heightMedium,
+      InputText(
+        controller: viewModel.passwordController,
+        hintText: 'Enter password',
+        keyboardType: TextInputType.visiblePassword,
+        obscureText: viewModel.securePassword,
+        validator: ValidationHelpers.validatePassword,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        suffixIcon: IconButton(
+          onPressed: viewModel.toggleVisibility,
+          icon: Icon(
+            viewModel.securePassword
+                ? Icons.visibility_off_outlined
+                : Icons.visibility_outlined,
             size: 20,
             color: Colors.grey,
           ),
         ),
-        Dimensions.heightMedium,
-        LoginFooterRow(
-          viewModel: viewModel,
-        ),
-        Dimensions.heightMedium,
-        GradientButton(
-          width: double.maxFinite,
-          text: 'Login',
-          isDisabled: viewModel.isDisabled,
-          onPressed: () {
-            navigateTo(context, const MainView());
-          },
-        )
-      ],
+        prefixIcon:
+            const Icon(Icons.lock_outlined, size: 20, color: Colors.grey),
+      ),
+      LoginFooterRow(viewModel: viewModel),
+    ];
+  }
+
+  @override
+  Widget buildSubmitButton(BuildContext context) {
+    return GradientButton(
+      width: double.maxFinite,
+      text: 'Login',
+      isDisabled: viewModel.isDisabled,
+      onPressed: () {
+        if (validateForm()) {
+          onSubmit(context);
+        }
+      },
     );
+  }
+
+  @override
+  void onSubmit(BuildContext context) {
+    navigateTo(context, const MainView());
   }
 }
