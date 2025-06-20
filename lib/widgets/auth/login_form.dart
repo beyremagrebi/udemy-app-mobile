@@ -1,8 +1,8 @@
+import 'package:erudaxis/presentation/main/main_view.dart';
 import 'package:erudaxis/providers/auth/login_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/styles/dimensions.dart';
-import '../../presentation/main/main_view.dart';
 import '../../presentation/utils/form/base_form.dart';
 import '../../presentation/utils/form/validate_helper.dart';
 import '../../presentation/utils/navigator_utils.dart';
@@ -13,10 +13,10 @@ import 'login_footer_row.dart';
 class LoginForm extends BaseForm<LoginViewModel> {
   LoginForm({super.key, required super.viewModel});
 
-  // @override
-  // Widget? buildFooter(BuildContext context) {
-  //   return LoginFooterRow(viewModel: viewModel);
-  // }
+  @override
+  Widget? buildFooter(BuildContext context) {
+    return LoginFooterRow(viewModel: viewModel);
+  }
 
   @override
   List<Widget> buildFormFields(BuildContext context) {
@@ -27,7 +27,7 @@ class LoginForm extends BaseForm<LoginViewModel> {
         validator: ValidationHelpers.validateEmail,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         prefixIcon:
-            const Icon(Icons.email_outlined, color: Colors.grey, size: 20),
+            Icon(Icons.email_outlined, color: Colors.grey.shade100, size: 20),
       ),
       Dimensions.heightMedium,
       InputText(
@@ -44,13 +44,12 @@ class LoginForm extends BaseForm<LoginViewModel> {
                 ? Icons.visibility_off_outlined
                 : Icons.visibility_outlined,
             size: 20,
-            color: Colors.grey,
+            color: Colors.grey.shade100,
           ),
         ),
         prefixIcon:
-            const Icon(Icons.lock_outlined, size: 20, color: Colors.grey),
+            Icon(Icons.lock_outlined, size: 20, color: Colors.grey.shade100),
       ),
-      LoginFooterRow(viewModel: viewModel),
     ];
   }
 

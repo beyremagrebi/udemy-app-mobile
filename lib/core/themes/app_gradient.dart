@@ -1,14 +1,13 @@
-import 'package:erudaxis/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppGradients {
   static const LinearGradient surfaceGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    transform: GradientRotation(50),
     colors: [
-      AppColors.surfaceGradientStart,
-      AppColors.surfaceGradientEnd,
+      Color(0xFF1E1B4B),
+      Color(0xFF8B5CF6),
+      Color(0xFF7C3AED),
     ],
   );
 }

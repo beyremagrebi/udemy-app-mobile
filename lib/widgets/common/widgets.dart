@@ -1,22 +1,9 @@
+import 'dart:ui';
+
 import 'package:erudaxis/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/themes/app_gradient.dart';
-
-Widget? gradientSurfaceWidget(Widget? child) {
-  return Stack(
-    children: [
-      Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: AppGradients.surfaceGradient,
-        ),
-      ),
-      if (child != null) child,
-    ],
-  );
-}
 
 Widget gradientAppBarWidget(Widget? child) {
   return Container(
@@ -33,5 +20,23 @@ Widget gradientAppBarWidget(Widget? child) {
       ),
     ),
     child: child,
+  );
+}
+
+Widget? gradientSurfaceWidget(Widget? child) {
+  return Container(
+    width: double.infinity,
+    height: double.infinity,
+    decoration: const BoxDecoration(
+      gradient: AppGradients.surfaceGradient,
+    ),
+    child: BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: 10,
+        sigmaY: 0,
+        tileMode: TileMode.decal,
+      ),
+      child: child,
+    ),
   );
 }
