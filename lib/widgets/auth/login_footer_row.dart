@@ -6,8 +6,8 @@ import '../../providers/auth/login_view_model.dart';
 class LoginFooterRow extends StatelessWidget {
   final LoginViewModel viewModel;
   const LoginFooterRow({
-    super.key,
     required this.viewModel,
+    super.key,
   });
 
   @override
@@ -16,15 +16,12 @@ class LoginFooterRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(
-          flex: 1,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Checkbox(
                 value: viewModel.rememberMe,
-                onChanged: (bool? value) {
-                  viewModel.toggleRemember(value);
-                },
+                onChanged: (val) => viewModel.toggleRemember(value: val),
                 checkColor: const Color(0xFF8B4A9C),
                 fillColor: WidgetStateProperty.all(Colors.white),
                 side: const BorderSide(color: Colors.white, width: 2),
@@ -45,7 +42,6 @@ class LoginFooterRow extends StatelessWidget {
         ),
         Dimensions.widthSmall,
         Flexible(
-          flex: 1,
           child: GestureDetector(
             onTap: () {},
             child: Text(

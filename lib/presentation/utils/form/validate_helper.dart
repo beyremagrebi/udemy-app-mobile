@@ -3,10 +3,12 @@ class ValidationHelpers {
   static String? Function(String?) combineValidators(
     List<String? Function(String?)> validators,
   ) {
-    return (String? value) {
+    return (value) {
       for (final validator in validators) {
         final result = validator(value);
-        if (result != null) return result;
+        if (result != null) {
+          return result;
+        }
       }
       return null;
     };
@@ -42,17 +44,26 @@ class ValidationHelpers {
       return 'Password must be at least 8 characters long';
     }
 
-    bool hasLowercase = RegExp(r'[a-z]').hasMatch(value);
-    bool hasUppercase = RegExp(r'[A-Z]').hasMatch(value);
-    bool hasDigit = RegExp(r'\d').hasMatch(value);
-    bool hasSpecialChar = RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value);
+    final bool hasLowercase = RegExp('[a-z]').hasMatch(value);
+    final bool hasUppercase = RegExp('[A-Z]').hasMatch(value);
+    final bool hasDigit = RegExp(r'\d').hasMatch(value);
+    final bool hasSpecialChar =
+        RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value);
 
-    List<String> missing = [];
+    final List<String> missing = [];
 
-    if (!hasLowercase) missing.add('lowercase letter');
-    if (!hasUppercase) missing.add('uppercase letter');
-    if (!hasDigit) missing.add('number');
-    if (!hasSpecialChar) missing.add('special character');
+    if (!hasLowercase) {
+      missing.add('lowercase letter');
+    }
+    if (!hasUppercase) {
+      missing.add('uppercase letter');
+    }
+    if (!hasDigit) {
+      missing.add('number');
+    }
+    if (!hasSpecialChar) {
+      missing.add('special character');
+    }
 
     if (missing.isNotEmpty) {
       return 'Password must contain: ${missing.join(', ')}';
@@ -66,17 +77,17 @@ class ValidationHelpers {
       return 'Password is required';
     }
 
-    List<String> errors = [];
+    final List<String> errors = [];
 
     if (value.length < 8) {
       errors.add('at least 8 characters');
     }
 
-    if (!RegExp(r'[a-z]').hasMatch(value)) {
+    if (!RegExp('[a-z]').hasMatch(value)) {
       errors.add('lowercase letter');
     }
 
-    if (!RegExp(r'[A-Z]').hasMatch(value)) {
+    if (!RegExp('[A-Z]').hasMatch(value)) {
       errors.add('uppercase letter');
     }
 

@@ -5,8 +5,8 @@ import 'base_api_image.dart';
 
 class AssetsImageWidget extends BaseApiImage {
   const AssetsImageWidget({
-    super.key,
     required super.imageFileName,
+    super.key,
     super.isProfilePicture,
     super.fit,
     super.hasImageView,

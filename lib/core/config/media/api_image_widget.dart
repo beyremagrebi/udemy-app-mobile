@@ -11,8 +11,8 @@ import 'base_api_image.dart';
 class ApiImageWidget extends BaseApiImage {
   final bool? isMen;
   const ApiImageWidget({
-    super.key,
     required super.imageFileName,
+    super.key,
     super.imageNetworUrl,
     super.borderRadius,
     this.isMen,
@@ -29,45 +29,9 @@ class ApiImageWidget extends BaseApiImage {
     return _buildCachedNetworkImage(context);
   }
 
-  Widget _buildCachedNetworkImage(BuildContext context) {
-    final imageUrl = '${imageNetworUrl ?? fileUrl}/$imageFileName';
-
-    final memCacheHeight = (width * Dimensions.dpr).round();
-    final memCacheWidth = (height * Dimensions.dpr).round();
-    return CachedNetworkImage(
-      key: Key(imageUrl),
-      cacheKey: imageUrl,
-      imageUrl: imageUrl,
-      memCacheHeight: memCacheHeight,
-      memCacheWidth: memCacheWidth,
-      // httpHeaders: {
-      //   'Authorization': 'Bearer ${TokenManager.accessToken}',
-      // },
-      imageBuilder: (context, imageProvider) => buildImage(
-        context,
-        imageProvider,
-        // ResizeImage(imageProvider,
-        //     height: memCacheHeight, width: memCacheWidth),
-      ),
-      progressIndicatorBuilder: (context, url, progress) => placeHolderImage(
-        context,
-        isLoading: true,
-      ),
-      errorWidget: (context, url, error) => placeHolderImage(context),
-    );
-  }
-
-  String _getDefaultPlaceholderPath() {
-    if (isMen ?? false) {
-      return Assets.defaultMaleAvatar;
-    } else {
-      return Assets.defaultFemaleAvatar;
-    }
-  }
-
   @override
   Widget placeHolderImage(BuildContext context, {bool isLoading = false}) {
-    String finalPlaceholderPath =
+    final String finalPlaceholderPath =
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
 
     final memCacheHeight = (width * Dimensions.dpr).round();
@@ -89,21 +53,22 @@ class ApiImageWidget extends BaseApiImage {
           fit: StackFit.expand,
           alignment: Alignment.center,
           children: [
-            isProfilePicture
-                ? Image.asset(
-                    finalPlaceholderPath,
-                    fit: fit,
-                    cacheHeight: memCacheHeight,
-                    cacheWidth: memCacheWidth,
-                  )
-                : isLoading
-                    ? const SpinKitSpinningLines(color: AppColors.primaryColor)
-                    : Image.asset(
-                        finalPlaceholderPath,
-                        fit: fit,
-                        cacheHeight: memCacheHeight,
-                        cacheWidth: memCacheWidth,
-                      ),
+            if (isProfilePicture)
+              Image.asset(
+                finalPlaceholderPath,
+                fit: fit,
+                cacheHeight: memCacheHeight,
+                cacheWidth: memCacheWidth,
+              )
+            else
+              isLoading
+                  ? const SpinKitSpinningLines(color: AppColors.primaryColor)
+                  : Image.asset(
+                      finalPlaceholderPath,
+                      fit: fit,
+                      cacheHeight: memCacheHeight,
+                      cacheWidth: memCacheWidth,
+                    ),
             if (isLoading && isProfilePicture)
               CircularProgressIndicator(
                 backgroundColor: Colors.grey.shade300,
@@ -112,5 +77,36 @@ class ApiImageWidget extends BaseApiImage {
         ),
       ),
     );
+  }
+
+  Widget _buildCachedNetworkImage(BuildContext context) {
+    final imageUrl = '${imageNetworUrl ?? fileUrl}/$imageFileName';
+
+    final memCacheHeight = (width * Dimensions.dpr).round();
+    final memCacheWidth = (height * Dimensions.dpr).round();
+    return CachedNetworkImage(
+      key: Key(imageUrl),
+      cacheKey: imageUrl,
+      imageUrl: imageUrl,
+      memCacheHeight: memCacheHeight,
+      memCacheWidth: memCacheWidth,
+      // httpHeaders: {
+      //   'Authorization': 'Bearer ${TokenManager.accessToken}',
+      // },
+      imageBuilder: buildImage,
+      progressIndicatorBuilder: (context, url, progress) => placeHolderImage(
+        context,
+        isLoading: true,
+      ),
+      errorWidget: (context, url, error) => placeHolderImage(context),
+    );
+  }
+
+  String _getDefaultPlaceholderPath() {
+    if (isMen ?? false) {
+      return Assets.defaultMaleAvatar;
+    } else {
+      return Assets.defaultFemaleAvatar;
+    }
   }
 }

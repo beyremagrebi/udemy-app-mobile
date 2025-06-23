@@ -13,11 +13,10 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => BottomNavigationViewModel(context),
+      create: BottomNavigationViewModel.new,
       child: Consumer<BottomNavigationViewModel>(
         builder: (context, viewModel, child) {
           return AppScaffold(
-            extendBodyBehindAppBar: false,
             extendBody: true,
             appBar: AppBarGradient(
               titleSpacing: 0,

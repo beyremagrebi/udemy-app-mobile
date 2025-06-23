@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants/constant.dart';
 
-Future navigateTo(BuildContext? context, Widget view) {
+Future<void> navigateTo(BuildContext? context, Widget view) {
   return Navigator.of(context ?? mainContext).push(
     MaterialPageRoute(builder: (context) => view),
   );
 }
 
-Future navigateToDeleteTree(BuildContext? context, Widget view) {
+Future<void> navigateToDeleteTree(BuildContext? context, Widget view) {
   return Navigator.of(context ?? mainContext).pushAndRemoveUntil(
     MaterialPageRoute(
       builder: (context) => PopScope(canPop: false, child: view),

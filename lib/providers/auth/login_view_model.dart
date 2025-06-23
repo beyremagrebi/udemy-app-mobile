@@ -24,7 +24,7 @@ class LoginViewModel extends BaseViewModel {
     super.dispose();
   }
 
-  void toggleRemember(bool? value) {
+  void toggleRemember({bool? value}) {
     rememberMe = value;
     update();
   }

@@ -10,8 +10,8 @@ class GradientButton extends StatelessWidget {
   final bool isDisabled;
 
   const GradientButton({
-    super.key,
     required this.text,
+    super.key,
     this.onPressed,
     this.isDisabled = false,
     this.width = 300,
@@ -31,8 +31,6 @@ class GradientButton extends StatelessWidget {
               AppColors.surfaceGradientEnd,
               Color.fromARGB(255, 35, 116, 245),
             ],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
           ),
           borderRadius: Dimensions.xsmallBorderRadius,
           boxShadow: [

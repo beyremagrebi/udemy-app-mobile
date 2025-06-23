@@ -5,7 +5,7 @@ abstract class BaseForm<T extends BaseViewModel> extends StatelessWidget {
   final T viewModel;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  BaseForm({super.key, required this.viewModel});
+  BaseForm({required this.viewModel, super.key});
 
   @override
   Widget build(BuildContext context) {

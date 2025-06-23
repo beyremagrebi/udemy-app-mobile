@@ -11,7 +11,7 @@ import '../common/gradient_button.dart';
 import 'login_footer_row.dart';
 
 class LoginForm extends BaseForm<LoginViewModel> {
-  LoginForm({super.key, required super.viewModel});
+  LoginForm({required super.viewModel, super.key});
 
   @override
   Widget? buildFooter(BuildContext context) {

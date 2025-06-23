@@ -15,7 +15,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => LoginViewModel(context),
+      create: LoginViewModel.new,
       child: Consumer<LoginViewModel>(
         builder: (context, viewModel, child) => AppScaffold(
           body: Center(

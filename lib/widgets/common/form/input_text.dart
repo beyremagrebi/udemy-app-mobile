@@ -85,7 +85,6 @@ class InputText extends StatelessWidget {
                   borderRadius: Dimensions.smallBorderRadius,
                   borderSide: BorderSide(
                     color: Colors.white.withOpacity(0.3),
-                    width: 1,
                   ),
                 ),
                 focusedBorder: const OutlineInputBorder(

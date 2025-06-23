@@ -10,8 +10,6 @@ Widget gradientAppBarWidget(Widget? child) {
     width: double.maxFinite,
     decoration: const BoxDecoration(
       gradient: LinearGradient(
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
         colors: [
           AppColors.surfaceGradientEnd,
           Color.fromARGB(255, 41, 72, 248),
@@ -33,7 +31,6 @@ Widget? gradientSurfaceWidget(Widget? child) {
     child: BackdropFilter(
       filter: ImageFilter.blur(
         sigmaX: 10,
-        sigmaY: 0,
         tileMode: TileMode.decal,
       ),
       child: child,

@@ -12,17 +12,15 @@ abstract class BaseApiImage extends StatelessWidget
   final double height;
   final bool isProfilePicture;
   final BorderRadius? borderRadius;
-
   final bool hasImageView;
   final Color color;
   final String? placeholderAssetPath;
 
   final Border? border;
   final List<BoxShadow>? boxShadow;
-
   const BaseApiImage({
-    super.key,
     required this.imageFileName,
+    super.key,
     this.isProfilePicture = false,
     this.imageNetworUrl,
     this.fit,
@@ -35,6 +33,9 @@ abstract class BaseApiImage extends StatelessWidget
     this.color = AppColors.accentColor,
     this.placeholderAssetPath,
   });
+
+  @override
+  Widget build(BuildContext context);
 
   Widget buildImage(
     BuildContext context,
@@ -62,11 +63,8 @@ abstract class BaseApiImage extends StatelessWidget
     );
   }
 
-  @override
-  Widget build(BuildContext context);
+  Widget placeHolderImage(BuildContext context, {bool isLoading = false});
 
   @override
   void showImageViewer(BuildContext context) {}
-
-  Widget placeHolderImage(BuildContext context, {bool isLoading = false});
 }

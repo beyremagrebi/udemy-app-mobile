@@ -14,7 +14,7 @@ Widget buildTransparentBottomNav(
     child: ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-        child: Container(
+        child: DecoratedBox(
           decoration: BoxDecoration(
             // Use the same gradient as your app background but with transparency
             gradient: LinearGradient(
@@ -57,7 +57,7 @@ Widget _buildBottomNavigationBar(
     BuildContext context, BottomNavigationViewModel viewModel) {
   final navItems = bottomNavigationBarItem(context);
 
-  List<Widget> navWidgets = [];
+  final List<Widget> navWidgets = [];
 
   for (int index = 0; index < navItems.length; index++) {
     final item = navItems[index];
