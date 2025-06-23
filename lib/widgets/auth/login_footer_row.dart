@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -29,11 +30,11 @@ class LoginFooterRow extends StatelessWidget {
               Flexible(
                 child: Text(
                   'Se souvenir de moi',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -46,11 +47,11 @@ class LoginFooterRow extends StatelessWidget {
             onTap: () {},
             child: Text(
               'Mot de passe oublié ?',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: const Color.fromARGB(255, 227, 151, 247),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
+              style: textTheme.bodyMedium?.copyWith(
+                color: const Color.fromARGB(255, 227, 151, 247),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.end,
             ),

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -90,14 +91,14 @@ Widget _buildBottomNavigationBar(
                   padding: const EdgeInsets.only(top: 4),
                   child: Text(
                     item.label!,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: isSelected
-                              ? Colors.white
-                              : Colors.white.withOpacity(0.7),
-                          fontSize: 14,
-                          fontWeight:
-                              isSelected ? FontWeight.w600 : FontWeight.w400,
-                        ),
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: isSelected
+                          ? Colors.white
+                          : Colors.white.withOpacity(0.7),
+                      fontSize: 14,
+                      fontWeight:
+                          isSelected ? FontWeight.w600 : FontWeight.w400,
+                    ),
                   ),
                 ),
             ],

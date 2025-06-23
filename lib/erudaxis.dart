@@ -24,6 +24,11 @@ class Erudaxis extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       title: 'Flutter Demo',
       theme: AppTheme.themeData,
+      onGenerateTitle: (context) {
+        intl = S.of(context);
+        textTheme = Theme.of(context).textTheme;
+        return intl.title;
+      },
       home: const LoginView(),
     );
   }
