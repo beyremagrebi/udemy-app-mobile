@@ -1,10 +1,12 @@
+import 'package:erudaxis/core/config/app_launch.dart';
 import 'package:erudaxis/core/themes/app_theme.dart';
 import 'package:erudaxis/presentation/auth/login_view.dart';
 import 'package:flutter/material.dart';
 
 import 'core/constants/constant.dart';
 
-void main() {
+Future<void> main() async {
+  await AppLaunch.preExecution();
   runApp(const MyApp());
 }
 
