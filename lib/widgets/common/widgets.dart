@@ -22,9 +22,7 @@ Widget gradientAppBarWidget(Widget? child) {
 }
 
 Widget? gradientSurfaceWidget(Widget? child) {
-  return Container(
-    width: double.infinity,
-    height: double.infinity,
+  return DecoratedBox(
     decoration: const BoxDecoration(
       gradient: AppGradients.surfaceGradient,
     ),
