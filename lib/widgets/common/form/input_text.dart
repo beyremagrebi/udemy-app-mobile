@@ -72,7 +72,9 @@ class InputText extends StatelessWidget {
               enabled: enabled,
               validator: validator,
               autovalidateMode: autovalidateMode,
-              style: textTheme.bodyMedium?.copyWith(),
+              style: textTheme.bodyMedium?.copyWith(
+                color: Colors.white,
+              ),
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 hintText: hintText,
