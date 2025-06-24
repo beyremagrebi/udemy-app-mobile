@@ -1,7 +1,11 @@
+import 'package:erudaxis/models/auth/login_info.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
+import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
+import '../../presentation/main/main_view.dart';
 import '../../presentation/utils/form/validate_helper.dart';
+import '../../presentation/utils/navigator_utils.dart';
 
 class LoginViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
@@ -24,6 +28,19 @@ class LoginViewModel extends BaseViewModel {
     super.dispose();
   }
 
+  Future<void> lodData() async {
+    await makeApiCall(
+      fromData: LoginInfo.fromMap,
+      apiCall: AuthService.shared.login(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      ),
+      onSuccess: (model) {
+        navigateToDeleteTree(context, const MainView());
+      },
+    );
+  }
+
   void toggleRemember({bool? value}) {
     rememberMe = value;
     update();
@@ -36,10 +53,12 @@ class LoginViewModel extends BaseViewModel {
 
   void _onInputChanged() {
     final isValid =
-        ValidationHelpers.validateEmail(emailController.text) == null &&
-            ValidationHelpers.validatePassword(passwordController.text) == null;
+        ValidationHelpers.validateEmail(emailController.text.trim()) == null &&
+            ValidationHelpers.validatePassword(
+                  passwordController.text.trim(),
+                ) ==
+                null;
 
-    // Only update if state has changed
     if (isDisabled == isValid) {
       isDisabled = !isValid;
       update();
