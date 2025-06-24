@@ -21,92 +21,78 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(Dimensions.xl),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.white.withOpacity(0.12),
-              Colors.white.withOpacity(0.06),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(Dimensions.xl),
-          border: Border.all(
-            color: Colors.white.withOpacity(0.18),
-            width: 1.2,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: Dimensions.xl,
-              offset: const Offset(0, Dimensions.l),
-            ),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.white.withOpacity(0.15),
+            Colors.white.withOpacity(0.05),
           ],
         ),
+        borderRadius: BorderRadius.circular(Dimensions.xl),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.2),
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(Dimensions.xl),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: Dimensions.xl,
-              vertical: Dimensions.l,
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            padding: const EdgeInsets.all(Dimensions.l),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.white.withOpacity(0.1),
+                  Colors.white.withOpacity(0.05),
+                ],
+              ),
             ),
             child: Row(
               children: [
-                // Texts on the left
                 Expanded(
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Text(
-                          title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.white.withOpacity(0.82),
-                            fontWeight: FontWeight.w500,
-                            fontSize: Dimensions.m + 2,
-                          ),
+                      Text(
+                        title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white.withOpacity(0.9),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13,
                         ),
                       ),
-                      const SizedBox(width: Dimensions.s),
+                      const SizedBox(height: 4),
                       Text(
                         value,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: Dimensions.xl,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 24,
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(width: Dimensions.l),
-                // Icon on the right
+                const SizedBox(width: Dimensions.m),
                 Container(
-                  width: Dimensions.xl,
-                  height: Dimensions.xl,
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
-                    color: iconBackgroundColor.withOpacity(0.16),
-                    borderRadius: BorderRadius.circular(Dimensions.l),
-                    boxShadow: [
-                      BoxShadow(
-                        color: iconBackgroundColor.withOpacity(0.18),
-                        blurRadius: Dimensions.xl,
-                        offset: const Offset(0, Dimensions.s),
-                      ),
-                    ],
+                    color: iconBackgroundColor,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Center(
-                    child: Icon(
-                      icon,
-                      color: iconBackgroundColor,
-                      size: Dimensions.xl, // Match value text size
-                    ),
+                  child: Icon(
+                    icon,
+                    color: Colors.white,
+                    size: 20,
                   ),
                 ),
               ],

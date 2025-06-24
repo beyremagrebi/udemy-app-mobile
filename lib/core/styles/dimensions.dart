@@ -15,6 +15,7 @@ class Dimensions {
   static const double l = 16;
   static const double xl = 20;
   static const double xxxl = 24;
+  static const double xxxxl = 80;
   static const xsmallRadius = Radius.circular(xs);
   static const smallRadius = Radius.circular(s);
 
@@ -53,6 +54,7 @@ class Dimensions {
   static const heightLarge = SizedBox(height: l);
   static const heightExtraLarge = SizedBox(height: xl);
   static const heightHuge = SizedBox(height: xxxl);
+  static const heightExtraHuge = SizedBox(height: xxxxl);
 
   /// Sized Box [ width ]
   static const widthxSmall = SizedBox(width: xs);

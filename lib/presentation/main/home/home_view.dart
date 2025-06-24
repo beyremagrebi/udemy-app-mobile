@@ -1,3 +1,7 @@
+import 'package:erudaxis/widgets/main/classes/mes_classes_screen.dart';
+import 'package:erudaxis/widgets/main/home/evenements_prochains_widget.dart';
+import 'package:erudaxis/widgets/main/home/factures_en_attente_widget.dart';
+import 'package:erudaxis/widgets/main/home/votre_rang_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/styles/dimensions.dart';
@@ -5,6 +9,10 @@ import '../../../widgets/common/widgets.dart';
 import '../../../widgets/main/home/action_card.dart';
 import '../../../widgets/main/home/info_card.dart';
 import '../../../widgets/main/home/main_header_widget.dart';
+import '../../../widgets/main/home/prochain_seance_widget.dart';
+import '../../../widgets/main/home/quiz_a_faire_widget.dart';
+import '../../../widgets/main/home/recent_library_widget.dart';
+import '../../../widgets/main/home/suivi_journalier_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -19,6 +27,7 @@ class HomeView extends StatelessWidget {
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
+              physics: const BouncingScrollPhysics(),
               children: const [
                 Padding(
                   padding: EdgeInsets.all(Dimensions.l),
@@ -26,11 +35,23 @@ class HomeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _DashboardGrid(),
-                      SizedBox(height: Dimensions.xl),
+                      SizedBox(height: 10),
                       _QuickActions(),
-                      _QuickActions(),
-                      _QuickActions(),
-                      _QuickActions(),
+                      SizedBox(height: Dimensions.l),
+                      RecentLibraryWidget(),
+                      SizedBox(height: Dimensions.l),
+                      ProchainSeanceWidget(),
+                      SizedBox(height: Dimensions.l),
+                      QuizAFaireWidget(),
+                      SizedBox(height: Dimensions.l),
+                      FacturesEnAttenteWidget(),
+                      SizedBox(height: Dimensions.l),
+                      EvenementsProchainsWidget(),
+                      SizedBox(height: Dimensions.l),
+                      SuiviJournalierWidget(),
+                      SizedBox(height: Dimensions.l),
+                      VotreRangWidget(),
+                      Dimensions.heightExtraHuge,
                     ],
                   ),
                 ),
@@ -55,7 +76,7 @@ class _DashboardGrid extends StatelessWidget {
             Expanded(
               child: InfoCard(
                 title: 'Cours cette semaine',
-                value: '12',
+                value: '5',
                 icon: Icons.book_outlined,
                 iconBackgroundColor: Color(0xFF3B82F6),
               ),
@@ -117,18 +138,28 @@ class _QuickActions extends StatelessWidget {
           ),
         ),
         const SizedBox(height: Dimensions.l),
-        const Row(
+        Row(
           children: [
             Expanded(
-              child: ActionCard(
-                title: 'Mes Classes',
-                subtitle: 'Accéder à vos classes et groupes',
-                icon: Icons.people,
-                iconColor: Colors.redAccent,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<Widget>(
+                      builder: (context) => const MesClassesScreen(),
+                    ),
+                  );
+                },
+                child: const ActionCard(
+                  title: 'Mes Classes',
+                  subtitle: 'Accéder à vos classes et groupes',
+                  icon: Icons.people,
+                  iconColor: Colors.redAccent,
+                ),
               ),
             ),
-            SizedBox(width: Dimensions.l),
-            Expanded(
+            const SizedBox(width: Dimensions.l),
+            const Expanded(
               child: ActionCard(
                 title: 'Emploi du temps',
                 subtitle: 'Consulter votre planning',
