@@ -28,7 +28,7 @@ class LoginViewModel extends BaseViewModel {
     super.dispose();
   }
 
-  Future<void> lodData() async {
+  Future<void> login() async {
     await makeApiCall(
       fromData: LoginInfo.fromMap,
       apiCall: AuthService.shared.login(

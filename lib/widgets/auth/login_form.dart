@@ -67,6 +67,6 @@ class LoginForm extends BaseForm<LoginViewModel> {
 
   @override
   void onSubmit(BuildContext context) {
-    viewModel.lodData();
+    viewModel.login();
   }
 }
