@@ -1,3 +1,4 @@
+import 'package:erudaxis/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeLogin extends StatelessWidget {
@@ -5,17 +6,17 @@ class WelcomeLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Text(
-          'Content de vous revoir !',
-          style: TextStyle(
+          S.of(context).title,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
-        Text(
+        const Text(
           'Connectez-vous pour continuer',
           style: TextStyle(
             fontSize: 16,

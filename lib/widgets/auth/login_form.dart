@@ -1,11 +1,9 @@
-import 'package:erudaxis/presentation/main/main_view.dart';
 import 'package:erudaxis/providers/auth/login_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/styles/dimensions.dart';
 import '../../presentation/utils/form/base_form.dart';
 import '../../presentation/utils/form/validate_helper.dart';
-import '../../presentation/utils/navigator_utils.dart';
 import '../common/form/input_text.dart';
 import '../common/gradient_button.dart';
 import 'login_footer_row.dart';
@@ -69,6 +67,6 @@ class LoginForm extends BaseForm<LoginViewModel> {
 
   @override
   void onSubmit(BuildContext context) {
-    navigateTo(context, const MainView());
+    viewModel.lodData();
   }
 }

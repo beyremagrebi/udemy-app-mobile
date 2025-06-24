@@ -1,0 +1,259 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
+class CustomAlertDialog {
+  static const Color primaryPurple = Color(0xFF8B5CF6);
+  static const Color secondaryPurple = Color(0xFF7C3AED);
+  static const Color darkPurple = Color(0xFF5B21B6);
+  static const Color successColor = Color(0xFF10B981);
+  static const Color errorColor = Color(0xFFEF4444);
+  static const Color warningColor = Color(0xFFF59E0B);
+  static const Color textWhite = Colors.white;
+  static const Color textGray = Color(0xFFB8B5C3);
+
+  static Future<void> showErrorDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+    VoidCallback? onPressed,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return _buildCustomDialog(
+          context: context,
+          icon: Icons.error_outline,
+          iconColor: errorColor,
+          title: title,
+          message: message,
+          primaryButtonText: buttonText,
+          primaryButtonColor: errorColor,
+          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
+        );
+      },
+    );
+  }
+
+  static Future<void> showSuccessDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+    VoidCallback? onPressed,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return _buildCustomDialog(
+          context: context,
+          icon: Icons.check_circle_outline,
+          iconColor: successColor,
+          title: title,
+          message: message,
+          primaryButtonText: buttonText,
+          primaryButtonColor: successColor,
+          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
+        );
+      },
+    );
+  }
+
+  static Future<void> showWarningDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+    VoidCallback? onPressed,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return _buildCustomDialog(
+          context: context,
+          icon: Icons.warning_amber_outlined,
+          iconColor: warningColor,
+          title: title,
+          message: message,
+          primaryButtonText: buttonText,
+          primaryButtonColor: warningColor,
+          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
+        );
+      },
+    );
+  }
+
+  static Widget _buildCustomDialog({
+    required BuildContext context,
+    required IconData icon,
+    required Color iconColor,
+    required String title,
+    required String message,
+    required String primaryButtonText,
+    required Color primaryButtonColor,
+    String? secondaryButtonText,
+    VoidCallback? onPrimaryPressed,
+    VoidCallback? onSecondaryPressed,
+  }) {
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 340),
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              const Color(0xFF1E1B4B),
+              primaryPurple.withOpacity(0.9),
+              secondaryPurple.withOpacity(0.9),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.2),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Icône
+              Container(
+                width: 64,
+                height: 64,
+                decoration: BoxDecoration(
+                  color: iconColor.withOpacity(0.2),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: iconColor.withOpacity(0.3),
+                    width: 2,
+                  ),
+                ),
+                child: Icon(
+                  icon,
+                  color: iconColor,
+                  size: 32,
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Titre
+              Text(
+                title,
+                style: const TextStyle(
+                  color: textWhite,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 12),
+
+              // Message
+              Text(
+                message,
+                style: const TextStyle(
+                  color: textGray,
+                  fontSize: 14,
+                  height: 1.4,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+
+              // Boutons
+              if (secondaryButtonText != null) ...[
+                // Deux boutons
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildDialogButton(
+                        text: secondaryButtonText,
+                        color: Colors.transparent,
+                        textColor: textGray,
+                        borderColor: Colors.white.withOpacity(0.3),
+                        onPressed: onSecondaryPressed ??
+                            () => Navigator.of(context).pop(),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _buildDialogButton(
+                        text: primaryButtonText,
+                        color: primaryButtonColor,
+                        textColor: textWhite,
+                        onPressed: onPrimaryPressed ??
+                            () => Navigator.of(context).pop(),
+                      ),
+                    ),
+                  ],
+                ),
+              ] else ...[
+                // Un seul bouton
+                SizedBox(
+                  width: double.infinity,
+                  child: _buildDialogButton(
+                    text: primaryButtonText,
+                    color: primaryButtonColor,
+                    textColor: textWhite,
+                    onPressed:
+                        onPrimaryPressed ?? () => Navigator.of(context).pop(),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget _buildDialogButton({
+    required String text,
+    required Color color,
+    required Color textColor,
+    required VoidCallback onPressed,
+    Color? borderColor,
+  }) {
+    return Container(
+      height: 44,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(12),
+        border: borderColor != null ? Border.all(color: borderColor) : null,
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(12),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

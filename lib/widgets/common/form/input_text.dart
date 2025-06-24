@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/app_colors.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,9 @@ class InputText extends StatelessWidget {
               enabled: enabled,
               validator: validator,
               autovalidateMode: autovalidateMode,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
+              style: textTheme.bodyMedium?.copyWith(
+                color: Colors.white,
+              ),
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 hintText: hintText,

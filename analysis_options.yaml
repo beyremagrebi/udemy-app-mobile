@@ -50,7 +50,7 @@ linter:
     always_put_required_named_parameters_first: true
     always_specify_types: false # Set to true for stricter typing
     annotate_overrides: true
-    avoid_annotating_with_dynamic: true
+    avoid_annotating_with_dynamic: false
     avoid_bool_literals_in_conditional_expressions: true
     avoid_catches_without_on_clauses: true
     avoid_catching_errors: true
@@ -158,3 +158,5 @@ linter:
     # require_trailing_commas: true
     # sort_pub_dependencies: true
     # unawaited_futures: true
+
+    
