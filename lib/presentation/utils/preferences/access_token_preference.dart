@@ -30,6 +30,8 @@ class AccessTokenPreference extends BasePreferences<String> {
     try {
       await init();
       await prefs.setString(key, value);
+
+      debugPrint('$key SAVED INTO SHARED');
     } on Exception catch (e) {
       debugPrint(e.toString());
     }

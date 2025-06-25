@@ -1,10 +1,9 @@
 import 'package:erudaxis/models/auth/login_info.dart';
+import 'package:erudaxis/presentation/utils/session/app_initialize.dart';
+import 'package:erudaxis/presentation/utils/session/token_manager.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
-
-import '../../presentation/main/main_view.dart';
-import '../../presentation/utils/navigator_utils.dart';
 
 class LoginViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
@@ -26,8 +25,11 @@ class LoginViewModel extends BaseViewModel {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       ),
-      onSuccess: (model) {
-        navigateToDeleteTree(context, const MainView());
+      onSuccess: (loginInfo) async {
+        await TokenManager.saveTokens(loginInfo: loginInfo);
+        if (context.mounted) {
+          AppStarter.start(context);
+        }
       },
     );
   }

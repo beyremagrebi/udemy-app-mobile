@@ -5,7 +5,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'core/constants/constant.dart';
 import 'core/themes/app_theme.dart';
 import 'generated/l10n.dart';
-import 'presentation/auth/login_view.dart';
+import 'presentation/splash_screen_view.dart';
 import 'presentation/utils/spin_loading.dart';
 
 class Erudaxis extends StatelessWidget {
@@ -36,7 +36,7 @@ class Erudaxis extends StatelessWidget {
           textTheme = Theme.of(context).textTheme;
           return intl.title;
         },
-        home: const LoginView(),
+        home: const SplashScreenView(),
       ),
     );
   }
