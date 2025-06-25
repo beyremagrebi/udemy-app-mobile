@@ -1,3 +1,12 @@
 {
-    "title": "Bonjour"
+    "enterEmail": "Entrez votre email",
+    "enterPassword": "Entrez votre mot de passe",
+    "error": "Erreur",
+    "forgotPassword": "Mot de passe oublié ?",
+    "loading": "Chargement...",
+    "login": "Se connecter",
+    "loginToContinue": "Connectez-vous pour continuer",
+    "rememberMe": "Se souvenir de moi",
+    "studyCompanion": "Votre compagnon d''études",
+    "welcomeBack": "Content de vous revoir !"
 }

@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/providers/auth/login_view_model.dart';
 import 'package:erudaxis/providers/auth/validator_view_model.dart';
 import 'package:erudaxis/providers/auth/visibilty_field_password_view_model.dart';
@@ -28,7 +29,7 @@ class LoginForm extends BaseForm<LoginViewModel> {
     return [
       InputText(
         controller: viewModel.emailController,
-        hintText: 'Enter email',
+        hintText: intl.enterEmail,
         validator: validatorViewModel.emailValidator.validate,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         prefixIcon:
@@ -41,7 +42,7 @@ class LoginForm extends BaseForm<LoginViewModel> {
           builder: (context, visibiltyFieldPasswordViewModel, child) =>
               InputText(
             controller: viewModel.passwordController,
-            hintText: 'Enter password',
+            hintText: intl.enterPassword,
             keyboardType: TextInputType.visiblePassword,
             obscureText: visibiltyFieldPasswordViewModel.securePassword,
             validator: validatorViewModel.passwordValidator.validate,
@@ -68,7 +69,7 @@ class LoginForm extends BaseForm<LoginViewModel> {
   Widget buildSubmitButton(BuildContext context) {
     return GradientButton(
       width: double.maxFinite,
-      text: 'Login',
+      text: intl.login,
       onPressed: () {
         if (validateForm()) {
           onSubmit(context);

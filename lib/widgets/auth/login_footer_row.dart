@@ -31,7 +31,7 @@ class LoginFooterRow extends StatelessWidget {
                   ),
                   Flexible(
                     child: Text(
-                      'Se souvenir de moi',
+                      intl.rememberMe,
                       style: textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
                         fontSize: 14,
@@ -48,7 +48,7 @@ class LoginFooterRow extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {},
                 child: Text(
-                  'Mot de passe oublié ?',
+                  intl.forgotPassword,
                   style: textTheme.bodyMedium?.copyWith(
                     color: const Color.fromARGB(255, 227, 151, 247),
                     fontSize: 14,

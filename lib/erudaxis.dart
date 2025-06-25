@@ -21,7 +21,7 @@ class Erudaxis extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: mainnavigatorKey,
         debugShowCheckedModeBanner: false,
-        locale: const Locale('en'),
+        locale: const Locale('ar'),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -29,12 +29,12 @@ class Erudaxis extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        title: 'Flutter Demo',
+        title: 'Erudaxis',
         theme: AppTheme.themeData,
         onGenerateTitle: (context) {
           intl = S.of(context);
           textTheme = Theme.of(context).textTheme;
-          return intl.title;
+          return intl.welcomeBack;
         },
         home: const SplashScreenView(),
       ),

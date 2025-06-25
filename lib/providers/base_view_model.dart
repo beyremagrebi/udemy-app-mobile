@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/presentation/utils/alert_dialog.dart';
 import 'package:erudaxis/presentation/utils/spin_loading.dart';
@@ -41,7 +42,7 @@ abstract class BaseViewModel extends ChangeNotifier {
             context.loaderOverlay.hide();
             CustomAlertDialog.showErrorDialog(
               context: context,
-              title: 'Erreur',
+              title: intl.error,
               message: jsonResponse.errorMessage.toString(),
             );
           }

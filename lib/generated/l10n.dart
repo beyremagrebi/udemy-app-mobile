@@ -55,9 +55,79 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Hello`
-  String get title {
-    return Intl.message('Hello', name: 'title', desc: '', args: []);
+  /// `Enter email`
+  String get enterEmail {
+    return Intl.message('Enter email', name: 'enterEmail', desc: '', args: []);
+  }
+
+  /// `Enter password`
+  String get enterPassword {
+    return Intl.message(
+      'Enter password',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message('Error', name: 'error', desc: '', args: []);
+  }
+
+  /// `Forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message('Loading...', name: 'loading', desc: '', args: []);
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Log in to continue`
+  String get loginToContinue {
+    return Intl.message(
+      'Log in to continue',
+      name: 'loginToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember me`
+  String get rememberMe {
+    return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
+  }
+
+  /// `Your study companion`
+  String get studyCompanion {
+    return Intl.message(
+      'Your study companion',
+      name: 'studyCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nice to see you again!`
+  String get welcomeBack {
+    return Intl.message(
+      'Nice to see you again!',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
   }
 }
 
