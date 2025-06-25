@@ -69,7 +69,6 @@ class LoginForm extends BaseForm<LoginViewModel> {
     return GradientButton(
       width: double.maxFinite,
       text: 'Login',
-      isDisabled: !viewModel.isFormValid,
       onPressed: () {
         if (validateForm()) {
           onSubmit(context);

@@ -1,5 +1,4 @@
 import 'package:erudaxis/models/auth/login_info.dart';
-import 'package:erudaxis/presentation/utils/form/validate_helper.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +10,7 @@ class LoginViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  bool isFormValid = false;
-
-  LoginViewModel(super.context) {
-    emailController.addListener(_validateForm);
-    passwordController.addListener(_validateForm);
-  }
+  LoginViewModel(super.context);
 
   @override
   void dispose() {
@@ -36,16 +30,5 @@ class LoginViewModel extends BaseViewModel {
         navigateToDeleteTree(context, const MainView());
       },
     );
-  }
-
-  void _validateForm() {
-    final isValid = EmailValidator().validate(emailController.text.trim()) ==
-            null &&
-        PasswordValidator().validate(passwordController.text.trim()) == null;
-
-    if (isFormValid != isValid) {
-      isFormValid = isValid;
-      update();
-    }
   }
 }
