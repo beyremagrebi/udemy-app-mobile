@@ -55,6 +55,21 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Email`
+  String get emailField {
+    return Intl.message('Email', name: 'emailField', desc: '', args: []);
+  }
+
+  /// `Email is required`
+  String get emailRequired {
+    return Intl.message(
+      'Email is required',
+      name: 'emailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter email`
   String get enterEmail {
     return Intl.message('Enter email', name: 'enterEmail', desc: '', args: []);
@@ -75,11 +90,41 @@ class S {
     return Intl.message('Error', name: 'error', desc: '', args: []);
   }
 
+  /// `{fieldName} is required`
+  String fieldRequired(Object fieldName) {
+    return Intl.message(
+      '$fieldName is required',
+      name: 'fieldRequired',
+      desc: '',
+      args: [fieldName],
+    );
+  }
+
   /// `Forgot password?`
   String get forgotPassword {
     return Intl.message(
       'Forgot password?',
       name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get invalidEmail {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid phone number`
+  String get invalidPhone {
+    return Intl.message(
+      'Please enter a valid phone number',
+      name: 'invalidPhone',
       desc: '',
       args: [],
     );
@@ -100,6 +145,96 @@ class S {
     return Intl.message(
       'Log in to continue',
       name: 'loginToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{fieldName} must be at least {min} characters`
+  String minLength(Object fieldName, Object min) {
+    return Intl.message(
+      '$fieldName must be at least $min characters',
+      name: 'minLength',
+      desc: '',
+      args: [fieldName, min],
+    );
+  }
+
+  /// `Password`
+  String get passwordField {
+    return Intl.message('Password', name: 'passwordField', desc: '', args: []);
+  }
+
+  /// `Password must contain: {requirements}`
+  String passwordInvalid(Object requirements) {
+    return Intl.message(
+      'Password must contain: $requirements',
+      name: 'passwordInvalid',
+      desc: '',
+      args: [requirements],
+    );
+  }
+
+  /// `lowercase letter`
+  String get passwordLower {
+    return Intl.message(
+      'lowercase letter',
+      name: 'passwordLower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at least 8 characters`
+  String get passwordMin {
+    return Intl.message(
+      'at least 8 characters',
+      name: 'passwordMin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `number`
+  String get passwordNumber {
+    return Intl.message('number', name: 'passwordNumber', desc: '', args: []);
+  }
+
+  /// `Password is required`
+  String get passwordRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `special character`
+  String get passwordSpecial {
+    return Intl.message(
+      'special character',
+      name: 'passwordSpecial',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `uppercase letter`
+  String get passwordUpper {
+    return Intl.message(
+      'uppercase letter',
+      name: 'passwordUpper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number is required`
+  String get phoneRequired {
+    return Intl.message(
+      'Phone number is required',
+      name: 'phoneRequired',
       desc: '',
       args: [],
     );

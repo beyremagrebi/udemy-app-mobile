@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 
 import '../../presentation/utils/form/validate_helper.dart';
@@ -8,12 +9,12 @@ class ValidatorViewModel extends BaseViewModel {
 
   ValidatorViewModel(super.context) {
     emailValidator = CompositeValidator([
-      RequiredValidator(fieldName: 'Email'),
+      RequiredValidator(fieldName: intl.emailField),
       EmailValidator(),
     ]);
 
     passwordValidator = CompositeValidator([
-      RequiredValidator(fieldName: 'Password'),
+      RequiredValidator(fieldName: intl.passwordField),
       PasswordValidator(),
     ]);
   }
