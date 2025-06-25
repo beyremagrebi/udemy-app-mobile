@@ -15,6 +15,7 @@ analyzer:
     - "**/*.freezed.dart"
     - "**/*.mocks.dart"
     - "**/generated_plugin_registrant.dart"
+    - lib/generated/
   
   strong-mode:
     implicit-casts: false
