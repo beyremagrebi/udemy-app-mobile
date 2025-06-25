@@ -1,63 +1,67 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../providers/auth/login_view_model.dart';
+import '../../providers/auth/login_footer_view_model.dart';
 
 class LoginFooterRow extends StatelessWidget {
-  final LoginViewModel viewModel;
   const LoginFooterRow({
-    required this.viewModel,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Flexible(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Checkbox(
-                value: viewModel.rememberMe,
-                onChanged: (val) => viewModel.toggleRemember(value: val),
-                checkColor: const Color(0xFF8B4A9C),
-                fillColor: WidgetStateProperty.all(Colors.white),
-                side: const BorderSide(color: Colors.white, width: 2),
+    return ChangeNotifierProvider(
+      create: LoginFooterViewModel.new,
+      child: Consumer<LoginFooterViewModel>(
+        builder: (context, viewModel, child) => Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Checkbox(
+                    value: viewModel.rememberMe,
+                    onChanged: (val) => viewModel.toggleRemember(value: val),
+                    checkColor: const Color(0xFF8B4A9C),
+                    fillColor: WidgetStateProperty.all(Colors.white),
+                    side: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  Flexible(
+                    child: Text(
+                      'Se souvenir de moi',
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
               ),
-              Flexible(
+            ),
+            Dimensions.widthSmall,
+            Flexible(
+              child: GestureDetector(
+                onTap: () {},
                 child: Text(
-                  'Se souvenir de moi',
+                  'Mot de passe oublié ?',
                   style: textTheme.bodyMedium?.copyWith(
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 227, 151, 247),
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                   overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.end,
                 ),
               ),
-            ],
-          ),
-        ),
-        Dimensions.widthSmall,
-        Flexible(
-          child: GestureDetector(
-            onTap: () {},
-            child: Text(
-              'Mot de passe oublié ?',
-              style: textTheme.bodyMedium?.copyWith(
-                color: const Color.fromARGB(255, 227, 151, 247),
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-              ),
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.end,
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

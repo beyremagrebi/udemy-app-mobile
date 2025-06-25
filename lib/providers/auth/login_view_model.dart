@@ -1,24 +1,21 @@
 import 'package:erudaxis/models/auth/login_info.dart';
+import 'package:erudaxis/presentation/utils/form/validate_helper.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../presentation/main/main_view.dart';
-import '../../presentation/utils/form/validate_helper.dart';
 import '../../presentation/utils/navigator_utils.dart';
 
 class LoginViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  bool securePassword = true;
-  bool isDisabled = true;
-  bool? rememberMe = false;
+  bool isFormValid = false;
 
   LoginViewModel(super.context) {
-    // Listen to input changes to update button state
-    emailController.addListener(_onInputChanged);
-    passwordController.addListener(_onInputChanged);
+    emailController.addListener(_validateForm);
+    passwordController.addListener(_validateForm);
   }
 
   @override
@@ -41,26 +38,15 @@ class LoginViewModel extends BaseViewModel {
     );
   }
 
-  void toggleRemember({bool? value}) {
-    rememberMe = value;
-    update();
-  }
+  void _validateForm() {
+    final isValid = EmailValidator().validate(emailController.text.trim()) ==
+            null &&
+        PasswordValidator().validate(passwordController.text.trim()) == null;
 
-  void toggleVisibility() {
-    securePassword = !securePassword;
-    update();
-  }
+    print(isValid);
 
-  void _onInputChanged() {
-    final isValid =
-        ValidationHelpers.validateEmail(emailController.text.trim()) == null &&
-            ValidationHelpers.validatePassword(
-                  passwordController.text.trim(),
-                ) ==
-                null;
-
-    if (isDisabled == isValid) {
-      isDisabled = !isValid;
+    if (isFormValid != isValid) {
+      isFormValid = isValid;
       update();
     }
   }

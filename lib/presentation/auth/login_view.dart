@@ -2,6 +2,7 @@ import 'package:erudaxis/core/config/media/asset_image_widget.dart';
 import 'package:erudaxis/core/constants/assets.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/providers/auth/login_view_model.dart';
+import 'package:erudaxis/providers/auth/validator_view_model.dart';
 import 'package:erudaxis/widgets/auth/login_form.dart';
 import 'package:erudaxis/widgets/auth/welcome_login.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,23 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: LoginViewModel.new,
-      child: Consumer<LoginViewModel>(
-        builder: (context, viewModel, child) => AppScaffold(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: LoginViewModel.new,
+        ),
+        ChangeNotifierProvider(
+          create: ValidatorViewModel.new,
+        ),
+      ],
+      child: Consumer2<LoginViewModel, ValidatorViewModel>(
+        builder: (
+          context,
+          viewModel,
+          validatorViewModel,
+          child,
+        ) =>
+            AppScaffold(
           body: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -43,6 +57,7 @@ class LoginView extends StatelessWidget {
                           Dimensions.heightMedium,
                           LoginForm(
                             viewModel: viewModel,
+                            validatorViewModel: validatorViewModel,
                           )
                         ],
                       ),

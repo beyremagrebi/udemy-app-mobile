@@ -1,20 +1,23 @@
-class ValidationHelpers {
-  // Combine multiple validators
-  static String? Function(String?) combineValidators(
-    List<String? Function(String?)> validators,
-  ) {
-    return (value) {
-      for (final validator in validators) {
-        final result = validator(value);
-        if (result != null) {
-          return result;
-        }
-      }
-      return null;
-    };
-  }
+class CompositeValidator implements FieldValidator {
+  final List<FieldValidator> validators;
 
-  static String? validateEmail(String? value) {
+  CompositeValidator(this.validators);
+
+  @override
+  String? validate(String? value) {
+    for (final validator in validators) {
+      final result = validator.validate(value);
+      if (result != null) {
+        return result;
+      }
+    }
+    return null;
+  }
+}
+
+class EmailValidator implements FieldValidator {
+  @override
+  String? validate(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
     }
@@ -26,53 +29,30 @@ class ValidationHelpers {
 
     return null;
   }
+}
 
-  static String? validateMinLength(String? value, int minLength,
-      [String? fieldName]) {
+abstract class FieldValidator {
+  String? validate(String? value);
+}
+
+class MinLengthValidator implements FieldValidator {
+  final int minLength;
+  final String fieldName;
+
+  MinLengthValidator(this.minLength, {this.fieldName = 'This field'});
+
+  @override
+  String? validate(String? value) {
     if (value == null || value.length < minLength) {
-      return '${fieldName ?? 'This field'} must be at least $minLength characters';
+      return '$fieldName must be at least $minLength characters';
     }
     return null;
   }
+}
 
-  static String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Password is required';
-    }
-
-    if (value.length < 8) {
-      return 'Password must be at least 8 characters long';
-    }
-
-    final bool hasLowercase = RegExp('[a-z]').hasMatch(value);
-    final bool hasUppercase = RegExp('[A-Z]').hasMatch(value);
-    final bool hasDigit = RegExp(r'\d').hasMatch(value);
-    final bool hasSpecialChar =
-        RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value);
-
-    final List<String> missing = [];
-
-    if (!hasLowercase) {
-      missing.add('lowercase letter');
-    }
-    if (!hasUppercase) {
-      missing.add('uppercase letter');
-    }
-    if (!hasDigit) {
-      missing.add('number');
-    }
-    if (!hasSpecialChar) {
-      missing.add('special character');
-    }
-
-    if (missing.isNotEmpty) {
-      return 'Password must contain: ${missing.join(', ')}';
-    }
-
-    return null;
-  }
-
-  static String? validatePasswordComprehensive(String? value) {
+class PasswordValidator implements FieldValidator {
+  @override
+  String? validate(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
     }
@@ -82,20 +62,16 @@ class ValidationHelpers {
     if (value.length < 8) {
       errors.add('at least 8 characters');
     }
-
     if (!RegExp('[a-z]').hasMatch(value)) {
       errors.add('lowercase letter');
     }
-
     if (!RegExp('[A-Z]').hasMatch(value)) {
       errors.add('uppercase letter');
     }
-
     if (!RegExp(r'\d').hasMatch(value)) {
       errors.add('number');
     }
-
-    if (!RegExp(r'[!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?~`]').hasMatch(value)) {
+    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
       errors.add('special character');
     }
 
@@ -105,41 +81,37 @@ class ValidationHelpers {
 
     return null;
   }
+}
 
-  static String? validatePasswordFlexible(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Password is required';
-    }
-
-    if (value.length < 8) {
-      return 'Password must be at least 8 characters long';
-    }
-
-    if (!RegExp(
-            r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?])')
-        .hasMatch(value)) {
-      return 'Password must contain uppercase, lowercase, number, and special character';
-    }
-
-    return null;
-  }
-
-  static String? validatePhoneNumber(String? value) {
+class PhoneNumberValidator implements FieldValidator {
+  @override
+  String? validate(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required';
     }
 
-    final phoneRegex = RegExp(r'^\+?[\d\s\-$$$$]{10,}$');
+    final phoneRegex = RegExp(r'^\+?[\d\s\-]{10,}$');
     if (!phoneRegex.hasMatch(value)) {
       return 'Please enter a valid phone number';
     }
 
     return null;
   }
+}
 
-  static String? validateRequired(String? value, [String? fieldName]) {
+// ===========================
+// Concrete Validators
+// ===========================
+
+class RequiredValidator implements FieldValidator {
+  final String fieldName;
+
+  RequiredValidator({this.fieldName = 'This field'});
+
+  @override
+  String? validate(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return '${fieldName ?? 'This field'} is required';
+      return '$fieldName is required';
     }
     return null;
   }
