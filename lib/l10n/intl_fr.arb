@@ -1,6 +1,6 @@
 {
     "emailField": "E-mail",
-    "emailRequired": "L'adresse e-mail est requise",
+    "emailRequired": "L''adresse e-mail est requise",
     "enterEmail": "Entrez votre email",
     "enterPassword": "Entrez votre mot de passe",
     "error": "Erreur",

@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "emailField": MessageLookupByLibrary.simpleMessage("E-mail"),
     "emailRequired": MessageLookupByLibrary.simpleMessage(
-      "L\'adresse e-mail est requise",
+      "L\'\'adresse e-mail est requise",
     ),
     "enterEmail": MessageLookupByLibrary.simpleMessage("Entrez votre email"),
     "enterPassword": MessageLookupByLibrary.simpleMessage(
