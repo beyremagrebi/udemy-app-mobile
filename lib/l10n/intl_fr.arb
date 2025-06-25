@@ -1,4 +1,5 @@
 {
+    "appName": "Erudaxis",
     "emailField": "E-mail",
     "emailRequired": "L''adresse e-mail est requise",
     "enterEmail": "Entrez votre email",

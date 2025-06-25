@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,10 @@ abstract class BaseForm<T extends BaseViewModel> extends StatelessWidget {
         children: [
           ...buildFormFields(context),
           if (buildFooter(context) != null) ...[
-            const SizedBox(height: 16),
+            Dimensions.heightxSmall,
             buildFooter(context)!,
           ],
-          const SizedBox(height: 16),
+          Dimensions.heightxSmall,
           buildSubmitButton(context),
         ],
       ),
