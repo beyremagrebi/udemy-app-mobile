@@ -55,6 +55,11 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Erudaxis`
+  String get appName {
+    return Intl.message('Erudaxis', name: 'appName', desc: '', args: []);
+  }
+
   /// `Email`
   String get emailField {
     return Intl.message('Email', name: 'emailField', desc: '', args: []);

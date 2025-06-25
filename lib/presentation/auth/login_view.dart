@@ -1,10 +1,10 @@
-import 'package:erudaxis/core/config/media/asset_image_widget.dart';
-import 'package:erudaxis/core/constants/assets.dart';
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/providers/auth/login_view_model.dart';
 import 'package:erudaxis/providers/auth/validator_view_model.dart';
 import 'package:erudaxis/widgets/auth/login_form.dart';
 import 'package:erudaxis/widgets/auth/welcome_login.dart';
+import 'package:erudaxis/widgets/splash_screen_component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -49,12 +49,37 @@ class LoginView extends StatelessWidget {
                       padding: Dimensions.paddingAllHuge,
                       child: Column(
                         children: [
-                          const AssetsImageWidget(
-                            imageFileName: Assets.defaultMaleAvatar,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.school_outlined,
+                                size: 34,
+                                color: Color.fromARGB(255, 227, 151, 247),
+                              ),
+                              Dimensions.widthSmall,
+                              Text(
+                                intl.appName,
+                                style: textTheme.displayLarge?.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2,
+                                  shadows: [
+                                    Shadow(
+                                      color: SplashComponents.darkPurple
+                                          .withOpacity(0.5),
+                                      offset: const Offset(0, 2),
+                                      blurRadius: 4,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                           Dimensions.heightMedium,
                           const WelcomeLogin(),
-                          Dimensions.heightMedium,
+                          Dimensions.heightExtraLarge,
                           LoginForm(
                             viewModel: viewModel,
                             validatorViewModel: validatorViewModel,

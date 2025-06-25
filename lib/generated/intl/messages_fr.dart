@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "appName": MessageLookupByLibrary.simpleMessage("Erudaxis"),
     "emailField": MessageLookupByLibrary.simpleMessage("E-mail"),
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "L\'\'adresse e-mail est requise",

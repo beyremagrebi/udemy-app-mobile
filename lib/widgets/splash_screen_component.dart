@@ -69,7 +69,7 @@ class SplashComponents {
         child: Column(
           children: [
             Text(
-              'Erudaxis',
+              intl.appName,
               style: TextStyle(
                 color: textWhite,
                 fontSize: 36,
