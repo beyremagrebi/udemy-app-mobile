@@ -43,8 +43,6 @@ class LoginViewModel extends BaseViewModel {
             null &&
         PasswordValidator().validate(passwordController.text.trim()) == null;
 
-    print(isValid);
-
     if (isFormValid != isValid) {
       isFormValid = isValid;
       update();
