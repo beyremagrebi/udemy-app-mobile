@@ -1,25 +1,15 @@
 import 'package:erudaxis/models/auth/login_info.dart';
+import 'package:erudaxis/presentation/utils/session/app_initialize.dart';
+import 'package:erudaxis/presentation/utils/session/token_manager.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
-
-import '../../presentation/main/main_view.dart';
-import '../../presentation/utils/form/validate_helper.dart';
-import '../../presentation/utils/navigator_utils.dart';
 
 class LoginViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  bool securePassword = true;
-  bool isDisabled = true;
-  bool? rememberMe = false;
-
-  LoginViewModel(super.context) {
-    // Listen to input changes to update button state
-    emailController.addListener(_onInputChanged);
-    passwordController.addListener(_onInputChanged);
-  }
+  LoginViewModel(super.context);
 
   @override
   void dispose() {
@@ -28,40 +18,19 @@ class LoginViewModel extends BaseViewModel {
     super.dispose();
   }
 
-  Future<void> lodData() async {
+  Future<void> login() async {
     await makeApiCall(
       fromData: LoginInfo.fromMap,
       apiCall: AuthService.shared.login(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       ),
-      onSuccess: (model) {
-        navigateToDeleteTree(context, const MainView());
+      onSuccess: (loginInfo) async {
+        await TokenManager.saveTokens(loginInfo: loginInfo);
+        if (context.mounted) {
+          AppStarter.start(context);
+        }
       },
     );
-  }
-
-  void toggleRemember({bool? value}) {
-    rememberMe = value;
-    update();
-  }
-
-  void toggleVisibility() {
-    securePassword = !securePassword;
-    update();
-  }
-
-  void _onInputChanged() {
-    final isValid =
-        ValidationHelpers.validateEmail(emailController.text.trim()) == null &&
-            ValidationHelpers.validatePassword(
-                  passwordController.text.trim(),
-                ) ==
-                null;
-
-    if (isDisabled == isValid) {
-      isDisabled = !isValid;
-      update();
-    }
   }
 }
