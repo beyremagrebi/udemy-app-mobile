@@ -1,3 +1,5 @@
+import 'package:erudaxis/core/constants/constant.dart';
+
 class CompositeValidator implements FieldValidator {
   final List<FieldValidator> validators;
 
@@ -19,12 +21,12 @@ class EmailValidator implements FieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required';
+      return intl.emailRequired;
     }
 
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email address';
+      return intl.invalidEmail;
     }
 
     return null;
@@ -44,7 +46,7 @@ class MinLengthValidator implements FieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.length < minLength) {
-      return '$fieldName must be at least $minLength characters';
+      return intl.minLength(fieldName, minLength);
     }
     return null;
   }
@@ -54,29 +56,29 @@ class PasswordValidator implements FieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return intl.passwordRequired;
     }
 
     final List<String> errors = [];
 
     if (value.length < 8) {
-      errors.add('at least 8 characters');
+      errors.add(intl.passwordMin);
     }
     if (!RegExp('[a-z]').hasMatch(value)) {
-      errors.add('lowercase letter');
+      errors.add(intl.passwordLower);
     }
     if (!RegExp('[A-Z]').hasMatch(value)) {
-      errors.add('uppercase letter');
+      errors.add(intl.passwordUpper);
     }
     if (!RegExp(r'\d').hasMatch(value)) {
-      errors.add('number');
+      errors.add(intl.passwordNumber);
     }
     if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
-      errors.add('special character');
+      errors.add(intl.passwordSpecial);
     }
 
     if (errors.isNotEmpty) {
-      return 'Password must contain: ${errors.join(', ')}';
+      return intl.passwordInvalid(errors.join(','));
     }
 
     return null;
@@ -87,12 +89,12 @@ class PhoneNumberValidator implements FieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Phone number is required';
+      return intl.phoneRequired;
     }
 
     final phoneRegex = RegExp(r'^\+?[\d\s\-]{10,}$');
     if (!phoneRegex.hasMatch(value)) {
-      return 'Please enter a valid phone number';
+      return intl.invalidPhone;
     }
 
     return null;
@@ -111,7 +113,7 @@ class RequiredValidator implements FieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return '$fieldName is required';
+      return intl.fieldRequired(fieldName);
     }
     return null;
   }

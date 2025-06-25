@@ -20,16 +20,50 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(fieldName) => "${fieldName} is required";
+
+  static String m1(fieldName, min) =>
+      "${fieldName} must be at least ${min} characters";
+
+  static String m2(requirements) => "Password must contain: ${requirements}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "emailField": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailRequired": MessageLookupByLibrary.simpleMessage("Email is required"),
     "enterEmail": MessageLookupByLibrary.simpleMessage("Enter email"),
     "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "fieldRequired": m0,
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot password?"),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid email address",
+    ),
+    "invalidPhone": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid phone number",
+    ),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginToContinue": MessageLookupByLibrary.simpleMessage(
       "Log in to continue",
+    ),
+    "minLength": m1,
+    "passwordField": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordInvalid": m2,
+    "passwordLower": MessageLookupByLibrary.simpleMessage("lowercase letter"),
+    "passwordMin": MessageLookupByLibrary.simpleMessage(
+      "at least 8 characters",
+    ),
+    "passwordNumber": MessageLookupByLibrary.simpleMessage("number"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Password is required",
+    ),
+    "passwordSpecial": MessageLookupByLibrary.simpleMessage(
+      "special character",
+    ),
+    "passwordUpper": MessageLookupByLibrary.simpleMessage("uppercase letter"),
+    "phoneRequired": MessageLookupByLibrary.simpleMessage(
+      "Phone number is required",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
