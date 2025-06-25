@@ -1,4 +1,4 @@
-import 'package:erudaxis/generated/l10n.dart';
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeLogin extends StatelessWidget {
@@ -9,16 +9,16 @@ class WelcomeLogin extends StatelessWidget {
     return Column(
       children: [
         Text(
-          S.of(context).title,
-          style: const TextStyle(
+          intl.welcomeBack,
+          style: textTheme.bodyMedium?.copyWith(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
-        const Text(
-          'Connectez-vous pour continuer',
-          style: TextStyle(
+        Text(
+          intl.loginToContinue,
+          style: textTheme.bodyMedium?.copyWith(
             fontSize: 16,
             color: Colors.white70,
           ),

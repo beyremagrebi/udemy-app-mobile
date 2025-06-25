@@ -1,3 +1,12 @@
 {
-    "title": "مرحبًا"
+    "enterEmail": "أدخل البريد الإلكتروني",
+    "enterPassword": "أدخل كلمة المرور",
+    "error": "خطأ",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "loading": "جارٍ التحميل...",
+    "login": "تسجيل الدخول",
+    "loginToContinue": "سجّل الدخول للمتابعة",
+    "rememberMe": "تذكرني",
+    "studyCompanion": "رفيق دراستك",
+    "welcomeBack": "سعداء برؤيتك مجددًا!"
 }

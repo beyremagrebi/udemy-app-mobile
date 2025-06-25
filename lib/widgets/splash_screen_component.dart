@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -83,9 +84,9 @@ class SplashComponents {
                 ],
               ),
             ),
-            const SizedBox(height: 8),
+            Dimensions.heightSmall,
             Text(
-              "Votre compagnon d'études",
+              intl.studyCompanion,
               style: TextStyle(
                 color: textWhite.withOpacity(0.8),
                 fontSize: 16,
@@ -158,7 +159,7 @@ class SplashComponents {
             ),
             Dimensions.heightLarge,
             Text(
-              'Chargement...',
+              intl.loading,
               style: TextStyle(
                 color: textWhite.withOpacity(0.7),
                 fontSize: 14,
