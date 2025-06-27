@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ Widget buildTransparentBottomNav(
   BottomNavigationViewModel viewModel,
 ) {
   return SizedBox(
-    height: 80,
+    height: 65,
     child: ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
@@ -75,30 +76,26 @@ Widget _buildBottomNavigationBar(
           decoration: BoxDecoration(
             color:
                 isSelected ? Colors.white.withOpacity(0.2) : Colors.transparent,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: Dimensions.smallBorderRadius,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AnimatedScale(
-                scale: isSelected ? 1.1 : 1.0,
+                scale: isSelected ? 1.0 : 0.9,
                 duration: const Duration(milliseconds: 300),
                 child: item.icon,
               ),
               if (item.label?.isNotEmpty ?? false)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text(
-                    item.label!,
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: isSelected
-                          ? Colors.white
-                          : Colors.white.withOpacity(0.7),
-                      fontSize: 14,
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.w400,
-                    ),
+                Text(
+                  item.label!,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: isSelected
+                        ? Colors.white
+                        : Colors.white.withOpacity(0.7),
+                    fontSize: 10,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   ),
                 ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scroll_to_hide/scroll_to_hide.dart';
 
 import '../../providers/main/bottom_navigation_view_model.dart';
 import '../../widgets/main/app_bar_widget.dart';
@@ -27,9 +28,15 @@ class MainView extends StatelessWidget {
               index: viewModel.slectedIndex,
               children: viewModel.pages(),
             ),
-            bottomNavigationBar: buildTransparentBottomNav(
-              context,
-              viewModel,
+            bottomNavigationBar: ScrollToHide(
+              scrollController: viewModel.scrollController,
+              duration: const Duration(milliseconds: 500),
+              height: 65,
+              hideDirection: Axis.vertical,
+              child: buildTransparentBottomNav(
+                context,
+                viewModel,
+              ),
             ),
           );
         },

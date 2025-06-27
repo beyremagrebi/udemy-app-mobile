@@ -15,7 +15,8 @@ import '../../../widgets/main/home/recent_library_widget.dart';
 import '../../../widgets/main/home/suivi_journalier_widget.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  final ScrollController scrollController;
+  const HomeView({required this.scrollController, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class HomeView extends StatelessWidget {
           gradientAppBarWidget(const MainHeaderWidget()),
           Expanded(
             child: ListView(
+              controller: scrollController,
               padding: EdgeInsets.zero,
               physics: const BouncingScrollPhysics(),
               children: const [
@@ -51,7 +53,6 @@ class HomeView extends StatelessWidget {
                       SuiviJournalierWidget(),
                       SizedBox(height: Dimensions.l),
                       VotreRangWidget(),
-                      Dimensions.heightExtraHuge,
                     ],
                   ),
                 ),
