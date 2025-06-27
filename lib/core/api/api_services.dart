@@ -81,7 +81,7 @@ class ApiService {
           requestOptions: response.requestOptions,
           headers: response.headers,
         );
-        return ApiResponse<T>.badRequest(typedResponse);
+        return ApiResponse<T>.badRequest(typedResponse, response.data);
       }
     } on DioException catch (e) {
       return ApiResponse<T>.error(

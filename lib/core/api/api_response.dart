@@ -17,15 +17,14 @@ class ApiResponse<T> extends Response<T> {
     this.status = Status.success,
   });
 
-  factory ApiResponse.badRequest(Response<T> response) {
+  factory ApiResponse.badRequest(Response<T> response, dynamic data) {
     return ApiResponse<T>(
       requestOptions: response.requestOptions,
       headers: response.headers,
-      data: response.data,
       statusCode: response.statusCode,
       statusMessage: response.statusMessage,
       status: Status.badRequest,
-      errorMessage: ResponseMessage.fromDynamic(response.data).message,
+      errorMessage: ResponseMessage.fromDynamic(data).message,
     );
   }
 
