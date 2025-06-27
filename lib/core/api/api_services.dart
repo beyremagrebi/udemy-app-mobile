@@ -2,91 +2,89 @@ import 'package:dio/dio.dart';
 import 'package:erudaxis/core/constants/env.dart';
 
 import 'api_response.dart';
+import 'token_interceptor.dart';
 
 class ApiService {
   static final ApiService instance = ApiService._singleton();
-
   final Dio _dio;
 
   ApiService._singleton()
-      : _dio = Dio(BaseOptions(
-          baseUrl: baseURl,
-          connectTimeout: const Duration(seconds: 10),
-          sendTimeout: const Duration(minutes: 1),
-          receiveTimeout: const Duration(minutes: 1),
-          validateStatus: (status) {
-            if (status == 498 || status == 500 || status == 401) {
-              return false;
-            }
-            return true;
-          },
-        ));
+      : _dio = Dio(
+          BaseOptions(
+            baseUrl: baseURl,
+            connectTimeout: const Duration(seconds: 10),
+            sendTimeout: const Duration(minutes: 1),
+            receiveTimeout: const Duration(minutes: 1),
+            validateStatus: (status) =>
+                !(status == 498 || status == 500 || status == 401) &&
+                status != null,
+          ),
+        ) {
+    _dio.interceptors.add(TokenInterceptor(_dio));
+  }
 
-  Future<ApiResponse<Data>> request<Data>({
+  Future<ApiResponse<T>> request<T>({
     required String url,
+    required T Function(dynamic json) fromJson,
     DioMethod method = DioMethod.get,
     Map<String, dynamic>? queryParameters,
-    Data? data,
+    dynamic data,
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final options = Options(
-        headers: headers,
-      );
+      headers ??= {};
+      final options = RequestBuilder.buildOptions(headers);
 
-      Response<Data> response;
+      Response<dynamic> response;
 
       switch (method) {
         case DioMethod.get:
-          response = await _dio.get<Data>(
-            url,
-            queryParameters: queryParameters,
-            options: options,
-          );
+          response = await _dio.get(url,
+              queryParameters: queryParameters, options: options);
           break;
         case DioMethod.post:
-          response = await _dio.post<Data>(
-            url,
-            data: data,
-            queryParameters: queryParameters,
-            options: options,
-          );
+          response = await _dio.post(url,
+              data: data, queryParameters: queryParameters, options: options);
           break;
         case DioMethod.put:
-          response = await _dio.put<Data>(
-            url,
-            data: data,
-            queryParameters: queryParameters,
-            options: options,
-          );
+          response = await _dio.put(url,
+              data: data, queryParameters: queryParameters, options: options);
           break;
         case DioMethod.patch:
-          response = await _dio.patch<Data>(
-            url,
-            data: data,
-            queryParameters: queryParameters,
-            options: options,
-          );
+          response = await _dio.patch(url,
+              data: data, queryParameters: queryParameters, options: options);
           break;
         case DioMethod.delete:
-          response = await _dio.delete<Data>(
-            url,
-            data: data,
-            queryParameters: queryParameters,
-            options: options,
-          );
+          response = await _dio.delete(url,
+              data: data, queryParameters: queryParameters, options: options);
           break;
       }
 
       if (response.statusCode != null &&
           response.statusCode! >= 200 &&
           response.statusCode! < 300) {
-        return ApiResponse<Data>.success(response);
+        final convertedData = fromJson(response.data);
+
+        final typedResponse = Response<T>(
+          data: convertedData,
+          statusCode: response.statusCode,
+          statusMessage: response.statusMessage,
+          requestOptions: response.requestOptions,
+          headers: response.headers,
+        );
+
+        return ApiResponse<T>.success(typedResponse);
       } else {
-        return ApiResponse<Data>.badRequest(response);
+        final typedResponse = Response<T>(
+          statusCode: response.statusCode,
+          statusMessage: response.statusMessage,
+          requestOptions: response.requestOptions,
+          headers: response.headers,
+        );
+        return ApiResponse<T>.badRequest(typedResponse);
       }
     } on DioException catch (e) {
-      return ApiResponse<Data>.error(
+      return ApiResponse<T>.error(
         requestOptions: e.requestOptions,
         statusCode: e.response?.statusCode,
         headers: e.response?.headers,
@@ -97,3 +95,12 @@ class ApiService {
 }
 
 enum DioMethod { get, post, put, patch, delete }
+
+class RequestBuilder {
+  static Options buildOptions(Map<String, dynamic>? headers) {
+    return Options(
+      headers: headers,
+      contentType: 'application/json',
+    );
+  }
+}

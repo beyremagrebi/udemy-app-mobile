@@ -8,5 +8,5 @@ abstract class BaseService<Model extends BaseModel> {
 
   String get endpoint => baseURl;
 
-  Model Function(Map<String, dynamic> json) get fromMapFunction;
+  Model Function(dynamic json) get fromMapFunction;
 }

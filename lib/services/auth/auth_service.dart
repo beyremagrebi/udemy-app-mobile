@@ -12,18 +12,29 @@ class AuthService extends BaseService<LoginInfo> implements IAuthService {
 
   AuthService._internal();
   @override
-  LoginInfo Function(Map<String, dynamic> json) get fromMapFunction =>
-      LoginInfo.fromMap;
+  LoginInfo Function(dynamic json) get fromMapFunction => LoginInfo.fromMap;
 
   @override
-  Future<ApiResponse<dynamic>> login({
+  Future<ApiResponse<LoginInfo>> login({
     required String? email,
     required String? password,
   }) async {
-    return ApiService.instance.request(
+    return ApiService.instance.request<LoginInfo>(
       url: '$endpoint/login',
+      fromJson: fromMapFunction,
       method: DioMethod.post,
       data: {'email': '$email', 'password': '$password'},
+    );
+  }
+
+  @override
+  Future<ApiResponse<LoginInfo>> refreshToken(
+      {required String? refreshToken}) async {
+    return ApiService.instance.request<LoginInfo>(
+      url: '$endpoint/refresh-token',
+      fromJson: fromMapFunction,
+      method: DioMethod.post,
+      data: {'refreshToken': refreshToken},
     );
   }
 }

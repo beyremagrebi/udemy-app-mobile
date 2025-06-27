@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/presentation/utils/session/session_manager.dart';
 import 'package:flutter/material.dart';
 
 class MainHeaderWidget extends StatelessWidget {
@@ -26,7 +27,7 @@ class MainHeaderWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Bonjour, Sarah 👋',
+                      'Bonjour, ${SessionManager.user?.firstName?.toUpperCase()} 👋',
                       style: textTheme.titleLarge?.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

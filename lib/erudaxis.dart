@@ -34,7 +34,7 @@ class Erudaxis extends StatelessWidget {
         onGenerateTitle: (context) {
           intl = S.of(context);
           textTheme = Theme.of(context).textTheme;
-          return intl.welcomeBack;
+          return intl.appName;
         },
         home: const SplashScreenView(),
       ),

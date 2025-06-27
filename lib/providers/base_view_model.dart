@@ -12,9 +12,8 @@ abstract class BaseViewModel extends ChangeNotifier {
 
   BaseViewModel(this.context);
 
-  Future<void> makeApiCall<Data, Model extends BaseModel>({
-    required Future<ApiResponse<Data>> apiCall,
-    required Model Function(Data data) fromData,
+  Future<void> makeApiCall<Model extends BaseModel>({
+    required Future<ApiResponse<Model>> apiCall,
     bool displayLoading = true,
     bool displayError = true,
     void Function(Model model)? onSuccess,
@@ -33,8 +32,10 @@ abstract class BaseViewModel extends ChangeNotifier {
         if (context.mounted) {
           context.loaderOverlay.hide();
         }
-        final model = fromData(jsonResponse.data as Data);
-        onSuccess?.call(model);
+        if (jsonResponse.data != null) {
+          // final model = jsonResponse.data;
+          onSuccess?.call(jsonResponse.data as Model);
+        }
       } else {
         onError?.call(jsonResponse.errorMessage.toString());
         if (displayError) {

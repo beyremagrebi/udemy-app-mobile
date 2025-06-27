@@ -2,6 +2,9 @@ import 'package:erudaxis/interfaces/i_token_manager.dart';
 import 'package:erudaxis/models/auth/login_info.dart';
 import 'package:erudaxis/presentation/utils/preferences/access_token_preference.dart';
 import 'package:erudaxis/presentation/utils/preferences/refresh_token_preference.dart';
+import 'package:erudaxis/providers/main/test.dart';
+import 'package:erudaxis/services/auth/auth_service.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class TokenManager implements ITokenManager {
   static String? accessToken;
@@ -12,6 +15,14 @@ class TokenManager implements ITokenManager {
   static TokenManager get shared => _instance;
 
   TokenManager._internal();
+  @override
+  Map<String, dynamic> decode(String? token) {
+    if (token == null || token.isEmpty) {
+      throw Exception('Token is null or empty');
+    }
+    final Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+    return decodedToken;
+  }
 
   @override
   Future<void> load() async {
@@ -20,10 +31,42 @@ class TokenManager implements ITokenManager {
   }
 
   @override
-  Future<void> save(
-      {required String accessToken, required String refreshToken}) async {
+  Future<void> refreshTken() async {
+    await globalApiCall(
+      apiCall: AuthService.shared.refreshToken(
+        refreshToken: refreshToken,
+      ),
+      onSuccess: (loginInfo) async {
+        if (loginInfo.accessToken != null && loginInfo.refreshToken != null) {
+          updateTokens(
+            newAccessToken: loginInfo.accessToken!,
+            newRefreshToken: loginInfo.refreshToken!,
+          );
+        }
+      },
+    );
+  }
+
+  @override
+  Future<void> save({
+    required String accessToken,
+    required String refreshToken,
+  }) async {
     await AccessTokenPreference.shared.save(accessToken);
     await RefreshTokenPreference.shared.save(refreshToken);
+  }
+
+  Future<void> updateTokens({
+    required String newAccessToken,
+    required String newRefreshToken,
+  }) async {
+    accessToken = newAccessToken;
+    refreshToken = newRefreshToken;
+
+    await save(
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    );
   }
 
   static Future<bool> checktokenSaved() async {
@@ -32,7 +75,9 @@ class TokenManager implements ITokenManager {
     return accessToken != null;
   }
 
-  static Future<void> saveTokens({required LoginInfo loginInfo}) async {
+  static Future<void> saveTokens({
+    required LoginInfo loginInfo,
+  }) async {
     if (loginInfo.accessToken != null && loginInfo.refreshToken != null) {
       await shared.save(
         accessToken: loginInfo.accessToken!,

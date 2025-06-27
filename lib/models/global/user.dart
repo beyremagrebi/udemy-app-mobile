@@ -23,7 +23,7 @@ class User extends BaseModel {
         map['firstName'],
       ),
       lastName: FromJson.string(
-        map['firstName'],
+        map['lastName'],
       ),
     );
   }
