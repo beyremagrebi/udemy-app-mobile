@@ -45,7 +45,7 @@ abstract class BaseApiImage extends StatelessWidget
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       onTap: hasImageView ? () => showImageViewer(context) : null,
       child: Container(
-        clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           color: color,
           border: border,

@@ -21,6 +21,7 @@ class UserService extends BaseService<User> implements IUserService {
     return ApiService.instance.request<User>(
       url: '$endpoint/by-id',
       queryParameters: {'_id': id},
+      dataKey: 'data',
       fromJson: fromMapFunction,
     );
   }

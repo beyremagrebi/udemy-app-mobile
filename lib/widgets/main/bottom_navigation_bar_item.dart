@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 List<BottomNavigationBarItem> bottomNavigationBarItem(BuildContext context) {
   return [
@@ -7,7 +8,7 @@ List<BottomNavigationBarItem> bottomNavigationBarItem(BuildContext context) {
         Icons.home_outlined,
         size: 24,
       ),
-      label: 'home',
+      label: 'Home',
     ),
     const BottomNavigationBarItem(
       icon: Icon(
@@ -18,7 +19,7 @@ List<BottomNavigationBarItem> bottomNavigationBarItem(BuildContext context) {
     ),
     const BottomNavigationBarItem(
       icon: Icon(
-        Icons.padding_outlined,
+        Symbols.book_5_rounded,
         size: 24,
       ),
       label: 'Cours',

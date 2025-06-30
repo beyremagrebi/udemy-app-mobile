@@ -75,6 +75,10 @@ class TokenManager implements ITokenManager {
     return accessToken != null;
   }
 
+  static String extractIdFromToken() {
+    return shared.decode(accessToken)['_id'].toString();
+  }
+
   static Future<void> saveTokens({
     required LoginInfo loginInfo,
   }) async {

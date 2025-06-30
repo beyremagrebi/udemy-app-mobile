@@ -29,6 +29,7 @@ class ApiService {
     DioMethod method = DioMethod.get,
     Map<String, dynamic>? queryParameters,
     dynamic data,
+    String? dataKey,
     Map<String, dynamic>? headers,
   }) async {
     try {
@@ -82,6 +83,9 @@ class ApiService {
       if (response.statusCode != null &&
           response.statusCode! >= 200 &&
           response.statusCode! < 300) {
+        if (dataKey != null) {
+          response.data = response.data[dataKey];
+        }
         final T convertedData = fromJson(response.data);
 
         final Response<T> typedResponse = Response<T>(

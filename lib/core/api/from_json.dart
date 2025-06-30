@@ -1,5 +1,7 @@
 // ignore_for_file: inference_failure_on_untyped_parameter
 
+import 'package:erudaxis/models/base_model.dart';
+
 class FromJson {
   static bool? boolean(value) {
     if (value == null) {
@@ -79,6 +81,33 @@ class FromJson {
     }
 
     return null;
+  }
+
+  static Model? model<Model extends BaseModel>(
+    dynamic value,
+    Model Function(dynamic json) fromJson,
+  ) {
+    if (value == null) {
+      return null;
+    }
+    return fromJson(value);
+  }
+
+  static List<Model>? modelList<Model extends BaseModel>(
+    dynamic value,
+    Model Function(dynamic json) fromJson,
+  ) {
+    if (value == null) {
+      return null;
+    }
+    if (value is List) {
+      return value
+          .where((item) => item != null)
+          .map((item) => fromJson(item))
+          .toList();
+    } else {
+      throw ArgumentError('Expected a List but got ${value.runtimeType}');
+    }
   }
 
   static String? string(value) {

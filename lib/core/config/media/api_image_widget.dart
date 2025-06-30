@@ -14,6 +14,7 @@ class ApiImageWidget extends BaseApiImage {
     required super.imageFileName,
     super.key,
     super.imageNetworUrl,
+    super.isProfilePicture,
     super.borderRadius,
     this.isMen,
     super.border,
@@ -34,47 +35,17 @@ class ApiImageWidget extends BaseApiImage {
     final String finalPlaceholderPath =
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
 
-    final memCacheHeight = (width * Dimensions.dpr).round();
-    final memCacheWidth = (height * Dimensions.dpr).round();
     return InkWell(
       onTap: () => showImageViewer(context),
-      child: Container(
-        height: height,
-        width: width,
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: isProfilePicture ? null : borderRadius,
-          boxShadow: boxShadow,
-          border: border,
-          shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
-        ),
-        child: Stack(
-          fit: StackFit.expand,
-          alignment: Alignment.center,
-          children: [
-            if (isProfilePicture)
-              Image.asset(
-                finalPlaceholderPath,
-                fit: fit,
-                cacheHeight: memCacheHeight,
-                cacheWidth: memCacheWidth,
-              )
-            else
-              isLoading
-                  ? const SpinKitSpinningLines(color: AppColors.primaryColor)
-                  : Image.asset(
-                      finalPlaceholderPath,
-                      fit: fit,
-                      cacheHeight: memCacheHeight,
-                      cacheWidth: memCacheWidth,
-                    ),
-            if (isLoading && isProfilePicture)
-              CircularProgressIndicator(
-                backgroundColor: Colors.grey.shade300,
-              ),
-          ],
-        ),
+      child: Stack(
+        fit: StackFit.expand,
+        alignment: Alignment.center,
+        children: [
+          if (isLoading)
+            const SpinKitSpinningLines(color: AppColors.primaryColor)
+          else
+            buildImage(context, AssetImage(finalPlaceholderPath))
+        ],
       ),
     );
   }
@@ -90,9 +61,6 @@ class ApiImageWidget extends BaseApiImage {
       imageUrl: imageUrl,
       memCacheHeight: memCacheHeight,
       memCacheWidth: memCacheWidth,
-      // httpHeaders: {
-      //   'Authorization': 'Bearer ${TokenManager.accessToken}',
-      // },
       imageBuilder: buildImage,
       progressIndicatorBuilder: (context, url, progress) => placeHolderImage(
         context,

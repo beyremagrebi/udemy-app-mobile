@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -34,6 +35,7 @@ class Erudaxis extends StatelessWidget {
         onGenerateTitle: (context) {
           intl = S.of(context);
           textTheme = Theme.of(context).textTheme;
+          Dimensions.init(context);
           return intl.appName;
         },
         home: const SplashScreenView(),

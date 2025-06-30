@@ -4,16 +4,19 @@ import 'package:erudaxis/presentation/utils/session/token_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../main/main_view.dart';
-import 'session_manager.dart';
 
 class AppStarter {
   static Future<void> start(BuildContext context) async {
     final bool userHaveSession = await TokenManager.checktokenSaved();
 
     if (userHaveSession) {
-      await SessionManager.initialize();
       if (context.mounted) {
-        navigateToDeleteTree(context, const MainView());
+        navigateToDeleteTree(
+          context,
+          MainView(
+            userId: TokenManager.extractIdFromToken(),
+          ),
+        );
       }
     } else {
       if (context.mounted) {

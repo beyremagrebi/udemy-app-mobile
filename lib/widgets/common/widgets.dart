@@ -7,6 +7,7 @@ import '../../core/themes/app_gradient.dart';
 
 Widget gradientAppBarWidget(Widget? child) {
   return Container(
+    margin: EdgeInsets.zero,
     width: double.maxFinite,
     decoration: const BoxDecoration(
       gradient: LinearGradient(

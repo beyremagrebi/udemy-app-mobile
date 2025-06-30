@@ -1,3 +1,4 @@
+import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
@@ -9,12 +10,20 @@ import '../utils/app_bar_gradient.dart';
 import '../utils/app_scaffold.dart';
 
 class MainView extends StatelessWidget {
-  const MainView({super.key});
+  final String userId;
+  const MainView({required this.userId, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: BottomNavigationViewModel.new,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: BottomNavigationViewModel.new,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SessionManager(context, userId: userId),
+        ),
+      ],
       child: Consumer<BottomNavigationViewModel>(
         builder: (context, viewModel, child) {
           return AppScaffold(
