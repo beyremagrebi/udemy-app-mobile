@@ -39,33 +39,52 @@ class ApiService {
 
       switch (method) {
         case DioMethod.get:
-          response = await _dio.get(url,
-              queryParameters: queryParameters, options: options);
+          response = await _dio.get(
+            url,
+            queryParameters: queryParameters,
+            options: options,
+          );
           break;
         case DioMethod.post:
-          response = await _dio.post(url,
-              data: data, queryParameters: queryParameters, options: options);
+          response = await _dio.post(
+            url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+          );
           break;
         case DioMethod.put:
-          response = await _dio.put(url,
-              data: data, queryParameters: queryParameters, options: options);
+          response = await _dio.put(
+            url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+          );
           break;
         case DioMethod.patch:
-          response = await _dio.patch(url,
-              data: data, queryParameters: queryParameters, options: options);
+          response = await _dio.patch(
+            url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+          );
           break;
         case DioMethod.delete:
-          response = await _dio.delete(url,
-              data: data, queryParameters: queryParameters, options: options);
+          response = await _dio.delete(
+            url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+          );
           break;
       }
 
       if (response.statusCode != null &&
           response.statusCode! >= 200 &&
           response.statusCode! < 300) {
-        final convertedData = fromJson(response.data);
+        final T convertedData = fromJson(response.data);
 
-        final typedResponse = Response<T>(
+        final Response<T> typedResponse = Response<T>(
           data: convertedData,
           statusCode: response.statusCode,
           statusMessage: response.statusMessage,

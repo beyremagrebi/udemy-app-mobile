@@ -12,12 +12,15 @@ class UserService extends BaseService<User> implements IUserService {
   UserService._internal();
 
   @override
-  User Function(dynamic json) get fromMapFunction => User.fromMap;
+  String get endpoint => '${super.endpoint}/users';
 
+  @override
+  User Function(dynamic json) get fromMapFunction => User.fromMap;
   @override
   Future<ApiResponse<User>> getUserById(String id) async {
     return ApiService.instance.request<User>(
-      url: '$endpoint/get-user/$id',
+      url: '$endpoint/by-id',
+      queryParameters: {'_id': id},
       fromJson: fromMapFunction,
     );
   }
