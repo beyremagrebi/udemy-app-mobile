@@ -7,10 +7,10 @@ class AppBarThemes {
         foregroundColor: Colors.white,
         centerTitle: false,
         titleSpacing: 16,
-        toolbarHeight: 80,
+        toolbarHeight: 50,
         titleTextStyle: TextStyle(
           color: Colors.white,
-          fontSize: 24,
+          fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
         iconTheme: IconThemeData(

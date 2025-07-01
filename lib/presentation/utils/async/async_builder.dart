@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 class AsyncBuilder extends StatelessWidget {
   final ApiStatus apiStatus;
   final Widget Function() onSuccess;
-
+  final Widget? shimmer;
   const AsyncBuilder({
     required this.apiStatus,
     required this.onSuccess,
+    this.shimmer,
     super.key,
   });
 
@@ -17,7 +18,10 @@ class AsyncBuilder extends StatelessWidget {
       case ApiStatus.success:
         return onSuccess.call();
       case ApiStatus.loading:
-        return const Text('loading');
+        if (shimmer == null) {
+          return const Text('loading');
+        }
+        return shimmer!;
       case ApiStatus.error:
         return const Text('error');
     }

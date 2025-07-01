@@ -7,11 +7,13 @@ class AsyncModelBuilder<Model extends BaseModel,
     ViewModel extends BaseViewModel> extends StatelessWidget {
   final ViewModel viewModel;
   final Model? model;
+  final Widget? shimmer;
   final Widget Function(Model model) builder;
   const AsyncModelBuilder({
     required this.viewModel,
     required this.model,
     required this.builder,
+    this.shimmer,
     super.key,
   });
 
@@ -19,6 +21,7 @@ class AsyncModelBuilder<Model extends BaseModel,
   Widget build(BuildContext context) {
     return AsyncBuilder(
       apiStatus: viewModel.apiStatus,
+      shimmer: shimmer,
       onSuccess: () => builder(model!),
     );
   }

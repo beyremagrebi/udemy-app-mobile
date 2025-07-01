@@ -37,16 +37,18 @@ class ApiImageWidget extends BaseApiImage {
 
     return InkWell(
       onTap: () => showImageViewer(context),
-      child: Stack(
-        fit: StackFit.expand,
-        alignment: Alignment.center,
-        children: [
-          if (isLoading)
-            const SpinKitSpinningLines(color: AppColors.primaryColor)
-          else
-            buildImage(context, AssetImage(finalPlaceholderPath))
-        ],
-      ),
+      child: isLoading
+          ? Container(
+              width: width,
+              height: height,
+              decoration: BoxDecoration(
+                shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
+              ),
+              child: const SpinKitSpinningLines(
+                color: AppColors.primaryColor,
+              ),
+            )
+          : buildImage(context, AssetImage(finalPlaceholderPath)),
     );
   }
 

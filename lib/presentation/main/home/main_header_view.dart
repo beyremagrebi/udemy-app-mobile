@@ -1,7 +1,9 @@
 import 'package:erudaxis/core/config/media/api_image_widget.dart';
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/presentation/utils/async/async_model_builder.dart';
+import 'package:erudaxis/widgets/shimmer/main_header_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,13 +14,13 @@ class MainHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Consumer<SessionManager>(
       builder: (context, viewModel, child) => Container(
         margin: Dimensions.horizontalPaddingLarge,
         child: AsyncModelBuilder(
           model: viewModel.user,
           viewModel: viewModel,
+          shimmer: MainHeaderShimmer(),
           builder: (user) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,13 +28,14 @@ class MainHeaderView extends StatelessWidget {
                 Row(
                   children: [
                     ApiImageWidget(
-                      width: 45,
-                      height: 45,
+                      width: 38,
+                      height: 38,
                       imageFileName: user.image,
                       imageNetworUrl: baseURl,
+                      border: Border.all(color: Colors.amber, width: 1.4),
                       isProfilePicture: true,
                       isMen: true,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                     ),
                     Dimensions.widthMedium,
                     Expanded(
@@ -52,7 +55,7 @@ class MainHeaderView extends StatelessWidget {
                             'Lycée Victor Hugo • Terminale S',
                             style: textTheme.bodyMedium?.copyWith(
                               color: Colors.white.withOpacity(0.92),
-                              fontSize: 15,
+                              fontSize: 11,
                             ),
                           ),
                         ],
@@ -60,7 +63,7 @@ class MainHeaderView extends StatelessWidget {
                     ),
                   ],
                 ),
-                Dimensions.heightMedium,
+                Dimensions.heightSmall,
               ],
             );
           },

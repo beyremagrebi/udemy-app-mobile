@@ -15,6 +15,7 @@ abstract class BaseApiImage extends StatelessWidget
   final bool hasImageView;
   final Color color;
   final String? placeholderAssetPath;
+  final EdgeInsets? padding;
 
   final Border? border;
   final List<BoxShadow>? boxShadow;
@@ -30,6 +31,7 @@ abstract class BaseApiImage extends StatelessWidget
     this.borderRadius,
     this.border,
     this.boxShadow,
+    this.padding,
     this.color = AppColors.accentColor,
     this.placeholderAssetPath,
   });
@@ -46,6 +48,7 @@ abstract class BaseApiImage extends StatelessWidget
       onTap: hasImageView ? () => showImageViewer(context) : null,
       child: Container(
         clipBehavior: Clip.hardEdge,
+        padding: padding,
         decoration: BoxDecoration(
           color: color,
           border: border,
@@ -53,12 +56,21 @@ abstract class BaseApiImage extends StatelessWidget
           borderRadius: isProfilePicture ? null : borderRadius,
           shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
         ),
-        child: Image(
-          image: imageProvider,
-          fit: fit,
-          height: height,
-          width: width,
-        ),
+        child: isProfilePicture
+            ? ClipOval(
+                child: Image(
+                  image: imageProvider,
+                  fit: fit,
+                  height: height,
+                  width: width,
+                ),
+              )
+            : Image(
+                image: imageProvider,
+                fit: fit,
+                height: height,
+                width: width,
+              ),
       ),
     );
   }
