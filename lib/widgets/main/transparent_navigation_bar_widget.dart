@@ -12,7 +12,7 @@ Widget buildTransparentBottomNav(
   BottomNavigationViewModel viewModel,
 ) {
   return SizedBox(
-    height: 65,
+    height: 50,
     child: ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
@@ -72,7 +72,7 @@ Widget _buildBottomNavigationBar(
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
             color:
                 isSelected ? Colors.white.withOpacity(0.2) : Colors.transparent,
@@ -94,7 +94,7 @@ Widget _buildBottomNavigationBar(
                     color: isSelected
                         ? Colors.white
                         : Colors.white.withOpacity(0.7),
-                    fontSize: 10,
+                    fontSize: 8,
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   ),
                 ),

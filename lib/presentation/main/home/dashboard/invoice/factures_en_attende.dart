@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../widgets/main/home/dashboard/invoice/facture_en_attende_card.dart';
@@ -11,13 +12,18 @@ class FacturesEnAttenteView extends StatelessWidget {
     final factures = [
       {
         'title': 'Frais de scolarité - Juin',
-        'amount': '75.00€',
+        'amount': '75.00dt',
         'due': '25 Juin',
       },
       {
         'title': 'Sortie scolaire - Musée',
-        'amount': '30.00€',
-        'due': '30 Juin',
+        'amount': '30.00dt',
+        'due': '3',
+      },
+      {
+        'title': 'Sortie scolaire - Musée',
+        'amount': '30.00dt',
+        'due': '0',
       },
     ];
 
@@ -63,9 +69,9 @@ class FacturesEnAttenteView extends StatelessWidget {
 
     return LimitedListView(
       children: items,
-      itemHeight: 75,
-      separatorHeight: 12,
-      separator: const SizedBox(height: 12),
+      itemHeight: 60,
+      separatorHeight: Dimensions.s,
+      separator: Dimensions.heightSmall,
     );
   }
 }

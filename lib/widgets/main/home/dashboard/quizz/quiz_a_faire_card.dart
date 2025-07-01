@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:flutter/material.dart';
 
 class QuizAFaireCard extends StatelessWidget {
@@ -31,16 +32,11 @@ class QuizAFaireCard extends StatelessWidget {
         padding: Dimensions.paddingAllSmall,
         child: Row(
           children: [
-            Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: Colors.orange.withOpacity(0.9),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(iconData, color: Colors.white, size: 22),
+            IconBox(
+              icon: iconData,
+              iconBackgroundColor: Colors.orange.withOpacity(0.9),
             ),
-            const SizedBox(width: 12),
+            Dimensions.widthSmall,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +50,6 @@ class QuizAFaireCard extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  const SizedBox(height: 3),
                   Text(
                     teacher,
                     style: theme.textTheme.bodySmall?.copyWith(
@@ -75,7 +70,6 @@ class QuizAFaireCard extends StatelessWidget {
                     fontSize: 12,
                   ),
                 ),
-                const SizedBox(height: 6),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),

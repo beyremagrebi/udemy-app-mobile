@@ -48,7 +48,7 @@ class RecentLibratyView extends StatelessWidget {
     ];
 
     return SizedBox(
-      height: 110,
+      height: 80,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: subjects.length,

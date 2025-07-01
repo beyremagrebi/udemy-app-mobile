@@ -33,14 +33,15 @@ class ActionCard extends StatelessWidget {
               children: [
                 IconBox(
                   icon: icon,
+                  size: 30,
                   iconBackgroundColor: iconColor,
                   alignment: Alignment.topLeft,
                 ),
                 if (notifCount != null) ...[
                   const Expanded(child: Dimensions.widthSmall),
                   Container(
-                    width: 25,
-                    height: 25,
+                    width: 18,
+                    height: 18,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
                       color: Colors.red,
@@ -50,7 +51,7 @@ class ActionCard extends StatelessWidget {
                       '4',
                       style: textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -58,7 +59,7 @@ class ActionCard extends StatelessWidget {
                 ]
               ],
             ),
-            Dimensions.heightMedium,
+            Dimensions.heightSmall,
             Expanded(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,6 +74,7 @@ class ActionCard extends StatelessWidget {
                 Text(
                   subTitle,
                   style: textTheme.bodySmall?.copyWith(
+                    fontSize: 11,
                     color: Theme.of(context)
                         .colorScheme
                         .onPrimary

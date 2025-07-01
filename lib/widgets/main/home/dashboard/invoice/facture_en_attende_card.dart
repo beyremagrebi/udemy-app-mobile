@@ -31,18 +31,15 @@ class FactureEnAttenteCard extends StatelessWidget {
           borderRadius: Dimensions.smallBorderRadius,
           boxShadow: [
             BoxShadow(
-              color: isOverdue
-                  ? Colors.red.withOpacity(0.2)
-                  : isNearDue
-                      ? Colors.amber.withOpacity(0.2)
-                      : Colors.transparent,
+              color:
+                  isOverdue ? Colors.red.withOpacity(0.2) : Colors.transparent,
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
+          padding: Dimensions.paddingAllSmall,
           child: Row(
             children: [
               Container(
@@ -63,7 +60,7 @@ class FactureEnAttenteCard extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              const SizedBox(width: 16),
+              Dimensions.widthSmall,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +79,6 @@ class FactureEnAttenteCard extends StatelessWidget {
                             isOverdue ? TextDecoration.lineThrough : null,
                       ),
                     ),
-                    const SizedBox(height: 6),
                     Row(
                       children: [
                         Text(
@@ -106,7 +102,6 @@ class FactureEnAttenteCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -132,36 +127,35 @@ class FactureEnAttenteCard extends StatelessWidget {
                     ),
                     Dimensions.heightSmall,
                   ],
+                  if (isNearDue) ...[
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.amberAccent.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(12),
+                        border:
+                            Border.all(color: Colors.white.withOpacity(0.5)),
+                      ),
+                      child: Text(
+                        'Bientôt',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                    Dimensions.heightSmall,
+                  ],
                   Text(
-                    'Échéance: $due',
+                    'Échéance: ${due}d',
                     textAlign: TextAlign.end,
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: Colors.white.withOpacity(0.7),
                       fontSize: 10,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  if (daysLeft > 0 && !isOverdue)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: isNearDue
-                            ? Colors.amberAccent.withOpacity(0.2)
-                            : Colors.redAccent.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        daysLeft <= 3 ? 'Bientôt dû' : '$daysLeft jours',
-                        style: TextStyle(
-                          color:
-                              isNearDue ? Colors.amberAccent : Colors.redAccent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                          height: 1.5,
-                        ),
-                      ),
-                    ),
                 ],
               ),
             ],

@@ -15,7 +15,7 @@ class BottomNavigationViewModel extends BaseViewModel
   int get currentIndex => slectedIndex;
 
   @override
-  int get itemCount => 4;
+  int get itemCount => 5;
 
   @override
   void onSelectChange(int index) {
@@ -31,9 +31,10 @@ class BottomNavigationViewModel extends BaseViewModel
       HomeView(
         scrollController: scrollController,
       ),
-      const Center(child: Text('Page 2')),
-      const Center(child: Text('Page 3')),
-      const Center(child: Text('Page 4')),
+      const Center(child: Text('Cours view')),
+      const Center(child: Text('Chat view')),
+      const Center(child: Text('Planning view')),
+      const Center(child: Text('Profile view')),
     ];
   }
 }

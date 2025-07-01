@@ -41,8 +41,8 @@ class QuizAFaireView extends StatelessWidget {
 
     return LimitedListView(
       children: items,
-      itemHeight: 62,
-      separatorHeight: 10,
+      itemHeight: 57,
+      separatorHeight: Dimensions.s,
       separator: Dimensions.heightSmall,
     );
   }

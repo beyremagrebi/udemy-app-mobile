@@ -35,23 +35,34 @@ class _SplashScreenViewState extends State<SplashScreenView>
 
             return Stack(
               children: [
-                SplashComponents.buildBackground(context, viewModel: viewModel),
-                SplashComponents.buildBackgroundEffects(context,
-                    viewModel: viewModel),
+                SplashComponents.buildBackground(
+                  context,
+                  viewModel: viewModel,
+                ),
+                SplashComponents.buildBackgroundEffects(
+                  context,
+                  viewModel: viewModel,
+                ),
                 SafeArea(
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Spacer(flex: 2),
-                        SplashComponents.buildAnimatedLogo(context,
-                            viewModel: viewModel),
+                        SplashComponents.buildAnimatedLogo(
+                          context,
+                          viewModel: viewModel,
+                        ),
                         Dimensions.heightHuge,
-                        SplashComponents.buildAnimatedText(context,
-                            viewModel: viewModel),
+                        SplashComponents.buildAnimatedText(
+                          context,
+                          viewModel: viewModel,
+                        ),
                         const Spacer(flex: 2),
-                        SplashComponents.buildLoadingIndicator(context,
-                            viewModel: viewModel),
+                        SplashComponents.buildLoadingIndicator(
+                          context,
+                          viewModel: viewModel,
+                        ),
                       ],
                     ),
                   ),

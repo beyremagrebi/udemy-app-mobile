@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:flutter/material.dart';
 
 class NextSessionCard extends StatelessWidget {
@@ -39,71 +40,61 @@ class NextSessionCard extends StatelessWidget {
       child: Container(
         padding: Dimensions.paddingAllSmall,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.9),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(iconData, color: Colors.white, size: 22),
+            IconBox(icon: iconData, iconBackgroundColor: iconColor),
+            Dimensions.widthSmall,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  title,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: Colors.white.withOpacity(0.9),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
+                  '$teacher · $time',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: Colors.white.withOpacity(0.75),
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
-            Dimensions.widthMedium,
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    title,
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: Colors.white.withOpacity(0.9),
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
+                    location,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: Colors.white.withOpacity(0.85),
+                      fontSize: 12,
                     ),
                   ),
                   Dimensions.heightxSmall,
-                  Text(
-                    '$teacher · $time',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: Colors.white.withOpacity(0.75),
-                      fontSize: 12,
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: badgeBg,
+                      borderRadius: Dimensions.mediumBorderRadius,
+                      border: Border.all(color: badgeColor.withOpacity(0.5)),
+                    ),
+                    child: Text(
+                      type,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: badgeColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 11,
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  location,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: Colors.white.withOpacity(0.85),
-                    fontSize: 12,
-                  ),
-                ),
-                Dimensions.heightSmall,
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: badgeBg,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: badgeColor.withOpacity(0.5)),
-                  ),
-                  child: Text(
-                    type,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: badgeColor,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 11,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ],
         ),

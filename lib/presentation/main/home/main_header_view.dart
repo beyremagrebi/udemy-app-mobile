@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 import '../../../providers/global/session_manager_view_model.dart';
 
-class MainHeaderWidget extends StatelessWidget {
-  const MainHeaderWidget({super.key});
+class MainHeaderView extends StatelessWidget {
+  const MainHeaderView({super.key});
 
   @override
   Widget build(BuildContext context) {

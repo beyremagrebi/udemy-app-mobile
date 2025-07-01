@@ -39,8 +39,7 @@ class MainView extends StatelessWidget {
             ),
             bottomNavigationBar: ScrollToHide(
               scrollController: viewModel.scrollController,
-              duration: const Duration(milliseconds: 500),
-              height: 65,
+              height: 50,
               hideDirection: Axis.vertical,
               child: buildTransparentBottomNav(
                 context,

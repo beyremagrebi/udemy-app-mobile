@@ -11,7 +11,7 @@ class IconBox extends StatelessWidget {
     required this.icon,
     required this.iconBackgroundColor,
     super.key,
-    this.size = 40,
+    this.size = 38,
     this.borderRadius = 8,
     this.alignment = Alignment.centerRight,
   });

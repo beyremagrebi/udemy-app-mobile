@@ -37,7 +37,7 @@ class InfoCard extends StatelessWidget {
                   style: textTheme.bodyMedium?.copyWith(
                     color: Colors.white.withOpacity(0.9),
                     fontWeight: FontWeight.w400,
-                    fontSize: 13,
+                    fontSize: 11,
                   ),
                 ),
                 Text(
@@ -45,16 +45,16 @@ class InfoCard extends StatelessWidget {
                   style: textTheme.headlineSmall?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 24,
+                    fontSize: 18,
                   ),
                 ),
               ],
             ),
-            Expanded(
-              child: IconBox(
-                icon: icon,
-                iconBackgroundColor: iconBackgroundColor,
-              ),
+            const Expanded(child: Dimensions.widthSmall),
+            IconBox(
+              size: 30,
+              icon: icon,
+              iconBackgroundColor: iconBackgroundColor,
             ),
           ],
         ),

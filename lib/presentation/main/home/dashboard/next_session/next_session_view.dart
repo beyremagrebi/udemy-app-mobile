@@ -47,7 +47,7 @@ class NextSessionView extends StatelessWidget {
           );
         },
       ),
-      itemHeight: 65,
+      itemHeight: 62,
       separatorHeight: Dimensions.s,
       separator: Dimensions.heightSmall,
     );

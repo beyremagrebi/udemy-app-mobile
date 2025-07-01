@@ -1,7 +1,10 @@
 import 'package:erudaxis/presentation/main/home/dashboard/actions/actions_view.dart';
+import 'package:erudaxis/presentation/main/home/dashboard/event/evenements_prochains_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/invoice/factures_en_attende.dart';
+import 'package:erudaxis/presentation/main/home/dashboard/journal/suivi_journal_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/library/recent_libraty_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/next_session/next_session_view.dart';
+import 'package:erudaxis/presentation/main/home/dashboard/rang/votre_rang_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/statistics/statistics_view.dart';
 import 'package:erudaxis/presentation/utils/title_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +13,8 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../core/styles/dimensions.dart';
 import '../../../widgets/common/widgets.dart';
-import '../../../widgets/main/home/main_header_widget.dart';
 import 'dashboard/quizz/quiz_a_faire_view.dart';
+import 'main_header_view.dart';
 
 class HomeView extends StatelessWidget {
   final ScrollController scrollController;
@@ -21,7 +24,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        gradientAppBarWidget(const MainHeaderWidget()),
+        gradientAppBarWidget(const MainHeaderView()),
         Expanded(
           child: ListView(
             controller: scrollController,
@@ -57,12 +60,27 @@ class HomeView extends StatelessWidget {
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                      title: 'Factures en Attente',
-                      icon: Icons.paid,
-                      child: FacturesEnAttenteView()),
-                  // EvenementsProchainsWidget(),
-                  // SuiviJournalierWidget(),
-                  // VotreRangWidget(),
+                    title: 'Factures en Attente',
+                    icon: Icons.paid_outlined,
+                    child: FacturesEnAttenteView(),
+                  ),
+                  Dimensions.heightExtraLarge,
+                  TitleWidget(
+                    title: 'Événements Prochains',
+                    icon: Symbols.event_available_rounded,
+                    child: EvenementsProchainsView(),
+                  ),
+                  Dimensions.heightExtraLarge,
+                  TitleWidget(
+                    title: 'Suivi Journalier',
+                    icon: Symbols.person_check_rounded,
+                    child: SuiviJournalierView(),
+                  ),
+                  Dimensions.heightExtraLarge,
+                  TitleWidget(
+                      title: 'Votre Rang',
+                      icon: Symbols.license_rounded,
+                      child: VotreRangView()),
                 ],
               ),
             ],
