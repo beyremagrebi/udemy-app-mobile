@@ -6,7 +6,7 @@ import '../../core/styles/dimensions.dart';
 Widget? appBarWidget(BuildContext context) {
   return Row(
     children: [
-      const Icon(Icons.book),
+      const Icon(Icons.school_outlined),
       Dimensions.widthSmall,
       Text(intl.appName),
     ],

@@ -24,7 +24,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        gradientAppBarWidget(const MainHeaderView()),
+        gradientAppBarWidget(
+          const MainHeaderView(),
+        ),
         Expanded(
           child: ListView(
             controller: scrollController,
@@ -78,9 +80,10 @@ class HomeView extends StatelessWidget {
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                      title: 'Votre Rang',
-                      icon: Symbols.license_rounded,
-                      child: VotreRangView()),
+                    title: 'Votre Rang',
+                    icon: Symbols.license_rounded,
+                    child: VotreRangView(),
+                  ),
                 ],
               ),
             ],
