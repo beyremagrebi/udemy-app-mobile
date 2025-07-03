@@ -1,8 +1,8 @@
 name: Flutter Build
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ "main" ]
 
 env:
   SERVER_URL: https://staging-backend.erudaxis.com
