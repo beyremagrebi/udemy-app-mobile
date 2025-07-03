@@ -34,7 +34,9 @@ class AppStarter {
         await AppPackageInfo.checkUpdateVersion(model.name, context);
         // await navigator(context);
       },
-      onError: print,
+      onError: (error) {
+        print('hello $error');
+      },
     );
   }
 }
