@@ -2,8 +2,8 @@ name: Flutter Build
 
 on:
   push:
-    branches: [ "main" ]
-
+    tags:
+      - 'v*.*.*'
 env:
   SERVER_URL: https://staging-backend.erudaxis.com
   REPO_OWNER: proservices-tc
@@ -38,7 +38,7 @@ jobs:
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.ERUDAXIS_TOKEN }}
           artifacts: build/app/outputs/flutter-apk/app-release.apk
           artifactContentType: application/vnd.android.package-archive
 
