@@ -1,17 +1,22 @@
-name: Dart
-# on:
-#   release:
-#     types: [published]
+name: Flutter Build
+
 on:
   push:
     branches: [ "main" ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.3'  
+
       - name: Install dependencies
         run: flutter pub get
-      - name: build release
-        run: flutter  build apk --release
+
+      - name: Build release APK
+        run: flutter build apk --release
