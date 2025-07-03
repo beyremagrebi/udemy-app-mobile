@@ -2,13 +2,13 @@ name: Flutter Build
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - 'v*.*.*'
 
 env:
   SERVER_URL: https://staging-backend.erudaxis.com
   REPO_OWNER: proservices-tc
   REPO_NAME: Erudaxis-mobile
-  GITHUB_RELEASE: https://api.github.com/repos/proservices-tc/Erudaxis-mobile/releases/latest
 
 jobs:
   build:
@@ -33,3 +33,25 @@ jobs:
 
       - name: Build release APK
         run: flutter build apk --release
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: Upload APK to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-release.apk
+          asset_name: app-release.apk
+          asset_content_type: application/vnd.android.package-archive
+
