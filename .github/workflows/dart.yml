@@ -36,8 +36,8 @@ jobs:
       - name: Create Release and Upload APK
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
+          tag: ${{ github.event.release.tag_name }}
+          name: Release ${{ github.event.release.tag_name }}
           token: ${{ secrets.ERUDAXIS_TOKEN }}
           artifacts: build/app/outputs/flutter-apk/app-release.apk
           artifactContentType: application/vnd.android.package-archive
