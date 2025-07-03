@@ -24,10 +24,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Generate .env file
+        run: |
+          echo "SERVER_URL=${{ env.SERVER_URL }}" > .env
+          echo "REPO_OWNER=${{ env.REPO_OWNER }}" >> .env
+          echo "REPO_NAME=${{ env.REPO_NAME }}" >> .env
+          echo "GITHUB_TOKEN=${{ secrets.ERUDAXIS_TOKEN }}" >> .env
+
       - name: Build release APK
         run: flutter build apk --release
-
-      - name: Use GitHub token
-        env:
-          GITHUB_TOKEN: ${{ secrets.ERUDAXIS_TOKEN }}
-        run: echo "Using token $GITHUB_TOKEN"
