@@ -95,8 +95,8 @@ class AppPackageInfo {
       downloadSize.value = '';
       totalSize.value = '';
 
-      const apkUrl =
-          'https://github.com/beyremagrebi/solid-principle-app-learn/releases/download/v1.0.1/erudaxis-v1.0.0.apk';
+      final apkUrl =
+          'https://github.com/proservices-tc//Erudaxis-mobile/releases/download/v$version/app-release.apk';
       final fileName = 'erudaxis-v$version.apk';
 
       // Store the cancel callback
