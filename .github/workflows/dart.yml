@@ -1,8 +1,12 @@
 name: Flutter Build
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
+
 env:
   SERVER_URL: https://staging-backend.erudaxis.com
   REPO_OWNER: proservices-tc
