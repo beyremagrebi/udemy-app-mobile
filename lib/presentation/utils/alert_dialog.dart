@@ -12,82 +12,7 @@ class CustomAlertDialog {
   static const Color textWhite = Colors.white;
   static const Color textGray = Color(0xFFB8B5C3);
 
-  static Future<void> showErrorDialog({
-    required BuildContext context,
-    required String title,
-    required String message,
-    String buttonText = 'OK',
-    VoidCallback? onPressed,
-  }) {
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return _buildCustomDialog(
-          context: context,
-          icon: Icons.error_outline,
-          iconColor: errorColor,
-          title: title,
-          message: message,
-          primaryButtonText: buttonText,
-          primaryButtonColor: errorColor,
-          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
-        );
-      },
-    );
-  }
-
-  static Future<void> showSuccessDialog({
-    required BuildContext context,
-    required String title,
-    required String message,
-    String buttonText = 'OK',
-    VoidCallback? onPressed,
-  }) {
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return _buildCustomDialog(
-          context: context,
-          icon: Icons.check_circle_outline,
-          iconColor: successColor,
-          title: title,
-          message: message,
-          primaryButtonText: buttonText,
-          primaryButtonColor: successColor,
-          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
-        );
-      },
-    );
-  }
-
-  static Future<void> showWarningDialog({
-    required BuildContext context,
-    required String title,
-    required String message,
-    String buttonText = 'OK',
-    VoidCallback? onPressed,
-  }) {
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return _buildCustomDialog(
-          context: context,
-          icon: Icons.warning_amber_outlined,
-          iconColor: warningColor,
-          title: title,
-          message: message,
-          primaryButtonText: buttonText,
-          primaryButtonColor: warningColor,
-          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
-        );
-      },
-    );
-  }
-
-  static Widget _buildCustomDialog({
+  static Widget buildCustomDialog({
     required BuildContext context,
     required IconData icon,
     required Color iconColor,
@@ -220,6 +145,111 @@ class CustomAlertDialog {
           ),
         ),
       ),
+    );
+  }
+
+  static Future<bool?> showConfirmationDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String confirmText = 'Confirm',
+    String cancelText = 'Cancel',
+    Color confirmColor = primaryPurple,
+    IconData icon = Icons.help_outline,
+    Color iconColor = warningColor,
+  }) {
+    return showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return buildCustomDialog(
+          context: context,
+          icon: icon,
+          iconColor: iconColor,
+          title: title,
+          message: message,
+          primaryButtonText: confirmText,
+          primaryButtonColor: confirmColor,
+          secondaryButtonText: cancelText,
+          onPrimaryPressed: () => Navigator.of(context).pop(true),
+          onSecondaryPressed: () => Navigator.of(context).pop(false),
+        );
+      },
+    );
+  }
+
+  static Future<void> showErrorDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+    VoidCallback? onPressed,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return buildCustomDialog(
+          context: context,
+          icon: Icons.error_outline,
+          iconColor: errorColor,
+          title: title,
+          message: message,
+          primaryButtonText: buttonText,
+          primaryButtonColor: errorColor,
+          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
+        );
+      },
+    );
+  }
+
+  static Future<void> showSuccessDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+    VoidCallback? onPressed,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return buildCustomDialog(
+          context: context,
+          icon: Icons.check_circle_outline,
+          iconColor: successColor,
+          title: title,
+          message: message,
+          primaryButtonText: buttonText,
+          primaryButtonColor: successColor,
+          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
+        );
+      },
+    );
+  }
+
+  static Future<void> showWarningDialog({
+    required BuildContext context,
+    required String title,
+    required String message,
+    String buttonText = 'OK',
+    VoidCallback? onPressed,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return buildCustomDialog(
+          context: context,
+          icon: Icons.warning_amber_outlined,
+          iconColor: warningColor,
+          title: title,
+          message: message,
+          primaryButtonText: buttonText,
+          primaryButtonColor: warningColor,
+          onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
+        );
+      },
     );
   }
 

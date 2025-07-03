@@ -36,10 +36,6 @@ class TokenInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    if (TokenManager.accessToken == null) {
-      await TokenManager.shared.load();
-    }
-    options.headers['Authorization'] = 'Bearer ${TokenManager.accessToken}';
     return handler.next(options);
   }
 }

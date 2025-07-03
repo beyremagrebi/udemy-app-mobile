@@ -4,6 +4,7 @@ import 'package:erudaxis/services/base_service.dart';
 
 import '../../core/api/api_response.dart';
 import '../../core/api/api_services.dart';
+import '../../interfaces/i_api_service.dart';
 
 class AuthService extends BaseService<LoginInfo> implements IAuthService {
   static final AuthService _instance = AuthService._internal();
@@ -21,6 +22,7 @@ class AuthService extends BaseService<LoginInfo> implements IAuthService {
   }) async {
     return ApiService.instance.request<LoginInfo>(
       url: '$endpoint/login',
+      authRequired: false,
       fromJson: fromMapFunction,
       method: DioMethod.post,
       data: {'email': '$email', 'password': '$password'},
@@ -33,6 +35,7 @@ class AuthService extends BaseService<LoginInfo> implements IAuthService {
     return ApiService.instance.request<LoginInfo>(
       url: '$endpoint/refresh-token',
       fromJson: fromMapFunction,
+      authRequired: false,
       method: DioMethod.post,
       data: {'refreshToken': refreshToken},
     );
