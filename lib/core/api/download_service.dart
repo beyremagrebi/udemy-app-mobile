@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../interfaces/i_download_service.dart';
+import '../constants/env.dart';
 
 class DownloadService implements IDownloadService {
   final Dio _dio;
@@ -38,11 +39,6 @@ class DownloadService implements IDownloadService {
       }
 
       if (!_isValidUrl(apkUrl)) {
-        return null;
-      }
-
-      final isValidApk = await _validateApkUrl(apkUrl);
-      if (!isValidApk) {
         return null;
       }
 
@@ -91,10 +87,10 @@ class DownloadService implements IDownloadService {
 
   Options _buildDownloadOptions() {
     return Options(
+      responseType: ResponseType.bytes,
       headers: {
-        'Accept': '*/*',
-        'User-Agent': 'Flutter App Updater/1.0',
-        'Accept-Encoding': 'identity',
+        'Authorization': 'Bearer $gitHubToken',
+        'Accept': 'application/octet-stream',
       },
       followRedirects: true,
       maxRedirects: 5,
@@ -200,22 +196,6 @@ class DownloadService implements IDownloadService {
       return savePath;
     } on Exception {
       return null;
-    }
-  }
-
-  Future<bool> _validateApkUrl(String apkUrl) async {
-    try {
-      _downloadCancelToken = CancelToken();
-      final headResponse = await _dio.head<dynamic>(
-        apkUrl,
-        cancelToken: _downloadCancelToken,
-        options: Options(headers: {
-          'Authorization': 'your_github_token',
-        }),
-      );
-      return headResponse.statusCode == 200;
-    } on Exception {
-      return false;
     }
   }
 

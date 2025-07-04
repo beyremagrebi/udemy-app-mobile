@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/models/github/github_release.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -41,17 +42,17 @@ class AppPackageInfo {
     }
   }
 
-  static Future<void> checkUpdateVersion(String? version) async {
-    if (version == null) {
+  static Future<void> checkUpdateVersion(GithubRelease githubRealease) async {
+    if (githubRealease.version == null) {
       downloadStatus.value = 'No version information available';
       return;
     }
 
     try {
       downloadStatus.value = 'Checking for updates...';
-      if (_isVersionOutdated(appVersion, version)) {
-        downloadStatus.value = 'New version available: $version';
-        await _showUpdateAvailableDialog(version);
+      if (_isVersionOutdated(appVersion, githubRealease.version!)) {
+        downloadStatus.value = 'New version available: $githubRealease.version';
+        await _showUpdateAvailableDialog(githubRealease);
       } else {
         downloadStatus.value = 'App is up to date';
         await CustomAlertDialog.showSuccessDialog(
@@ -77,7 +78,7 @@ class AppPackageInfo {
     }
   }
 
-  static Future<void> downloadAndInstallApk(String version) async {
+  static Future<void> downloadAndInstallApk(GithubRelease githubRelease) async {
     if (isDownloading.value) {
       downloadStatus.value = 'Download already in progress';
       return;
@@ -95,9 +96,8 @@ class AppPackageInfo {
       downloadSize.value = '';
       totalSize.value = '';
 
-      final apkUrl =
-          'https://github.com/proservices-tc/Erudaxis-mobile/releases/download/v$version/app-release.apk';
-      final fileName = 'erudaxis-v$version.apk';
+      final String apkUrl = githubRelease.donwnloadUrl ?? '';
+      const fileName = 'erudaxis.apk';
 
       // Store the cancel callback
       cancelDownloadCallback =
@@ -339,10 +339,9 @@ class AppPackageInfo {
     }
   }
 
-  static Future<bool?> _showCancelConfirmationDialog(
-      BuildContext context) async {
+  static Future<bool?> _showCancelConfirmationDialog() async {
     return showDialog<bool>(
-      context: context,
+      context: mainContext,
       barrierDismissible: false,
       builder: (context) {
         return CustomAlertDialog.buildCustomDialog(
@@ -362,7 +361,8 @@ class AppPackageInfo {
     );
   }
 
-  static Future<void> _showUpdateAvailableDialog(String version) async {
+  static Future<void> _showUpdateAvailableDialog(
+      GithubRelease githubRelease) async {
     return showDialog<void>(
       context: mainContext,
       barrierDismissible: false,
@@ -373,13 +373,13 @@ class AppPackageInfo {
           iconColor: CustomAlertDialog.primaryPurple,
           title: 'Update Available',
           message:
-              'Version $version is now available!\nCurrent version: $appVersion\n\nWould you like to download and install the update now?',
+              'Version ${githubRelease.version} is now available!\nCurrent version: $appVersion\n\nWould you like to download and install the update now?',
           primaryButtonText: 'Update Now',
           primaryButtonColor: CustomAlertDialog.primaryPurple,
           secondaryButtonText: 'Not Now',
           onPrimaryPressed: () {
             Navigator.of(mainContext).pop();
-            _startDownloadWithDialog(version);
+            _startDownloadWithDialog(githubRelease);
           },
           onSecondaryPressed: () {
             Navigator.of(mainContext).pop();
@@ -390,7 +390,8 @@ class AppPackageInfo {
     );
   }
 
-  static Future<void> _startDownloadWithDialog(String version) async {
+  static Future<void> _startDownloadWithDialog(
+      GithubRelease githubRelease) async {
     showDialog<void>(
       context: mainContext,
       barrierDismissible: false,
@@ -557,8 +558,7 @@ class AppPackageInfo {
                             child: InkWell(
                               onTap: () async {
                                 final shouldCancel =
-                                    await _showCancelConfirmationDialog(
-                                        context);
+                                    await _showCancelConfirmationDialog();
                                 if (shouldCancel != null &&
                                     shouldCancel == true) {
                                   cancelDownload();
@@ -621,7 +621,7 @@ class AppPackageInfo {
     );
 
     // Start the download
-    await downloadAndInstallApk(version);
+    await downloadAndInstallApk(githubRelease);
 
     // Close dialog when download completes (if still mounted)
     if (mainContext.mounted) {
