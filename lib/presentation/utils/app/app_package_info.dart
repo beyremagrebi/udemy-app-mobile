@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -40,8 +41,7 @@ class AppPackageInfo {
     }
   }
 
-  static Future<void> checkUpdateVersion(
-      String? version, BuildContext context) async {
+  static Future<void> checkUpdateVersion(String? version) async {
     if (version == null) {
       downloadStatus.value = 'No version information available';
       return;
@@ -49,13 +49,13 @@ class AppPackageInfo {
 
     try {
       downloadStatus.value = 'Checking for updates...';
-      if (!_isVersionOutdated(appVersion, version)) {
+      if (_isVersionOutdated(appVersion, version)) {
         downloadStatus.value = 'New version available: $version';
-        await _showUpdateAvailableDialog(context, version);
+        await _showUpdateAvailableDialog(version);
       } else {
         downloadStatus.value = 'App is up to date';
         await CustomAlertDialog.showSuccessDialog(
-          context: context,
+          context: mainContext,
           title: 'Up to Date',
           message:
               'Your app is already running the latest version ($appVersion).',
@@ -67,9 +67,9 @@ class AppPackageInfo {
       }
     } on Exception catch (e) {
       downloadStatus.value = 'Error checking for updates: ${e.toString()}';
-      if (context.mounted) {
+      if (mainContext.mounted) {
         await CustomAlertDialog.showErrorDialog(
-          context: context,
+          context: mainContext,
           title: 'Update Check Failed',
           message: 'Error checking for updates: ${e.toString()}',
         );
@@ -96,7 +96,7 @@ class AppPackageInfo {
       totalSize.value = '';
 
       final apkUrl =
-          'https://github.com/proservices-tc//Erudaxis-mobile/releases/download/v$version/app-release.apk';
+          'https://github.com/proservices-tc/Erudaxis-mobile/releases/download/v$version/app-release.apk';
       final fileName = 'erudaxis-v$version.apk';
 
       // Store the cancel callback
@@ -362,14 +362,13 @@ class AppPackageInfo {
     );
   }
 
-  static Future<void> _showUpdateAvailableDialog(
-      BuildContext context, String version) async {
+  static Future<void> _showUpdateAvailableDialog(String version) async {
     return showDialog<void>(
-      context: context,
+      context: mainContext,
       barrierDismissible: false,
-      builder: (context) {
+      builder: (xcontext) {
         return CustomAlertDialog.buildCustomDialog(
-          context: context,
+          context: mainContext,
           icon: Icons.system_update,
           iconColor: CustomAlertDialog.primaryPurple,
           title: 'Update Available',
@@ -379,11 +378,11 @@ class AppPackageInfo {
           primaryButtonColor: CustomAlertDialog.primaryPurple,
           secondaryButtonText: 'Not Now',
           onPrimaryPressed: () {
-            Navigator.of(context).pop();
-            _startDownloadWithDialog(context, version);
+            Navigator.of(mainContext).pop();
+            _startDownloadWithDialog(version);
           },
           onSecondaryPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(mainContext).pop();
             downloadStatus.value = '';
           },
         );
@@ -391,10 +390,9 @@ class AppPackageInfo {
     );
   }
 
-  static Future<void> _startDownloadWithDialog(
-      BuildContext context, String version) async {
+  static Future<void> _startDownloadWithDialog(String version) async {
     showDialog<void>(
-      context: context,
+      context: mainContext,
       barrierDismissible: false,
       builder: (context) {
         return Dialog(
@@ -626,10 +624,10 @@ class AppPackageInfo {
     await downloadAndInstallApk(version);
 
     // Close dialog when download completes (if still mounted)
-    if (context.mounted) {
-      Navigator.of(context).pop();
+    if (mainContext.mounted) {
+      Navigator.of(mainContext).pop();
       await CustomAlertDialog.showSuccessDialog(
-        context: context,
+        context: mainContext,
         title: 'Download Complete',
         message:
             'The update has been downloaded successfully. Please follow the installation prompts to complete the update.',

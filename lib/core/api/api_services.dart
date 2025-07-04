@@ -44,12 +44,12 @@ class ApiService implements IApiService {
     Map<String, dynamic>? headers,
   }) async {
     try {
+      headers = {};
       final options = await RequestBuilder.buildOptions(
-        headers ?? {},
+        headers,
         authRequired: authRequired,
         githubToken: githubToken,
       );
-
       final response = await _executeRequest(
         method: method,
         url: url,
@@ -57,7 +57,6 @@ class ApiService implements IApiService {
         queryParameters: queryParameters,
         options: options,
       );
-
       return _handleResponse<T>(response, fromJson, dataKey);
     } on DioException catch (e) {
       return ApiResponse<T>.error(
@@ -153,8 +152,11 @@ class ApiService implements IApiService {
 }
 
 class RequestBuilder {
-  static Future<Options> buildOptions(Map<String, dynamic>? headers,
-      {required bool authRequired, String? githubToken}) async {
+  static Future<Options> buildOptions(
+    Map<String, dynamic>? headers, {
+    required bool authRequired,
+    String? githubToken,
+  }) async {
     final options = Options(
       headers: headers,
       contentType: 'application/json',
@@ -163,10 +165,10 @@ class RequestBuilder {
       if (TokenManager.accessToken == null) {
         await TokenManager.shared.load();
       }
-      options.headers!['Authorization'] = 'Bearer ${TokenManager.accessToken}';
+      options.headers?['Authorization'] = 'Bearer ${TokenManager.accessToken}';
     }
     if (githubToken != null) {
-      options.headers!['Authorization'] = githubToken;
+      options.headers?['Authorization'] = 'Bearer $githubToken';
     }
     return options;
   }

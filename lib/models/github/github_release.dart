@@ -10,8 +10,8 @@ class GithubRelease extends BaseModel {
   factory GithubRelease.fromMap(dynamic map) {
     return GithubRelease(
       id: FromJson.string(map['id']),
-      name: FromJson.string(map['name'])?.replaceFirst('v', ''),
-      tagName: FromJson.string(map['tag_name']),
+      name: FromJson.string(map['name']),
+      tagName: FromJson.string(map['tag_name'])?.replaceFirst('v', ''),
     );
   }
   @override
