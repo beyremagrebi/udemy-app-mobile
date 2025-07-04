@@ -31,9 +31,7 @@ class AppStarter {
     await globalApiCall(
       apiCall: GithubService.shared.getLastRelease(),
       onSuccess: (model) async {
-        await AppPackageInfo.checkUpdateVersion(model).whenComplete(() async {
-          await navigator(context);
-        });
+        await AppPackageInfo.checkUpdateVersion(model);
       },
       onError: print,
     );

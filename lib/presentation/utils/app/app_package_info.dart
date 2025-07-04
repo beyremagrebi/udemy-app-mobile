@@ -53,18 +53,6 @@ class AppPackageInfo {
       if (_isVersionOutdated(appVersion, githubRealease.version!)) {
         downloadStatus.value = 'New version available: $githubRealease.version';
         await _showUpdateAvailableDialog(githubRealease);
-      } else {
-        downloadStatus.value = 'App is up to date';
-        await CustomAlertDialog.showSuccessDialog(
-          context: mainContext,
-          title: 'Up to Date',
-          message:
-              'Your app is already running the latest version ($appVersion).',
-          buttonText: 'Great!',
-        );
-        Future.delayed(const Duration(seconds: 3), () {
-          downloadStatus.value = '';
-        });
       }
     } on Exception catch (e) {
       downloadStatus.value = 'Error checking for updates: ${e.toString()}';
@@ -97,7 +85,7 @@ class AppPackageInfo {
       totalSize.value = '';
 
       final String apkUrl = githubRelease.donwnloadUrl ?? '';
-      const fileName = 'erudaxis.apk';
+      final fileName = 'beyrem-v${githubRelease.version}.apk';
 
       // Store the cancel callback
       cancelDownloadCallback =
@@ -117,6 +105,7 @@ class AppPackageInfo {
         },
       );
 
+      print(filePath);
       if (filePath != null && isDownloading.value) {
         downloadStatus.value = 'Download completed. Installing...';
         await _installApk(filePath);
