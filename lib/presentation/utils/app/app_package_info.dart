@@ -51,8 +51,6 @@ class AppPackageInfo {
     });
   }
 
-  /// Check if the app is outdated without showing any dialogs
-  /// Returns true if an update is available, false otherwise
   static bool isAppOutdated(GithubRelease githubRelease) {
     if (githubRelease.version == null) {
       return false;

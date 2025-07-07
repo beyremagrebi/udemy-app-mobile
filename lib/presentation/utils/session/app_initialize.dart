@@ -30,8 +30,12 @@ class AppStarter {
   static Future<void> start(BuildContext context) async {
     await globalApiCall(
       apiCall: GithubService.shared.getLastRelease(),
-      onSuccess: (model) async {
-        await AppPackageInfo.checkUpdateVersion(model);
+      onSuccess: (githubRelease) async {
+        if (AppPackageInfo.isAppOutdated(githubRelease)) {
+          await AppPackageInfo.checkUpdateVersion(githubRelease);
+        } else {
+          navigator(context);
+        }
       },
       onError: print,
     );
