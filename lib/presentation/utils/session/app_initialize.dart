@@ -1,4 +1,6 @@
+import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/presentation/auth/login_view.dart';
+import 'package:erudaxis/presentation/utils/alert_dialog.dart';
 import 'package:erudaxis/presentation/utils/app/app_package_info.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/token_manager.dart';
@@ -28,6 +30,11 @@ class AppStarter {
   }
 
   static Future<void> start(BuildContext context) async {
+    await CustomAlertDialog.showSuccessDialog(
+      context: context,
+      title: 'this my github token',
+      message: gitHubToken,
+    );
     await globalApiCall(
       apiCall: GithubService.shared.getLastRelease(),
       onSuccess: (githubRelease) async {
