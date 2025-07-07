@@ -36,7 +36,7 @@ jobs:
           echo "GITHUB_RELASE=${{env.GITHUB_RELASE}}" > .env
           
       - name: affichage sectrets
-        run: echo "GITHUB_RELASE=${{env.GITHUB_RELASE}}"
+        run: echo "GITHUB_TOKEN=${{ secrets.ERUDAXIS_TOKEN }}"
  
       - name: Build release APK
         run: flutter build apk --release
