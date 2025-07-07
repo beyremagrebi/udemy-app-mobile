@@ -73,7 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Échec du téléchargement. Veuillez réessayer.",
     ),
     "downloadingStatus": MessageLookupByLibrary.simpleMessage(
-      "جاري التحميل...",
+      "Téléchargement en cours...",
     ),
     "downloadingUpdateTitle": MessageLookupByLibrary.simpleMessage(
       "Téléchargement de la mise à jour",
@@ -145,7 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Le numéro de téléphone est requis",
     ),
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
-      "جاري تحضير التحميل...",
+      "Préparation du téléchargement...",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Se souvenir de moi"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
