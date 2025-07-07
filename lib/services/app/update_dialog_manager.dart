@@ -193,7 +193,8 @@ class UpdateDialogManager implements IUpdateDialogManager {
                               onTap: () async {
                                 final shouldCancel =
                                     await showCancelConfirmationDialog();
-                                if (shouldCancel == true) {
+                                if (shouldCancel != null &&
+                                    shouldCancel == true) {
                                   AppPackageInfo.cancelDownload();
                                   if (context.mounted) {
                                     Navigator.of(context).pop();
