@@ -10,6 +10,7 @@ env:
   REPO_OWNER: proservices-tc
   REPO_NAME: Erudaxis-mobile
   GITHUB_RELASE: https://api.github.com/repos/proservices-tc/Erudaxis-mobile/releases/latest
+  GITHUB_TOKEN: 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
 
 jobs:
   build:
@@ -32,12 +33,9 @@ jobs:
           echo "SERVER_URL=${{ env.SERVER_URL }}" > .env
           echo "REPO_OWNER=${{ env.REPO_OWNER }}" >> .env
           echo "REPO_NAME=${{ env.REPO_NAME }}" >> .env
-          echo "GITHUB_TOKEN=${{ secrets.ERUDAXIS_TOKEN }}" >> .env
-          echo "GITHUB_RELASE=${{env.GITHUB_RELASE}}" > .env
+          echo "GITHUB_TOKEN=${{ env.GITHUB_TOKEN }}" >> .env
+          echo "GITHUB_RELASE=${{env.GITHUB_RELASE}}" > .env 
           
-      - name: affichage sectrets
-        run: echo "GITHUB_TOKEN=${{ secrets.ERUDAXIS_TOKEN }}"
- 
       - name: Build release APK
         run: flutter build apk --release
 
