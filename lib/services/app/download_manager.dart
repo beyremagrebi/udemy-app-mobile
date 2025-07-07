@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import '../../../core/api/api_services.dart';
+import '../../../core/constants/constant.dart';
 import '../../interfaces/app/i_download_manager.dart';
 import '../../models/global/download_progress.dart';
 
 class DownloadManager implements IDownloadManager {
   final StreamController<DownloadProgress> _progressController =
       StreamController<DownloadProgress>.broadcast();
-
   bool _isDownloading = false;
   Function? _cancelCallback;
 
@@ -24,14 +24,14 @@ class DownloadManager implements IDownloadManager {
         _cancelCallback!();
       }
       _isDownloading = false;
-      _emitProgress(const DownloadProgress(
+
+      _emitProgress(DownloadProgress(
         progress: 0,
-        status: 'Download cancelled',
+        status: intl.downloadCancelled,
         downloadedSize: '',
         totalSize: '',
         isDownloading: false,
       ));
-
       Future.delayed(const Duration(seconds: 2), () {
         _emitProgress(const DownloadProgress(
           progress: 0,
@@ -54,9 +54,9 @@ class DownloadManager implements IDownloadManager {
     required String fileName,
   }) async {
     if (_isDownloading) {
-      _emitProgress(const DownloadProgress(
+      _emitProgress(DownloadProgress(
         progress: 0,
-        status: 'Download already in progress',
+        status: intl.downloadAlreadyInProgress,
         downloadedSize: '',
         totalSize: '',
         isDownloading: true,
@@ -65,9 +65,9 @@ class DownloadManager implements IDownloadManager {
     }
 
     _isDownloading = true;
-    _emitProgress(const DownloadProgress(
+    _emitProgress(DownloadProgress(
       progress: 0,
-      status: 'Preparing download...',
+      status: intl.preparingDownload,
       downloadedSize: '',
       totalSize: '',
       isDownloading: true,
@@ -75,7 +75,6 @@ class DownloadManager implements IDownloadManager {
 
     try {
       _cancelCallback = ApiService.instance.downloadService.cancelDownload;
-
       final filePath = await ApiService.instance.downloadService.downloadApk(
         apkUrl: apkUrl,
         fileName: fileName,
@@ -84,7 +83,7 @@ class DownloadManager implements IDownloadManager {
             final progress = received / total;
             _emitProgress(DownloadProgress(
               progress: progress,
-              status: 'Downloading...',
+              status: intl.downloadingStatus,
               downloadedSize: _formatBytes(received),
               totalSize: _formatBytes(total),
               isDownloading: true,
@@ -94,27 +93,27 @@ class DownloadManager implements IDownloadManager {
       );
 
       if (filePath != null && _isDownloading) {
-        _emitProgress(const DownloadProgress(
+        _emitProgress(DownloadProgress(
           progress: 1,
-          status: 'Download completed. Installing...',
+          status: intl.downloadCompletedInstalling,
           downloadedSize: '',
           totalSize: '',
           isDownloading: false,
         ));
         return filePath;
       } else if (!_isDownloading) {
-        _emitProgress(const DownloadProgress(
+        _emitProgress(DownloadProgress(
           progress: 0,
-          status: 'Download cancelled',
+          status: intl.downloadCancelled,
           downloadedSize: '',
           totalSize: '',
           isDownloading: false,
         ));
         return null;
       } else {
-        _emitProgress(const DownloadProgress(
+        _emitProgress(DownloadProgress(
           progress: 0,
-          status: 'Download failed. Please try again.',
+          status: intl.downloadFailedTryAgain,
           downloadedSize: '',
           totalSize: '',
           isDownloading: false,
@@ -125,7 +124,7 @@ class DownloadManager implements IDownloadManager {
       if (_isDownloading) {
         _emitProgress(DownloadProgress(
           progress: 0,
-          status: 'Download failed: ${e.toString()}',
+          status: intl.downloadFailedError(e.toString()),
           downloadedSize: '',
           totalSize: '',
           isDownloading: false,

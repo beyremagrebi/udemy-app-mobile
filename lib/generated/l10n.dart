@@ -60,6 +60,156 @@ class S {
     return Intl.message('Erudaxis', name: 'appName', desc: '', args: []);
   }
 
+  /// `Cancel`
+  String get cancelButton {
+    return Intl.message('Cancel', name: 'cancelButton', desc: '', args: []);
+  }
+
+  /// `Cancel Download`
+  String get cancelDownloadButton {
+    return Intl.message(
+      'Cancel Download',
+      name: 'cancelDownloadButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to cancel the download? You can always update later from settings.`
+  String get cancelDownloadMessage {
+    return Intl.message(
+      'Are you sure you want to cancel the download? You can always update later from settings.',
+      name: 'cancelDownloadMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Download?`
+  String get cancelDownloadTitle {
+    return Intl.message(
+      'Cancel Download?',
+      name: 'cancelDownloadTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get closeButton {
+    return Intl.message('Close', name: 'closeButton', desc: '', args: []);
+  }
+
+  /// `Continue Download`
+  String get continueDownloadButton {
+    return Intl.message(
+      'Continue Download',
+      name: 'continueDownloadButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download already in progress`
+  String get downloadAlreadyInProgress {
+    return Intl.message(
+      'Download already in progress',
+      name: 'downloadAlreadyInProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download cancelled`
+  String get downloadCancelled {
+    return Intl.message(
+      'Download cancelled',
+      name: 'downloadCancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download complete`
+  String get downloadComplete {
+    return Intl.message(
+      'Download complete',
+      name: 'downloadComplete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download completed. Installing...`
+  String get downloadCompletedInstalling {
+    return Intl.message(
+      'Download completed. Installing...',
+      name: 'downloadCompletedInstalling',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The update has been downloaded successfully. Please follow the installation prompts to complete the update.`
+  String get downloadCompleteMessage {
+    return Intl.message(
+      'The update has been downloaded successfully. Please follow the installation prompts to complete the update.',
+      name: 'downloadCompleteMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download Complete`
+  String get downloadCompleteTitle {
+    return Intl.message(
+      'Download Complete',
+      name: 'downloadCompleteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download failed: {error}`
+  String downloadFailedError(String error) {
+    return Intl.message(
+      'Download failed: $error',
+      name: 'downloadFailedError',
+      desc: 'Download failed with specific error message',
+      args: [error],
+    );
+  }
+
+  /// `Download failed. Please try again.`
+  String get downloadFailedTryAgain {
+    return Intl.message(
+      'Download failed. Please try again.',
+      name: 'downloadFailedTryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading...`
+  String get downloadingStatus {
+    return Intl.message(
+      'Downloading...',
+      name: 'downloadingStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Downloading Update`
+  String get downloadingUpdateTitle {
+    return Intl.message(
+      'Downloading Update',
+      name: 'downloadingUpdateTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get emailField {
     return Intl.message('Email', name: 'emailField', desc: '', args: []);
@@ -115,6 +265,41 @@ class S {
     );
   }
 
+  /// `Got it`
+  String get gotItButton {
+    return Intl.message('Got it', name: 'gotItButton', desc: '', args: []);
+  }
+
+  /// `The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don''t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update`
+  String get installationConflictMessage {
+    return Intl.message(
+      'The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don\'\'t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update',
+      name: 'installationConflictMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Installation Conflict`
+  String get installationConflictTitle {
+    return Intl.message(
+      'Installation Conflict',
+      name: 'installationConflictTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Installation Failed`
+  String get installationFailedTitle {
+    return Intl.message(
+      'Installation Failed',
+      name: 'installationFailedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter a valid email address`
   String get invalidEmail {
     return Intl.message(
@@ -162,6 +347,21 @@ class S {
       name: 'minLength',
       desc: '',
       args: [fieldName, min],
+    );
+  }
+
+  /// `Not Now`
+  String get notNowButton {
+    return Intl.message('Not Now', name: 'notNowButton', desc: '', args: []);
+  }
+
+  /// `Open Settings`
+  String get openSettingsButton {
+    return Intl.message(
+      'Open Settings',
+      name: 'openSettingsButton',
+      desc: '',
+      args: [],
     );
   }
 
@@ -235,11 +435,41 @@ class S {
     );
   }
 
+  /// `Required permissions denied`
+  String get permissionsRequiredMessage {
+    return Intl.message(
+      'Required permissions denied',
+      name: 'permissionsRequiredMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permissions Required`
+  String get permissionsRequiredTitle {
+    return Intl.message(
+      'Permissions Required',
+      name: 'permissionsRequiredTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone number is required`
   String get phoneRequired {
     return Intl.message(
       'Phone number is required',
       name: 'phoneRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preparing download...`
+  String get preparingDownload {
+    return Intl.message(
+      'Preparing download...',
+      name: 'preparingDownload',
       desc: '',
       args: [],
     );
@@ -255,6 +485,76 @@ class S {
     return Intl.message(
       'Your study companion',
       name: 'studyCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Version {version} is now available!\nCurrent version: {currentVersion}\n\nWould you like to download and install the update now?`
+  String updateAvailableMessage(Object version, Object currentVersion) {
+    return Intl.message(
+      'Version $version is now available!\nCurrent version: $currentVersion\n\nWould you like to download and install the update now?',
+      name: 'updateAvailableMessage',
+      desc: '',
+      args: [version, currentVersion],
+    );
+  }
+
+  /// `Update Available`
+  String get updateAvailableTitle {
+    return Intl.message(
+      'Update Available',
+      name: 'updateAvailableTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error checking for updates`
+  String get updateCheckFailedMessage {
+    return Intl.message(
+      'Error checking for updates',
+      name: 'updateCheckFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Check Failed`
+  String get updateCheckFailedTitle {
+    return Intl.message(
+      'Update Check Failed',
+      name: 'updateCheckFailedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error during update`
+  String get updateFailedMessage {
+    return Intl.message(
+      'Error during update',
+      name: 'updateFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Failed`
+  String get updateFailedTitle {
+    return Intl.message(
+      'Update Failed',
+      name: 'updateFailedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Now`
+  String get updateNowButton {
+    return Intl.message(
+      'Update Now',
+      name: 'updateNowButton',
       desc: '',
       args: [],
     );

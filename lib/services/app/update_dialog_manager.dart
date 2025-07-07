@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/models/github/github_release.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/constants/constant.dart';
 import '../../interfaces/app/i_update_download_manager.dart';
 import '../../presentation/utils/alert_dialog.dart';
 import '../../presentation/utils/app/app_package_info.dart';
@@ -19,12 +20,11 @@ class UpdateDialogManager implements IUpdateDialogManager {
           context: context,
           icon: Icons.cancel_outlined,
           iconColor: CustomAlertDialog.warningColor,
-          title: 'Cancel Download?',
-          message:
-              'Are you sure you want to cancel the download? You can always update later from settings.',
-          primaryButtonText: 'Cancel Download',
+          title: intl.cancelDownloadTitle,
+          message: intl.cancelDownloadMessage,
+          primaryButtonText: intl.cancelDownloadButton,
           primaryButtonColor: CustomAlertDialog.errorColor,
-          secondaryButtonText: 'Continue Download',
+          secondaryButtonText: intl.continueDownloadButton,
           onPrimaryPressed: () => Navigator.of(context).pop(true),
           onSecondaryPressed: () => Navigator.of(context).pop(false),
         );
@@ -85,18 +85,18 @@ class UpdateDialogManager implements IUpdateDialogManager {
                     size: 32,
                   ),
                 ),
-                const SizedBox(height: 20),
+                Dimensions.heightExtraLarge,
                 // Title
-                const Text(
-                  'Downloading Update',
-                  style: TextStyle(
+                Text(
+                  intl.downloadingUpdateTitle,
+                  style: const TextStyle(
                     color: CustomAlertDialog.textWhite,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 12),
+                Dimensions.heightMedium,
                 // Status
                 ValueListenableBuilder<String>(
                   valueListenable: AppPackageInfo.downloadStatus,
@@ -104,7 +104,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                     return AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
                       child: Text(
-                        status,
+                        status.isEmpty ? intl.downloadingStatus : status,
                         key: ValueKey(status),
                         style: const TextStyle(
                           color: CustomAlertDialog.textGray,
@@ -115,7 +115,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                     );
                   },
                 ),
-                const SizedBox(height: 20),
+                Dimensions.heightExtraLarge,
                 // Progress Bar
                 ValueListenableBuilder<double>(
                   valueListenable: AppPackageInfo.downloadProgress,
@@ -133,7 +133,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 12),
+                        Dimensions.heightMedium,
                         // Progress percentage
                         Text(
                           '${(progress * 100).toStringAsFixed(1)}%',
@@ -143,7 +143,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        Dimensions.heightSmall,
                         // Download size info
                         ValueListenableBuilder<String>(
                           valueListenable: AppPackageInfo.downloadSize,
@@ -152,11 +152,38 @@ class UpdateDialogManager implements IUpdateDialogManager {
                               valueListenable: AppPackageInfo.totalSize,
                               builder: (context, total, child) {
                                 if (downloaded.isNotEmpty && total.isNotEmpty) {
-                                  return Text(
-                                    '$downloaded / $total',
-                                    style: const TextStyle(
-                                      color: CustomAlertDialog.textGray,
-                                      fontSize: 12,
+                                  return Container(
+                                    alignment: Alignment.center,
+                                    child: Directionality(
+                                      textDirection: TextDirection.ltr,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            downloaded,
+                                            style: const TextStyle(
+                                              color: CustomAlertDialog.textGray,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          const Text(
+                                            ' / ',
+                                            style: TextStyle(
+                                              color: CustomAlertDialog.textGray,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          Text(
+                                            total,
+                                            style: const TextStyle(
+                                              color: CustomAlertDialog.textGray,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   );
                                 }
@@ -169,7 +196,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                     );
                   },
                 ),
-                const SizedBox(height: 24),
+                Dimensions.heightHuge,
                 // Cancel button
                 ValueListenableBuilder<bool>(
                   valueListenable: AppPackageInfo.isDownloading,
@@ -202,10 +229,10 @@ class UpdateDialogManager implements IUpdateDialogManager {
                                 }
                               },
                               borderRadius: BorderRadius.circular(12),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'Cancel Download',
-                                  style: TextStyle(
+                                  intl.cancelDownloadButton,
+                                  style: const TextStyle(
                                     color: CustomAlertDialog.errorColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -230,10 +257,10 @@ class UpdateDialogManager implements IUpdateDialogManager {
                             child: InkWell(
                               onTap: () => Navigator.of(context).pop(),
                               borderRadius: BorderRadius.circular(12),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'Close',
-                                  style: TextStyle(
+                                  intl.closeButton,
+                                  style: const TextStyle(
                                     color: CustomAlertDialog.textWhite,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
@@ -279,18 +306,11 @@ class UpdateDialogManager implements IUpdateDialogManager {
           context: context,
           icon: Icons.warning,
           iconColor: CustomAlertDialog.warningColor,
-          title: 'Installation Conflict',
-          message:
-              'The update cannot be installed because it conflicts with the current version.\n\n'
-              "This usually happens when app signatures don't match.\n\n"
-              'Please uninstall the current app first:\n'
-              '1. Go to Settings > Apps\n'
-              '2. Find and select "erudaxis"\n'
-              '3. Tap "Uninstall"\n'
-              '4. Then retry the update',
-          primaryButtonText: 'Open Settings',
+          title: intl.installationConflictTitle,
+          message: intl.installationConflictMessage,
+          primaryButtonText: intl.openSettingsButton,
           primaryButtonColor: CustomAlertDialog.primaryPurple,
-          secondaryButtonText: 'Cancel',
+          secondaryButtonText: intl.cancelButton,
           onPrimaryPressed: () {
             Navigator.of(context).pop();
             _openAppSettings();
@@ -305,10 +325,9 @@ class UpdateDialogManager implements IUpdateDialogManager {
   Future<void> showSuccessDialog() async {
     await CustomAlertDialog.showSuccessDialog(
       context: mainContext,
-      title: 'Download Complete',
-      message:
-          'The update has been downloaded successfully. Please follow the installation prompts to complete the update.',
-      buttonText: 'Got it',
+      title: intl.downloadCompleteTitle,
+      message: intl.downloadCompleteMessage,
+      buttonText: intl.gotItButton,
     );
   }
 
@@ -319,15 +338,17 @@ class UpdateDialogManager implements IUpdateDialogManager {
       barrierDismissible: false,
       builder: (context) {
         return CustomAlertDialog.buildCustomDialog(
-          context: mainContext,
+          context: context,
           icon: Icons.system_update,
           iconColor: CustomAlertDialog.primaryPurple,
-          title: 'Update Available',
-          message:
-              'Version ${release.version} is now available!\nCurrent version: ${release.version}\n\nWould you like to download and install the update now?',
-          primaryButtonText: 'Update Now',
+          title: intl.updateAvailableTitle,
+          message: intl.updateAvailableMessage(
+            release.version.toString(),
+            AppPackageInfo.appVersion,
+          ),
+          primaryButtonText: intl.updateNowButton,
           primaryButtonColor: CustomAlertDialog.primaryPurple,
-          secondaryButtonText: 'Not Now',
+          secondaryButtonText: intl.notNowButton,
           onPrimaryPressed: () => Navigator.of(context).pop(true),
           onSecondaryPressed: () => Navigator.of(context).pop(false),
         );
@@ -340,9 +361,10 @@ class UpdateDialogManager implements IUpdateDialogManager {
       // Try to open app settings
       await Process.run('am', [
         'start',
-        '-a', 'android.settings.APPLICATION_DETAILS_SETTINGS',
+        '-a',
+        'android.settings.APPLICATION_DETAILS_SETTINGS',
         '-d',
-        'package:com.yourpackage.erudaxis' // Replace with your actual package name
+        'package:com.yourpackage.erudaxis'
       ]);
     } on Exception catch (e) {
       debugPrint('Could not open app settings: $e');

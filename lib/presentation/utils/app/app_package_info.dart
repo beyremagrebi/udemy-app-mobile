@@ -39,7 +39,6 @@ class AppPackageInfo {
   static Future<void> initialize() async {
     await AppUpdateFacade.instance.initialize();
 
-    // Subscribe to the download progress stream and update ValueNotifiers
     _progressSubscription = AppUpdateFacade.instance.downloadProgressStream
         .cast<DownloadProgress>()
         .listen((progress) {

@@ -37,7 +37,7 @@ class AppStarter {
           navigator(context);
         }
       },
-      onError: print,
+      onError: debugPrint,
     );
   }
 }

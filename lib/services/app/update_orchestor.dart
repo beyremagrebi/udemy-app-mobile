@@ -56,14 +56,13 @@ class UpdateOrchestrator {
         final shouldUpdate =
             await _dialogManager.showUpdateAvailableDialog(githubRelease);
         if (shouldUpdate != null && shouldUpdate == true) {
-          // Show progress dialog immediately and start download
           await _startDownloadWithProgressDialog(githubRelease);
         }
       }
-    } on Exception catch (e) {
+    } on Exception {
       await _dialogManager.showErrorDialog(
-        'Update Check Failed',
-        'Error checking for updates: ${e.toString()}',
+        intl.updateCheckFailedTitle,
+        intl.updateCheckFailedMessage,
       );
     }
   }
@@ -76,8 +75,8 @@ class UpdateOrchestrator {
     try {
       if (!await _permissionManager.requestAllPermissions()) {
         await _dialogManager.showErrorDialog(
-          'Permissions Required',
-          'Required permissions denied',
+          intl.permissionsRequiredTitle,
+          intl.permissionsRequiredMessage,
         );
         return;
       }
@@ -93,30 +92,29 @@ class UpdateOrchestrator {
       if (filePath != null) {
         try {
           await _installationManager.installApk(filePath);
-          // Close progress dialog before showing success
           if (mainContext.mounted) {
             Navigator.of(mainContext).pop();
           }
           await _dialogManager.showSuccessDialog();
         } on Exception catch (installError) {
-          // Close progress dialog before showing error
           if (mainContext.mounted) {
             Navigator.of(mainContext).pop();
           }
+
           await _dialogManager.showErrorDialog(
-            'Installation Failed',
+            intl.installationFailedTitle,
             installError.toString(),
           );
         }
       }
-    } on Exception catch (e) {
-      // Close progress dialog before showing error
+    } on Exception {
       if (mainContext.mounted) {
         Navigator.of(mainContext).pop();
       }
+
       await _dialogManager.showErrorDialog(
-        'Update Failed',
-        'Error during update: ${e.toString()}',
+        intl.updateFailedTitle,
+        intl.updateCheckFailedMessage,
       );
     }
   }
@@ -126,14 +124,10 @@ class UpdateOrchestrator {
   }
 
   Future<void> _startDownloadWithProgressDialog(
-      GithubRelease githubRelease) async {
-    // Show the progress dialog
+    GithubRelease githubRelease,
+  ) async {
     _dialogManager.showDownloadProgressDialog(githubRelease);
-
-    // Start the download and installation process
     await downloadAndInstallUpdate(githubRelease);
-
-    // Close the progress dialog when complete
     if (mainContext.mounted) {
       Navigator.of(mainContext).pop();
     }
