@@ -3,7 +3,7 @@
 // delegating to the appropriate library.
 
 // Ignore issues from commonly used lints in this file.
-// ignore_for_file:implementation_imports, file_names, unnecessary_new
+// ignore_for_file:implementation_imports, file_names, unnecessary_new, prefer_final_locals, unnecessary_lambdas, avoid_catches_without_on_clauses, always_put_control_body_on_new_line
 // ignore_for_file:unnecessary_brace_in_string_interps, directives_ordering
 // ignore_for_file:argument_type_not_assignable, invalid_assignment
 // ignore_for_file:prefer_single_quotes, prefer_generic_function_type_aliases
@@ -20,25 +20,11 @@ import 'messages_ar.dart' as messages_ar;
 import 'messages_en.dart' as messages_en;
 import 'messages_fr.dart' as messages_fr;
 
-typedef Future<dynamic> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
   'ar': () => new SynchronousFuture(null),
   'en': () => new SynchronousFuture(null),
   'fr': () => new SynchronousFuture(null),
 };
-
-MessageLookupByLibrary? _findExact(String localeName) {
-  switch (localeName) {
-    case 'ar':
-      return messages_ar.messages;
-    case 'en':
-      return messages_en.messages;
-    case 'fr':
-      return messages_fr.messages;
-    default:
-      return null;
-  }
-}
 
 /// User programs should call this before using [localeName] for messages.
 Future<bool> initializeMessages(String localeName) {
@@ -57,11 +43,16 @@ Future<bool> initializeMessages(String localeName) {
   return new SynchronousFuture(true);
 }
 
-bool _messagesExistFor(String locale) {
-  try {
-    return _findExact(locale) != null;
-  } catch (e) {
-    return false;
+MessageLookupByLibrary? _findExact(String localeName) {
+  switch (localeName) {
+    case 'ar':
+      return messages_ar.messages;
+    case 'en':
+      return messages_en.messages;
+    case 'fr':
+      return messages_fr.messages;
+    default:
+      return null;
   }
 }
 
@@ -74,3 +65,13 @@ MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
   if (actualLocale == null) return null;
   return _findExact(actualLocale);
 }
+
+bool _messagesExistFor(String locale) {
+  try {
+    return _findExact(locale) != null;
+  } catch (e) {
+    return false;
+  }
+}
+
+typedef Future<dynamic> LibraryLoader();
