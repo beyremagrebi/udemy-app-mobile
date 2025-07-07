@@ -22,7 +22,7 @@ class Erudaxis extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: mainnavigatorKey,
         debugShowCheckedModeBanner: false,
-        locale: const Locale('ar'),
+        locale: const Locale('fr'),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

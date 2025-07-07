@@ -1,5 +1,6 @@
 import 'package:erudaxis/interfaces/i_bottom_navigation_bar.dart';
 import 'package:erudaxis/presentation/main/home/home_view.dart';
+import 'package:erudaxis/presentation/main/profile/profile_view.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class BottomNavigationViewModel extends BaseViewModel
       const Center(child: Text('Cours view')),
       const Center(child: Text('Chat view')),
       const Center(child: Text('Planning view')),
-      const Center(child: Text('Profile view')),
+      const ProfileView(),
     ];
   }
 }
