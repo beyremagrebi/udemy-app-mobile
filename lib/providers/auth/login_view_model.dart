@@ -27,7 +27,7 @@ class LoginViewModel extends BaseViewModel {
       onSuccess: (loginInfo) async {
         await TokenManager.saveTokens(loginInfo: loginInfo);
         if (context.mounted) {
-          AppStarter.start(context);
+          AppStarter.start(context, skipCheckUpdateVersion: true);
         }
       },
     );
