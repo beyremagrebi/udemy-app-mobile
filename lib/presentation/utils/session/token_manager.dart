@@ -16,6 +16,12 @@ class TokenManager implements ITokenManager {
 
   TokenManager._internal();
   @override
+  Future<void> clear() async {
+    await AccessTokenPreference.shared.remove();
+    await RefreshTokenPreference.shared.remove();
+  }
+
+  @override
   Map<String, dynamic> decode(String? token) {
     if (token == null || token.isEmpty) {
       throw Exception('Token is null or empty');

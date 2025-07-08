@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
 
+final ScrollController homeScrollController = ScrollController();
 late S intl;
+
 final GlobalKey<NavigatorState> mainnavigatorKey = GlobalKey();
+final ScrollController profileScrollController = ScrollController();
 
 late TextTheme textTheme;
 BuildContext get mainContext => mainnavigatorKey.currentContext!;

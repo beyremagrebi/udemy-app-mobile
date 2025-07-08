@@ -18,7 +18,6 @@ Widget buildTransparentBottomNav(
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            // Use the same gradient as your app background but with transparency
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -28,7 +27,6 @@ Widget buildTransparentBottomNav(
                 Colors.white.withOpacity(0.05),
               ],
             ),
-
             border: Border(
               top: BorderSide(
                 color: Colors.white.withOpacity(0.4),

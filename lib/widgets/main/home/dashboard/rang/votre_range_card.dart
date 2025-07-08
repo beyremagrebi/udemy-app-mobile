@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class VotreRangCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Général',
+                  intl.general,
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: Colors.white.withOpacity(0.8),
                   ),

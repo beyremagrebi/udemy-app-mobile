@@ -59,13 +59,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "Annuler le téléchargement ?",
     ),
+    "chat": MessageLookupByLibrary.simpleMessage("Discussion"),
     "chats_discussions": MessageLookupByLibrary.simpleMessage(
       "Chats et discussions",
+    ),
+    "class_position": MessageLookupByLibrary.simpleMessage(
+      "Position en classe",
     ),
     "closeButton": MessageLookupByLibrary.simpleMessage("Fermer"),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Continuer le téléchargement",
     ),
+    "courses": MessageLookupByLibrary.simpleMessage("Cours"),
     "courses_this_week": MessageLookupByLibrary.simpleMessage(
       "Cours cette semaine",
     ),
@@ -112,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
       "Mot de passe oublié ?",
     ),
+    "general": MessageLookupByLibrary.simpleMessage("Général"),
     "gotItButton": MessageLookupByLibrary.simpleMessage("Compris"),
     "home": MessageLookupByLibrary.simpleMessage("Accueil"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
@@ -182,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneRequired": MessageLookupByLibrary.simpleMessage(
       "Le numéro de téléphone est requis",
     ),
+    "planning": MessageLookupByLibrary.simpleMessage("Planning"),
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
       "Préparation du téléchargement...",
     ),
@@ -189,6 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "sécurité et confidentialité",
     ),
     "privacy_title": MessageLookupByLibrary.simpleMessage("Confidentialié"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profil"),
     "profile_subtitle": MessageLookupByLibrary.simpleMessage(
       "Géere vos information personnel",
     ),

@@ -1,7 +1,9 @@
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/constants/constant.dart';
 import '../../../core/styles/app_colors.dart';
@@ -25,6 +27,7 @@ class ProfileView extends IScreenWithLocalization {
         gradientAppBarWidget(const UserInfoCard()),
         Expanded(
           child: ListView(
+            controller: profileScrollController,
             children: [
               Padding(
                 padding: Dimensions.paddingAllMedium,
@@ -102,12 +105,19 @@ class ProfileView extends IScreenWithLocalization {
                         color: Colors.blue,
                       ),
                       Dimensions.heightSmall,
-                      SettingCard(
-                        title: intl.logout_title,
-                        subTitle: intl.logout_subtitle,
-                        canNavigate: false,
-                        icon: Icons.exit_to_app_outlined,
-                        color: Colors.red,
+                      Consumer<SessionManager>(
+                        builder: (context, viewModel, child) => InkWell(
+                          child: SettingCard(
+                            onTap: () async {
+                              await viewModel.logout();
+                            },
+                            title: intl.logout_title,
+                            subTitle: intl.logout_subtitle,
+                            canNavigate: false,
+                            icon: Icons.exit_to_app_outlined,
+                            color: Colors.red,
+                          ),
+                        ),
                       ),
                     ],
                   ),

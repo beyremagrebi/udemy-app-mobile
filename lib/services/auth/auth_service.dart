@@ -30,6 +30,15 @@ class AuthService extends BaseService<LoginInfo> implements IAuthService {
   }
 
   @override
+  Future<ApiResponse<dynamic>> logout() async {
+    return ApiService.instance.request<dynamic>(
+      url: '$endpoint/logout',
+      fromJson: (dynamic) => dynamic,
+      method: DioMethod.delete,
+    );
+  }
+
+  @override
   Future<ApiResponse<LoginInfo>> refreshToken(
       {required String? refreshToken}) async {
     return ApiService.instance.request<LoginInfo>(

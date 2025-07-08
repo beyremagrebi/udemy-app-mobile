@@ -1,20 +1,23 @@
+import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../widgets/main/home/dashboard/rang/votre_range_card.dart';
 
-class VotreRangView extends StatelessWidget {
+class VotreRangView extends IScreenWithLocalization {
   const VotreRangView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Example values, could come from props / state / API later
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     const rank = 3;
     const total = 28;
-    const positionText = 'Position en classe';
+    final positionText = intl.class_position;
     const trendIcon = Icons.arrow_upward_rounded;
     const trendColor = Colors.greenAccent;
 
-    return const VotreRangCard(
+    return VotreRangCard(
       rank: rank,
       total: total,
       positionText: positionText,

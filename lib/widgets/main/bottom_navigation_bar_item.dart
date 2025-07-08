@@ -1,42 +1,43 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 List<BottomNavigationBarItem> bottomNavigationBarItem(BuildContext context) {
   return [
-    const BottomNavigationBarItem(
-      icon: Icon(
+    BottomNavigationBarItem(
+      icon: const Icon(
         Icons.home_outlined,
         size: 22,
       ),
-      label: 'Home',
+      label: intl.home,
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(
+    BottomNavigationBarItem(
+      icon: const Icon(
         Symbols.book_5_rounded,
         size: 22,
       ),
-      label: 'Cours',
+      label: intl.courses,
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(
+    BottomNavigationBarItem(
+      icon: const Icon(
         Icons.chat_bubble_outline,
         size: 22,
       ),
-      label: 'Chat',
+      label: intl.chat,
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(
+    BottomNavigationBarItem(
+      icon: const Icon(
         Symbols.planner_review_rounded,
         size: 22,
       ),
-      label: 'Planning',
+      label: intl.planning,
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(
+    BottomNavigationBarItem(
+      icon: const Icon(
         Icons.person_outline,
         size: 22,
       ),
-      label: 'Profile',
+      label: intl.profile,
     ),
   ];
 }

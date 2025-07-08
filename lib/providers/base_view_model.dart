@@ -1,5 +1,4 @@
 import 'package:erudaxis/core/enum/api_status.dart';
-import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/presentation/utils/spin_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -17,7 +16,7 @@ abstract class BaseViewModel extends ChangeNotifier {
 
   ApiStatus get apiStatus => _apiStatus;
 
-  Future<void> makeApiCall<Model extends BaseModel>({
+  Future<void> makeApiCall<Model>({
     required Future<ApiResponse<Model>> apiCall,
     bool displayLoading = true,
     bool displayError = true,

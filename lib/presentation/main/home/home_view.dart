@@ -18,8 +18,7 @@ import 'dashboard/quizz/quiz_a_faire_view.dart';
 import 'main_header_view.dart';
 
 class HomeView extends StatelessWidget {
-  final ScrollController scrollController;
-  const HomeView({required this.scrollController, super.key});
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class HomeView extends StatelessWidget {
         ),
         Expanded(
           child: ListView(
-            controller: scrollController,
+            controller: homeScrollController,
             padding: Dimensions.paddingAllMedium,
             children: [
               Column(

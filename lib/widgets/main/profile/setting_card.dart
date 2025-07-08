@@ -12,11 +12,13 @@ class SettingCard extends StatelessWidget {
   final double size;
   final bool canNavigate;
   final Widget? materialPage;
+  final VoidCallback? onTap;
   const SettingCard({
     required this.title,
     required this.subTitle,
     required this.icon,
     required this.color,
+    this.onTap,
     this.canNavigate = true,
     this.materialPage,
     super.key,
@@ -31,6 +33,9 @@ class SettingCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
+            if (onTap != null) {
+              onTap?.call();
+            }
             if (canNavigate == true && materialPage != null) {
               navigateTo(context, materialPage!);
             }

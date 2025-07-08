@@ -1,4 +1,6 @@
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
@@ -9,12 +11,13 @@ import '../../widgets/main/transparent_navigation_bar_widget.dart';
 import '../utils/app_bar_gradient.dart';
 import '../utils/app_scaffold.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends IScreenWithLocalization {
   final String userId;
   const MainView({required this.userId, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -38,8 +41,10 @@ class MainView extends StatelessWidget {
               children: viewModel.pages(),
             ),
             bottomNavigationBar: ScrollToHide(
-              scrollController: viewModel.scrollController,
+              key: ValueKey(viewModel.slectedIndex),
+              scrollController: viewModel.currentScrollController,
               height: 50,
+              duration: const Duration(milliseconds: 250),
               hideDirection: Axis.vertical,
               child: buildTransparentBottomNav(
                 context,

@@ -155,11 +155,26 @@ class S {
     );
   }
 
+  /// `Chat`
+  String get chat {
+    return Intl.message('Chat', name: 'chat', desc: '', args: []);
+  }
+
   /// `Chats and discussions`
   String get chats_discussions {
     return Intl.message(
       'Chats and discussions',
       name: 'chats_discussions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Class Rank`
+  String get class_position {
+    return Intl.message(
+      'Class Rank',
+      name: 'class_position',
       desc: '',
       args: [],
     );
@@ -178,6 +193,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Cours`
+  String get courses {
+    return Intl.message('Cours', name: 'courses', desc: '', args: []);
   }
 
   /// `Courses this week`
@@ -358,6 +378,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message('General', name: 'general', desc: '', args: []);
   }
 
   /// `Got it`
@@ -640,6 +665,11 @@ class S {
     );
   }
 
+  /// `Planning`
+  String get planning {
+    return Intl.message('Planning', name: 'planning', desc: '', args: []);
+  }
+
   /// `Preparing download...`
   String get preparingDownload {
     return Intl.message(
@@ -663,6 +693,11 @@ class S {
   /// `Privacy`
   String get privacy_title {
     return Intl.message('Privacy', name: 'privacy_title', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 
   /// `Manage your personal info`

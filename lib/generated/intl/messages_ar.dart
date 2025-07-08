@@ -61,13 +61,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "إلغاء التحميل؟",
     ),
+    "chat": MessageLookupByLibrary.simpleMessage("المحادثة"),
     "chats_discussions": MessageLookupByLibrary.simpleMessage(
       "الدردشات والمناقشات",
     ),
+    "class_position": MessageLookupByLibrary.simpleMessage("الترتيب في الفصل"),
     "closeButton": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "متابعة التحميل",
     ),
+    "courses": MessageLookupByLibrary.simpleMessage("الدروس"),
     "courses_this_week": MessageLookupByLibrary.simpleMessage(
       "الدروس هذا الأسبوع",
     ),
@@ -112,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
       "هل نسيت كلمة المرور؟",
     ),
+    "general": MessageLookupByLibrary.simpleMessage("عام"),
     "gotItButton": MessageLookupByLibrary.simpleMessage("فهمت"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
@@ -166,6 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الأذونات مطلوبة",
     ),
     "phoneRequired": MessageLookupByLibrary.simpleMessage("رقم الهاتف مطلوب"),
+    "planning": MessageLookupByLibrary.simpleMessage("الجدول"),
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
       "جاري تحضير التحميل...",
     ),
@@ -173,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الأمان والخصوصية",
     ),
     "privacy_title": MessageLookupByLibrary.simpleMessage("الخصوصية"),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profile_subtitle": MessageLookupByLibrary.simpleMessage(
       "إدارة معلوماتك الشخصية",
     ),
