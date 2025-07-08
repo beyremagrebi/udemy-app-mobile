@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/actions/actions_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/event/evenements_prochains_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/invoice/factures_en_attende.dart';
@@ -31,58 +32,58 @@ class HomeView extends StatelessWidget {
           child: ListView(
             controller: scrollController,
             padding: Dimensions.paddingAllMedium,
-            children: const [
+            children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  StatisticsView(),
+                  const StatisticsView(),
                   Dimensions.heightMedium,
                   TitleWidget(
-                    title: 'Actions Rapides',
+                    title: intl.quickActions,
                     icon: Symbols.electric_bolt_rounded,
-                    child: ActionsView(),
+                    child: const ActionsView(),
                   ),
                   Dimensions.heightMedium,
                   TitleWidget(
                     icon: Symbols.newsstand,
-                    title: 'Bibliothèque Récente',
-                    child: RecentLibratyView(),
+                    title: intl.recentLibrary,
+                    child: const RecentLibratyView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
                     icon: Symbols.timer,
-                    title: 'Prochaines Séances',
-                    child: NextSessionView(),
+                    title: intl.upcomingSessions,
+                    child: const NextSessionView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                    title: 'Quiz à Faire',
+                    title: intl.quizzesToDo,
                     icon: Symbols.checklist_rounded,
-                    child: QuizAFaireView(),
+                    child: const QuizAFaireView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                    title: 'Factures en Attente',
+                    title: intl.pendingInvoices,
                     icon: Icons.paid_outlined,
-                    child: FacturesEnAttenteView(),
+                    child: const FacturesEnAttenteView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                    title: 'Événements Prochains',
+                    title: intl.upcomingEvents,
                     icon: Symbols.event_available_rounded,
-                    child: EvenementsProchainsView(),
+                    child: const EvenementsProchainsView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                    title: 'Suivi Journalier',
+                    title: intl.dailyTracking,
                     icon: Symbols.person_check_rounded,
-                    child: SuiviJournalierView(),
+                    child: const SuiviJournalierView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
-                    title: 'Votre Rang',
+                    title: intl.yourRank,
                     icon: Symbols.license_rounded,
-                    child: VotreRangView(),
+                    child: const VotreRangView(),
                   ),
                 ],
               ),

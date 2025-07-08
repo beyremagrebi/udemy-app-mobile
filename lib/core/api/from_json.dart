@@ -43,6 +43,13 @@ class FromJson {
     return null;
   }
 
+  static T? enumValue<T>(value) {
+    if (value == null) {
+      return null;
+    }
+    return value as T;
+  }
+
   static int? integer(value) {
     if (value == null) {
       return null;

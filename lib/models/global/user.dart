@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/api/from_json.dart';
+import 'package:erudaxis/core/enum/gender.dart';
 import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/models/global/facility.dart';
 
@@ -8,6 +9,7 @@ class User extends BaseModel {
   String? image;
 
   Facility? facility;
+  Gender? gender;
 
   List<Facility>? ownedFacilities;
   User({
@@ -16,6 +18,7 @@ class User extends BaseModel {
     this.lastName,
     this.image,
     this.facility,
+    this.gender,
     this.ownedFacilities,
   });
   User.fromId(String? id) : super(id: id);
@@ -34,6 +37,8 @@ class User extends BaseModel {
         map['lastName'],
       ),
       image: FromJson.string(map['imageUrl']),
+      gender: FromJson.enumValue<Gender>(
+          GenderExtension.fromBackendValue(map['gender'].toString())),
       facility: FromJson.model(
         map['facility'],
         Facility.fromMap,
@@ -44,6 +49,9 @@ class User extends BaseModel {
       ),
     );
   }
+
+  bool get isMen => gender == Gender.men;
+
   @override
   Map<String, Object> toMap() {
     throw UnimplementedError();

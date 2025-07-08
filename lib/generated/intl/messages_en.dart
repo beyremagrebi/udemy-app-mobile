@@ -34,7 +34,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about_title": MessageLookupByLibrary.simpleMessage("About"),
+    "access_classes_groups": MessageLookupByLibrary.simpleMessage(
+      "Access your classes and groups",
+    ),
+    "access_educational_content": MessageLookupByLibrary.simpleMessage(
+      "Access educational content",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("Erudaxis"),
+    "appearance_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Theme and customization",
+    ),
+    "appearance_title": MessageLookupByLibrary.simpleMessage("Appearance"),
+    "assignments_due": MessageLookupByLibrary.simpleMessage("Assignments due"),
+    "bonjour": MessageLookupByLibrary.simpleMessage("Hello"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Cancel Download",
@@ -45,10 +58,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "Cancel Download?",
     ),
+    "chats_discussions": MessageLookupByLibrary.simpleMessage(
+      "Chats and discussions",
+    ),
     "closeButton": MessageLookupByLibrary.simpleMessage("Close"),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Continue Download",
     ),
+    "courses_this_week": MessageLookupByLibrary.simpleMessage(
+      "Courses this week",
+    ),
+    "dailyTracking": MessageLookupByLibrary.simpleMessage("Daily Tracking"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "downloadAlreadyInProgress": MessageLookupByLibrary.simpleMessage(
       "Download already in progress",
     ),
@@ -83,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldRequired": m1,
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot password?"),
     "gotItButton": MessageLookupByLibrary.simpleMessage("Got it"),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
       "The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don\'\'t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select \"erudaxis\"\n3. Tap \"Uninstall\"\n4. Then retry the update",
     ),
@@ -98,14 +120,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPhone": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid phone number",
     ),
+    "language_title": MessageLookupByLibrary.simpleMessage("Language"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginToContinue": MessageLookupByLibrary.simpleMessage(
       "Log in to continue",
     ),
+    "logout_subtitle": MessageLookupByLibrary.simpleMessage("Close session"),
+    "logout_title": MessageLookupByLibrary.simpleMessage("Log out"),
+    "messaging": MessageLookupByLibrary.simpleMessage("Messaging"),
     "minLength": m2,
+    "my_classes": MessageLookupByLibrary.simpleMessage("My Classes"),
+    "my_courses": MessageLookupByLibrary.simpleMessage("My Courses"),
     "notNowButton": MessageLookupByLibrary.simpleMessage("Not Now"),
+    "notification_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Notification settings",
+    ),
+    "notification_title": MessageLookupByLibrary.simpleMessage("Notifications"),
     "openSettingsButton": MessageLookupByLibrary.simpleMessage("Open Settings"),
+    "overall_average": MessageLookupByLibrary.simpleMessage("Overall average"),
     "passwordField": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": m3,
     "passwordLower": MessageLookupByLibrary.simpleMessage("lowercase letter"),
@@ -120,6 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "special character",
     ),
     "passwordUpper": MessageLookupByLibrary.simpleMessage("uppercase letter"),
+    "pendingInvoices": MessageLookupByLibrary.simpleMessage("Pending Invoices"),
     "permissionsRequiredMessage": MessageLookupByLibrary.simpleMessage(
       "Required permissions denied",
     ),
@@ -132,9 +166,35 @@ class MessageLookup extends MessageLookupByLibrary {
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
       "Preparing download...",
     ),
+    "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Security and privacy",
+    ),
+    "privacy_title": MessageLookupByLibrary.simpleMessage("Privacy"),
+    "profile_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Manage your personal info",
+    ),
+    "profile_title": MessageLookupByLibrary.simpleMessage("Profile"),
+    "quickActions": MessageLookupByLibrary.simpleMessage("Quick Actions"),
+    "quick_settings_title": MessageLookupByLibrary.simpleMessage(
+      "Quick Settings",
+    ),
+    "quizzesToDo": MessageLookupByLibrary.simpleMessage("Quizzes to Do"),
+    "recentLibrary": MessageLookupByLibrary.simpleMessage("Recent Library"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
+    "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
+    "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
       "Your study companion",
+    ),
+    "support_subtitle": MessageLookupByLibrary.simpleMessage(
+      "FAQ & assistance",
+    ),
+    "support_title": MessageLookupByLibrary.simpleMessage("Help & Support"),
+    "unread_messages": MessageLookupByLibrary.simpleMessage("Unread messages"),
+    "upcomingEvents": MessageLookupByLibrary.simpleMessage("Upcoming Events"),
+    "upcomingSessions": MessageLookupByLibrary.simpleMessage(
+      "Upcoming Sessions",
     ),
     "updateAvailableMessage": m4,
     "updateAvailableTitle": MessageLookupByLibrary.simpleMessage(
@@ -151,8 +211,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateFailedTitle": MessageLookupByLibrary.simpleMessage("Update Failed"),
     "updateNowButton": MessageLookupByLibrary.simpleMessage("Update Now"),
+    "view_timetable": MessageLookupByLibrary.simpleMessage(
+      "View your timetable",
+    ),
     "welcomeBack": MessageLookupByLibrary.simpleMessage(
       "Nice to see you again!",
     ),
+    "yourRank": MessageLookupByLibrary.simpleMessage("Your Rank"),
   };
 }

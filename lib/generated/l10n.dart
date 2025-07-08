@@ -55,9 +55,69 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `About`
+  String get about_title {
+    return Intl.message('About', name: 'about_title', desc: '', args: []);
+  }
+
+  /// `Access your classes and groups`
+  String get access_classes_groups {
+    return Intl.message(
+      'Access your classes and groups',
+      name: 'access_classes_groups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access educational content`
+  String get access_educational_content {
+    return Intl.message(
+      'Access educational content',
+      name: 'access_educational_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme and customization`
+  String get appearance_subtitle {
+    return Intl.message(
+      'Theme and customization',
+      name: 'appearance_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appearance`
+  String get appearance_title {
+    return Intl.message(
+      'Appearance',
+      name: 'appearance_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Erudaxis`
   String get appName {
     return Intl.message('Erudaxis', name: 'appName', desc: '', args: []);
+  }
+
+  /// `Assignments due`
+  String get assignments_due {
+    return Intl.message(
+      'Assignments due',
+      name: 'assignments_due',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hello`
+  String get bonjour {
+    return Intl.message('Hello', name: 'bonjour', desc: '', args: []);
   }
 
   /// `Cancel`
@@ -95,6 +155,16 @@ class S {
     );
   }
 
+  /// `Chats and discussions`
+  String get chats_discussions {
+    return Intl.message(
+      'Chats and discussions',
+      name: 'chats_discussions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Close`
   String get closeButton {
     return Intl.message('Close', name: 'closeButton', desc: '', args: []);
@@ -108,6 +178,31 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Courses this week`
+  String get courses_this_week {
+    return Intl.message(
+      'Courses this week',
+      name: 'courses_this_week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily Tracking`
+  String get dailyTracking {
+    return Intl.message(
+      'Daily Tracking',
+      name: 'dailyTracking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message('Dashboard', name: 'dashboard', desc: '', args: []);
   }
 
   /// `Download already in progress`
@@ -270,6 +365,11 @@ class S {
     return Intl.message('Got it', name: 'gotItButton', desc: '', args: []);
   }
 
+  /// `Home`
+  String get home {
+    return Intl.message('Home', name: 'home', desc: '', args: []);
+  }
+
   /// `The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don''t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update`
   String get installationConflictMessage {
     return Intl.message(
@@ -320,6 +420,11 @@ class S {
     );
   }
 
+  /// `Language`
+  String get language_title {
+    return Intl.message('Language', name: 'language_title', desc: '', args: []);
+  }
+
   /// `Loading...`
   String get loading {
     return Intl.message('Loading...', name: 'loading', desc: '', args: []);
@@ -340,6 +445,26 @@ class S {
     );
   }
 
+  /// `Close session`
+  String get logout_subtitle {
+    return Intl.message(
+      'Close session',
+      name: 'logout_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logout_title {
+    return Intl.message('Log out', name: 'logout_title', desc: '', args: []);
+  }
+
+  /// `Messaging`
+  String get messaging {
+    return Intl.message('Messaging', name: 'messaging', desc: '', args: []);
+  }
+
   /// `{fieldName} must be at least {min} characters`
   String minLength(Object fieldName, Object min) {
     return Intl.message(
@@ -347,6 +472,36 @@ class S {
       name: 'minLength',
       desc: '',
       args: [fieldName, min],
+    );
+  }
+
+  /// `My Classes`
+  String get my_classes {
+    return Intl.message('My Classes', name: 'my_classes', desc: '', args: []);
+  }
+
+  /// `My Courses`
+  String get my_courses {
+    return Intl.message('My Courses', name: 'my_courses', desc: '', args: []);
+  }
+
+  /// `Notification settings`
+  String get notification_subtitle {
+    return Intl.message(
+      'Notification settings',
+      name: 'notification_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notification_title {
+    return Intl.message(
+      'Notifications',
+      name: 'notification_title',
+      desc: '',
+      args: [],
     );
   }
 
@@ -360,6 +515,16 @@ class S {
     return Intl.message(
       'Open Settings',
       name: 'openSettingsButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overall average`
+  String get overall_average {
+    return Intl.message(
+      'Overall average',
+      name: 'overall_average',
       desc: '',
       args: [],
     );
@@ -435,6 +600,16 @@ class S {
     );
   }
 
+  /// `Pending Invoices`
+  String get pendingInvoices {
+    return Intl.message(
+      'Pending Invoices',
+      name: 'pendingInvoices',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required permissions denied`
   String get permissionsRequiredMessage {
     return Intl.message(
@@ -475,9 +650,94 @@ class S {
     );
   }
 
+  /// `Security and privacy`
+  String get privacy_subtitle {
+    return Intl.message(
+      'Security and privacy',
+      name: 'privacy_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy`
+  String get privacy_title {
+    return Intl.message('Privacy', name: 'privacy_title', desc: '', args: []);
+  }
+
+  /// `Manage your personal info`
+  String get profile_subtitle {
+    return Intl.message(
+      'Manage your personal info',
+      name: 'profile_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile_title {
+    return Intl.message('Profile', name: 'profile_title', desc: '', args: []);
+  }
+
+  /// `Quick Settings`
+  String get quick_settings_title {
+    return Intl.message(
+      'Quick Settings',
+      name: 'quick_settings_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick Actions`
+  String get quickActions {
+    return Intl.message(
+      'Quick Actions',
+      name: 'quickActions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizzes to Do`
+  String get quizzesToDo {
+    return Intl.message(
+      'Quizzes to Do',
+      name: 'quizzesToDo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Library`
+  String get recentLibrary {
+    return Intl.message(
+      'Recent Library',
+      name: 'recentLibrary',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Remember me`
   String get rememberMe {
     return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
+  }
+
+  /// `Schedule`
+  String get schedule {
+    return Intl.message('Schedule', name: 'schedule', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings_title {
+    return Intl.message('Settings', name: 'settings_title', desc: '', args: []);
+  }
+
+  /// `Statistics`
+  String get statistics {
+    return Intl.message('Statistics', name: 'statistics', desc: '', args: []);
   }
 
   /// `Your study companion`
@@ -485,6 +745,56 @@ class S {
     return Intl.message(
       'Your study companion',
       name: 'studyCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQ & assistance`
+  String get support_subtitle {
+    return Intl.message(
+      'FAQ & assistance',
+      name: 'support_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help & Support`
+  String get support_title {
+    return Intl.message(
+      'Help & Support',
+      name: 'support_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unread messages`
+  String get unread_messages {
+    return Intl.message(
+      'Unread messages',
+      name: 'unread_messages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upcoming Events`
+  String get upcomingEvents {
+    return Intl.message(
+      'Upcoming Events',
+      name: 'upcomingEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upcoming Sessions`
+  String get upcomingSessions {
+    return Intl.message(
+      'Upcoming Sessions',
+      name: 'upcomingSessions',
       desc: '',
       args: [],
     );
@@ -560,6 +870,16 @@ class S {
     );
   }
 
+  /// `View your timetable`
+  String get view_timetable {
+    return Intl.message(
+      'View your timetable',
+      name: 'view_timetable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Nice to see you again!`
   String get welcomeBack {
     return Intl.message(
@@ -568,6 +888,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Your Rank`
+  String get yourRank {
+    return Intl.message('Your Rank', name: 'yourRank', desc: '', args: []);
   }
 }
 

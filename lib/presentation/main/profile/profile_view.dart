@@ -1,21 +1,25 @@
-import 'package:erudaxis/core/styles/app_colors.dart';
-import 'package:erudaxis/core/styles/dimensions.dart';
-import 'package:erudaxis/presentation/utils/app/app_package_info.dart';
-import 'package:erudaxis/presentation/utils/statics_grid.dart';
-import 'package:erudaxis/presentation/utils/title_widget.dart';
-import 'package:erudaxis/widgets/common/widgets.dart';
-import 'package:erudaxis/widgets/main/profile/setting_card.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
+import '../../../core/constants/constant.dart';
+import '../../../core/styles/app_colors.dart';
+import '../../../core/styles/dimensions.dart';
+import '../../../widgets/common/widgets.dart';
+import '../../../widgets/main/profile/setting_card.dart';
 import '../../../widgets/main/profile/user_info_card.dart';
+import '../../utils/app/app_package_info.dart';
+import '../../utils/statics_grid.dart';
+import '../../utils/title_widget.dart';
+import 'language/language_view.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends IScreenWithLocalization {
   const ProfileView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     return Column(
       children: [
         gradientAppBarWidget(const UserInfoCard()),
@@ -25,7 +29,7 @@ class ProfileView extends StatelessWidget {
               Padding(
                 padding: Dimensions.paddingAllMedium,
                 child: TitleWidget(
-                  title: 'Paramètre Rapide',
+                  title: intl.quick_settings_title,
                   icon: Icons.settings_outlined,
                   child: StatisticsGrid(
                     children: const [
@@ -43,63 +47,64 @@ class ProfileView extends StatelessWidget {
               Padding(
                 padding: Dimensions.paddingAllMedium,
                 child: TitleWidget(
-                  title: 'Paramètre',
+                  title: intl.settings_title,
                   icon: Icons.settings_outlined,
                   child: Column(
                     children: [
-                      const SettingCard(
-                        title: 'Profil',
-                        subTitle: 'Géere vos information personnel ',
+                      SettingCard(
+                        title: intl.profile_title,
+                        subTitle: intl.profile_subtitle,
                         icon: Icons.person_outline,
                         color: Colors.blue,
                       ),
                       Dimensions.heightSmall,
-                      const SettingCard(
-                        title: 'Notification',
-                        subTitle: 'Paramètre des notifcations',
+                      SettingCard(
+                        title: intl.notification_title,
+                        subTitle: intl.notification_subtitle,
                         icon: Icons.notifications_none_outlined,
                         color: Colors.green,
                       ),
                       Dimensions.heightSmall,
-                      const SettingCard(
-                        title: 'Confidentialié',
-                        subTitle: 'sécurité et confidentialité',
+                      SettingCard(
+                        title: intl.privacy_title,
+                        subTitle: intl.privacy_subtitle,
                         icon: Symbols.shield_rounded,
                         color: Colors.red,
                       ),
                       Dimensions.heightSmall,
-                      const SettingCard(
-                        title: 'Apparence',
-                        subTitle: 'Theme et personalisé',
+                      SettingCard(
+                        title: intl.appearance_title,
+                        subTitle: intl.appearance_subtitle,
                         icon: Icons.palette_outlined,
                         color: AppColors.secondaryColor,
                       ),
                       Dimensions.heightSmall,
-                      const SettingCard(
-                        title: 'Language',
-                        subTitle: 'Français',
+                      SettingCard(
+                        title: intl.language_title,
+                        subTitle: languageViewModel.currentLanguage.displayName,
                         icon: Symbols.globe_rounded,
+                        materialPage: const LanguageView(),
                         color: Colors.orange,
                       ),
                       Dimensions.heightSmall,
-                      const SettingCard(
-                        title: 'Aide & Support',
-                        subTitle: 'FAQ  & assistance',
+                      SettingCard(
+                        title: intl.support_title,
+                        subTitle: intl.support_subtitle,
                         icon: Icons.help_outline,
                         color: Colors.cyan,
                       ),
                       Dimensions.heightHuge,
                       SettingCard(
-                        title: 'À propos',
+                        title: intl.about_title,
                         subTitle: 'v${AppPackageInfo.appVersion}',
                         icon: Icons.info_outline,
                         canNavigate: false,
                         color: Colors.blue,
                       ),
                       Dimensions.heightSmall,
-                      const SettingCard(
-                        title: 'Se déconnecter',
-                        subTitle: 'Fermer las session',
+                      SettingCard(
+                        title: intl.logout_title,
+                        subTitle: intl.logout_subtitle,
                         canNavigate: false,
                         icon: Icons.exit_to_app_outlined,
                         color: Colors.red,

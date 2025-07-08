@@ -1,39 +1,46 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/presentation/utils/statics_grid.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:erudaxis/widgets/main/home/dashboard/actions/action_card.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-class ActionsView extends StatelessWidget {
+import '../../../../../interfaces/language/i_screen_with_localization.dart';
+
+class ActionsView extends IScreenWithLocalization {
   const ActionsView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+    BuildContext context,
+    LanguageViewModel languageViewModel,
+  ) {
     return StatisticsGrid(
       aspectRatio: 1.5,
-      children: const [
+      children: [
         ActionCard(
-          title: 'Mes Classes',
-          subTitle: 'Accéder à vos classes et groupes',
+          title: intl.my_classes,
+          subTitle: intl.access_classes_groups,
           icon: Symbols.people_outline_rounded,
           iconColor: Colors.redAccent,
         ),
         ActionCard(
-          title: 'Emploi du temps',
-          subTitle: 'Consulter votre planning',
+          title: intl.schedule,
+          subTitle: intl.view_timetable,
           icon: Icons.calendar_today_outlined,
           iconColor: Colors.blueAccent,
         ),
         ActionCard(
-          title: 'Mes Cours',
-          subTitle: 'Accéder aux contenus pédagogiques',
+          title: intl.my_courses,
+          subTitle: intl.access_educational_content,
           icon: Symbols.book_5_rounded,
           iconColor: Colors.green,
         ),
         ActionCard(
-          title: 'Messagerie',
-          subTitle: 'Chats et discussions',
+          title: intl.messaging,
+          subTitle: intl.chats_discussions,
           icon: Symbols.chat_info_rounded,
           iconColor: Colors.purpleAccent,
           notifCount: 4,

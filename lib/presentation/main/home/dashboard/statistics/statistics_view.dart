@@ -1,40 +1,46 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/presentation/utils/statics_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
+import '../../../../../interfaces/language/i_screen_with_localization.dart';
+import '../../../../../providers/main/profile/language/language_view_model.dart';
 import '../../../../../widgets/main/home/dashboard/statistcs/info_card.dart';
 
-class StatisticsView extends StatelessWidget {
+class StatisticsView extends IScreenWithLocalization {
   const StatisticsView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+    BuildContext context,
+    LanguageViewModel languageViewModel,
+  ) {
     return StatisticsGrid(
-      children: const [
+      children: [
         InfoCard(
-          title: 'Cours cette semaine',
+          title: intl.courses_this_week,
           value: '5',
           icon: Icons.book_outlined,
-          iconBackgroundColor: Color(0xFF3B82F6),
+          iconBackgroundColor: const Color(0xFF3B82F6),
         ),
         InfoCard(
-          title: 'Messages non lus',
+          title: intl.unread_messages,
           value: '4',
           icon: Symbols.chat_info_rounded,
-          iconBackgroundColor: Color(0xFF10B981),
+          iconBackgroundColor: const Color(0xFF10B981),
         ),
         InfoCard(
-          title: 'Devoirs à rendre',
+          title: intl.assignments_due,
           value: '2',
           icon: Icons.timer_outlined,
-          iconBackgroundColor: Color(0xFFF59E0B),
+          iconBackgroundColor: const Color(0xFFF59E0B),
         ),
         InfoCard(
-          title: 'Moyenne générale',
+          title: intl.overall_average,
           value: '3/28',
           icon: Icons.moving,
-          iconBackgroundColor: Color.fromARGB(255, 225, 2, 255),
+          iconBackgroundColor: const Color.fromARGB(255, 225, 2, 255),
         ),
       ],
       screenWidth: Dimensions.screenWidth,

@@ -35,7 +35,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about_title": MessageLookupByLibrary.simpleMessage("حول"),
+    "access_classes_groups": MessageLookupByLibrary.simpleMessage(
+      "الوصول إلى فصولك ومجموعاتك",
+    ),
+    "access_educational_content": MessageLookupByLibrary.simpleMessage(
+      "الوصول إلى المحتوى التعليمي",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("إيروداكسيس"),
+    "appearance_subtitle": MessageLookupByLibrary.simpleMessage(
+      "السمة والتخصيص",
+    ),
+    "appearance_title": MessageLookupByLibrary.simpleMessage("المظهر"),
+    "assignments_due": MessageLookupByLibrary.simpleMessage(
+      "الواجبات المستحقة",
+    ),
+    "bonjour": MessageLookupByLibrary.simpleMessage("مرحبا"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "cancelDownloadButton": MessageLookupByLibrary.simpleMessage(
       "إلغاء التحميل",
@@ -46,10 +61,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "إلغاء التحميل؟",
     ),
+    "chats_discussions": MessageLookupByLibrary.simpleMessage(
+      "الدردشات والمناقشات",
+    ),
     "closeButton": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "متابعة التحميل",
     ),
+    "courses_this_week": MessageLookupByLibrary.simpleMessage(
+      "الدروس هذا الأسبوع",
+    ),
+    "dailyTracking": MessageLookupByLibrary.simpleMessage("المتابعة اليومية"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "downloadAlreadyInProgress": MessageLookupByLibrary.simpleMessage(
       "التحميل قيد التقدم بالفعل",
     ),
@@ -90,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل نسيت كلمة المرور؟",
     ),
     "gotItButton": MessageLookupByLibrary.simpleMessage("فهمت"),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
       "لا يمكن تثبيت التحديث بسبب تعارض مع الإصدار الحالي.\n\nيحدث هذا عادة عندما لا تتطابق توقيعات التطبيق.\n\nيرجى إلغاء تثبيت التطبيق الحالي أولاً:\n1. اذهب إلى الإعدادات > التطبيقات\n2. ابحث عن \"erudaxis\" واختره\n3. اضغط على \"إلغاء التثبيت\"\n4. ثم أعد المحاولة للتحديث",
     ),
@@ -105,14 +129,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPhone": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال رقم هاتف صالح",
     ),
+    "language_title": MessageLookupByLibrary.simpleMessage("اللغة"),
     "loading": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginToContinue": MessageLookupByLibrary.simpleMessage(
       "سجّل الدخول للمتابعة",
     ),
+    "logout_subtitle": MessageLookupByLibrary.simpleMessage("إغلاق الجلسة"),
+    "logout_title": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "messaging": MessageLookupByLibrary.simpleMessage("المراسلة"),
     "minLength": m2,
+    "my_classes": MessageLookupByLibrary.simpleMessage("فصولي"),
+    "my_courses": MessageLookupByLibrary.simpleMessage("دوراتي"),
     "notNowButton": MessageLookupByLibrary.simpleMessage("ليس الآن"),
+    "notification_subtitle": MessageLookupByLibrary.simpleMessage(
+      "إعدادات الإشعارات",
+    ),
+    "notification_title": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "openSettingsButton": MessageLookupByLibrary.simpleMessage("فتح الإعدادات"),
+    "overall_average": MessageLookupByLibrary.simpleMessage("المعدل العام"),
     "passwordField": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": m3,
     "passwordLower": MessageLookupByLibrary.simpleMessage("حرف صغير"),
@@ -123,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordSpecial": MessageLookupByLibrary.simpleMessage("رمز خاص"),
     "passwordUpper": MessageLookupByLibrary.simpleMessage("حرف كبير"),
+    "pendingInvoices": MessageLookupByLibrary.simpleMessage("الفواتير المعلقة"),
     "permissionsRequiredMessage": MessageLookupByLibrary.simpleMessage(
       "تم رفض الأذونات المطلوبة",
     ),
@@ -133,8 +169,34 @@ class MessageLookup extends MessageLookupByLibrary {
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
       "جاري تحضير التحميل...",
     ),
+    "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
+      "الأمان والخصوصية",
+    ),
+    "privacy_title": MessageLookupByLibrary.simpleMessage("الخصوصية"),
+    "profile_subtitle": MessageLookupByLibrary.simpleMessage(
+      "إدارة معلوماتك الشخصية",
+    ),
+    "profile_title": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "quickActions": MessageLookupByLibrary.simpleMessage("الإجراءات السريعة"),
+    "quick_settings_title": MessageLookupByLibrary.simpleMessage(
+      "الإعدادات السريعة",
+    ),
+    "quizzesToDo": MessageLookupByLibrary.simpleMessage("الاختبارات المطلوبة"),
+    "recentLibrary": MessageLookupByLibrary.simpleMessage("المكتبة الحديثة"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "schedule": MessageLookupByLibrary.simpleMessage("جدول المواعيد"),
+    "settings_title": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage("رفيق دراستك"),
+    "support_subtitle": MessageLookupByLibrary.simpleMessage(
+      "الأسئلة الشائعة والمساعدة",
+    ),
+    "support_title": MessageLookupByLibrary.simpleMessage("مساعدة ودعم"),
+    "unread_messages": MessageLookupByLibrary.simpleMessage(
+      "الرسائل غير المقروءة",
+    ),
+    "upcomingEvents": MessageLookupByLibrary.simpleMessage("الأحداث القادمة"),
+    "upcomingSessions": MessageLookupByLibrary.simpleMessage("الجلسات القادمة"),
     "updateAvailableMessage": m4,
     "updateAvailableTitle": MessageLookupByLibrary.simpleMessage("تحديث متاح"),
     "updateCheckFailedMessage": MessageLookupByLibrary.simpleMessage(
@@ -148,6 +210,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateFailedTitle": MessageLookupByLibrary.simpleMessage("فشل التحديث"),
     "updateNowButton": MessageLookupByLibrary.simpleMessage("تحديث الآن"),
+    "view_timetable": MessageLookupByLibrary.simpleMessage(
+      "استشر جدولك الزمني",
+    ),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("سعداء برؤيتك مجددًا!"),
+    "yourRank": MessageLookupByLibrary.simpleMessage("ترتيبك"),
   };
 }
