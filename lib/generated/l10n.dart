@@ -185,6 +185,16 @@ class S {
     );
   }
 
+  /// `Change Password`
+  String get change_password {
+    return Intl.message(
+      'Change Password',
+      name: 'change_password',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Charcoal`
   String get charcoal {
     return Intl.message('Charcoal', name: 'charcoal', desc: '', args: []);
@@ -230,6 +240,36 @@ class S {
     return Intl.message('Close', name: 'closeButton', desc: '', args: []);
   }
 
+  /// `Confirm New Password`
+  String get confirm_new_password {
+    return Intl.message(
+      'Confirm New Password',
+      name: 'confirm_new_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login Activity`
+  String get connection_activity {
+    return Intl.message(
+      'Login Activity',
+      name: 'connection_activity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage connected devices and history.`
+  String get connection_activity_description {
+    return Intl.message(
+      'Manage connected devices and history.',
+      name: 'connection_activity_description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Continue Download`
   String get continueDownloadButton {
     return Intl.message(
@@ -273,6 +313,16 @@ class S {
   /// `Crimson Red`
   String get crimson_red {
     return Intl.message('Crimson Red', name: 'crimson_red', desc: '', args: []);
+  }
+
+  /// `Current Password`
+  String get current_password {
+    return Intl.message(
+      'Current Password',
+      name: 'current_password',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Daily Tracking`
@@ -673,6 +723,16 @@ class S {
   /// `Neon Green`
   String get neon_green {
     return Intl.message('Neon Green', name: 'neon_green', desc: '', args: []);
+  }
+
+  /// `New Password`
+  String get new_password {
+    return Intl.message(
+      'New Password',
+      name: 'new_password',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Notification settings`
@@ -1145,6 +1205,16 @@ class S {
     return Intl.message(
       'Update Now',
       name: 'updateNowButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View login activity`
+  String get view_connection_activity {
+    return Intl.message(
+      'View login activity',
+      name: 'view_connection_activity',
       desc: '',
       args: [],
     );

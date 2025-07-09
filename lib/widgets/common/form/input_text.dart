@@ -9,6 +9,7 @@ class InputText extends StatelessWidget {
   final String? hintText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final String? label;
 
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -35,6 +36,7 @@ class InputText extends StatelessWidget {
     this.controller,
     this.focusNode,
     this.keyboardType,
+    this.label,
     this.obscureText = false,
     this.autofocus = false,
     this.maxLines = 1,
@@ -54,6 +56,12 @@ class InputText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (label != null)
+          Text(label.toString(),
+              style: textTheme.labelSmall?.copyWith(
+                color: Colors.white54,
+              )),
+        Dimensions.heightxSmall,
         ClipRRect(
           borderRadius: Dimensions.smallBorderRadius,
           child: BackdropFilter(
@@ -74,10 +82,15 @@ class InputText extends StatelessWidget {
               autovalidateMode: autovalidateMode,
               style: textTheme.bodyMedium?.copyWith(
                 color: Colors.white,
+                height: 1.2,
               ),
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 hintText: hintText,
+                hintStyle: textTheme.bodyMedium?.copyWith(
+                  color: Colors.white38,
+                  height: 0.8,
+                ),
                 prefixIcon: prefixIcon,
                 suffixIcon: suffixIcon,
                 isDense: true,

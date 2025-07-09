@@ -32,7 +32,7 @@ class AppScaffold extends Scaffold {
   });
 
   @override
-  Color? get backgroundColor => Colors.black45;
+  Color? get backgroundColor => super.backgroundColor ?? Colors.transparent;
 
   @override
   Widget? get body => GradientSurfaceWidget(

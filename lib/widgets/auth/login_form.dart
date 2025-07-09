@@ -68,7 +68,6 @@ class LoginForm extends BaseForm<LoginViewModel> {
   @override
   Widget buildSubmitButton(BuildContext context) {
     return GradientButton(
-      width: double.maxFinite,
       text: intl.login,
       onPressed: () {
         if (validateForm()) {

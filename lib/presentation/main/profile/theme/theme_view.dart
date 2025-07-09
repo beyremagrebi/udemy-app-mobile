@@ -21,7 +21,7 @@ class ThemeView extends IScreenWithLocalization {
     return AppScaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBarGradient(
-        title: const Text('Themes'),
+        title: Text(intl.appearance_subtitle),
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.white,

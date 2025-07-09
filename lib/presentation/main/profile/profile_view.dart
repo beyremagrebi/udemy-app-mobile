@@ -1,4 +1,5 @@
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/presentation/main/profile/security/privacy_view.dart';
 import 'package:erudaxis/presentation/main/profile/theme/theme_view.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
@@ -73,6 +74,7 @@ class ProfileView extends IScreenWithLocalization {
                         title: intl.privacy_title,
                         subTitle: intl.privacy_subtitle,
                         icon: Symbols.shield_rounded,
+                        materialPage: const PrivacyView(),
                         color: Colors.red,
                       ),
                       Dimensions.heightSmall,

@@ -66,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "إلغاء التحميل؟",
     ),
+    "change_password": MessageLookupByLibrary.simpleMessage(
+      "تغيير كلمة المرور",
+    ),
     "charcoal": MessageLookupByLibrary.simpleMessage("فحمي"),
     "chat": MessageLookupByLibrary.simpleMessage("المحادثة"),
     "chats_discussions": MessageLookupByLibrary.simpleMessage(
@@ -74,6 +77,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "chocolate_brown": MessageLookupByLibrary.simpleMessage("بني شوكولاتة"),
     "class_position": MessageLookupByLibrary.simpleMessage("الترتيب في الفصل"),
     "closeButton": MessageLookupByLibrary.simpleMessage("إغلاق"),
+    "confirm_new_password": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور الجديدة",
+    ),
+    "connection_activity": MessageLookupByLibrary.simpleMessage(
+      "نشاط تسجيل الدخول",
+    ),
+    "connection_activity_description": MessageLookupByLibrary.simpleMessage(
+      "إدارة الأجهزة المتصلة وسجل النشاط.",
+    ),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "متابعة التحميل",
     ),
@@ -84,6 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "الدروس هذا الأسبوع",
     ),
     "crimson_red": MessageLookupByLibrary.simpleMessage("أحمر قرمزي"),
+    "current_password": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور الحالية",
+    ),
     "dailyTracking": MessageLookupByLibrary.simpleMessage("المتابعة اليومية"),
     "dark_teal": MessageLookupByLibrary.simpleMessage("أزرق مخضر داكن"),
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
@@ -170,6 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_courses": MessageLookupByLibrary.simpleMessage("دوراتي"),
     "navy_blue": MessageLookupByLibrary.simpleMessage("أزرق بحري"),
     "neon_green": MessageLookupByLibrary.simpleMessage("أخضر نيون"),
+    "new_password": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
     "notNowButton": MessageLookupByLibrary.simpleMessage("ليس الآن"),
     "notification_subtitle": MessageLookupByLibrary.simpleMessage(
       "إعدادات الإشعارات",
@@ -254,6 +270,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateFailedTitle": MessageLookupByLibrary.simpleMessage("فشل التحديث"),
     "updateNowButton": MessageLookupByLibrary.simpleMessage("تحديث الآن"),
+    "view_connection_activity": MessageLookupByLibrary.simpleMessage(
+      "عرض نشاط تسجيل الدخول",
+    ),
     "view_timetable": MessageLookupByLibrary.simpleMessage(
       "استشر جدولك الزمني",
     ),

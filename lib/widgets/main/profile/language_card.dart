@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/styles/app_colors.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -22,12 +23,30 @@ class LanguageCard<T extends Enum> extends StatelessWidget {
         child: Row(
           children: [
             Expanded(child: Text(getDisplayName(language))),
-            if (currentLanguage)
-              const Icon(
-                Icons.check,
-                size: 14,
-                color: Colors.white,
-              )
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              width: 22,
+              height: 22,
+              decoration: BoxDecoration(
+                color: currentLanguage
+                    ? AppColors.primaryColor
+                    : Colors.transparent,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: currentLanguage
+                      ? AppColors.primaryColor
+                      : Colors.grey.shade300,
+                  width: 2,
+                ),
+              ),
+              child: currentLanguage
+                  ? const Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 13,
+                    )
+                  : null,
+            ),
           ],
         ),
       ),

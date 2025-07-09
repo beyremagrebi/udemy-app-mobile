@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "Cancel Download?",
     ),
+    "change_password": MessageLookupByLibrary.simpleMessage("Change Password"),
     "charcoal": MessageLookupByLibrary.simpleMessage("Charcoal"),
     "chat": MessageLookupByLibrary.simpleMessage("Chat"),
     "chats_discussions": MessageLookupByLibrary.simpleMessage(
@@ -71,6 +72,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "chocolate_brown": MessageLookupByLibrary.simpleMessage("Chocolate Brown"),
     "class_position": MessageLookupByLibrary.simpleMessage("Class Rank"),
     "closeButton": MessageLookupByLibrary.simpleMessage("Close"),
+    "confirm_new_password": MessageLookupByLibrary.simpleMessage(
+      "Confirm New Password",
+    ),
+    "connection_activity": MessageLookupByLibrary.simpleMessage(
+      "Login Activity",
+    ),
+    "connection_activity_description": MessageLookupByLibrary.simpleMessage(
+      "Manage connected devices and history.",
+    ),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Continue Download",
     ),
@@ -81,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Courses this week",
     ),
     "crimson_red": MessageLookupByLibrary.simpleMessage("Crimson Red"),
+    "current_password": MessageLookupByLibrary.simpleMessage(
+      "Current Password",
+    ),
     "dailyTracking": MessageLookupByLibrary.simpleMessage("Daily Tracking"),
     "dark_teal": MessageLookupByLibrary.simpleMessage("Dark Teal"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
@@ -161,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_courses": MessageLookupByLibrary.simpleMessage("My Courses"),
     "navy_blue": MessageLookupByLibrary.simpleMessage("Navy Blue"),
     "neon_green": MessageLookupByLibrary.simpleMessage("Neon Green"),
+    "new_password": MessageLookupByLibrary.simpleMessage("New Password"),
     "notNowButton": MessageLookupByLibrary.simpleMessage("Not Now"),
     "notification_subtitle": MessageLookupByLibrary.simpleMessage(
       "Notification settings",
@@ -257,6 +271,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateFailedTitle": MessageLookupByLibrary.simpleMessage("Update Failed"),
     "updateNowButton": MessageLookupByLibrary.simpleMessage("Update Now"),
+    "view_connection_activity": MessageLookupByLibrary.simpleMessage(
+      "View login activity",
+    ),
     "view_timetable": MessageLookupByLibrary.simpleMessage(
       "View your timetable",
     ),
