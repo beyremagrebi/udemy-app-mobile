@@ -84,7 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Activité de connexion",
     ),
     "connection_activity_description": MessageLookupByLibrary.simpleMessage(
-      "Gérer les appareils connectés et l\'historique.",
+      "Gérer les appareils connectés et l\'\'historique.",
     ),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Continuer le téléchargement",
@@ -307,7 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Mettre à jour maintenant",
     ),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
-      "Voir l\'activité de la connexion",
+      "Voir l\'\'activité de la connexion",
     ),
     "view_timetable": MessageLookupByLibrary.simpleMessage(
       "Consulter votre planning",
