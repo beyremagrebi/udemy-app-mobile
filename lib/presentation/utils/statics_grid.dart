@@ -7,11 +7,13 @@ class StatisticsGrid extends StatelessWidget {
   final double mainAxisSpacing;
   final double aspectRatio;
   final double screenWidth;
+  final ScrollPhysics? scrollPhysics;
 
   const StatisticsGrid({
     required this.children,
     required this.screenWidth,
     super.key,
+    this.scrollPhysics = const NeverScrollableScrollPhysics(),
     this.crossAxisCount = 2,
     this.crossAxisSpacing = 8.0,
     this.mainAxisSpacing = 8.0,
@@ -30,7 +32,7 @@ class StatisticsGrid extends StatelessWidget {
       child: GridView.builder(
         padding: EdgeInsets.zero,
         itemCount: children.length,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: scrollPhysics,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
           crossAxisSpacing: crossAxisSpacing,

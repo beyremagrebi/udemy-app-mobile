@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/common/widgets.dart';
+import '../../widgets/common/gradient_app_bar_widget.dart';
 
 class AppBarGradient extends AppBar {
   final PreferredSizeWidget? originalAppBar;
@@ -41,5 +41,5 @@ class AppBarGradient extends AppBar {
   @override
   Color? get backgroundColor => Colors.transparent;
   @override
-  Widget? get flexibleSpace => gradientAppBarWidget(originalAppBar);
+  Widget? get flexibleSpace => GradientAppBarWidget(child: originalAppBar);
 }

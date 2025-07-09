@@ -1,6 +1,8 @@
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/presentation/main/profile/theme/theme_view.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
+import 'package:erudaxis/widgets/common/gradient_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +10,6 @@ import 'package:provider/provider.dart';
 import '../../../core/constants/constant.dart';
 import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/dimensions.dart';
-import '../../../widgets/common/widgets.dart';
 import '../../../widgets/main/profile/setting_card.dart';
 import '../../../widgets/main/profile/user_info_card.dart';
 import '../../utils/app/app_package_info.dart';
@@ -24,7 +25,7 @@ class ProfileView extends IScreenWithLocalization {
       BuildContext context, LanguageViewModel languageViewModel) {
     return Column(
       children: [
-        gradientAppBarWidget(const UserInfoCard()),
+        const GradientAppBarWidget(child: UserInfoCard()),
         Expanded(
           child: ListView(
             controller: profileScrollController,
@@ -80,6 +81,7 @@ class ProfileView extends IScreenWithLocalization {
                         subTitle: intl.appearance_subtitle,
                         icon: Icons.palette_outlined,
                         color: AppColors.secondaryColor,
+                        materialPage: const ThemeView(),
                       ),
                       Dimensions.heightSmall,
                       SettingCard(

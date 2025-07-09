@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/common/widgets.dart';
+import '../../widgets/common/gradient_surface_widget.dart';
 
 class AppScaffold extends Scaffold {
   const AppScaffold({
@@ -32,14 +32,14 @@ class AppScaffold extends Scaffold {
   });
 
   @override
-  Color? get backgroundColor => super.backgroundColor ?? Colors.transparent;
+  Color? get backgroundColor => Colors.black45;
 
   @override
-  Widget? get body => gradientSurfaceWidget(
-        Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.black45,
+  Widget? get body => GradientSurfaceWidget(
+        child: Container(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          color: Colors.black54,
           child: super.body,
         ),
       );

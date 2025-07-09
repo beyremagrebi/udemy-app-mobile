@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/providers/global_providers.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,8 +17,8 @@ class Erudaxis extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: LanguageViewModel.new,
+    return MultiProvider(
+      providers: globalProviders,
       child: Consumer<LanguageViewModel>(
         builder: (context, viewModel, child) => GlobalLoaderOverlay(
           closeOnBackButton: true,

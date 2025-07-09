@@ -80,6 +80,26 @@ class S {
     );
   }
 
+  /// `ACTIVE`
+  String get active_chip {
+    return Intl.message('ACTIVE', name: 'active_chip', desc: '', args: []);
+  }
+
+  /// `Active Theme`
+  String get active_theme_label {
+    return Intl.message(
+      'Active Theme',
+      name: 'active_theme_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amber Gold`
+  String get amber_gold {
+    return Intl.message('Amber Gold', name: 'amber_gold', desc: '', args: []);
+  }
+
   /// `Theme and customization`
   String get appearance_subtitle {
     return Intl.message(
@@ -105,6 +125,11 @@ class S {
     return Intl.message('Erudaxis', name: 'appName', desc: '', args: []);
   }
 
+  /// `Aqua Marine`
+  String get aqua_marine {
+    return Intl.message('Aqua Marine', name: 'aqua_marine', desc: '', args: []);
+  }
+
   /// `Assignments due`
   String get assignments_due {
     return Intl.message(
@@ -118,6 +143,11 @@ class S {
   /// `Hello`
   String get bonjour {
     return Intl.message('Hello', name: 'bonjour', desc: '', args: []);
+  }
+
+  /// `Burgundy`
+  String get burgundy {
+    return Intl.message('Burgundy', name: 'burgundy', desc: '', args: []);
   }
 
   /// `Cancel`
@@ -155,6 +185,11 @@ class S {
     );
   }
 
+  /// `Charcoal`
+  String get charcoal {
+    return Intl.message('Charcoal', name: 'charcoal', desc: '', args: []);
+  }
+
   /// `Chat`
   String get chat {
     return Intl.message('Chat', name: 'chat', desc: '', args: []);
@@ -165,6 +200,16 @@ class S {
     return Intl.message(
       'Chats and discussions',
       name: 'chats_discussions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chocolate Brown`
+  String get chocolate_brown {
+    return Intl.message(
+      'Chocolate Brown',
+      name: 'chocolate_brown',
       desc: '',
       args: [],
     );
@@ -195,6 +240,21 @@ class S {
     );
   }
 
+  /// `Copper Bronze`
+  String get copper_bronze {
+    return Intl.message(
+      'Copper Bronze',
+      name: 'copper_bronze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coral Pink`
+  String get coral_pink {
+    return Intl.message('Coral Pink', name: 'coral_pink', desc: '', args: []);
+  }
+
   /// `Cours`
   String get courses {
     return Intl.message('Cours', name: 'courses', desc: '', args: []);
@@ -210,6 +270,11 @@ class S {
     );
   }
 
+  /// `Crimson Red`
+  String get crimson_red {
+    return Intl.message('Crimson Red', name: 'crimson_red', desc: '', args: []);
+  }
+
   /// `Daily Tracking`
   String get dailyTracking {
     return Intl.message(
@@ -220,9 +285,24 @@ class S {
     );
   }
 
+  /// `Dark Teal`
+  String get dark_teal {
+    return Intl.message('Dark Teal', name: 'dark_teal', desc: '', args: []);
+  }
+
   /// `Dashboard`
   String get dashboard {
     return Intl.message('Dashboard', name: 'dashboard', desc: '', args: []);
+  }
+
+  /// `Deep Maroon`
+  String get deep_maroon {
+    return Intl.message('Deep Maroon', name: 'deep_maroon', desc: '', args: []);
+  }
+
+  /// `Default`
+  String get default_theme {
+    return Intl.message('Default', name: 'default_theme', desc: '', args: []);
   }
 
   /// `Download already in progress`
@@ -325,6 +405,16 @@ class S {
     );
   }
 
+  /// `Electric Blue`
+  String get electric_blue {
+    return Intl.message(
+      'Electric Blue',
+      name: 'electric_blue',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get emailField {
     return Intl.message('Email', name: 'emailField', desc: '', args: []);
@@ -335,6 +425,16 @@ class S {
     return Intl.message(
       'Email is required',
       name: 'emailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emerald Green`
+  String get emerald_green {
+    return Intl.message(
+      'Emerald Green',
+      name: 'emerald_green',
       desc: '',
       args: [],
     );
@@ -370,6 +470,16 @@ class S {
     );
   }
 
+  /// `Forest Green`
+  String get forest_green {
+    return Intl.message(
+      'Forest Green',
+      name: 'forest_green',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Forgot password?`
   String get forgotPassword {
     return Intl.message(
@@ -385,6 +495,16 @@ class S {
     return Intl.message('General', name: 'general', desc: '', args: []);
   }
 
+  /// `Golden Brown`
+  String get golden_brown {
+    return Intl.message(
+      'Golden Brown',
+      name: 'golden_brown',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Got it`
   String get gotItButton {
     return Intl.message('Got it', name: 'gotItButton', desc: '', args: []);
@@ -393,6 +513,11 @@ class S {
   /// `Home`
   String get home {
     return Intl.message('Home', name: 'home', desc: '', args: []);
+  }
+
+  /// `Hot Pink`
+  String get hot_pink {
+    return Intl.message('Hot Pink', name: 'hot_pink', desc: '', args: []);
   }
 
   /// `The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don''t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update`
@@ -450,6 +575,16 @@ class S {
     return Intl.message('Language', name: 'language_title', desc: '', args: []);
   }
 
+  /// `Lavender`
+  String get lavender {
+    return Intl.message('Lavender', name: 'lavender', desc: '', args: []);
+  }
+
+  /// `Lime Green`
+  String get lime_green {
+    return Intl.message('Lime Green', name: 'lime_green', desc: '', args: []);
+  }
+
   /// `Loading...`
   String get loading {
     return Intl.message('Loading...', name: 'loading', desc: '', args: []);
@@ -485,9 +620,24 @@ class S {
     return Intl.message('Log out', name: 'logout_title', desc: '', args: []);
   }
 
+  /// `Magenta`
+  String get magenta {
+    return Intl.message('Magenta', name: 'magenta', desc: '', args: []);
+  }
+
   /// `Messaging`
   String get messaging {
     return Intl.message('Messaging', name: 'messaging', desc: '', args: []);
+  }
+
+  /// `Midnight Blue`
+  String get midnight_blue {
+    return Intl.message(
+      'Midnight Blue',
+      name: 'midnight_blue',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `{fieldName} must be at least {min} characters`
@@ -500,6 +650,11 @@ class S {
     );
   }
 
+  /// `Mint Green`
+  String get mint_green {
+    return Intl.message('Mint Green', name: 'mint_green', desc: '', args: []);
+  }
+
   /// `My Classes`
   String get my_classes {
     return Intl.message('My Classes', name: 'my_classes', desc: '', args: []);
@@ -508,6 +663,16 @@ class S {
   /// `My Courses`
   String get my_courses {
     return Intl.message('My Courses', name: 'my_courses', desc: '', args: []);
+  }
+
+  /// `Navy Blue`
+  String get navy_blue {
+    return Intl.message('Navy Blue', name: 'navy_blue', desc: '', args: []);
+  }
+
+  /// `Neon Green`
+  String get neon_green {
+    return Intl.message('Neon Green', name: 'neon_green', desc: '', args: []);
   }
 
   /// `Notification settings`
@@ -533,6 +698,16 @@ class S {
   /// `Not Now`
   String get notNowButton {
     return Intl.message('Not Now', name: 'notNowButton', desc: '', args: []);
+  }
+
+  /// `Ocean Blue`
+  String get ocean_blue {
+    return Intl.message('Ocean Blue', name: 'ocean_blue', desc: '', args: []);
+  }
+
+  /// `Olive Green`
+  String get olive_green {
+    return Intl.message('Olive Green', name: 'olive_green', desc: '', args: []);
   }
 
   /// `Open Settings`
@@ -670,11 +845,26 @@ class S {
     return Intl.message('Planning', name: 'planning', desc: '', args: []);
   }
 
+  /// `Plum Purple`
+  String get plum_purple {
+    return Intl.message('Plum Purple', name: 'plum_purple', desc: '', args: []);
+  }
+
   /// `Preparing download...`
   String get preparingDownload {
     return Intl.message(
       'Preparing download...',
       name: 'preparingDownload',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Primary & Secondary`
+  String get primary_secondary {
+    return Intl.message(
+      'Primary & Secondary',
+      name: 'primary_secondary',
       desc: '',
       args: [],
     );
@@ -760,6 +950,26 @@ class S {
     return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
   }
 
+  /// `Rose Pink`
+  String get rose_pink {
+    return Intl.message('Rose Pink', name: 'rose_pink', desc: '', args: []);
+  }
+
+  /// `Royal Blue`
+  String get royal_blue {
+    return Intl.message('Royal Blue', name: 'royal_blue', desc: '', args: []);
+  }
+
+  /// `Royal Purple`
+  String get royal_purple {
+    return Intl.message(
+      'Royal Purple',
+      name: 'royal_purple',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schedule`
   String get schedule {
     return Intl.message('Schedule', name: 'schedule', desc: '', args: []);
@@ -770,9 +980,24 @@ class S {
     return Intl.message('Settings', name: 'settings_title', desc: '', args: []);
   }
 
+  /// `Sky Blue`
+  String get sky_blue {
+    return Intl.message('Sky Blue', name: 'sky_blue', desc: '', args: []);
+  }
+
+  /// `Slate Gray`
+  String get slate_gray {
+    return Intl.message('Slate Gray', name: 'slate_gray', desc: '', args: []);
+  }
+
   /// `Statistics`
   String get statistics {
     return Intl.message('Statistics', name: 'statistics', desc: '', args: []);
+  }
+
+  /// `Steel Blue`
+  String get steel_blue {
+    return Intl.message('Steel Blue', name: 'steel_blue', desc: '', args: []);
   }
 
   /// `Your study companion`
@@ -780,6 +1005,16 @@ class S {
     return Intl.message(
       'Your study companion',
       name: 'studyCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunset Orange`
+  String get sunset_orange {
+    return Intl.message(
+      'Sunset Orange',
+      name: 'sunset_orange',
       desc: '',
       args: [],
     );
@@ -803,6 +1038,16 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Tangerine`
+  String get tangerine {
+    return Intl.message('Tangerine', name: 'tangerine', desc: '', args: []);
+  }
+
+  /// `Turquoise`
+  String get turquoise {
+    return Intl.message('Turquoise', name: 'turquoise', desc: '', args: []);
   }
 
   /// `Unread messages`
@@ -910,6 +1155,16 @@ class S {
     return Intl.message(
       'View your timetable',
       name: 'view_timetable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Violet Purple`
+  String get violet_purple {
+    return Intl.message(
+      'Violet Purple',
+      name: 'violet_purple',
       desc: '',
       args: [],
     );

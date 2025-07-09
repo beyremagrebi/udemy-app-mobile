@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class CustomAlertDialog {
@@ -122,6 +123,7 @@ class CustomAlertDialog {
                         text: primaryButtonText,
                         color: primaryButtonColor,
                         textColor: textWhite,
+                        borderColor: Colors.white.withOpacity(0.3),
                         onPressed: onPrimaryPressed ??
                             () => Navigator.of(context).pop(),
                       ),
@@ -136,6 +138,7 @@ class CustomAlertDialog {
                     text: primaryButtonText,
                     color: primaryButtonColor,
                     textColor: textWhite,
+                    borderColor: Colors.white.withOpacity(0.3),
                     onPressed:
                         onPrimaryPressed ?? () => Navigator.of(context).pop(),
                   ),
@@ -261,24 +264,33 @@ class CustomAlertDialog {
     Color? borderColor,
   }) {
     return Container(
-      height: 44,
+      constraints: const BoxConstraints(
+        minHeight: 44,
+      ),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: Dimensions.smallBorderRadius,
         border: borderColor != null ? Border.all(color: borderColor) : null,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onPressed,
-          borderRadius: BorderRadius.circular(12),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
+          borderRadius: Dimensions.smallBorderRadius,
+          child: Padding(
+            padding: Dimensions.paddingAllSmall,
+            child: Center(
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  height: 1.6,
+                ),
               ),
             ),
           ),

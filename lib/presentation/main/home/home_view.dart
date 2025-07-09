@@ -8,12 +8,12 @@ import 'package:erudaxis/presentation/main/home/dashboard/next_session/next_sess
 import 'package:erudaxis/presentation/main/home/dashboard/rang/votre_rang_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/statistics/statistics_view.dart';
 import 'package:erudaxis/presentation/utils/title_widget.dart';
+import 'package:erudaxis/widgets/common/gradient_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../core/styles/dimensions.dart';
-import '../../../widgets/common/widgets.dart';
 import 'dashboard/quizz/quiz_a_faire_view.dart';
 import 'main_header_view.dart';
 
@@ -24,8 +24,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        gradientAppBarWidget(
-          const MainHeaderView(),
+        const GradientAppBarWidget(
+          child: MainHeaderView(),
         ),
         Expanded(
           child: ListView(

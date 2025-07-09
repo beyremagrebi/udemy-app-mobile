@@ -42,13 +42,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "access_educational_content": MessageLookupByLibrary.simpleMessage(
       "Accéder aux contenus pédagogiques",
     ),
+    "active_chip": MessageLookupByLibrary.simpleMessage("ACTIF"),
+    "active_theme_label": MessageLookupByLibrary.simpleMessage("Thème actif"),
+    "amber_gold": MessageLookupByLibrary.simpleMessage("Or ambré"),
     "appName": MessageLookupByLibrary.simpleMessage("Erudaxis"),
     "appearance_subtitle": MessageLookupByLibrary.simpleMessage(
       "Theme et personalisé",
     ),
     "appearance_title": MessageLookupByLibrary.simpleMessage("Apparence"),
+    "aqua_marine": MessageLookupByLibrary.simpleMessage("Aigue-marine"),
     "assignments_due": MessageLookupByLibrary.simpleMessage("Devoirs à rendre"),
     "bonjour": MessageLookupByLibrary.simpleMessage("Bonjour"),
+    "burgundy": MessageLookupByLibrary.simpleMessage("Bordeaux"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("Annuler"),
     "cancelDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Annuler le téléchargement",
@@ -59,10 +64,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelDownloadTitle": MessageLookupByLibrary.simpleMessage(
       "Annuler le téléchargement ?",
     ),
+    "charcoal": MessageLookupByLibrary.simpleMessage("Charbon"),
     "chat": MessageLookupByLibrary.simpleMessage("Discussion"),
     "chats_discussions": MessageLookupByLibrary.simpleMessage(
       "Chats et discussions",
     ),
+    "chocolate_brown": MessageLookupByLibrary.simpleMessage("Brun chocolat"),
     "class_position": MessageLookupByLibrary.simpleMessage(
       "Position en classe",
     ),
@@ -70,12 +77,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Continuer le téléchargement",
     ),
+    "copper_bronze": MessageLookupByLibrary.simpleMessage("Bronze cuivré"),
+    "coral_pink": MessageLookupByLibrary.simpleMessage("Rose corail"),
     "courses": MessageLookupByLibrary.simpleMessage("Cours"),
     "courses_this_week": MessageLookupByLibrary.simpleMessage(
       "Cours cette semaine",
     ),
+    "crimson_red": MessageLookupByLibrary.simpleMessage("Rouge cramoisi"),
     "dailyTracking": MessageLookupByLibrary.simpleMessage("Suivi Journalier"),
+    "dark_teal": MessageLookupByLibrary.simpleMessage("Sarcelle foncée"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Tableau de Bord"),
+    "deep_maroon": MessageLookupByLibrary.simpleMessage("Bordeaux foncé"),
+    "default_theme": MessageLookupByLibrary.simpleMessage("Par défaut"),
     "downloadAlreadyInProgress": MessageLookupByLibrary.simpleMessage(
       "Téléchargement déjà en cours",
     ),
@@ -104,22 +117,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "downloadingUpdateTitle": MessageLookupByLibrary.simpleMessage(
       "Téléchargement de la mise à jour",
     ),
+    "electric_blue": MessageLookupByLibrary.simpleMessage("Bleu électrique"),
     "emailField": MessageLookupByLibrary.simpleMessage("E-mail"),
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "L\'\'adresse e-mail est requise",
     ),
+    "emerald_green": MessageLookupByLibrary.simpleMessage("Vert émeraude"),
     "enterEmail": MessageLookupByLibrary.simpleMessage("Entrez votre email"),
     "enterPassword": MessageLookupByLibrary.simpleMessage(
       "Entrez votre mot de passe",
     ),
     "error": MessageLookupByLibrary.simpleMessage("Erreur"),
     "fieldRequired": m1,
+    "forest_green": MessageLookupByLibrary.simpleMessage("Vert forêt"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
       "Mot de passe oublié ?",
     ),
     "general": MessageLookupByLibrary.simpleMessage("Général"),
+    "golden_brown": MessageLookupByLibrary.simpleMessage("Brun doré"),
     "gotItButton": MessageLookupByLibrary.simpleMessage("Compris"),
     "home": MessageLookupByLibrary.simpleMessage("Accueil"),
+    "hot_pink": MessageLookupByLibrary.simpleMessage("Rose vif"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
       "La mise à jour ne peut pas être installée car elle entre en conflit avec la version actuelle.\n\nCela se produit généralement lorsque les signatures d\'\'application ne correspondent pas.\n\nVeuillez d\'abord désinstaller l\'application actuelle :\n1. Allez dans Paramètres > Applications\n2. Trouvez et sélectionnez \"erudaxis\"\n3. Appuyez sur \"Désinstaller\"\n4. Puis réessayez la mise à jour",
     ),
@@ -136,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Veuillez entrer un numéro de téléphone valide",
     ),
     "language_title": MessageLookupByLibrary.simpleMessage("Language"),
+    "lavender": MessageLookupByLibrary.simpleMessage("Lavande"),
+    "lime_green": MessageLookupByLibrary.simpleMessage("Vert citron"),
     "loading": MessageLookupByLibrary.simpleMessage("Chargement..."),
     "login": MessageLookupByLibrary.simpleMessage("Se connecter"),
     "loginToContinue": MessageLookupByLibrary.simpleMessage(
@@ -145,15 +165,22 @@ class MessageLookup extends MessageLookupByLibrary {
       "Fermer las session",
     ),
     "logout_title": MessageLookupByLibrary.simpleMessage("Se déconnecter"),
+    "magenta": MessageLookupByLibrary.simpleMessage("Magenta"),
     "messaging": MessageLookupByLibrary.simpleMessage("Messagerie"),
+    "midnight_blue": MessageLookupByLibrary.simpleMessage("Bleu minuit"),
     "minLength": m2,
+    "mint_green": MessageLookupByLibrary.simpleMessage("Vert menthe"),
     "my_classes": MessageLookupByLibrary.simpleMessage("Mes Classes"),
     "my_courses": MessageLookupByLibrary.simpleMessage("Mes Cours"),
+    "navy_blue": MessageLookupByLibrary.simpleMessage("Bleu marine"),
+    "neon_green": MessageLookupByLibrary.simpleMessage("Vert néon"),
     "notNowButton": MessageLookupByLibrary.simpleMessage("Pas maintenant"),
     "notification_subtitle": MessageLookupByLibrary.simpleMessage(
       "Paramètre des notifcations",
     ),
     "notification_title": MessageLookupByLibrary.simpleMessage("Notification"),
+    "ocean_blue": MessageLookupByLibrary.simpleMessage("Bleu océan"),
+    "olive_green": MessageLookupByLibrary.simpleMessage("Vert olive"),
     "openSettingsButton": MessageLookupByLibrary.simpleMessage(
       "Ouvrir les paramètres",
     ),
@@ -189,8 +216,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Le numéro de téléphone est requis",
     ),
     "planning": MessageLookupByLibrary.simpleMessage("Planning"),
+    "plum_purple": MessageLookupByLibrary.simpleMessage("Violet prune"),
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
       "Préparation du téléchargement...",
+    ),
+    "primary_secondary": MessageLookupByLibrary.simpleMessage(
+      "Principal & Secondaire",
     ),
     "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
       "sécurité et confidentialité",
@@ -210,16 +241,27 @@ class MessageLookup extends MessageLookupByLibrary {
       "Bibliothèque Récente",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Se souvenir de moi"),
+    "rose_pink": MessageLookupByLibrary.simpleMessage("Rose clair"),
+    "royal_blue": MessageLookupByLibrary.simpleMessage("Bleu royal"),
+    "royal_purple": MessageLookupByLibrary.simpleMessage("Violet royal"),
     "schedule": MessageLookupByLibrary.simpleMessage("Emploi du temps"),
     "settings_title": MessageLookupByLibrary.simpleMessage("Paramètre"),
+    "sky_blue": MessageLookupByLibrary.simpleMessage("Bleu ciel"),
+    "slate_gray": MessageLookupByLibrary.simpleMessage("Gris ardoise"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistiques"),
+    "steel_blue": MessageLookupByLibrary.simpleMessage("Bleu acier"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
       "Votre compagnon d\'\'études",
+    ),
+    "sunset_orange": MessageLookupByLibrary.simpleMessage(
+      "Orange coucher de soleil",
     ),
     "support_subtitle": MessageLookupByLibrary.simpleMessage(
       "FAQ  & assistance",
     ),
     "support_title": MessageLookupByLibrary.simpleMessage("Aide & Support"),
+    "tangerine": MessageLookupByLibrary.simpleMessage("Mandarine"),
+    "turquoise": MessageLookupByLibrary.simpleMessage("Turquoise"),
     "unread_messages": MessageLookupByLibrary.simpleMessage("Messages non lus"),
     "upcomingEvents": MessageLookupByLibrary.simpleMessage(
       "Événements Prochains",
@@ -249,6 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "view_timetable": MessageLookupByLibrary.simpleMessage(
       "Consulter votre planning",
     ),
+    "violet_purple": MessageLookupByLibrary.simpleMessage("Violet clair"),
     "welcomeBack": MessageLookupByLibrary.simpleMessage(
       "Content de vous revoir !",
     ),
