@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:erudaxis/core/api/form_data_helper.dart';
 import 'package:erudaxis/core/api/from_json.dart';
 import 'package:erudaxis/models/base_model.dart';
 
@@ -23,6 +25,8 @@ class Facility extends BaseModel {
     );
   }
 
+  @override
+  FormData toFormData() => toMap().toFormData();
   @override
   Map<String, Object> toMap() {
     throw UnimplementedError();

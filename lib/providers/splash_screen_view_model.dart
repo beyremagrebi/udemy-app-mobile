@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:erudaxis/presentation/utils/session/app_initialize.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'global/session_manager_view_model.dart';
 
 class SplashScreenViewModel extends BaseViewModel {
   // Animation Controllers
@@ -57,7 +60,12 @@ class SplashScreenViewModel extends BaseViewModel {
 
   void onAnimationComplete(BuildContext context) {
     if (_shouldNavigate) {
-      AppStarter.start(context);
+      final sessionManager =
+          Provider.of<SessionManager>(context, listen: false);
+      AppStarter.start(
+        context,
+        sessionManager: sessionManager,
+      );
     }
   }
 

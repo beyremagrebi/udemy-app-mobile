@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:erudaxis/core/api/from_json.dart';
 import 'package:erudaxis/models/base_model.dart';
 
@@ -20,6 +21,11 @@ class GithubRelease extends BaseModel {
         version: FromJson.string(map['tag_name'])?.replaceFirst('v', ''),
         donwnloadUrl: FromJson.string(map['assets'][0]['url']));
   }
+  @override
+  FormData toFormData() {
+    throw UnimplementedError();
+  }
+
   @override
   Map<String, Object> toMap() {
     throw UnimplementedError();

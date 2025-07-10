@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:erudaxis/models/base_model.dart';
 
 import '../../core/api/from_json.dart';
@@ -20,6 +21,11 @@ class LoginInfo extends BaseModel {
         id: FromJson.string(map['_id']),
         accessToken: FromJson.string(map['accessToken']),
         refreshToken: FromJson.string(map['refreshToken']));
+  }
+
+  @override
+  FormData toFormData() {
+    throw UnimplementedError();
   }
 
   @override

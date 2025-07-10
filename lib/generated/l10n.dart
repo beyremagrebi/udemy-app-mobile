@@ -140,6 +140,11 @@ class S {
     );
   }
 
+  /// `Birth Date`
+  String get birth_date {
+    return Intl.message('Birth Date', name: 'birth_date', desc: '', args: []);
+  }
+
   /// `Hello`
   String get bonjour {
     return Intl.message('Hello', name: 'bonjour', desc: '', args: []);
@@ -233,6 +238,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Class`
+  String get classe {
+    return Intl.message('Class', name: 'classe', desc: '', args: []);
   }
 
   /// `Close`
@@ -465,6 +475,16 @@ class S {
     );
   }
 
+  /// `Email Address`
+  String get email_address {
+    return Intl.message(
+      'Email Address',
+      name: 'email_address',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get emailField {
     return Intl.message('Email', name: 'emailField', desc: '', args: []);
@@ -518,6 +538,11 @@ class S {
       desc: '',
       args: [fieldName],
     );
+  }
+
+  /// `First Name`
+  String get first_name {
+    return Intl.message('First Name', name: 'first_name', desc: '', args: []);
   }
 
   /// `Forest Green`
@@ -600,6 +625,11 @@ class S {
     );
   }
 
+  /// `Institution`
+  String get institution {
+    return Intl.message('Institution', name: 'institution', desc: '', args: []);
+  }
+
   /// `Please enter a valid email address`
   String get invalidEmail {
     return Intl.message(
@@ -623,6 +653,11 @@ class S {
   /// `Language`
   String get language_title {
     return Intl.message('Language', name: 'language_title', desc: '', args: []);
+  }
+
+  /// `Last Name`
+  String get last_name {
+    return Intl.message('Last Name', name: 'last_name', desc: '', args: []);
   }
 
   /// `Lavender`
@@ -760,6 +795,11 @@ class S {
     return Intl.message('Not Now', name: 'notNowButton', desc: '', args: []);
   }
 
+  /// `required`
+  String get obligatoire {
+    return Intl.message('required', name: 'obligatoire', desc: '', args: []);
+  }
+
   /// `Ocean Blue`
   String get ocean_blue {
     return Intl.message('Ocean Blue', name: 'ocean_blue', desc: '', args: []);
@@ -890,6 +930,26 @@ class S {
     );
   }
 
+  /// `Personal Information`
+  String get personal_info {
+    return Intl.message(
+      'Personal Information',
+      name: 'personal_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phone_number {
+    return Intl.message(
+      'Phone Number',
+      name: 'phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone number is required`
   String get phoneRequired {
     return Intl.message(
@@ -1010,6 +1070,11 @@ class S {
     return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
   }
 
+  /// `Required`
+  String get required {
+    return Intl.message('Required', name: 'required', desc: '', args: []);
+  }
+
   /// `Rose Pink`
   String get rose_pink {
     return Intl.message('Rose Pink', name: 'rose_pink', desc: '', args: []);
@@ -1030,9 +1095,24 @@ class S {
     );
   }
 
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
   /// `Schedule`
   String get schedule {
     return Intl.message('Schedule', name: 'schedule', desc: '', args: []);
+  }
+
+  /// `School Information`
+  String get school_info {
+    return Intl.message(
+      'School Information',
+      name: 'school_info',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Settings`
@@ -1135,6 +1215,16 @@ class S {
     return Intl.message(
       'Upcoming Sessions',
       name: 'upcomingSessions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Profile`
+  String get update_profile {
+    return Intl.message(
+      'Update Profile',
+      name: 'update_profile',
       desc: '',
       args: [],
     );

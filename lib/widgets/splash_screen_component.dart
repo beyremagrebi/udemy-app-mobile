@@ -3,19 +3,22 @@ import 'dart:ui';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../presentation/utils/partical_painter.dart';
+import '../providers/main/profile/theme/theme_view_model.dart';
 import '../providers/splash_screen_view_model.dart';
 
 class SplashComponents {
   // Couleurs
-  static const Color primaryPurple = Color(0xFF8B5CF6);
-  static const Color secondaryPurple = Color(0xFF7C3AED);
-  static const Color darkPurple = Color(0xFF5B21B6);
+  // static const Color primaryPurple = Color(0xFF8B5CF6);
+  // static const Color secondaryPurple = Color(0xFF7C3AED);
+  // static const Color darkPurple = Color(0xFF5B21B6);
   static const Color textWhite = Colors.white;
 
   static Widget buildAnimatedLogo(BuildContext context,
       {required SplashScreenViewModel viewModel}) {
+    final themeViewModel = context.watch<ThemeViewModel>();
     return Transform.scale(
       scale: viewModel.logoScale?.value ?? 0.0,
       child: Opacity(
@@ -39,7 +42,7 @@ class SplashComponents {
             ),
             boxShadow: [
               BoxShadow(
-                color: primaryPurple.withOpacity(0.3),
+                color: themeViewModel.currentTheme.primary.withOpacity(0.3),
                 blurRadius: 20,
               ),
             ],
@@ -61,6 +64,7 @@ class SplashComponents {
 
   static Widget buildAnimatedText(BuildContext context,
       {required SplashScreenViewModel viewModel}) {
+    final themeViewModel = context.watch<ThemeViewModel>();
     return SlideTransition(
       position:
           viewModel.textSlide ?? const AlwaysStoppedAnimation(Offset.zero),
@@ -77,7 +81,7 @@ class SplashComponents {
                 letterSpacing: 2,
                 shadows: [
                   Shadow(
-                    color: darkPurple.withOpacity(0.5),
+                    color: themeViewModel.currentTheme.primary.withOpacity(0.5),
                     offset: const Offset(0, 2),
                     blurRadius: 4,
                   ),
@@ -102,6 +106,7 @@ class SplashComponents {
 
   static Widget buildBackground(BuildContext context,
       {required SplashScreenViewModel viewModel}) {
+    final themeViewModel = context.watch<ThemeViewModel>();
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -109,13 +114,13 @@ class SplashComponents {
             const Color(0xFF1E1B4B).withOpacity(
               viewModel.backgroundOpacity?.value ?? 0.8,
             ),
-            primaryPurple.withOpacity(
+            themeViewModel.currentTheme.primary.withOpacity(
               viewModel.backgroundOpacity?.value ?? 0.8,
             ),
-            secondaryPurple.withOpacity(
+            themeViewModel.currentTheme.secondary.withOpacity(
               viewModel.backgroundOpacity?.value ?? 0.8,
             ),
-            darkPurple.withOpacity(
+            themeViewModel.currentTheme.primary.withOpacity(
               viewModel.backgroundOpacity?.value ?? 0.8,
             ),
           ],

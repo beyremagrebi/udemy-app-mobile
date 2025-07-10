@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
+import 'package:erudaxis/core/api/form_data_helper.dart';
 import 'package:erudaxis/core/api/from_json.dart';
+import 'package:erudaxis/core/config/media/exstension.dart';
 import 'package:erudaxis/core/enum/gender.dart';
 import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/models/global/facility.dart';
@@ -53,7 +56,18 @@ class User extends BaseModel {
   bool get isMen => gender == Gender.men;
 
   @override
+  FormData toFormData() => toMap().toFormData();
+
+  @override
   Map<String, Object> toMap() {
-    throw UnimplementedError();
+    final Map<String, Object> map = {};
+    map.add('firstName', firstName);
+    map.add('lastName', lastName);
+    map.add(
+      'gender',
+      gender?.toBackendValue(),
+    );
+
+    return map;
   }
 }

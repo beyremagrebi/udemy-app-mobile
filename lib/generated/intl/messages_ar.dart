@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "assignments_due": MessageLookupByLibrary.simpleMessage(
       "الواجبات المستحقة",
     ),
+    "birth_date": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
     "bonjour": MessageLookupByLibrary.simpleMessage("مرحبا"),
     "burgundy": MessageLookupByLibrary.simpleMessage("نبيذي"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "chocolate_brown": MessageLookupByLibrary.simpleMessage("بني شوكولاتة"),
     "class_position": MessageLookupByLibrary.simpleMessage("الترتيب في الفصل"),
+    "classe": MessageLookupByLibrary.simpleMessage("الصف"),
     "closeButton": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور الجديدة",
@@ -135,6 +137,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "البريد الإلكتروني مطلوب",
     ),
+    "email_address": MessageLookupByLibrary.simpleMessage(
+      "عنوان البريد الإلكتروني",
+    ),
     "emerald_green": MessageLookupByLibrary.simpleMessage("أخضر زمردي"),
     "enterEmail": MessageLookupByLibrary.simpleMessage(
       "أدخل البريد الإلكتروني",
@@ -142,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterPassword": MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
     "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "fieldRequired": m1,
+    "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "forest_green": MessageLookupByLibrary.simpleMessage("أخضر غامق"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
       "هل نسيت كلمة المرور؟",
@@ -160,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "installationFailedTitle": MessageLookupByLibrary.simpleMessage(
       "فشل التثبيت",
     ),
+    "institution": MessageLookupByLibrary.simpleMessage("المؤسسة"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال بريد إلكتروني صالح",
     ),
@@ -167,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجى إدخال رقم هاتف صالح",
     ),
     "language_title": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "last_name": MessageLookupByLibrary.simpleMessage("اللقب"),
     "lavender": MessageLookupByLibrary.simpleMessage("لافندر"),
     "lime_green": MessageLookupByLibrary.simpleMessage("أخضر ليموني"),
     "loading": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
@@ -191,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إعدادات الإشعارات",
     ),
     "notification_title": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "obligatoire": MessageLookupByLibrary.simpleMessage("إجباري"),
     "ocean_blue": MessageLookupByLibrary.simpleMessage("أزرق المحيط"),
     "olive_green": MessageLookupByLibrary.simpleMessage("أخضر زيتوني"),
     "openSettingsButton": MessageLookupByLibrary.simpleMessage("فتح الإعدادات"),
@@ -212,7 +221,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "permissionsRequiredTitle": MessageLookupByLibrary.simpleMessage(
       "الأذونات مطلوبة",
     ),
+    "personal_info": MessageLookupByLibrary.simpleMessage("معلومات شخصية"),
     "phoneRequired": MessageLookupByLibrary.simpleMessage("رقم الهاتف مطلوب"),
+    "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "planning": MessageLookupByLibrary.simpleMessage("الجدول"),
     "plum_purple": MessageLookupByLibrary.simpleMessage("بنفسجي برقوقي"),
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
@@ -235,10 +246,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "quizzesToDo": MessageLookupByLibrary.simpleMessage("الاختبارات المطلوبة"),
     "recentLibrary": MessageLookupByLibrary.simpleMessage("المكتبة الحديثة"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "required": MessageLookupByLibrary.simpleMessage("إجباري"),
     "rose_pink": MessageLookupByLibrary.simpleMessage("وردي فاتح"),
     "royal_blue": MessageLookupByLibrary.simpleMessage("أزرق ملكي"),
     "royal_purple": MessageLookupByLibrary.simpleMessage("أرجواني ملكي"),
+    "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "schedule": MessageLookupByLibrary.simpleMessage("جدول المواعيد"),
+    "school_info": MessageLookupByLibrary.simpleMessage("معلومات دراسية"),
     "settings_title": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("أزرق سماوي"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("رمادي صخري"),
@@ -270,6 +284,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateFailedTitle": MessageLookupByLibrary.simpleMessage("فشل التحديث"),
     "updateNowButton": MessageLookupByLibrary.simpleMessage("تحديث الآن"),
+    "update_profile": MessageLookupByLibrary.simpleMessage(
+      "تحديث الملف الشخصي",
+    ),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
       "عرض نشاط تسجيل الدخول",
     ),

@@ -13,4 +13,6 @@ BuildContext get mainContext => mainnavigatorKey.currentContext!;
 NavigatorState get mainState => mainnavigatorKey.currentState!;
 
 String get sharedAcessTokenKey => 'ACCESS_TOKEN_KEY';
+String get sharedLanguageKey => 'LANGUAGE_APP_KEY';
 String get sharedRefreshTokenKey => 'REFRESH_TOKEN_KEY';
+String get sharedThemeKey => 'THEME_APP_KEY';

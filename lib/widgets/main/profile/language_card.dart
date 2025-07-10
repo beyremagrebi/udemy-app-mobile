@@ -1,6 +1,8 @@
-import 'package:erudaxis/core/styles/app_colors.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/main/profile/theme/theme_view_model.dart';
 
 class LanguageCard<T extends Enum> extends StatelessWidget {
   final T language;
@@ -16,6 +18,7 @@ class LanguageCard<T extends Enum> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<ThemeViewModel>();
     return Card(
       elevation: 0,
       child: Container(
@@ -29,12 +32,12 @@ class LanguageCard<T extends Enum> extends StatelessWidget {
               height: 22,
               decoration: BoxDecoration(
                 color: currentLanguage
-                    ? AppColors.primaryColor
+                    ? viewModel.currentTheme.secondary
                     : Colors.transparent,
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: currentLanguage
-                      ? AppColors.primaryColor
+                      ? Colors.transparent
                       : Colors.grey.shade300,
                   width: 2,
                 ),
@@ -43,7 +46,7 @@ class LanguageCard<T extends Enum> extends StatelessWidget {
                   ? const Icon(
                       Icons.check,
                       color: Colors.white,
-                      size: 13,
+                      size: 16,
                     )
                   : null,
             ),

@@ -25,7 +25,7 @@ abstract class BaseViewModel extends ChangeNotifier {
   }) async {
     _setApiStatus(ApiStatus.loading);
     if (displayLoading) {
-      context.loaderOverlay.show(
+      mainContext.loaderOverlay.show(
         widgetBuilder: (progress) => Visibility(
           visible: displayLoading,
           child: const SpinLoading(),
@@ -36,7 +36,7 @@ abstract class BaseViewModel extends ChangeNotifier {
     if (jsonResponse.isSuccess) {
       _setApiStatus(ApiStatus.success);
       if (context.mounted) {
-        context.loaderOverlay.hide();
+        mainContext.loaderOverlay.hide();
       }
       if (jsonResponse.data != null) {
         onSuccess?.call(jsonResponse.data as Model);
@@ -46,9 +46,9 @@ abstract class BaseViewModel extends ChangeNotifier {
       onError?.call(jsonResponse.errorMessage.toString());
       if (displayError) {
         if (context.mounted) {
-          context.loaderOverlay.hide();
+          mainContext.loaderOverlay.hide();
           CustomAlertDialog.showErrorDialog(
-            context: context,
+            context: mainContext,
             title: intl.error,
             message: jsonResponse.errorMessage.toString(),
           );

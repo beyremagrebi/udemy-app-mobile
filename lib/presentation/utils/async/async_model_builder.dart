@@ -22,7 +22,8 @@ class AsyncModelBuilder<Model extends BaseModel,
     return AsyncBuilder(
       apiStatus: viewModel.apiStatus,
       shimmer: shimmer,
-      onSuccess: () => builder(model!),
+      onSuccess: () =>
+          model != null ? builder(model!) : const SizedBox.shrink(),
     );
   }
 }

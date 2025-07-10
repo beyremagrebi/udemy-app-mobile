@@ -2,9 +2,10 @@ import 'package:dio/dio.dart';
 
 import '../../interfaces/i_api_service.dart';
 import '../../interfaces/i_download_service.dart';
-import '../../presentation/utils/session/token_manager.dart';
 import 'api_response.dart';
 import 'download_service.dart';
+import 'multipart_data_builder.dart';
+import 'request_builder.dart';
 import 'token_interceptor.dart';
 
 class ApiService implements IApiService {
@@ -30,6 +31,41 @@ class ApiService implements IApiService {
 
   // Expose download service
   IDownloadService get downloadService => _downloadService;
+
+  @override
+  Future<ApiResponse<T>> multipartRequest<T>({
+    required String url,
+    required T Function(dynamic json) fromJson,
+    required FormData formData,
+    DioMethod method = DioMethod.post,
+    Map<String, dynamic>? queryParameters,
+    String? dataKey,
+    bool authRequired = true,
+    String? githubToken,
+    Map<String, dynamic>? headers,
+    ProgressCallback? onSendProgress,
+  }) async {
+    try {
+      final options = await RequestBuilder.buildOptions(
+        headers,
+        authRequired: authRequired,
+        githubToken: githubToken,
+        requestType: RequestType.multipart,
+      );
+
+      final response = await _executeRequest(
+        method: method,
+        url: url,
+        data: formData,
+        queryParameters: queryParameters,
+        options: options,
+      );
+
+      return _handleResponse<T>(response, fromJson, dataKey);
+    } on DioException catch (e) {
+      return _handleDioException<T>(e);
+    }
+  }
 
   @override
   Future<ApiResponse<T>> request<T>({
@@ -64,6 +100,46 @@ class ApiService implements IApiService {
         statusCode: e.response?.statusCode,
         headers: e.response?.headers,
         errorMessage: e.message ?? 'Unknown error',
+      );
+    }
+  }
+
+  @override
+  Future<ApiResponse<T>> uploadFile<T>({
+    required String url,
+    required T Function(dynamic json) fromJson,
+    required String filePath,
+    required String fieldName,
+    Map<String, dynamic>? additionalFields,
+    Map<String, dynamic>? queryParameters,
+    String? dataKey,
+    bool authRequired = true,
+    String? githubToken,
+    Map<String, dynamic>? headers,
+    ProgressCallback? onSendProgress,
+  }) async {
+    try {
+      final formData = await MultipartDataBuilder.buildFormData(
+        filePath: filePath,
+        fieldName: fieldName,
+        additionalFields: additionalFields,
+      );
+
+      return await multipartRequest<T>(
+        url: url,
+        fromJson: fromJson,
+        formData: formData,
+        queryParameters: queryParameters,
+        dataKey: dataKey,
+        authRequired: authRequired,
+        githubToken: githubToken,
+        headers: headers,
+        onSendProgress: onSendProgress,
+      );
+    } on Exception catch (e) {
+      return ApiResponse<T>.error(
+        requestOptions: RequestOptions(path: url),
+        errorMessage: e.toString(),
       );
     }
   }
@@ -113,6 +189,15 @@ class ApiService implements IApiService {
     }
   }
 
+  ApiResponse<T> _handleDioException<T>(DioException e) {
+    return ApiResponse<T>.error(
+      requestOptions: e.requestOptions,
+      statusCode: e.response?.statusCode,
+      headers: e.response?.headers,
+      errorMessage: e.message ?? 'Unknown error',
+    );
+  }
+
   ApiResponse<T> _handleResponse<T>(
     Response<dynamic> response,
     T Function(dynamic json) fromJson,
@@ -148,28 +233,5 @@ class ApiService implements IApiService {
     return response.statusCode != null &&
         response.statusCode! >= 200 &&
         response.statusCode! < 300;
-  }
-}
-
-class RequestBuilder {
-  static Future<Options> buildOptions(
-    Map<String, dynamic>? headers, {
-    required bool authRequired,
-    String? githubToken,
-  }) async {
-    final options = Options(
-      headers: headers,
-      contentType: 'application/json',
-    );
-    if (authRequired == true) {
-      if (TokenManager.accessToken == null) {
-        await TokenManager.shared.load();
-      }
-      options.headers?['Authorization'] = 'Bearer ${TokenManager.accessToken}';
-    }
-    if (githubToken != null) {
-      options.headers?['Authorization'] = 'Bearer $githubToken';
-    }
-    return options;
   }
 }

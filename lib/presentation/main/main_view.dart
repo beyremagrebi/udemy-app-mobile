@@ -1,5 +1,4 @@
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
-import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,21 +11,13 @@ import '../utils/app_bar_gradient.dart';
 import '../utils/app_scaffold.dart';
 
 class MainView extends IScreenWithLocalization {
-  final String userId;
-  const MainView({required this.userId, super.key});
+  const MainView({super.key});
 
   @override
   Widget buildLocalized(
       BuildContext context, LanguageViewModel languageViewModel) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: BottomNavigationViewModel.new,
-        ),
-        ChangeNotifierProvider(
-          create: (context) => SessionManager(context, userId: userId),
-        ),
-      ],
+    return ChangeNotifierProvider(
+      create: BottomNavigationViewModel.new,
       child: Consumer<BottomNavigationViewModel>(
         builder: (context, viewModel, child) {
           return AppScaffold(

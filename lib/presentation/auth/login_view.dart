@@ -4,7 +4,6 @@ import 'package:erudaxis/providers/auth/login_view_model.dart';
 import 'package:erudaxis/providers/auth/validator_view_model.dart';
 import 'package:erudaxis/widgets/auth/login_form.dart';
 import 'package:erudaxis/widgets/auth/welcome_login.dart';
-import 'package:erudaxis/widgets/splash_screen_component.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,8 +66,7 @@ class LoginView extends StatelessWidget {
                                   letterSpacing: 2,
                                   shadows: [
                                     Shadow(
-                                      color: SplashComponents.darkPurple
-                                          .withOpacity(0.5),
+                                      color: Colors.black45.withOpacity(0.5),
                                       offset: const Offset(0, 2),
                                       blurRadius: 4,
                                     ),

@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appearance_title": MessageLookupByLibrary.simpleMessage("Apparence"),
     "aqua_marine": MessageLookupByLibrary.simpleMessage("Aigue-marine"),
     "assignments_due": MessageLookupByLibrary.simpleMessage("Devoirs à rendre"),
+    "birth_date": MessageLookupByLibrary.simpleMessage("Date de naissance"),
     "bonjour": MessageLookupByLibrary.simpleMessage("Bonjour"),
     "burgundy": MessageLookupByLibrary.simpleMessage("Bordeaux"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("Annuler"),
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "class_position": MessageLookupByLibrary.simpleMessage(
       "Position en classe",
     ),
+    "classe": MessageLookupByLibrary.simpleMessage("Classe"),
     "closeButton": MessageLookupByLibrary.simpleMessage("Fermer"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "Confirmer le nouveau mot de passe",
@@ -137,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailRequired": MessageLookupByLibrary.simpleMessage(
       "L\'\'adresse e-mail est requise",
     ),
+    "email_address": MessageLookupByLibrary.simpleMessage("Adresse email"),
     "emerald_green": MessageLookupByLibrary.simpleMessage("Vert émeraude"),
     "enterEmail": MessageLookupByLibrary.simpleMessage("Entrez votre email"),
     "enterPassword": MessageLookupByLibrary.simpleMessage(
@@ -144,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("Erreur"),
     "fieldRequired": m1,
+    "first_name": MessageLookupByLibrary.simpleMessage("Prénom"),
     "forest_green": MessageLookupByLibrary.simpleMessage("Vert forêt"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
       "Mot de passe oublié ?",
@@ -162,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "installationFailedTitle": MessageLookupByLibrary.simpleMessage(
       "Échec de l\'\'installation",
     ),
+    "institution": MessageLookupByLibrary.simpleMessage("Établissement"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "Veuillez entrer une adresse e-mail valide",
     ),
@@ -169,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Veuillez entrer un numéro de téléphone valide",
     ),
     "language_title": MessageLookupByLibrary.simpleMessage("Language"),
+    "last_name": MessageLookupByLibrary.simpleMessage("Nom"),
     "lavender": MessageLookupByLibrary.simpleMessage("Lavande"),
     "lime_green": MessageLookupByLibrary.simpleMessage("Vert citron"),
     "loading": MessageLookupByLibrary.simpleMessage("Chargement..."),
@@ -197,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Paramètre des notifcations",
     ),
     "notification_title": MessageLookupByLibrary.simpleMessage("Notification"),
+    "obligatoire": MessageLookupByLibrary.simpleMessage("obligatoire"),
     "ocean_blue": MessageLookupByLibrary.simpleMessage("Bleu océan"),
     "olive_green": MessageLookupByLibrary.simpleMessage("Vert olive"),
     "openSettingsButton": MessageLookupByLibrary.simpleMessage(
@@ -230,9 +237,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "permissionsRequiredTitle": MessageLookupByLibrary.simpleMessage(
       "Autorisations requises",
     ),
+    "personal_info": MessageLookupByLibrary.simpleMessage(
+      "Informations Personnelles",
+    ),
     "phoneRequired": MessageLookupByLibrary.simpleMessage(
       "Le numéro de téléphone est requis",
     ),
+    "phone_number": MessageLookupByLibrary.simpleMessage("Numéro de Téléphone"),
     "planning": MessageLookupByLibrary.simpleMessage("Planning"),
     "plum_purple": MessageLookupByLibrary.simpleMessage("Violet prune"),
     "preparingDownload": MessageLookupByLibrary.simpleMessage(
@@ -259,10 +270,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Bibliothèque Récente",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Se souvenir de moi"),
+    "required": MessageLookupByLibrary.simpleMessage("Obligatoire"),
     "rose_pink": MessageLookupByLibrary.simpleMessage("Rose clair"),
     "royal_blue": MessageLookupByLibrary.simpleMessage("Bleu royal"),
     "royal_purple": MessageLookupByLibrary.simpleMessage("Violet royal"),
+    "save": MessageLookupByLibrary.simpleMessage("Sauvegarder"),
     "schedule": MessageLookupByLibrary.simpleMessage("Emploi du temps"),
+    "school_info": MessageLookupByLibrary.simpleMessage(
+      "Informations Scolaires",
+    ),
     "settings_title": MessageLookupByLibrary.simpleMessage("Paramètre"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("Bleu ciel"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("Gris ardoise"),
@@ -305,6 +321,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "updateNowButton": MessageLookupByLibrary.simpleMessage(
       "Mettre à jour maintenant",
+    ),
+    "update_profile": MessageLookupByLibrary.simpleMessage(
+      "Mettre à jour le profil",
     ),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
       "Voir l\'\'activité de la connexion",
