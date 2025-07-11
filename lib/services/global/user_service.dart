@@ -29,12 +29,15 @@ class UserService extends BaseService<User> implements IUserService {
   }
 
   @override
-  Future<ApiResponse<User>> updateUser(User user) {
-    return ApiService.instance.multipartRequest(
+  Future<ApiResponse<User>> updateUser(User user, String filePath) {
+    return ApiService.instance.uploadFile(
       url: '$baseURl/update-profile/${user.id}',
       fromJson: fromMapFunction,
       method: DioMethod.patch,
+      dataKey: 'user',
       formData: user.toFormData(),
+      filePath: filePath,
+      fieldName: 'files',
     );
   }
 }

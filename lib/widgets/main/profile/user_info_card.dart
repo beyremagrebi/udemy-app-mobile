@@ -1,3 +1,4 @@
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -5,6 +6,7 @@ import '../../../core/config/media/api_image_widget.dart';
 import '../../../core/constants/constant.dart';
 import '../../../core/constants/env.dart';
 import '../../../core/styles/dimensions.dart';
+import '../../../presentation/main/profile/update/update_profile_view.dart';
 import '../../../providers/global/session_manager_view_model.dart';
 
 class UserInfoCard extends StatelessWidget {
@@ -22,7 +24,9 @@ class UserInfoCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            navigateTo(context, const UpdateProfileView());
+          },
           child: Container(
             padding: Dimensions.paddingAllSmall,
             child: Consumer<SessionManager>(

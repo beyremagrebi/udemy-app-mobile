@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../presentation/utils/partical_painter.dart';
@@ -74,7 +75,7 @@ class SplashComponents {
           children: [
             Text(
               intl.appName,
-              style: TextStyle(
+              style: GoogleFonts.leagueSpartan(
                 color: textWhite,
                 fontSize: 36,
                 fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/config/media/api_image_widget.dart';
+import 'package:erudaxis/core/config/media/file_image_widget.dart';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
@@ -50,31 +51,66 @@ class UpdateProfileView extends IScreenWithLocalization {
           children: [
             Column(
               children: [
-                Stack(
-                  alignment: Alignment.bottomRight,
-                  children: [
-                    ApiImageWidget(
-                      height: 60,
-                      width: 60,
-                      imageFileName: viewModel.user?.image,
-                      isMen: viewModel.user?.isMen,
-                      border: Border.all(color: Colors.white, width: 1.2),
-                      imageNetworUrl: baseURl,
-                      isProfilePicture: true,
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onLongPress: () {
+                      viewModel.onLongPress();
+                    },
+                    onTap: () {
+                      viewModel.removeIcon == true
+                          ? viewModel.removeImage()
+                          : viewModel.selectImage();
+                    },
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        if (viewModel.imageFilePath == null)
+                          Opacity(
+                            opacity: viewModel.removeIcon == true ? 0.6 : 1,
+                            child: ApiImageWidget(
+                              height: 60,
+                              width: 60,
+                              imageFileName: viewModel.user?.image,
+                              isMen: viewModel.user?.isMen,
+                              border:
+                                  Border.all(color: Colors.white, width: 1.2),
+                              imageNetworUrl: baseURl,
+                              isProfilePicture: true,
+                            ),
+                          ),
+                        if (viewModel.imageFilePath != null)
+                          Opacity(
+                            opacity: viewModel.removeIcon == true ? 0.6 : 1,
+                            child: FileImageWidget(
+                              height: 60,
+                              width: 60,
+                              imageFileName: viewModel.imageFilePath,
+                              fit: BoxFit.cover,
+                              border:
+                                  Border.all(color: Colors.white, width: 1.2),
+                              isProfilePicture: true,
+                            ),
+                          ),
+                        Container(
+                          padding: Dimensions.paddingAllxSmall,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            viewModel.removeIcon == true
+                                ? Icons.delete
+                                : Icons.edit_square,
+                            size: 14,
+                            color: viewModel.removeIcon
+                                ? Colors.red.shade300
+                                : Colors.black,
+                          ),
+                        )
+                      ],
                     ),
-                    Container(
-                      padding: Dimensions.paddingAllxSmall,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.edit_square,
-                        size: 14,
-                        color: Colors.black54,
-                      ),
-                    )
-                  ],
+                  ),
                 ),
                 Text(intl.required)
               ],
@@ -99,12 +135,16 @@ class UpdateProfileView extends IScreenWithLocalization {
                       aspectRatio: 2.21,
                       children: [
                         InputText(
+                          controller: viewModel.firstNameController,
                           hintText: intl.first_name,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
                           required: true,
                           label: intl.first_name,
                         ),
                         InputText(
+                          controller: viewModel.lastNameController,
                           hintText: intl.last_name,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
                           required: true,
                           label: intl.last_name,
                         ),
@@ -113,18 +153,21 @@ class UpdateProfileView extends IScreenWithLocalization {
                     ),
                     Dimensions.heightSmall,
                     InputText(
+                      controller: viewModel.emailController,
                       hintText: intl.email_address,
                       required: true,
                       label: intl.email_address,
                     ),
                     Dimensions.heightSmall,
                     InputText(
+                      controller: viewModel.phoneNumberController,
                       hintText: intl.phone_number,
                       required: true,
                       label: intl.phone_number,
                     ),
                     Dimensions.heightSmall,
                     InputText(
+                      controller: viewModel.birthdayController,
                       hintText: 'dd/mm/yyyy',
                       required: true,
                       label: intl.birth_date,
@@ -154,6 +197,7 @@ class UpdateProfileView extends IScreenWithLocalization {
                     ),
                     Dimensions.heightSmall,
                     InputText(
+                      controller: viewModel.facilityController,
                       hintText: intl.institution,
                       label: intl.institution,
                       enabled: false,

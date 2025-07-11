@@ -5,6 +5,7 @@ import 'package:erudaxis/providers/auth/validator_view_model.dart';
 import 'package:erudaxis/widgets/auth/login_form.dart';
 import 'package:erudaxis/widgets/auth/welcome_login.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/styles/dimensions.dart';
@@ -59,7 +60,7 @@ class LoginView extends StatelessWidget {
                               Dimensions.widthSmall,
                               Text(
                                 intl.appName,
-                                style: textTheme.displayLarge?.copyWith(
+                                style: GoogleFonts.leagueSpartan(
                                   color: Colors.white,
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,

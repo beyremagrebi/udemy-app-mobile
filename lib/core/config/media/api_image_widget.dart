@@ -18,7 +18,7 @@ class ApiImageWidget extends BaseApiImage {
     super.borderRadius,
     this.isMen,
     super.border,
-    super.fit,
+    super.fit = BoxFit.cover,
     super.boxShadow,
     super.color,
     super.width,

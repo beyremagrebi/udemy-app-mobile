@@ -11,7 +11,6 @@ class RequestBuilder {
   }) async {
     final Map<String, dynamic> finalHeaders = headers ?? {};
 
-    // Set content type based on request type
     String contentType;
     switch (requestType) {
       case RequestType.json:

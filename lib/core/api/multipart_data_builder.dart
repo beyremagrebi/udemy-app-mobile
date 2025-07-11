@@ -6,15 +6,14 @@ class MultipartDataBuilder {
   static Future<FormData> buildFormData({
     required String filePath,
     required String fieldName,
+    required FormData formData,
     Map<String, dynamic>? additionalFields,
     String? fileName,
   }) async {
     final file = File(filePath);
     if (!await file.exists()) {
-      throw Exception('File does not exist: $filePath');
+      return formData;
     }
-
-    final formData = FormData();
 
     // Add file
     formData.files.add(

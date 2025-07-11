@@ -22,6 +22,7 @@ class Facility extends BaseModel {
     return Facility(
       id: FromJson.string(map['_id']),
       type: FromJson.string(map['type']),
+      name: FromJson.string(map['name']),
     );
   }
 

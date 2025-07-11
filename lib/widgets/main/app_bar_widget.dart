@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/styles/dimensions.dart';
 
@@ -8,7 +9,10 @@ Widget? appBarWidget(BuildContext context) {
     children: [
       const Icon(Icons.school_outlined),
       Dimensions.widthSmall,
-      Text(intl.appName),
+      Text(
+        intl.appName,
+        style: GoogleFonts.leagueSpartan(),
+      ),
     ],
   );
 }

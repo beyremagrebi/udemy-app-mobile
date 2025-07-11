@@ -32,7 +32,6 @@ class MainHeaderView extends IScreenWithLocalization {
                     border: Border.all(color: Colors.white, width: 1.2),
                     isProfilePicture: true,
                     isMen: viewModel.user?.isMen,
-                    fit: BoxFit.cover,
                   ),
                   Dimensions.widthMedium,
                   Expanded(

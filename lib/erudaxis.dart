@@ -1,4 +1,5 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/core/themes/app_text_theme.dart';
 import 'package:erudaxis/providers/global_providers.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class Erudaxis extends StatelessWidget {
           child: MaterialApp(
             navigatorKey: mainnavigatorKey,
             debugShowCheckedModeBanner: false,
+            darkTheme: AppTheme.themeData,
+            themeMode: ThemeMode.dark,
             locale: viewModel.locale,
             localizationsDelegates: const [
               S.delegate,
@@ -40,7 +43,7 @@ class Erudaxis extends StatelessWidget {
             theme: AppTheme.themeData,
             onGenerateTitle: (context) {
               intl = S.of(context);
-              textTheme = Theme.of(context).textTheme;
+              textTheme = AppTextTheme.textTheme;
               Dimensions.init(context);
               return intl.appName;
             },

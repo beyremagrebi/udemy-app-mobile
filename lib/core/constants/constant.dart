@@ -9,7 +9,9 @@ final GlobalKey<NavigatorState> mainnavigatorKey = GlobalKey();
 final ScrollController profileScrollController = ScrollController();
 
 late TextTheme textTheme;
+String get defualtIconAvatar => 'default-avatar-icon.jpg';
 BuildContext get mainContext => mainnavigatorKey.currentContext!;
+
 NavigatorState get mainState => mainnavigatorKey.currentState!;
 
 String get sharedAcessTokenKey => 'ACCESS_TOKEN_KEY';

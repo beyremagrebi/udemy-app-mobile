@@ -35,6 +35,8 @@ abstract class IApiService {
     required T Function(dynamic json) fromJson,
     required String filePath,
     required String fieldName,
+    required FormData formData,
+    DioMethod method = DioMethod.post,
     Map<String, dynamic>? additionalFields,
     Map<String, dynamic>? queryParameters,
     String? dataKey,

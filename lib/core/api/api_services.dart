@@ -59,6 +59,7 @@ class ApiService implements IApiService {
         data: formData,
         queryParameters: queryParameters,
         options: options,
+        onSendProgress: onSendProgress,
       );
 
       return _handleResponse<T>(response, fromJson, dataKey);
@@ -110,6 +111,8 @@ class ApiService implements IApiService {
     required T Function(dynamic json) fromJson,
     required String filePath,
     required String fieldName,
+    required FormData formData,
+    DioMethod method = DioMethod.post,
     Map<String, dynamic>? additionalFields,
     Map<String, dynamic>? queryParameters,
     String? dataKey,
@@ -119,7 +122,8 @@ class ApiService implements IApiService {
     ProgressCallback? onSendProgress,
   }) async {
     try {
-      final formData = await MultipartDataBuilder.buildFormData(
+      final formDataBuilder = await MultipartDataBuilder.buildFormData(
+        formData: formData,
         filePath: filePath,
         fieldName: fieldName,
         additionalFields: additionalFields,
@@ -128,9 +132,10 @@ class ApiService implements IApiService {
       return await multipartRequest<T>(
         url: url,
         fromJson: fromJson,
-        formData: formData,
+        formData: formDataBuilder,
         queryParameters: queryParameters,
         dataKey: dataKey,
+        method: method,
         authRequired: authRequired,
         githubToken: githubToken,
         headers: headers,
@@ -149,36 +154,33 @@ class ApiService implements IApiService {
     required String url,
     dynamic data,
     Map<String, dynamic>? queryParameters,
+    ProgressCallback? onSendProgress,
     Options? options,
   }) async {
     switch (method) {
       case DioMethod.get:
-        return await _dio.get(
-          url,
-          queryParameters: queryParameters,
-          options: options,
-        );
+        return await _dio.get(url,
+            queryParameters: queryParameters,
+            options: options,
+            onReceiveProgress: onSendProgress);
       case DioMethod.post:
-        return await _dio.post(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-        );
+        return await _dio.post(url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+            onReceiveProgress: onSendProgress);
       case DioMethod.put:
-        return await _dio.put(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-        );
+        return await _dio.put(url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+            onReceiveProgress: onSendProgress);
       case DioMethod.patch:
-        return await _dio.patch(
-          url,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-        );
+        return await _dio.patch(url,
+            data: data,
+            queryParameters: queryParameters,
+            options: options,
+            onReceiveProgress: onSendProgress);
       case DioMethod.delete:
         return await _dio.delete(
           url,
