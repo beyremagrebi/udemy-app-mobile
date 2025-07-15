@@ -28,6 +28,7 @@ class MainHeaderView extends IScreenWithLocalization {
                     width: 38,
                     height: 38,
                     imageFileName: viewModel.user?.image,
+                    hasImageView: true,
                     imageNetworUrl:
                         '$baseURl/enterprise-${viewModel.user?.enterprise}/images',
                     border: Border.all(color: Colors.white, width: 1.2),

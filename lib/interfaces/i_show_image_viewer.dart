@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
 abstract interface class IShowImageViewer {
-  void showImageViewer(BuildContext context);
+  void imageViewer(BuildContext context,
+      {required ImageProvider imageProvider});
 }

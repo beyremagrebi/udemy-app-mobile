@@ -45,7 +45,12 @@ abstract class BaseApiImage extends StatelessWidget
   ) {
     return InkWell(
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-      onTap: hasImageView ? () => showImageViewer(context) : null,
+      onTap: hasImageView
+          ? () => imageViewer(
+                context,
+                imageProvider: imageProvider,
+              )
+          : null,
       child: Container(
         clipBehavior: Clip.hardEdge,
         padding: padding,
@@ -75,8 +80,9 @@ abstract class BaseApiImage extends StatelessWidget
     );
   }
 
-  Widget placeHolderImage(BuildContext context, {bool isLoading = false});
-
   @override
-  void showImageViewer(BuildContext context) {}
+  void imageViewer(BuildContext context,
+      {required ImageProvider<Object> imageProvider}) {}
+
+  Widget placeHolderImage(BuildContext context, {bool isLoading = false});
 }

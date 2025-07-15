@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:erudaxis/core/config/media/image_viewer.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -17,6 +19,7 @@ class ApiImageWidget extends BaseApiImage {
     super.isProfilePicture,
     super.borderRadius,
     this.isMen,
+    super.hasImageView,
     super.border,
     super.fit = BoxFit.cover,
     super.boxShadow,
@@ -31,12 +34,23 @@ class ApiImageWidget extends BaseApiImage {
   }
 
   @override
+  void imageViewer(BuildContext context,
+      {required ImageProvider<Object> imageProvider}) {
+    navigateTo(
+        context,
+        ImageViewer(
+          imageProvider: imageProvider,
+        ));
+  }
+
+  @override
   Widget placeHolderImage(BuildContext context, {bool isLoading = false}) {
     final String finalPlaceholderPath =
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
 
     return InkWell(
-      onTap: () => showImageViewer(context),
+      onTap: () =>
+          imageViewer(context, imageProvider: AssetImage(finalPlaceholderPath)),
       child: isLoading
           ? Container(
               width: width,
