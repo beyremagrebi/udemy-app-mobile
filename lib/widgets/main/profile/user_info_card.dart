@@ -42,7 +42,8 @@ class UserInfoCard extends StatelessWidget {
                           imageFileName: viewModel.user?.image,
                           isMen: viewModel.user?.isMen,
                           border: Border.all(color: Colors.white, width: 1.2),
-                          imageNetworUrl: baseURl,
+                          imageNetworUrl:
+                              '$baseURl/enterprise-${viewModel.user?.enterprise}/images',
                           isProfilePicture: true,
                         ),
                         Container(

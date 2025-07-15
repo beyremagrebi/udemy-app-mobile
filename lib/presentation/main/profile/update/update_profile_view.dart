@@ -11,10 +11,7 @@ import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:erudaxis/widgets/common/form/input_text.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../widgets/common/form/input_phone_number.dart';
 
 class UpdateProfileView extends IScreenWithLocalization {
   const UpdateProfileView({super.key});
@@ -78,7 +75,8 @@ class UpdateProfileView extends IScreenWithLocalization {
                               isMen: viewModel.user?.isMen,
                               border:
                                   Border.all(color: Colors.white, width: 1.2),
-                              imageNetworUrl: baseURl,
+                              imageNetworUrl:
+                                  '$baseURl/enterprise-${viewModel.user?.enterprise}/images',
                               isProfilePicture: true,
                             ),
                           ),
@@ -158,18 +156,18 @@ class UpdateProfileView extends IScreenWithLocalization {
                     InputText(
                       controller: viewModel.emailController,
                       hintText: intl.email_address,
+                      keyboardType: TextInputType.emailAddress,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       required: true,
                       label: intl.email_address,
                     ),
                     Dimensions.heightMedium,
-                    InputPhoneNumber(
+                    InputText(
                       controller: viewModel.phoneNumberController,
                       label: intl.phone_number,
+                      hintText: '+cc xx xxx xxx',
+                      keyboardType: TextInputType.phone,
                       required: true,
-                      initialValue: PhoneNumber(
-                        isoCode: 'TN',
-                      ),
-                      onInputChanged: (value) {},
                     ),
                     Dimensions.heightMedium,
                     InputText(

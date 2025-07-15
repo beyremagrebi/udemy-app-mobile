@@ -20,6 +20,8 @@ class User extends BaseModel {
   Gender? gender;
   Role? role;
 
+  String? enterprise;
+
   List<Facility>? ownedFacilities;
   User({
     required super.id,
@@ -33,6 +35,7 @@ class User extends BaseModel {
     this.birthday,
     this.facility,
     this.gender,
+    this.enterprise,
     this.ownedFacilities,
   });
   User.fromId(String? id) : super(id: id);
@@ -67,6 +70,7 @@ class User extends BaseModel {
         map['ownedFacilities'],
         Facility.fromMap,
       ),
+      enterprise: FromJson.string(map['enterprise']),
     );
   }
 

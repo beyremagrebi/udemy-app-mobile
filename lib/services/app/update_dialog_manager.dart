@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/models/github/github_release.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/constants/constant.dart';
 import '../../interfaces/app/i_update_download_manager.dart';
 import '../../presentation/utils/alert_dialog.dart';
 import '../../presentation/utils/app/app_package_info.dart';
+import '../../providers/main/profile/theme/theme_view_model.dart';
 
 class UpdateDialogManager implements IUpdateDialogManager {
   @override
@@ -38,6 +40,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
       context: mainContext,
       barrierDismissible: false,
       builder: (context) {
+        final themeViewModel = context.watch<ThemeViewModel>();
         return Dialog(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -48,8 +51,8 @@ class UpdateDialogManager implements IUpdateDialogManager {
               gradient: LinearGradient(
                 colors: [
                   const Color(0xFF1E1B4B),
-                  CustomAlertDialog.primaryPurple.withOpacity(0.9),
-                  CustomAlertDialog.secondaryPurple.withOpacity(0.9),
+                  themeViewModel.currentTheme.primary.withOpacity(0.9),
+                  themeViewModel.currentTheme.secondary.withOpacity(0.9),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -72,16 +75,17 @@ class UpdateDialogManager implements IUpdateDialogManager {
                   width: 64,
                   height: 64,
                   decoration: BoxDecoration(
-                    color: CustomAlertDialog.primaryPurple.withOpacity(0.2),
+                    color: themeViewModel.currentTheme.primary.withOpacity(0.2),
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: CustomAlertDialog.primaryPurple.withOpacity(0.3),
+                      color:
+                          themeViewModel.currentTheme.primary.withOpacity(0.3),
                       width: 2,
                     ),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.download,
-                    color: CustomAlertDialog.primaryPurple,
+                    color: themeViewModel.currentTheme.primary,
                     size: 32,
                   ),
                 ),
@@ -128,8 +132,8 @@ class UpdateDialogManager implements IUpdateDialogManager {
                             value: progress,
                             minHeight: 8,
                             backgroundColor: Colors.white.withOpacity(0.2),
-                            valueColor: const AlwaysStoppedAnimation<Color>(
-                              CustomAlertDialog.primaryPurple,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              themeViewModel.currentTheme.primary,
                             ),
                           ),
                         ),
@@ -249,7 +253,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                         height: 44,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
-                            color: CustomAlertDialog.primaryPurple,
+                            color: themeViewModel.currentTheme.primary,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Material(
@@ -302,6 +306,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
       context: mainContext,
       barrierDismissible: false,
       builder: (context) {
+        final themeViewModel = context.watch<ThemeViewModel>();
         return CustomAlertDialog.buildCustomDialog(
           context: context,
           icon: Icons.warning,
@@ -309,7 +314,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
           title: intl.installationConflictTitle,
           message: intl.installationConflictMessage,
           primaryButtonText: intl.openSettingsButton,
-          primaryButtonColor: CustomAlertDialog.primaryPurple,
+          primaryButtonColor: themeViewModel.currentTheme.primary,
           secondaryButtonText: intl.cancelButton,
           onPrimaryPressed: () {
             Navigator.of(context).pop();
@@ -337,17 +342,18 @@ class UpdateDialogManager implements IUpdateDialogManager {
       context: mainContext,
       barrierDismissible: false,
       builder: (context) {
+        final themeViewModel = context.watch<ThemeViewModel>();
         return CustomAlertDialog.buildCustomDialog(
           context: context,
           icon: Icons.system_update,
-          iconColor: CustomAlertDialog.primaryPurple,
+          iconColor: themeViewModel.currentTheme.primary,
           title: intl.updateAvailableTitle,
           message: intl.updateAvailableMessage(
             release.version.toString(),
             AppPackageInfo.appVersion,
           ),
           primaryButtonText: intl.updateNowButton,
-          primaryButtonColor: CustomAlertDialog.primaryPurple,
+          primaryButtonColor: themeViewModel.currentTheme.primary,
           secondaryButtonText: intl.notNowButton,
           onPrimaryPressed: () => Navigator.of(context).pop(true),
           onSecondaryPressed: () => Navigator.of(context).pop(false),

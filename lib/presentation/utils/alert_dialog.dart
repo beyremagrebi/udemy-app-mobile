@@ -1,18 +1,17 @@
 import 'dart:ui';
 
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomAlertDialog {
-  static const Color primaryPurple = Color(0xFF8B5CF6);
-  static const Color secondaryPurple = Color(0xFF7C3AED);
   static const Color darkPurple = Color(0xFF5B21B6);
   static const Color successColor = Color(0xFF10B981);
   static const Color errorColor = Color(0xFFEF4444);
   static const Color warningColor = Color(0xFFF59E0B);
   static const Color textWhite = Colors.white;
   static const Color textGray = Color(0xFFB8B5C3);
-
   static Widget buildCustomDialog({
     required BuildContext context,
     required IconData icon,
@@ -25,6 +24,8 @@ class CustomAlertDialog {
     VoidCallback? onPrimaryPressed,
     VoidCallback? onSecondaryPressed,
   }) {
+    final themeViewModel = context.watch<ThemeViewModel>();
+
     return Dialog(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -35,8 +36,8 @@ class CustomAlertDialog {
           gradient: LinearGradient(
             colors: [
               const Color(0xFF1E1B4B),
-              primaryPurple.withOpacity(0.9),
-              secondaryPurple.withOpacity(0.9),
+              themeViewModel.currentTheme.primary.withOpacity(0.9),
+              themeViewModel.currentTheme.secondary.withOpacity(0.9),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -157,7 +158,7 @@ class CustomAlertDialog {
     required String message,
     String confirmText = 'Confirm',
     String cancelText = 'Cancel',
-    Color confirmColor = primaryPurple,
+    Color? confirmColor,
     IconData icon = Icons.help_outline,
     Color iconColor = warningColor,
   }) {
@@ -165,6 +166,8 @@ class CustomAlertDialog {
       context: context,
       barrierDismissible: false,
       builder: (context) {
+        final themeViewModel = context.watch<ThemeViewModel>();
+
         return buildCustomDialog(
           context: context,
           icon: icon,
@@ -172,7 +175,7 @@ class CustomAlertDialog {
           title: title,
           message: message,
           primaryButtonText: confirmText,
-          primaryButtonColor: confirmColor,
+          primaryButtonColor: themeViewModel.currentTheme.primary,
           secondaryButtonText: cancelText,
           onPrimaryPressed: () => Navigator.of(context).pop(true),
           onSecondaryPressed: () => Navigator.of(context).pop(false),

@@ -9,18 +9,15 @@ class TokenInterceptor extends Interceptor {
 
   @override
   Future<void> onError(
-      DioException err, ErrorInterceptorHandler handler) async {
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
     if (err.response?.statusCode == 498 || err.response?.statusCode == 401) {
       try {
         await TokenManager.shared.refreshTken();
-
-        // Create new request options with proper handling for multipart
         final newRequest = _createRetryRequest(err.requestOptions);
-
-        // Update authorization header with new token
         newRequest.headers['Authorization'] =
             'Bearer ${TokenManager.accessToken}';
-
         final retryResponse = await _dio.fetch<dynamic>(newRequest);
         return handler.resolve(retryResponse);
       } on Exception catch (e) {
@@ -60,32 +57,22 @@ class TokenInterceptor extends Interceptor {
       responseDecoder: originalOptions.responseDecoder,
       listFormat: originalOptions.listFormat,
     );
-
-    // Handle different types of request data
     if (originalOptions.data is FormData) {
-      // For multipart requests, we need to recreate the FormData
       final originalFormData = originalOptions.data as FormData;
       final newFormData = FormData();
-
-      // Copy fields
       for (final field in originalFormData.fields) {
         newFormData.fields.add(MapEntry(field.key, field.value));
       }
-
-      // Copy files
       for (final file in originalFormData.files) {
-        newFormData.files.add(MapEntry(file.key, file.value));
+        final MultipartFile originalFile = file.value;
+        newFormData.files.add(MapEntry(file.key, originalFile.clone()));
       }
-
       newRequest.data = newFormData;
-      // Ensure content type is set correctly for multipart
       newRequest.contentType = 'multipart/form-data';
     } else {
-      // For regular requests, copy data as is
       newRequest.data = originalOptions.data;
       newRequest.contentType = originalOptions.contentType;
     }
-
     return newRequest;
   }
 }
