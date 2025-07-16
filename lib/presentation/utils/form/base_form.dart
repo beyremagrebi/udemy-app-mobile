@@ -5,22 +5,29 @@ import 'package:flutter/material.dart';
 abstract class BaseForm<T extends BaseViewModel> extends StatelessWidget {
   final T viewModel;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  BaseForm({required this.viewModel, super.key});
+  final CrossAxisAlignment crossAxisAlignment;
+  BaseForm({
+    required this.viewModel,
+    super.key,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
       child: Column(
+        crossAxisAlignment: crossAxisAlignment,
         children: [
           ...buildFormFields(context),
           if (buildFooter(context) != null) ...[
             Dimensions.heightxSmall,
             buildFooter(context)!,
           ],
-          Dimensions.heightxSmall,
-          buildSubmitButton(context),
+          if (buildSubmitButton(context) != null) ...[
+            Dimensions.heightxSmall,
+            buildSubmitButton(context)!,
+          ]
         ],
       ),
     );
@@ -30,9 +37,9 @@ abstract class BaseForm<T extends BaseViewModel> extends StatelessWidget {
 
   List<Widget> buildFormFields(BuildContext context);
 
-  Widget buildSubmitButton(BuildContext context);
+  Widget? buildSubmitButton(BuildContext context) => null;
 
-  void onSubmit(BuildContext context);
+  void onSubmit(BuildContext context) {}
 
   bool validateForm() {
     return formKey.currentState?.validate() ?? false;

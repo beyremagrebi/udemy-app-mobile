@@ -24,6 +24,9 @@ class AssetsImageWidget extends BaseApiImage {
 
   @override
   Widget placeHolderImage(BuildContext context, {bool isLoading = false}) {
-    throw UnimplementedError();
+    return Icon(
+      Icons.photo,
+      size: height,
+    );
   }
 }

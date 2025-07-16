@@ -3,6 +3,7 @@ import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
 
 import '../../../interfaces/language/i_screen_with_localization.dart';
@@ -40,20 +41,28 @@ class MainHeaderView extends IScreenWithLocalization {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '${intl.bonjour}, ${viewModel.user?.firstName?.toUpperCase()} 👋',
-                          style: textTheme.titleLarge?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              '${intl.bonjour}, ${viewModel.user?.firstName?.toUpperCase()}',
+                              style: textTheme.titleLarge?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Dimensions.widthSmall,
+                            const Icon(
+                              Symbols.waving_hand_rounded,
+                              color: Colors.white,
+                            )
+                          ],
                         ),
                         Dimensions.widthSmall,
                         Text(
-                          'Lycée Victor Hugo • Terminale S',
-                          style: textTheme.bodyMedium?.copyWith(
+                          viewModel.facility?.name?.toUpperCase() ?? '',
+                          style: textTheme.labelSmall?.copyWith(
                             color: Colors.white.withOpacity(0.92),
-                            fontSize: 11,
                           ),
                         ),
                       ],

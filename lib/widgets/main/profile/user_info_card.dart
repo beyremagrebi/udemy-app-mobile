@@ -1,4 +1,6 @@
+import 'package:erudaxis/presentation/utils/async/async_model_builder.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
+import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -77,16 +79,20 @@ class UserInfoCard extends StatelessWidget {
                             ),
                             Text(
                               '1c12',
-                              style: textTheme.bodyMedium?.copyWith(
-                                fontSize: 11,
+                              style: textTheme.labelSmall?.copyWith(
                                 color: Colors.white,
                               ),
                             ),
-                            Text(
-                              'Lycée Victor Hugo • Terminale S',
-                              style: textTheme.bodyMedium?.copyWith(
-                                fontSize: 11,
-                                color: Colors.white,
+                            AsyncModelBuilder(
+                              viewModel: viewModel,
+                              model: viewModel.facility,
+                              shimmer: const SizedBox.shrink(),
+                              builder: (model) => Text(
+                                FacilityManager.facility.name?.toUpperCase() ??
+                                    '',
+                                style: textTheme.labelSmall?.copyWith(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],

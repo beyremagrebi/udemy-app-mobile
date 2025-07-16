@@ -15,12 +15,16 @@ class ImageViewer extends StatelessWidget {
         imageProvider: imageProvider,
         disableGestures: false,
         enablePanAlways: false,
-        enableRotation: true,
         basePosition: Alignment.center,
         wantKeepAlive: true,
         tightMode: true,
         gaplessPlayback: true,
         backgroundDecoration: const BoxDecoration(color: Colors.transparent),
+        errorBuilder: (context, error, stackTrace) => const Center(
+          child: Icon(Icons.error, color: Colors.red, size: 48),
+        ),
+        minScale: PhotoViewComputedScale.contained,
+        maxScale: PhotoViewComputedScale.covered,
       ),
     );
   }

@@ -89,7 +89,8 @@ class InputText extends IScreenWithLocalization {
         ClipRRect(
           borderRadius: Dimensions.smallBorderRadius,
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            filter: ImageFilter.blur(
+                sigmaX: enabled ? 10 : 40, sigmaY: enabled ? 10 : 40),
             child: TextFormField(
               controller: controller,
               focusNode: focusNode,
@@ -104,8 +105,10 @@ class InputText extends IScreenWithLocalization {
               enabled: enabled,
               validator: validator,
               autovalidateMode: autovalidateMode,
-              style: textTheme.bodySmall
-                  ?.copyWith(color: Colors.white, height: 1.2),
+              style: textTheme.bodySmall?.copyWith(
+                color: enabled ? Colors.white : Colors.white54,
+                height: 1.2,
+              ),
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 hintText: hintText,
@@ -119,6 +122,12 @@ class InputText extends IScreenWithLocalization {
                 fillColor: Colors.white.withOpacity(0.1),
                 contentPadding: Dimensions.paddingAllLarge,
                 enabledBorder: OutlineInputBorder(
+                  borderRadius: Dimensions.smallBorderRadius,
+                  borderSide: BorderSide(
+                    color: Colors.white.withOpacity(0.3),
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
                   borderRadius: Dimensions.smallBorderRadius,
                   borderSide: BorderSide(
                     color: Colors.white.withOpacity(0.3),
@@ -146,7 +155,11 @@ class InputText extends IScreenWithLocalization {
                   ),
                 ),
                 errorText: showErrorText ? errorText : null,
-                errorStyle: showErrorText ? null : const TextStyle(height: 0),
+                errorStyle: showErrorText
+                    ? textTheme.labelSmall?.copyWith(
+                        color: AppColors.error,
+                      )
+                    : null,
               ),
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
             ),
