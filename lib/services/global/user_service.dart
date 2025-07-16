@@ -19,6 +19,23 @@ class UserService extends BaseService<User> implements IUserService {
   @override
   User Function(dynamic json) get fromMapFunction => User.fromMap;
   @override
+  Future<ApiResponse<dynamic>> changePassword({
+    required String? userId,
+    required String? currentPassword,
+    required String? newPassword,
+  }) async {
+    return ApiService.instance.request(
+      url: '$baseURl/password/$userId',
+      fromJson: fromMapFunction,
+      method: DioMethod.put,
+      data: {
+        'currentPassword': currentPassword,
+        'newPassword': newPassword,
+      },
+    );
+  }
+
+  @override
   Future<ApiResponse<User>> getUserById(String id) async {
     return ApiService.instance.request<User>(
       url: '$endpoint/by-id',

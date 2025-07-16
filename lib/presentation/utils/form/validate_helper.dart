@@ -37,6 +37,20 @@ abstract class FieldValidator {
   String? validate(String? value);
 }
 
+class MatchValidator implements FieldValidator {
+  final String Function() matchFieldGetter;
+
+  MatchValidator({required this.matchFieldGetter});
+
+  @override
+  String? validate(String? value) {
+    if (value != matchFieldGetter()) {
+      return intl.fields_do_not_match;
+    }
+    return null;
+  }
+}
+
 class MinLengthValidator implements FieldValidator {
   final int minLength;
   final String fieldName;
@@ -92,7 +106,7 @@ class PhoneNumberValidator implements FieldValidator {
       return intl.phoneRequired;
     }
 
-    final phoneRegex = RegExp(r'^\+?[\d\s\-]{10,}$');
+    final phoneRegex = RegExp(r'^\+?[\d\s\-]{8,}$');
     if (!phoneRegex.hasMatch(value)) {
       return intl.invalidPhone;
     }

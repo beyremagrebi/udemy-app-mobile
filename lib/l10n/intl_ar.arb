@@ -170,5 +170,7 @@
     "view_timetable": "استشر جدولك الزمني",
     "violet_purple": "بنفسجي فاتح",
     "welcomeBack": "سعداء برؤيتك مجددًا!",
-    "yourRank": "ترتيبك"
+    "yourRank": "ترتيبك",
+    "fields_do_not_match": "الحقول غير متطابقة",
+      "password_changed_success": "تم تغيير كلمة المرور بنجاح"
 }

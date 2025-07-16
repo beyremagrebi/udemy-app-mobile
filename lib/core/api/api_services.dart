@@ -21,8 +21,7 @@ class ApiService implements IApiService {
             sendTimeout: const Duration(minutes: 1),
             receiveTimeout: const Duration(minutes: 1),
             validateStatus: (status) =>
-                !(status == 498 || status == 500 || status == 401) &&
-                status != null,
+                !(status == 498 || status == 500) && status != null,
           ),
         ) {
     _downloadService = DownloadService(_dio);

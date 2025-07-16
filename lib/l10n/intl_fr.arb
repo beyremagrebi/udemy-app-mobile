@@ -170,5 +170,7 @@
     "view_timetable": "Consulter votre planning",
     "violet_purple": "Violet clair",
     "welcomeBack": "Content de vous revoir !",
-    "yourRank": "Votre Rang"
+    "yourRank": "Votre Rang",
+    "fields_do_not_match": "Les champs ne correspondent pas",
+    "password_changed_success": "Mot de passe modifié avec succès"
 }

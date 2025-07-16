@@ -156,10 +156,11 @@ class InputText extends IScreenWithLocalization {
                 ),
                 errorText: showErrorText ? errorText : null,
                 errorStyle: showErrorText
-                    ? textTheme.labelSmall?.copyWith(
-                        color: AppColors.error,
-                      )
-                    : null,
+                    ? textTheme.labelSmall?.copyWith(color: AppColors.error)
+                    : const TextStyle(
+                        fontSize: 0,
+                        height: -1,
+                      ),
               ),
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
             ),

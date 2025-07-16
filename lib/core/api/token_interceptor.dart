@@ -12,7 +12,7 @@ class TokenInterceptor extends Interceptor {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    if (err.response?.statusCode == 498 || err.response?.statusCode == 401) {
+    if (err.response?.statusCode == 498) {
       try {
         await TokenManager.shared.refreshTken();
         final newRequest = _createRetryRequest(err.requestOptions);

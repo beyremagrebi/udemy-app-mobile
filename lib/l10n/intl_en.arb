@@ -170,5 +170,7 @@
     "view_timetable": "View your timetable",
     "violet_purple": "Violet Purple",
     "welcomeBack": "Nice to see you again!",
-    "yourRank": "Your Rank"
+    "yourRank": "Your Rank",
+    "fields_do_not_match": "Fields do not match",
+     "password_changed_success": "Password changed successfully"
 }

@@ -1344,6 +1344,26 @@ class S {
   String get yourRank {
     return Intl.message('Your Rank', name: 'yourRank', desc: '', args: []);
   }
+
+  /// `Fields do not match`
+  String get fields_do_not_match {
+    return Intl.message(
+      'Fields do not match',
+      name: 'fields_do_not_match',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed successfully`
+  String get password_changed_success {
+    return Intl.message(
+      'Password changed successfully',
+      name: 'password_changed_success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

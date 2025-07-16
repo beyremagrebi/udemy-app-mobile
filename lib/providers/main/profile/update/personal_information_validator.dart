@@ -1,8 +1,10 @@
+import 'package:erudaxis/presentation/utils/alert_dialog.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/constants/constant.dart';
@@ -95,6 +97,25 @@ class PersonalInformationValidator extends BaseViewModel {
     classController.text = 'hello';
   }
 
+  Future<void> showDatePicker() async {
+    CustomAlertDialog.build(
+      context: context,
+      title: intl.birth_date,
+      primaryButtonText: 'Select',
+      content: CalendarDatePicker(
+        initialCalendarMode: DatePickerMode.year,
+        currentDate: DateTime.now(),
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1900),
+        lastDate: DateTime.now(),
+        onDateChanged: (date) {
+          birthdayController.text = DateFormat('yyyy-MM-dd').format(date);
+          update();
+        },
+      ),
+    );
+  }
+
   Future<void> updateUser() async {
     user!
       ..firstName = firstNameController.text.trim()
@@ -105,9 +126,12 @@ class PersonalInformationValidator extends BaseViewModel {
 
     await makeApiCall(
       apiCall: UserService.shared.updateUser(user!, imageFilePath ?? ''),
-      onSuccess: (userUpdated) {
+      onSuccess: (userUpdated) async {
         setFromUser(userUpdated);
-        viewModel.updateUser(userUpdated);
+        await viewModel.updateUser(userUpdated);
+        if (context.mounted) {
+          Navigator.of(context).pop();
+        }
       },
     );
   }

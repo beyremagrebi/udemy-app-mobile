@@ -147,6 +147,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterPassword": MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
     "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "fieldRequired": m1,
+    "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
+      "الحقول غير متطابقة",
+    ),
     "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
     "forest_green": MessageLookupByLibrary.simpleMessage("أخضر غامق"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -214,6 +217,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordSpecial": MessageLookupByLibrary.simpleMessage("رمز خاص"),
     "passwordUpper": MessageLookupByLibrary.simpleMessage("حرف كبير"),
+    "password_changed_success": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير كلمة المرور بنجاح",
+    ),
     "pendingInvoices": MessageLookupByLibrary.simpleMessage("الفواتير المعلقة"),
     "permissionsRequiredMessage": MessageLookupByLibrary.simpleMessage(
       "تم رفض الأذونات المطلوبة",

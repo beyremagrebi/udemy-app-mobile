@@ -52,7 +52,7 @@ class SessionManager extends BaseViewModel {
     );
   }
 
-  void updateUser(User updatedUser) {
+  Future<void> updateUser(User updatedUser) async {
     user = updatedUser;
     update();
   }

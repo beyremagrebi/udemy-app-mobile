@@ -136,6 +136,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
     "fieldRequired": m1,
+    "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
+      "Fields do not match",
+    ),
     "first_name": MessageLookupByLibrary.simpleMessage("First Name"),
     "forest_green": MessageLookupByLibrary.simpleMessage("Forest Green"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -205,6 +208,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "special character",
     ),
     "passwordUpper": MessageLookupByLibrary.simpleMessage("uppercase letter"),
+    "password_changed_success": MessageLookupByLibrary.simpleMessage(
+      "Password changed successfully",
+    ),
     "pendingInvoices": MessageLookupByLibrary.simpleMessage("Pending Invoices"),
     "permissionsRequiredMessage": MessageLookupByLibrary.simpleMessage(
       "Required permissions denied",

@@ -50,9 +50,9 @@ class LoginForm extends BaseForm<LoginViewModel> {
             suffixIcon: IconButton(
               onPressed: visibiltyFieldPasswordViewModel.toggleVisibility,
               icon: Icon(
-                visibiltyFieldPasswordViewModel.securePassword
-                    ? Icons.visibility_off_outlined
-                    : Icons.visibility_outlined,
+                visibiltyFieldPasswordViewModel.securePassword == false
+                    ? Icons.visibility_outlined
+                    : Icons.visibility_off_outlined,
                 size: 20,
                 color: Colors.grey.shade100,
               ),

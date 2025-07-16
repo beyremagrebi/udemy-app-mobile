@@ -38,14 +38,8 @@ class UpdateProfileView extends IScreenWithLocalization {
             children: [
               PictureUpdate(viewModel: validatorViewModel),
               Dimensions.heightMedium,
-              Card(
-                elevation: 0,
-                child: Container(
-                  padding: Dimensions.paddingAllSmall,
-                  child: PersoanlInformationForm(
-                    validatorViewModel: validatorViewModel,
-                  ),
-                ),
+              PersoanlInformationForm(
+                validatorViewModel: validatorViewModel,
               ),
               Dimensions.heightLarge,
               SchoolInformationForm(viewModel: validatorViewModel)

@@ -12,6 +12,116 @@ class CustomAlertDialog {
   static const Color warningColor = Color(0xFFF59E0B);
   static const Color textWhite = Colors.white;
   static const Color textGray = Color(0xFFB8B5C3);
+  static Future<void> build({
+    required BuildContext context,
+    required String title,
+    required String primaryButtonText,
+    String? message,
+    Widget? content, // new content widget
+    String? secondaryButtonText,
+    VoidCallback? onPrimaryPressed,
+    VoidCallback? onSecondaryPressed,
+  }) async {
+    await showDialog<void>(
+        context: context,
+        builder: (context) {
+          final themeViewModel = context.watch<ThemeViewModel>();
+          return Material(
+            color: Colors.transparent,
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 340),
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    const Color(0xFF1E1B4B),
+                    themeViewModel.currentTheme.primary.withOpacity(0.9),
+                    themeViewModel.currentTheme.secondary.withOpacity(0.9),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.2),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
+              ),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: textWhite,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 12),
+
+                    // Message or custom content
+                    if (content != null) ...[
+                      content,
+                    ],
+
+                    // Buttons
+                    if (secondaryButtonText != null) ...[
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _buildDialogButton(
+                              text: secondaryButtonText,
+                              color: Colors.transparent,
+                              textColor: textGray,
+                              borderColor: Colors.white.withOpacity(0.3),
+                              onPressed: onSecondaryPressed ??
+                                  () => Navigator.of(context).pop(),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: _buildDialogButton(
+                              text: primaryButtonText,
+                              color: themeViewModel.currentTheme.secondary,
+                              textColor: textWhite,
+                              borderColor: Colors.white.withOpacity(0.3),
+                              onPressed: onPrimaryPressed ??
+                                  () => Navigator.of(context).pop(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ] else ...[
+                      SizedBox(
+                        width: double.infinity,
+                        child: _buildDialogButton(
+                          text: primaryButtonText,
+                          color: themeViewModel.currentTheme.secondary,
+                          textColor: textWhite,
+                          borderColor: Colors.white.withOpacity(0.3),
+                          onPressed: onPrimaryPressed ??
+                              () => Navigator.of(context).pop(),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   static Widget buildCustomDialog({
     required BuildContext context,
     required IconData icon,

@@ -147,6 +147,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("Erreur"),
     "fieldRequired": m1,
+    "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
+      "Les champs ne correspondent pas",
+    ),
     "first_name": MessageLookupByLibrary.simpleMessage("Prénom"),
     "forest_green": MessageLookupByLibrary.simpleMessage("Vert forêt"),
     "forgotPassword": MessageLookupByLibrary.simpleMessage(
@@ -227,6 +230,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "passwordUpper": MessageLookupByLibrary.simpleMessage(
       "une lettre majuscule",
+    ),
+    "password_changed_success": MessageLookupByLibrary.simpleMessage(
+      "Mot de passe modifié avec succès",
     ),
     "pendingInvoices": MessageLookupByLibrary.simpleMessage(
       "Factures en Attente",
