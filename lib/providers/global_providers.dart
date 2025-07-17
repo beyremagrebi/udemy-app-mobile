@@ -3,6 +3,8 @@ import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import 'main/bottom_navigation_view_model.dart';
+import 'main/drawer_view_model.dart';
 import 'main/profile/language/language_view_model.dart';
 
 List<SingleChildWidget> globalProviders = [
@@ -11,6 +13,12 @@ List<SingleChildWidget> globalProviders = [
   ),
   ChangeNotifierProvider(
     create: (context) => ThemeViewModel(context)..loadTheme(),
+  ),
+  ChangeNotifierProvider(
+    create: DrawerViewModel.new,
+  ),
+  ChangeNotifierProvider(
+    create: BottomNavigationViewModel.new,
   ),
   ChangeNotifierProvider(
     create: SessionManager.new,

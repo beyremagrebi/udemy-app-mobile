@@ -23,67 +23,74 @@ class ActionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      child: Container(
-        padding: Dimensions.paddingAllSmall,
-        width: double.maxFinite,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      clipBehavior: Clip.hardEdge,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {},
+          child: Container(
+            padding: Dimensions.paddingAllSmall,
+            width: double.maxFinite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconBox(
-                  icon: icon,
-                  size: 30,
-                  iconBackgroundColor: iconColor,
-                  alignment: Alignment.topLeft,
-                ),
-                if (notifCount != null) ...[
-                  const Expanded(child: Dimensions.widthSmall),
-                  Container(
-                    width: 18,
-                    height: 18,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                      shape: BoxShape.circle,
+                Row(
+                  children: [
+                    IconBox(
+                      icon: icon,
+                      size: 30,
+                      iconBackgroundColor: iconColor,
+                      alignment: Alignment.topLeft,
                     ),
-                    child: Text(
-                      '4',
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                        fontSize: 11,
+                    if (notifCount != null) ...[
+                      const Expanded(child: Dimensions.widthSmall),
+                      Container(
+                        width: 18,
+                        height: 18,
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(
+                          '4',
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: Colors.white,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    ]
+                  ],
+                ),
+                Dimensions.heightSmall,
+                Expanded(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  )
-                ]
+                    Text(
+                      subTitle,
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 11,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onPrimary
+                            .withOpacity(0.7),
+                      ),
+                    ),
+                  ],
+                ))
               ],
             ),
-            Dimensions.heightSmall,
-            Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: textTheme.titleMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  subTitle,
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 11,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onPrimary
-                        .withOpacity(0.7),
-                  ),
-                ),
-              ],
-            ))
-          ],
+          ),
         ),
       ),
     );

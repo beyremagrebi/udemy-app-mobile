@@ -60,6 +60,11 @@ class S {
     return Intl.message('About', name: 'about_title', desc: '', args: []);
   }
 
+  /// `Absences`
+  String get absences {
+    return Intl.message('Absences', name: 'absences', desc: '', args: []);
+  }
+
   /// `Access your classes and groups`
   String get access_classes_groups {
     return Intl.message(
@@ -155,6 +160,11 @@ class S {
     return Intl.message('Burgundy', name: 'burgundy', desc: '', args: []);
   }
 
+  /// `Calendar`
+  String get calendar {
+    return Intl.message('Calendar', name: 'calendar', desc: '', args: []);
+  }
+
   /// `Cancel`
   String get cancelButton {
     return Intl.message('Cancel', name: 'cancelButton', desc: '', args: []);
@@ -243,6 +253,11 @@ class S {
   /// `Class`
   String get classe {
     return Intl.message('Class', name: 'classe', desc: '', args: []);
+  }
+
+  /// `Classes`
+  String get classes {
+    return Intl.message('Classes', name: 'classes', desc: '', args: []);
   }
 
   /// `Close`
@@ -363,6 +378,11 @@ class S {
   /// `Default`
   String get default_theme {
     return Intl.message('Default', name: 'default_theme', desc: '', args: []);
+  }
+
+  /// `Documents`
+  String get documents {
+    return Intl.message('Documents', name: 'documents', desc: '', args: []);
   }
 
   /// `Download already in progress`
@@ -530,6 +550,11 @@ class S {
     return Intl.message('Error', name: 'error', desc: '', args: []);
   }
 
+  /// `Exams`
+  String get exams {
+    return Intl.message('Exams', name: 'exams', desc: '', args: []);
+  }
+
   /// `{fieldName} is required`
   String fieldRequired(Object fieldName) {
     return Intl.message(
@@ -537,6 +562,16 @@ class S {
       name: 'fieldRequired',
       desc: '',
       args: [fieldName],
+    );
+  }
+
+  /// `Fields do not match`
+  String get fields_do_not_match {
+    return Intl.message(
+      'Fields do not match',
+      name: 'fields_do_not_match',
+      desc: '',
+      args: [],
     );
   }
 
@@ -650,9 +685,29 @@ class S {
     );
   }
 
+  /// `Invoices`
+  String get invoices {
+    return Intl.message('Invoices', name: 'invoices', desc: '', args: []);
+  }
+
   /// `Language`
   String get language_title {
     return Intl.message('Language', name: 'language_title', desc: '', args: []);
+  }
+
+  /// `Arabic`
+  String get languageArabic {
+    return Intl.message('Arabic', name: 'languageArabic', desc: '', args: []);
+  }
+
+  /// `English`
+  String get languageEnglish {
+    return Intl.message('English', name: 'languageEnglish', desc: '', args: []);
+  }
+
+  /// `French`
+  String get languageFrench {
+    return Intl.message('French', name: 'languageFrench', desc: '', args: []);
   }
 
   /// `Last Name`
@@ -663,6 +718,11 @@ class S {
   /// `Lavender`
   String get lavender {
     return Intl.message('Lavender', name: 'lavender', desc: '', args: []);
+  }
+
+  /// `Library`
+  String get library {
+    return Intl.message('Library', name: 'library', desc: '', args: []);
   }
 
   /// `Lime Green`
@@ -825,6 +885,16 @@ class S {
     return Intl.message(
       'Overall average',
       name: 'overall_average',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed successfully`
+  String get password_changed_success {
+    return Intl.message(
+      'Password changed successfully',
+      name: 'password_changed_success',
       desc: '',
       args: [],
     );
@@ -1045,6 +1115,11 @@ class S {
     );
   }
 
+  /// `Quizzes`
+  String get quizzes {
+    return Intl.message('Quizzes', name: 'quizzes', desc: '', args: []);
+  }
+
   /// `Quizzes to Do`
   String get quizzesToDo {
     return Intl.message(
@@ -1115,6 +1190,11 @@ class S {
     );
   }
 
+  /// `See more`
+  String get seeMore {
+    return Intl.message('See more', name: 'seeMore', desc: '', args: []);
+  }
+
   /// `Settings`
   String get settings_title {
     return Intl.message('Settings', name: 'settings_title', desc: '', args: []);
@@ -1148,6 +1228,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Subjects`
+  String get subjects {
+    return Intl.message('Subjects', name: 'subjects', desc: '', args: []);
   }
 
   /// `Sunset Orange`
@@ -1300,6 +1385,16 @@ class S {
     );
   }
 
+  /// `Video Conference`
+  String get videoConference {
+    return Intl.message(
+      'Video Conference',
+      name: 'videoConference',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `View login activity`
   String get view_connection_activity {
     return Intl.message(
@@ -1343,26 +1438,6 @@ class S {
   /// `Your Rank`
   String get yourRank {
     return Intl.message('Your Rank', name: 'yourRank', desc: '', args: []);
-  }
-
-  /// `Fields do not match`
-  String get fields_do_not_match {
-    return Intl.message(
-      'Fields do not match',
-      name: 'fields_do_not_match',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Password changed successfully`
-  String get password_changed_success {
-    return Intl.message(
-      'Password changed successfully',
-      name: 'password_changed_success',
-      desc: '',
-      args: [],
-    );
   }
 }
 

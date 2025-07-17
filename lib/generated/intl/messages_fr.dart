@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_title": MessageLookupByLibrary.simpleMessage("À propos"),
+    "absences": MessageLookupByLibrary.simpleMessage("Absences"),
     "access_classes_groups": MessageLookupByLibrary.simpleMessage(
       "Accéder à vos classes et groupes",
     ),
@@ -55,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "birth_date": MessageLookupByLibrary.simpleMessage("Date de naissance"),
     "bonjour": MessageLookupByLibrary.simpleMessage("Bonjour"),
     "burgundy": MessageLookupByLibrary.simpleMessage("Bordeaux"),
+    "calendar": MessageLookupByLibrary.simpleMessage("Calendrier"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("Annuler"),
     "cancelDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Annuler le téléchargement",
@@ -78,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Position en classe",
     ),
     "classe": MessageLookupByLibrary.simpleMessage("Classe"),
+    "classes": MessageLookupByLibrary.simpleMessage("Classes"),
     "closeButton": MessageLookupByLibrary.simpleMessage("Fermer"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "Confirmer le nouveau mot de passe",
@@ -106,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dashboard": MessageLookupByLibrary.simpleMessage("Tableau de Bord"),
     "deep_maroon": MessageLookupByLibrary.simpleMessage("Bordeaux foncé"),
     "default_theme": MessageLookupByLibrary.simpleMessage("Par défaut"),
+    "documents": MessageLookupByLibrary.simpleMessage("Documents"),
     "downloadAlreadyInProgress": MessageLookupByLibrary.simpleMessage(
       "Téléchargement déjà en cours",
     ),
@@ -146,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Entrez votre mot de passe",
     ),
     "error": MessageLookupByLibrary.simpleMessage("Erreur"),
+    "exams": MessageLookupByLibrary.simpleMessage("Examens"),
     "fieldRequired": m1,
     "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
       "Les champs ne correspondent pas",
@@ -176,9 +181,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPhone": MessageLookupByLibrary.simpleMessage(
       "Veuillez entrer un numéro de téléphone valide",
     ),
+    "invoices": MessageLookupByLibrary.simpleMessage("Factures"),
+    "languageArabic": MessageLookupByLibrary.simpleMessage("Arabe"),
+    "languageEnglish": MessageLookupByLibrary.simpleMessage("Anglais"),
+    "languageFrench": MessageLookupByLibrary.simpleMessage("Français"),
     "language_title": MessageLookupByLibrary.simpleMessage("Language"),
     "last_name": MessageLookupByLibrary.simpleMessage("Nom"),
     "lavender": MessageLookupByLibrary.simpleMessage("Lavande"),
+    "library": MessageLookupByLibrary.simpleMessage("Bibliothèque"),
     "lime_green": MessageLookupByLibrary.simpleMessage("Vert citron"),
     "loading": MessageLookupByLibrary.simpleMessage("Chargement..."),
     "login": MessageLookupByLibrary.simpleMessage("Se connecter"),
@@ -271,6 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "quick_settings_title": MessageLookupByLibrary.simpleMessage(
       "Paramètre Rapide",
     ),
+    "quizzes": MessageLookupByLibrary.simpleMessage("Quiz"),
     "quizzesToDo": MessageLookupByLibrary.simpleMessage("Quiz à Faire"),
     "recentLibrary": MessageLookupByLibrary.simpleMessage(
       "Bibliothèque Récente",
@@ -285,6 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "school_info": MessageLookupByLibrary.simpleMessage(
       "Informations Scolaires",
     ),
+    "seeMore": MessageLookupByLibrary.simpleMessage("Voir plus"),
     "settings_title": MessageLookupByLibrary.simpleMessage("Paramètre"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("Bleu ciel"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("Gris ardoise"),
@@ -293,6 +305,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
       "Votre compagnon d\'\'études",
     ),
+    "subjects": MessageLookupByLibrary.simpleMessage("Matières"),
     "sunset_orange": MessageLookupByLibrary.simpleMessage(
       "Orange coucher de soleil",
     ),
@@ -331,6 +344,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "update_profile": MessageLookupByLibrary.simpleMessage(
       "Mettre à jour le profil",
     ),
+    "videoConference": MessageLookupByLibrary.simpleMessage("Vidéo-Conférence"),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
       "Voir l\'\'activité de la connexion",
     ),

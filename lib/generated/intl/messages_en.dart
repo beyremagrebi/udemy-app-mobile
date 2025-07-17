@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_title": MessageLookupByLibrary.simpleMessage("About"),
+    "absences": MessageLookupByLibrary.simpleMessage("Absences"),
     "access_classes_groups": MessageLookupByLibrary.simpleMessage(
       "Access your classes and groups",
     ),
@@ -54,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "birth_date": MessageLookupByLibrary.simpleMessage("Birth Date"),
     "bonjour": MessageLookupByLibrary.simpleMessage("Hello"),
     "burgundy": MessageLookupByLibrary.simpleMessage("Burgundy"),
+    "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Cancel Download",
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chocolate_brown": MessageLookupByLibrary.simpleMessage("Chocolate Brown"),
     "class_position": MessageLookupByLibrary.simpleMessage("Class Rank"),
     "classe": MessageLookupByLibrary.simpleMessage("Class"),
+    "classes": MessageLookupByLibrary.simpleMessage("Classes"),
     "closeButton": MessageLookupByLibrary.simpleMessage("Close"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "Confirm New Password",
@@ -101,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "deep_maroon": MessageLookupByLibrary.simpleMessage("Deep Maroon"),
     "default_theme": MessageLookupByLibrary.simpleMessage("Default"),
+    "documents": MessageLookupByLibrary.simpleMessage("Documents"),
     "downloadAlreadyInProgress": MessageLookupByLibrary.simpleMessage(
       "Download already in progress",
     ),
@@ -135,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterEmail": MessageLookupByLibrary.simpleMessage("Enter email"),
     "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "exams": MessageLookupByLibrary.simpleMessage("Exams"),
     "fieldRequired": m1,
     "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
       "Fields do not match",
@@ -163,9 +168,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPhone": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid phone number",
     ),
+    "invoices": MessageLookupByLibrary.simpleMessage("Invoices"),
+    "languageArabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "languageEnglish": MessageLookupByLibrary.simpleMessage("English"),
+    "languageFrench": MessageLookupByLibrary.simpleMessage("French"),
     "language_title": MessageLookupByLibrary.simpleMessage("Language"),
     "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),
     "lavender": MessageLookupByLibrary.simpleMessage("Lavender"),
+    "library": MessageLookupByLibrary.simpleMessage("Library"),
     "lime_green": MessageLookupByLibrary.simpleMessage("Lime Green"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -246,6 +256,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "quick_settings_title": MessageLookupByLibrary.simpleMessage(
       "Quick Settings",
     ),
+    "quizzes": MessageLookupByLibrary.simpleMessage("Quizzes"),
     "quizzesToDo": MessageLookupByLibrary.simpleMessage("Quizzes to Do"),
     "recentLibrary": MessageLookupByLibrary.simpleMessage("Recent Library"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
@@ -256,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "school_info": MessageLookupByLibrary.simpleMessage("School Information"),
+    "seeMore": MessageLookupByLibrary.simpleMessage("See more"),
     "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("Sky Blue"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("Slate Gray"),
@@ -264,6 +276,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
       "Your study companion",
     ),
+    "subjects": MessageLookupByLibrary.simpleMessage("Subjects"),
     "sunset_orange": MessageLookupByLibrary.simpleMessage("Sunset Orange"),
     "support_subtitle": MessageLookupByLibrary.simpleMessage(
       "FAQ & assistance",
@@ -292,6 +305,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "updateFailedTitle": MessageLookupByLibrary.simpleMessage("Update Failed"),
     "updateNowButton": MessageLookupByLibrary.simpleMessage("Update Now"),
     "update_profile": MessageLookupByLibrary.simpleMessage("Update Profile"),
+    "videoConference": MessageLookupByLibrary.simpleMessage("Video Conference"),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
       "View login activity",
     ),

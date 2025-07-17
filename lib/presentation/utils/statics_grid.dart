@@ -17,7 +17,7 @@ class StatisticsGrid extends StatelessWidget {
     this.crossAxisCount = 2,
     this.crossAxisSpacing = 8.0,
     this.mainAxisSpacing = 8.0,
-    this.aspectRatio = 2.8,
+    this.aspectRatio = 2.77,
   });
 
   @override

@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_title": MessageLookupByLibrary.simpleMessage("حول"),
+    "absences": MessageLookupByLibrary.simpleMessage("الغيابات"),
     "access_classes_groups": MessageLookupByLibrary.simpleMessage(
       "الوصول إلى فصولك ومجموعاتك",
     ),
@@ -57,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "birth_date": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
     "bonjour": MessageLookupByLibrary.simpleMessage("مرحبا"),
     "burgundy": MessageLookupByLibrary.simpleMessage("نبيذي"),
+    "calendar": MessageLookupByLibrary.simpleMessage("التقويم"),
     "cancelButton": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "cancelDownloadButton": MessageLookupByLibrary.simpleMessage(
       "إلغاء التحميل",
@@ -78,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chocolate_brown": MessageLookupByLibrary.simpleMessage("بني شوكولاتة"),
     "class_position": MessageLookupByLibrary.simpleMessage("الترتيب في الفصل"),
     "classe": MessageLookupByLibrary.simpleMessage("الصف"),
+    "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
     "closeButton": MessageLookupByLibrary.simpleMessage("إغلاق"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور الجديدة",
@@ -106,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "deep_maroon": MessageLookupByLibrary.simpleMessage("خمري غامق"),
     "default_theme": MessageLookupByLibrary.simpleMessage("افتراضي"),
+    "documents": MessageLookupByLibrary.simpleMessage("الوثائق"),
     "downloadAlreadyInProgress": MessageLookupByLibrary.simpleMessage(
       "التحميل قيد التقدم بالفعل",
     ),
@@ -146,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enterPassword": MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
     "error": MessageLookupByLibrary.simpleMessage("خطأ"),
+    "exams": MessageLookupByLibrary.simpleMessage("الامتحانات"),
     "fieldRequired": m1,
     "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
       "الحقول غير متطابقة",
@@ -176,9 +181,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPhone": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال رقم هاتف صالح",
     ),
+    "invoices": MessageLookupByLibrary.simpleMessage("الفواتير"),
+    "languageArabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "languageEnglish": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+    "languageFrench": MessageLookupByLibrary.simpleMessage("الفرنسية"),
     "language_title": MessageLookupByLibrary.simpleMessage("اللغة"),
     "last_name": MessageLookupByLibrary.simpleMessage("اللقب"),
     "lavender": MessageLookupByLibrary.simpleMessage("لافندر"),
+    "library": MessageLookupByLibrary.simpleMessage("المكتبة"),
     "lime_green": MessageLookupByLibrary.simpleMessage("أخضر ليموني"),
     "loading": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -249,6 +259,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "quick_settings_title": MessageLookupByLibrary.simpleMessage(
       "الإعدادات السريعة",
     ),
+    "quizzes": MessageLookupByLibrary.simpleMessage("اختبارات قصيرة"),
     "quizzesToDo": MessageLookupByLibrary.simpleMessage("الاختبارات المطلوبة"),
     "recentLibrary": MessageLookupByLibrary.simpleMessage("المكتبة الحديثة"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
@@ -259,12 +270,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "schedule": MessageLookupByLibrary.simpleMessage("جدول المواعيد"),
     "school_info": MessageLookupByLibrary.simpleMessage("معلومات دراسية"),
+    "seeMore": MessageLookupByLibrary.simpleMessage("عرض المزيد"),
     "settings_title": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("أزرق سماوي"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("رمادي صخري"),
     "statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
     "steel_blue": MessageLookupByLibrary.simpleMessage("أزرق فولاذي"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage("رفيق دراستك"),
+    "subjects": MessageLookupByLibrary.simpleMessage("المواد"),
     "sunset_orange": MessageLookupByLibrary.simpleMessage("برتقالي الغروب"),
     "support_subtitle": MessageLookupByLibrary.simpleMessage(
       "الأسئلة الشائعة والمساعدة",
@@ -293,6 +306,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "update_profile": MessageLookupByLibrary.simpleMessage(
       "تحديث الملف الشخصي",
     ),
+    "videoConference": MessageLookupByLibrary.simpleMessage("مؤتمر فيديو"),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
       "عرض نشاط تسجيل الدخول",
     ),

@@ -8,6 +8,8 @@ import 'package:erudaxis/presentation/main/home/dashboard/library/recent_libraty
 import 'package:erudaxis/presentation/main/home/dashboard/next_session/next_session_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/rang/votre_rang_view.dart';
 import 'package:erudaxis/presentation/main/home/dashboard/statistics/statistics_view.dart';
+import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
+import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/presentation/utils/title_widget.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:erudaxis/widgets/common/gradient_app_bar_widget.dart';
@@ -55,30 +57,50 @@ class HomeView extends IScreenWithLocalization {
                   TitleWidget(
                     icon: Symbols.timer,
                     title: intl.upcomingSessions,
+                    onTap: () {},
+                    materialPage: AppScaffold(
+                      appBar: AppBarGradient(),
+                    ),
                     child: const NextSessionView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
                     title: intl.quizzesToDo,
                     icon: Symbols.checklist_rounded,
+                    onTap: () {},
+                    materialPage: AppScaffold(
+                      appBar: AppBarGradient(),
+                    ),
                     child: const QuizAFaireView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
                     title: intl.pendingInvoices,
                     icon: Icons.paid_outlined,
+                    onTap: () {},
+                    materialPage: AppScaffold(
+                      appBar: AppBarGradient(),
+                    ),
                     child: const FacturesEnAttenteView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
                     title: intl.upcomingEvents,
                     icon: Symbols.event_available_rounded,
+                    onTap: () {},
+                    materialPage: AppScaffold(
+                      appBar: AppBarGradient(),
+                    ),
                     child: const EvenementsProchainsView(),
                   ),
                   Dimensions.heightExtraLarge,
                   TitleWidget(
                     title: intl.dailyTracking,
                     icon: Symbols.person_check_rounded,
+                    onTap: () {},
+                    materialPage: AppScaffold(
+                      appBar: AppBarGradient(),
+                    ),
                     child: const SuiviJournalierView(),
                   ),
                   Dimensions.heightExtraLarge,

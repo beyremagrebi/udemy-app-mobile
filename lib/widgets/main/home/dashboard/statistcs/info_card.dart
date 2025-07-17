@@ -21,42 +21,49 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      clipBehavior: Clip.hardEdge,
       elevation: 0,
-      child: Padding(
-        padding: Dimensions.paddingAllSmall,
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {},
+          child: Padding(
+            padding: Dimensions.paddingAllSmall,
+            child: Row(
               children: [
-                Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: textTheme.bodyMedium?.copyWith(
-                    color: Colors.white.withOpacity(0.9),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: Colors.white.withOpacity(0.9),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 11,
+                      ),
+                    ),
+                    Text(
+                      value,
+                      style: textTheme.headlineSmall?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  value,
-                  style: textTheme.headlineSmall?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                  ),
+                const Expanded(child: Dimensions.widthSmall),
+                IconBox(
+                  size: 30,
+                  icon: icon,
+                  iconBackgroundColor: iconBackgroundColor,
                 ),
               ],
             ),
-            const Expanded(child: Dimensions.widthSmall),
-            IconBox(
-              size: 30,
-              icon: icon,
-              iconBackgroundColor: iconBackgroundColor,
-            ),
-          ],
+          ),
         ),
       ),
     );
