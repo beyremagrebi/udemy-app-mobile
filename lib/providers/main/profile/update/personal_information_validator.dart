@@ -1,7 +1,7 @@
-import 'package:erudaxis/presentation/utils/alert_dialog.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -97,23 +97,40 @@ class PersonalInformationValidator extends BaseViewModel {
     classController.text = 'hello';
   }
 
-  Future<void> showDatePicker() async {
-    CustomAlertDialog.build(
+  Future<void> showDatePickerH() async {
+    final themViewModel = context.read<ThemeViewModel>();
+    final DateTime? pickedDate = await showDatePicker(
       context: context,
-      title: intl.birth_date,
-      primaryButtonText: 'Select',
-      content: CalendarDatePicker(
-        initialCalendarMode: DatePickerMode.year,
-        currentDate: DateTime.now(),
-        initialDate: DateTime.now(),
-        firstDate: DateTime(1900),
-        lastDate: DateTime.now(),
-        onDateChanged: (date) {
-          birthdayController.text = DateFormat('yyyy-MM-dd').format(date);
-          update();
-        },
-      ),
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime.now(),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: themViewModel.currentTheme.secondary,
+              onSurface: Colors.white,
+              surface: themViewModel.currentTheme.primary,
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+            ),
+            dialogBackgroundColor: themViewModel.currentTheme.primary,
+            dividerColor: Colors.white,
+            dividerTheme: const DividerThemeData(color: Colors.white),
+            dialogTheme: const DialogTheme(
+              surfaceTintColor: Colors.transparent,
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
+    if (pickedDate != null) {
+      birthdayController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+    }
   }
 
   Future<void> updateUser() async {

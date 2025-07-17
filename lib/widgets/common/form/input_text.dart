@@ -28,6 +28,7 @@ class InputText extends IScreenWithLocalization {
   final ValueChanged<String>? onSubmitted;
   final VoidCallback? onEditingComplete;
   final bool enabled;
+  final bool? simpleEnable;
 
   final String? Function(String?)? validator;
   final AutovalidateMode? autovalidateMode;
@@ -43,6 +44,7 @@ class InputText extends IScreenWithLocalization {
     this.focusNode,
     this.keyboardType,
     this.label,
+    this.simpleEnable,
     this.required = false,
     this.obscureText = false,
     this.autofocus = false,
@@ -102,7 +104,7 @@ class InputText extends IScreenWithLocalization {
               onChanged: onChanged,
               onFieldSubmitted: onSubmitted,
               onEditingComplete: onEditingComplete,
-              enabled: enabled,
+              enabled: simpleEnable ?? enabled,
               validator: validator,
               autovalidateMode: autovalidateMode,
               style: textTheme.bodySmall?.copyWith(

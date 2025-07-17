@@ -14,60 +14,7 @@ class AppTheme {
       textTheme: AppTextTheme.textTheme,
       colorScheme: AppColorScheme.colorScheme,
       appBarTheme: AppBarThemes.appBarTheme,
-      datePickerTheme: DatePickerThemeData(
-        backgroundColor: Colors.transparent,
-        headerBackgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.white,
-        rangePickerHeaderForegroundColor: Colors.white,
-        rangeSelectionBackgroundColor: Colors.white,
-        inputDecorationTheme:
-            const InputDecorationTheme(fillColor: Colors.white),
-        rangePickerHeaderBackgroundColor: Colors.white,
-        rangeSelectionOverlayColor: WidgetStateColor.resolveWith(
-            (states) => states.contains(WidgetState.selected)
-                ? Colors.white.withOpacity(0.2) // subtle highlight
-                : Colors.grey),
-        rangePickerHeaderHeadlineStyle: const TextStyle(color: Colors.white),
-        headerForegroundColor: Colors.white,
-        weekdayStyle: const TextStyle(color: Colors.white),
-        rangePickerSurfaceTintColor: Colors.white,
-        // Days
-        dayForegroundColor:
-            WidgetStateColor.resolveWith((states) => Colors.white),
-        dayBackgroundColor: WidgetStateColor.resolveWith((states) =>
-            states.contains(WidgetState.selected)
-                ? Colors.transparent
-                : Colors.transparent),
-        dayOverlayColor: WidgetStateColor.resolveWith(
-            (states) => states.contains(WidgetState.selected)
-                ? Colors.white.withOpacity(0.2) // subtle highlight
-                : Colors.grey),
-
-        // Years
-        yearForegroundColor:
-            WidgetStateColor.resolveWith((states) => Colors.white),
-        yearBackgroundColor: WidgetStateColor.resolveWith((states) =>
-            states.contains(WidgetState.selected)
-                ? Colors.transparent
-                : Colors.transparent),
-        yearOverlayColor: WidgetStateColor.resolveWith((states) =>
-            states.contains(WidgetState.selected)
-                ? Colors.white.withOpacity(0.2)
-                : Colors.transparent),
-
-        // Today
-        todayForegroundColor:
-            WidgetStateColor.resolveWith((states) => Colors.white),
-        todayBackgroundColor:
-            WidgetStateColor.resolveWith((states) => Colors.transparent),
-
-        // Other elements
-        dividerColor: Colors.white,
-
-        shadowColor: Colors.transparent,
-        elevation: 0,
-        yearStyle: const TextStyle(color: Colors.white),
-      ),
+      datePickerTheme: const DatePickerThemeData(),
       bottomNavigationBarTheme:
           AppBottomNavigationBarTheme.bottomNavigationBarTheme,
       iconTheme: const IconThemeData(color: Colors.white));

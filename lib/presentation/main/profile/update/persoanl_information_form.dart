@@ -78,12 +78,13 @@ class PersoanlInformationForm extends StatelessWidget {
           ),
           Dimensions.heightMedium,
           InkWell(
-            onTap: validatorViewModel.showDatePicker,
+            onTap: validatorViewModel.showDatePickerH,
             child: InputText(
               controller: validatorViewModel.birthdayController,
               hintText: 'yyyy/mm/dd',
               autovalidateMode: AutovalidateMode.onUserInteraction,
               required: true,
+              simpleEnable: false,
               label: intl.birth_date,
               suffixIcon: const Icon(
                 Icons.date_range,
