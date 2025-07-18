@@ -10,11 +10,13 @@ class ActionCard extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
   final int? notifCount;
+  final VoidCallback? onTap;
   const ActionCard({
     required this.icon,
     required this.title,
     required this.subTitle,
     required this.iconColor,
+    this.onTap,
     this.notifCount,
     super.key,
   });
@@ -27,7 +29,7 @@ class ActionCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {},
+          onTap: onTap,
           child: Container(
             padding: Dimensions.paddingAllSmall,
             width: double.maxFinite,

@@ -3,9 +3,11 @@ import 'package:erudaxis/core/api/form_data_helper.dart';
 import 'package:erudaxis/core/api/from_json.dart';
 import 'package:erudaxis/models/base_model.dart';
 
+import '../../core/enum/facility_type.dart';
+
 class Facility extends BaseModel {
   String? name;
-  String? type;
+  FacilityType? type;
 
   Facility({
     required super.id,
@@ -21,7 +23,7 @@ class Facility extends BaseModel {
     }
     return Facility(
       id: FromJson.string(map['_id']),
-      type: FromJson.string(map['type']),
+      type: FacilityType.fromBackendValue(FromJson.string(map['type'])),
       name: FromJson.string(map['name']),
     );
   }

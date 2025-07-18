@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/statics_grid.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:erudaxis/widgets/main/home/dashboard/actions/action_card.dart';
@@ -8,6 +9,7 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../../interfaces/language/i_screen_with_localization.dart';
+import 'classes_view.dart';
 
 class ActionsView extends IScreenWithLocalization {
   const ActionsView({super.key});
@@ -25,6 +27,10 @@ class ActionsView extends IScreenWithLocalization {
           subTitle: intl.access_classes_groups,
           icon: Symbols.people_outline_rounded,
           iconColor: Colors.redAccent,
+          onTap: () => navigateTo(
+            context,
+            const ClassesView(),
+          ),
         ),
         ActionCard(
           title: intl.schedule,

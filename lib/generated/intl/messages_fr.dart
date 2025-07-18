@@ -300,6 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_title": MessageLookupByLibrary.simpleMessage("Paramètre"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("Bleu ciel"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("Gris ardoise"),
+    "sombre": MessageLookupByLibrary.simpleMessage("Sombre"),
+    "son": MessageLookupByLibrary.simpleMessage("Son"),
     "statistics": MessageLookupByLibrary.simpleMessage("Statistiques"),
     "steel_blue": MessageLookupByLibrary.simpleMessage("Bleu acier"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage(

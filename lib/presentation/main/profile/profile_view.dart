@@ -18,6 +18,8 @@ import '../../utils/app/app_package_info.dart';
 import '../../utils/statics_grid.dart';
 import '../../utils/title_widget.dart';
 import 'language/language_view.dart';
+import 'settings/sombre_mode.dart';
+import 'settings/sound_switch.dart';
 
 class ProfileView extends IScreenWithLocalization {
   const ProfileView({super.key});
@@ -38,16 +40,13 @@ class ProfileView extends IScreenWithLocalization {
                 icon: Icons.settings_outlined,
                 child: StatisticsGrid(
                   children: const [
-                    Card(
-                      elevation: 0,
-                    ),
-                    Card(
-                      elevation: 0,
-                    )
+                    SombreMode(),
+                    SoundSwitch(),
                   ],
                   screenWidth: Dimensions.screenWidth,
                 ),
               ),
+              Dimensions.heightSmall,
               TitleWidget(
                 title: intl.settings_title,
                 icon: Icons.settings_outlined,

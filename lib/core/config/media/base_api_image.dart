@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../interfaces/i_show_image_viewer.dart';
-import '../../styles/app_colors.dart';
+import '../../../presentation/utils/navigator_utils.dart';
+import 'image_viewer.dart';
 
 abstract class BaseApiImage extends StatelessWidget
     implements IShowImageViewer {
@@ -13,7 +14,7 @@ abstract class BaseApiImage extends StatelessWidget
   final bool isProfilePicture;
   final BorderRadius? borderRadius;
   final bool hasImageView;
-  final Color color;
+  final Color? color;
   final String? placeholderAssetPath;
   final EdgeInsets? padding;
 
@@ -32,7 +33,7 @@ abstract class BaseApiImage extends StatelessWidget
     this.border,
     this.boxShadow,
     this.padding,
-    this.color = AppColors.accentColor,
+    this.color,
     this.placeholderAssetPath,
   });
 
@@ -81,8 +82,17 @@ abstract class BaseApiImage extends StatelessWidget
   }
 
   @override
-  void imageViewer(BuildContext context,
-      {required ImageProvider<Object> imageProvider}) {}
+  void imageViewer(
+    BuildContext context, {
+    required ImageProvider<Object> imageProvider,
+  }) {
+    navigateTo(
+      context,
+      ImageViewer(
+        imageProvider: imageProvider,
+      ),
+    );
+  }
 
   Widget placeHolderImage(BuildContext context, {bool isLoading = false});
 }

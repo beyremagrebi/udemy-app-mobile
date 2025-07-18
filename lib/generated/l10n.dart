@@ -1210,6 +1210,16 @@ class S {
     return Intl.message('Slate Gray', name: 'slate_gray', desc: '', args: []);
   }
 
+  /// `Dark`
+  String get sombre {
+    return Intl.message('Dark', name: 'sombre', desc: '', args: []);
+  }
+
+  /// `Sound`
+  String get son {
+    return Intl.message('Sound', name: 'son', desc: '', args: []);
+  }
+
   /// `Statistics`
   String get statistics {
     return Intl.message('Statistics', name: 'statistics', desc: '', args: []);

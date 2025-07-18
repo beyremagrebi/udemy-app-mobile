@@ -274,6 +274,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_title": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "sky_blue": MessageLookupByLibrary.simpleMessage("أزرق سماوي"),
     "slate_gray": MessageLookupByLibrary.simpleMessage("رمادي صخري"),
+    "sombre": MessageLookupByLibrary.simpleMessage("داكن"),
+    "son": MessageLookupByLibrary.simpleMessage("الصوت"),
     "statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
     "steel_blue": MessageLookupByLibrary.simpleMessage("أزرق فولاذي"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage("رفيق دراستك"),

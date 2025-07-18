@@ -1,6 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:erudaxis/core/config/media/image_viewer.dart';
-import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -31,16 +29,6 @@ class ApiImageWidget extends BaseApiImage {
   @override
   Widget build(BuildContext context) {
     return _buildCachedNetworkImage(context);
-  }
-
-  @override
-  void imageViewer(BuildContext context,
-      {required ImageProvider<Object> imageProvider}) {
-    navigateTo(
-        context,
-        ImageViewer(
-          imageProvider: imageProvider,
-        ));
   }
 
   @override
