@@ -1,8 +1,8 @@
 import '../../core/enum/facility_type.dart';
 import '../base_model.dart';
-import 'scholarity/college_config.dart';
-import 'scholarity/lycee_config.dart';
-import 'scholarity/training_center_config.dart';
+import '../college/college_config.dart';
+import '../lycee/lycee_config.dart';
+import '../training_center/training_center_config.dart';
 
 abstract class ScholarityConfigBase extends BaseModel {
   ScholarityConfigBase({required super.id});

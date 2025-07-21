@@ -37,8 +37,10 @@ class ApiImageWidget extends BaseApiImage {
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
 
     return InkWell(
-      onTap: () =>
-          imageViewer(context, imageProvider: AssetImage(finalPlaceholderPath)),
+      onTap: () => hasImageView
+          ? imageViewer(context,
+              imageProvider: AssetImage(finalPlaceholderPath))
+          : null,
       child: isLoading
           ? Container(
               width: width,

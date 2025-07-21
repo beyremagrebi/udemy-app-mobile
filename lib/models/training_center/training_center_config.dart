@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-import '../../../core/api/from_json.dart';
-import '../base_scolarity_config.dart';
-import '../facility.dart';
+import '../../core/api/from_json.dart';
+import '../base/base_scolarity_config.dart';
+import '../global/facility.dart';
 
 class TrainingCenterConfig extends ScholarityConfigBase {
   Facility? facility;

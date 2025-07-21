@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:erudaxis/core/config/media/exstension.dart';
 
-import '../../../core/api/from_json.dart';
-import '../base_scolarity_config.dart';
+import '../../core/api/from_json.dart';
+import '../base/base_scolarity_config.dart';
 
 class LyceeConfig extends ScholarityConfigBase {
   String? enterpriseId;
