@@ -1,6 +1,7 @@
 import 'package:erudaxis/core/config/media/asset_image_widget.dart';
 import 'package:erudaxis/core/constants/assets.dart';
 import 'package:erudaxis/core/enum/role.dart';
+import 'package:erudaxis/models/base/base_class.dart';
 import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/presentation/utils/limited_list_view.dart';
@@ -12,10 +13,12 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/styles/dimensions.dart';
+import '../../../../utils/colors_generator.dart';
 import '../../../../utils/icon_box.dart';
 
 class ClasseDetails extends StatelessWidget {
-  const ClasseDetails({super.key});
+  final BaseClass classe;
+  const ClasseDetails({required this.classe, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +44,18 @@ class ClasseDetails extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const IconBox(
-                        icon: Icons.square_foot_outlined,
+                      IconBox(
+                        icon: getIconFromName(classe.name ?? ''),
                         size: 50,
-                        iconBackgroundColor: Colors.blueAccent,
+                        iconBackgroundColor:
+                            getColorFromHash(classe.name.hashCode),
                       ),
                       Dimensions.widthSmall,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Terminale S - Groupe A',
+                            classe.name?.toUpperCase() ?? '',
                             style: textTheme.titleMedium?.copyWith(),
                           ),
                           Text(

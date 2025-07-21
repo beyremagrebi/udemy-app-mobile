@@ -6,5 +6,8 @@ class ClassTcServices extends ClassServices<ClassTc> {
 
   @override
   String get getClassesUrl =>
-      '$endpoint/$institution/classes/byRole/$scholarityConfigId';
+      '$endpoint/$institution/classes/byRole-pagination/$scholarityConfigId';
+
+  @override
+  Map<String, dynamic>? get getClassQueryParams => {'page': 1, 'limit': 1000};
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../interfaces/i_api_service.dart';
 import '../../interfaces/i_download_service.dart';
@@ -25,7 +26,16 @@ class ApiService implements IApiService {
           ),
         ) {
     _downloadService = DownloadService(_dio);
-    _dio.interceptors.add(TokenInterceptor(_dio));
+    _dio.interceptors.addAll([
+      TokenInterceptor(_dio),
+      LogInterceptor(
+        responseHeader: false,
+        requestHeader: false,
+        request: false,
+        responseBody: true,
+        logPrint: (obj) => debugPrint(obj.toString()),
+      ),
+    ]);
   }
 
   // Expose download service

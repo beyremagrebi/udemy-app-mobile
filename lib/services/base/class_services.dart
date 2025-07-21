@@ -12,11 +12,12 @@ abstract class ClassServices<T extends BaseClass> extends BaseService<T> {
   T Function(dynamic json) get fromMapFunction => _fromMap;
 
   String get getClassesUrl;
-
+  Map<String, dynamic>? get getClassQueryParams;
   Future<ApiResponse<List<T>>> getClasses() async {
     return ApiService.instance.request<List<T>>(
       url: getClassesUrl,
-      fromJson: (json) => (json as List).map<T>(_fromMap).toList(),
+      queryParameters: getClassQueryParams,
+      fromJson: (json) => (json['data'] as List).map<T>(_fromMap).toList(),
     );
   }
 }

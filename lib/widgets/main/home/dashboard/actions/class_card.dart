@@ -1,6 +1,7 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/models/base/base_class.dart';
+import 'package:erudaxis/presentation/utils/colors_generator.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,12 @@ class ClassCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            navigateTo(context, const ClasseDetails());
+            navigateTo(
+              context,
+              ClasseDetails(
+                classe: classe,
+              ),
+            );
           },
           child: Padding(
             padding: Dimensions.paddingAllSmall,
@@ -31,10 +37,11 @@ class ClassCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const IconBox(
-                      icon: Icons.square_foot_outlined,
+                    IconBox(
+                      icon: getIconFromName(classe.name ?? ''),
                       size: 50,
-                      iconBackgroundColor: Colors.blueAccent,
+                      iconBackgroundColor:
+                          getColorFromHash(classe.name.hashCode),
                     ),
                     Dimensions.widthSmall,
                     Expanded(

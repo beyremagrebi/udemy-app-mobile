@@ -1,10 +1,14 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/interfaces/i_token_manager.dart';
 import 'package:erudaxis/models/auth/login_info.dart';
 import 'package:erudaxis/presentation/utils/preferences/access_token_preference.dart';
 import 'package:erudaxis/presentation/utils/preferences/refresh_token_preference.dart';
+import 'package:erudaxis/presentation/utils/snackbar_utils.dart';
+import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/test.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:provider/provider.dart';
 
 class TokenManager implements ITokenManager {
   static String? accessToken;
@@ -37,20 +41,28 @@ class TokenManager implements ITokenManager {
   }
 
   @override
-  Future<void> refreshTken() async {
+  Future<bool> refreshTken() async {
+    bool success = false;
     await globalApiCall(
       apiCall: AuthService.shared.refreshToken(
         refreshToken: refreshToken,
       ),
       onSuccess: (loginInfo) async {
         if (loginInfo.accessToken != null && loginInfo.refreshToken != null) {
-          updateTokens(
+          await updateTokens(
             newAccessToken: loginInfo.accessToken!,
             newRefreshToken: loginInfo.refreshToken!,
           );
         }
+        success = true;
+      },
+      onError: (error) {
+        mainContext.read<SessionManager>().logout().whenComplete(() {
+          SnackBarUtils.showSuccess(mainContext, 'Session Expired');
+        });
       },
     );
+    return success;
   }
 
   @override
