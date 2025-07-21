@@ -24,14 +24,12 @@ abstract class BaseViewModel extends ChangeNotifier {
     void Function(String error)? onError,
   }) async {
     _setApiStatus(ApiStatus.loading);
-    if (displayLoading) {
-      mainContext.loaderOverlay.show(
-        widgetBuilder: (progress) => Visibility(
-          visible: displayLoading,
-          child: const SpinLoading(),
-        ),
-      );
-    }
+    mainContext.loaderOverlay.show(
+      widgetBuilder: (progress) => Visibility(
+        visible: displayLoading,
+        child: const SpinLoading(),
+      ),
+    );
     final jsonResponse = await apiCall;
     if (jsonResponse.isSuccess) {
       _setApiStatus(ApiStatus.success);
@@ -44,9 +42,10 @@ abstract class BaseViewModel extends ChangeNotifier {
     } else {
       _setApiStatus(ApiStatus.error);
       onError?.call(jsonResponse.errorMessage.toString());
-      if (displayError) {
-        if (context.mounted) {
-          mainContext.loaderOverlay.hide();
+
+      if (context.mounted) {
+        mainContext.loaderOverlay.hide();
+        if (displayError) {
           CustomAlertDialog.showErrorDialog(
             context: mainContext,
             title: intl.error,

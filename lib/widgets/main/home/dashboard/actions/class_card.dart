@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/models/base/base_class.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,8 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import '../../../../../presentation/main/home/dashboard/actions/classe_details.dart';
 
 class ClassCard extends StatelessWidget {
-  const ClassCard({super.key});
+  final BaseClass classe;
+  const ClassCard({required this.classe, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class ClassCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Terminale S - Groupe A',
+                          classe.name!.toUpperCase(),
                           style: textTheme.titleMedium?.copyWith(),
                         ),
                         Text(
@@ -65,7 +67,7 @@ class ClassCard extends StatelessWidget {
                             ),
                             Dimensions.widthxSmall,
                             Text(
-                              '4',
+                              classe.students?.length.toString() ?? '0',
                               style: textTheme.labelSmall?.copyWith(
                                 color: Colors.white70,
                               ),

@@ -6,19 +6,25 @@ import 'package:erudaxis/providers/main/home/class_view_model.dart';
 import 'package:erudaxis/widgets/common/form/input_text.dart';
 import 'package:erudaxis/widgets/common/gradient_app_bar_widget.dart';
 import 'package:erudaxis/widgets/main/home/dashboard/actions/class_card.dart';
+import 'package:erudaxis/widgets/shimmer/class_card_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../utils/async/async_model_list_builder.dart';
+
 class ClassesView extends StatelessWidget {
-  const ClassesView({super.key});
+  final bool displayAppBar;
+  const ClassesView({super.key, this.displayAppBar = true});
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBarGradient(
-        centerTitle: true,
-        title: Text(intl.my_classes),
-      ),
+      appBar: displayAppBar
+          ? AppBarGradient(
+              centerTitle: true,
+              title: Text(intl.my_classes),
+            )
+          : null,
       body: Column(
         children: [
           GradientAppBarWidget(
@@ -38,13 +44,19 @@ class ClassesView extends StatelessWidget {
             create: ClassViewModel.new,
             child: Consumer<ClassViewModel>(
               builder: (context, viewModel, child) => Expanded(
-                child: ListView.separated(
+                  child: AsyncModelListBuilder(
+                viewModel: viewModel,
+                models: viewModel.classes,
+                shimmer: ClassCardShimmer(),
+                builder: (classes) => ListView.separated(
                   separatorBuilder: (context, index) => Dimensions.heightSmall,
                   padding: Dimensions.paddingAllMedium,
-                  itemCount: 5,
-                  itemBuilder: (context, index) => const ClassCard(),
+                  itemCount: classes.length,
+                  itemBuilder: (context, index) => ClassCard(
+                    classe: classes[index],
+                  ),
                 ),
-              ),
+              )),
             ),
           )
         ],

@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/enum/drawer_item.dart';
+import 'package:erudaxis/presentation/main/home/dashboard/actions/classes_view.dart';
 import 'package:erudaxis/presentation/main/home/home_view.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
@@ -27,7 +28,9 @@ class DrawerViewModel extends BaseViewModel {
 
       case DrawerItem.classes:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Classes View'));
+        selectedWidget = const ClassesView(
+          displayAppBar: false,
+        );
         break;
 
       case DrawerItem.subjects:
