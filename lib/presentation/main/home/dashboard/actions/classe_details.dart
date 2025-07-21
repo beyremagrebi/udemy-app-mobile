@@ -194,6 +194,7 @@ class ClasseDetails extends StatelessWidget {
     required String fullName,
   }) {
     return Card(
+      elevation: 0,
       margin: const EdgeInsets.only(bottom: Dimensions.s),
       child: Container(
         padding: Dimensions.paddingAllSmall,

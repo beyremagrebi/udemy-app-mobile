@@ -4,7 +4,7 @@ import '../../core/api/from_json.dart';
 import '../base/base_scolarity_config.dart';
 import '../global/facility.dart';
 
-class TrainingCenterConfig extends ScholarityConfigBase {
+class TrainingCenterConfig extends BaseScolarityConfig {
   Facility? facility;
   String? enterpriseId;
   List<String>? subjects;

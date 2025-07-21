@@ -4,10 +4,10 @@ import '../college/college_config.dart';
 import '../lycee/lycee_config.dart';
 import '../training_center/training_center_config.dart';
 
-abstract class ScholarityConfigBase extends BaseModel {
-  ScholarityConfigBase({required super.id});
+abstract class BaseScolarityConfig extends BaseModel {
+  BaseScolarityConfig({required super.id});
 
-  factory ScholarityConfigBase.fromMap(dynamic map, FacilityType type) {
+  factory BaseScolarityConfig.fromMap(dynamic map, FacilityType type) {
     switch (type) {
       case FacilityType.trainingCenter:
         return TrainingCenterConfig.fromMap(map);

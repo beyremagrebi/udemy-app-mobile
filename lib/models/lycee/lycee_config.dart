@@ -4,7 +4,7 @@ import 'package:erudaxis/core/config/media/exstension.dart';
 import '../../core/api/from_json.dart';
 import '../base/base_scolarity_config.dart';
 
-class LyceeConfig extends ScholarityConfigBase {
+class LyceeConfig extends BaseScolarityConfig {
   String? enterpriseId;
   List<String>? pointage;
   List<String>? pointageConfig;

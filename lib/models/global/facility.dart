@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:erudaxis/core/api/form_data_helper.dart';
 import 'package:erudaxis/core/api/from_json.dart';
+import 'package:erudaxis/models/base/base_scolarity_config.dart';
 import 'package:erudaxis/models/base_model.dart';
 
 import '../../core/enum/facility_type.dart';
@@ -8,10 +9,12 @@ import '../../core/enum/facility_type.dart';
 class Facility extends BaseModel {
   String? name;
   FacilityType? type;
+  BaseScolarityConfig? scholarityConfigId;
 
   Facility({
     required super.id,
     this.name,
+    this.scholarityConfigId,
     this.type,
   });
 
@@ -24,6 +27,15 @@ class Facility extends BaseModel {
     return Facility(
       id: FromJson.string(map['_id']),
       type: FacilityType.fromBackendValue(FromJson.string(map['type'])),
+      scholarityConfigId: FromJson.model(
+        map['scholarityConfigId'],
+        (json) => BaseScolarityConfig.fromMap(
+          json,
+          FacilityType.fromBackendValue(
+            FromJson.string(map['type']),
+          )!,
+        ),
+      ),
       name: FromJson.string(map['name']),
     );
   }
