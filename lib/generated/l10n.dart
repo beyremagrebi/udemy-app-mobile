@@ -550,6 +550,16 @@ class S {
     return Intl.message('Error', name: 'error', desc: '', args: []);
   }
 
+  /// `Establishment`
+  String get establishment {
+    return Intl.message(
+      'Establishment',
+      name: 'establishment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exams`
   String get exams {
     return Intl.message('Exams', name: 'exams', desc: '', args: []);

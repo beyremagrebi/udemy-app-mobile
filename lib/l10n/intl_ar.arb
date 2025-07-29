@@ -71,6 +71,7 @@
     "enterEmail": "أدخل البريد الإلكتروني",
     "enterPassword": "أدخل كلمة المرور",
     "error": "خطأ",
+    "establishment": "مؤسسة",
     "exams": "الامتحانات",
     "fieldRequired": "حقل {fieldName} مطلوب",
     "fields_do_not_match": "الحقول غير متطابقة",

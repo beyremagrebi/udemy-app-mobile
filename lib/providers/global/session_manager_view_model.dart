@@ -18,9 +18,9 @@ class SessionManager extends BaseViewModel {
   Future<void> loadFacility(String? id) async {
     await makeApiCall(
       apiCall: FacilityServices.shared.getFacilityById(id),
-      onSuccess: (model) {
+      onSuccess: (model) async {
         facility = model;
-        FacilityManager.initilizeFacility(model);
+        await FacilityManager.initilizeFacility(model);
       },
     );
   }
@@ -32,7 +32,6 @@ class SessionManager extends BaseViewModel {
           UserService.shared.getUserById(TokenManager.extractIdFromToken()),
       onSuccess: (model) async {
         user = model;
-        await loadFacility(model.facility?.id);
       },
       onError: (_) {
         throw Exception('Could not initialize user');
@@ -45,6 +44,7 @@ class SessionManager extends BaseViewModel {
       apiCall: AuthService.shared.logout(),
       onSuccess: (_) async {
         await TokenManager.shared.clear();
+        FacilityManager.clear();
         if (context.mounted) {
           navigateToDeleteTree(mainContext, const LoginView());
         }

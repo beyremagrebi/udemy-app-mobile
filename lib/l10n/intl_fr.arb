@@ -71,6 +71,7 @@
     "enterEmail": "Entrez votre email",
     "enterPassword": "Entrez votre mot de passe",
     "error": "Erreur",
+    "establishment": "Établissement",
     "exams": "Examens",
     "fieldRequired": "{fieldName} est requis",
     "fields_do_not_match": "Les champs ne correspondent pas",

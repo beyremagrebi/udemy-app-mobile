@@ -150,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enterPassword": MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
     "error": MessageLookupByLibrary.simpleMessage("خطأ"),
+    "establishment": MessageLookupByLibrary.simpleMessage("مؤسسة"),
     "exams": MessageLookupByLibrary.simpleMessage("الامتحانات"),
     "fieldRequired": m1,
     "fields_do_not_match": MessageLookupByLibrary.simpleMessage(
