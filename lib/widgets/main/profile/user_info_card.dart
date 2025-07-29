@@ -1,6 +1,8 @@
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/presentation/utils/async/async_model_builder.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,11 +13,12 @@ import '../../../core/styles/dimensions.dart';
 import '../../../presentation/main/profile/update/update_profile_view.dart';
 import '../../../providers/global/session_manager_view_model.dart';
 
-class UserInfoCard extends StatelessWidget {
+class UserInfoCard extends IScreenWithLocalization {
   const UserInfoCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     return Card(
       elevation: 0,
       margin: const EdgeInsets.only(
@@ -78,9 +81,12 @@ class UserInfoCard extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '1c12',
+                              viewModel.user?.role
+                                      ?.localizedName()
+                                      .toUpperCase() ??
+                                  intl.error,
                               style: textTheme.labelSmall?.copyWith(
-                                color: Colors.white,
+                                color: Colors.grey.shade300,
                               ),
                             ),
                             AsyncModelBuilder(
@@ -91,7 +97,7 @@ class UserInfoCard extends StatelessWidget {
                                 FacilityManager.facility.name?.toUpperCase() ??
                                     '',
                                 style: textTheme.labelSmall?.copyWith(
-                                  color: Colors.white,
+                                  color: Colors.grey.shade300,
                                 ),
                               ),
                             ),

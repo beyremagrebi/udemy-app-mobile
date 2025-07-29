@@ -1,10 +1,31 @@
+import '../constants/constant.dart';
+
 enum Role {
   superAdmin,
   companyAdmin,
   collaborator,
   instructor,
   responsable,
-  student,
+  student;
+
+  const Role();
+
+  String localizedName() {
+    switch (this) {
+      case Role.superAdmin:
+        return intl.role_super_admin;
+      case Role.companyAdmin:
+        return intl.role_company_admin;
+      case Role.collaborator:
+        return intl.role_collaborator;
+      case Role.instructor:
+        return intl.role_instructor;
+      case Role.responsable:
+        return intl.role_responsable;
+      case Role.student:
+        return intl.role_student;
+    }
+  }
 }
 
 extension RoleExtension on Role {

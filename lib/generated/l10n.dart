@@ -1160,6 +1160,61 @@ class S {
     return Intl.message('Required', name: 'required', desc: '', args: []);
   }
 
+  /// `Collaborator`
+  String get role_collaborator {
+    return Intl.message(
+      'Collaborator',
+      name: 'role_collaborator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company Admin`
+  String get role_company_admin {
+    return Intl.message(
+      'Company Admin',
+      name: 'role_company_admin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instructor`
+  String get role_instructor {
+    return Intl.message(
+      'Instructor',
+      name: 'role_instructor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manager`
+  String get role_responsable {
+    return Intl.message(
+      'Manager',
+      name: 'role_responsable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Student`
+  String get role_student {
+    return Intl.message('Student', name: 'role_student', desc: '', args: []);
+  }
+
+  /// `Super Admin`
+  String get role_super_admin {
+    return Intl.message(
+      'Super Admin',
+      name: 'role_super_admin',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Rose Pink`
   String get rose_pink {
     return Intl.message('Rose Pink', name: 'rose_pink', desc: '', args: []);

@@ -289,6 +289,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Se souvenir de moi"),
     "required": MessageLookupByLibrary.simpleMessage("Obligatoire"),
+    "role_collaborator": MessageLookupByLibrary.simpleMessage("Collaborateur"),
+    "role_company_admin": MessageLookupByLibrary.simpleMessage(
+      "Administrateur d\'\'entreprise",
+    ),
+    "role_instructor": MessageLookupByLibrary.simpleMessage("Formateur"),
+    "role_responsable": MessageLookupByLibrary.simpleMessage("Responsable"),
+    "role_student": MessageLookupByLibrary.simpleMessage("Étudiant"),
+    "role_super_admin": MessageLookupByLibrary.simpleMessage(
+      "Super Administrateur",
+    ),
     "rose_pink": MessageLookupByLibrary.simpleMessage("Rose clair"),
     "royal_blue": MessageLookupByLibrary.simpleMessage("Bleu royal"),
     "royal_purple": MessageLookupByLibrary.simpleMessage("Violet royal"),
