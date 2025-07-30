@@ -8,11 +8,15 @@ class TitleWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final IconData icon;
   final Widget? materialPage;
+  final int? totalItem;
+  final int? limitedList;
   const TitleWidget({
     required this.child,
     required this.title,
     required this.icon,
     this.materialPage,
+    this.totalItem,
+    this.limitedList = 5,
     super.key,
     this.onTap,
   });
@@ -42,11 +46,7 @@ class TitleWidget extends StatelessWidget {
                   ),
                 ),
                 if (materialPage != null) ...[
-                  const Expanded(child: Dimensions.widthSmall),
-                  Text(
-                    intl.seeMore,
-                    style: textTheme.labelSmall,
-                  ),
+                  if (totalItem != null) ...[],
                   const Icon(
                     Icons.navigate_next_outlined,
                     size: 15,

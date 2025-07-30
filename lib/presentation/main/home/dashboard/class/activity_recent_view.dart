@@ -16,9 +16,11 @@ class ActivityRecentView extends StatelessWidget {
       child: LimitedListView(
         separator: Dimensions.heightSmall,
         children: [
-          _buildActivityRecent(),
-          _buildActivityRecent(),
-          _buildActivityRecent(),
+          _buildActivityRecent(courseName: 'Math'),
+          _buildActivityRecent(courseName: 'Physique'),
+          _buildActivityRecent(courseName: 'science informatique '),
+          _buildActivityRecent(courseName: 'Technique de comunication '),
+          _buildActivityRecent(courseName: 'Anglais'),
         ],
         itemHeight: 55,
         separatorHeight: Dimensions.s,
@@ -30,27 +32,40 @@ class ActivityRecentView extends StatelessWidget {
     );
   }
 
-  Widget _buildActivityRecent() {
+  Widget _buildActivityRecent({required String courseName}) {
     return Card(
       elevation: 0,
       child: Container(
         width: double.maxFinite,
+        height: 55,
         padding: Dimensions.paddingAllSmall,
         child: Row(
           children: [
-            IconBox(icon: getCourseIconFromName('')),
+            IconBox(
+              icon: getCourseIconFromName(courseName),
+              iconBackgroundColor: Colors.green,
+              size: 32,
+            ),
             Dimensions.widthSmall,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Nouveau cours ajouté',
-                  style: textTheme.titleSmall,
-                ),
-                Text('Il y a 2 heures',
-                    style:
-                        textTheme.labelSmall?.copyWith(color: Colors.white38)),
-              ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Nouveau cours ajouté ($courseName)',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.titleSmall,
+                  ),
+                  Text(
+                    'Il y a 2 heures',
+                    style: textTheme.labelSmall?.copyWith(
+                      color: Colors.white38,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

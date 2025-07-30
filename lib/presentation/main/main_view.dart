@@ -1,11 +1,14 @@
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/presentation/admin/facility_view.dart';
 import 'package:erudaxis/presentation/main/drawer/drawer_view.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
 
+import '../../providers/global/session_manager_view_model.dart';
 import '../../providers/main/bottom_navigation_view_model.dart';
 import '../../widgets/main/transparent_navigation_bar_widget.dart';
 import '../utils/app_bar_gradient.dart';
@@ -19,8 +22,9 @@ class MainView extends IScreenWithLocalization {
   @override
   Widget buildLocalized(
       BuildContext context, LanguageViewModel languageViewModel) {
-    return Consumer2<BottomNavigationViewModel, DrawerViewModel>(
-      builder: (context, viewModel, drawerViewModel, child) {
+    return Consumer3<BottomNavigationViewModel, DrawerViewModel,
+        SessionManager>(
+      builder: (context, viewModel, drawerViewModel, sessionManager, child) {
         return AppScaffold(
           extendBody: true,
           appBar: AppBarGradient(
@@ -28,6 +32,34 @@ class MainView extends IScreenWithLocalization {
             title: AppBarWidget(
               drawerViewModel: drawerViewModel,
             ),
+            actions: [
+              ...[
+                sessionManager.valueByRole<Widget?>(
+                  superAdmin: IconButton(
+                    onPressed: () {
+                      navigateTo(
+                        context,
+                        FacilityView(sessionManager: sessionManager),
+                      );
+                    },
+                    icon: const Icon(Icons.apartment_outlined),
+                  ),
+                  companyAdmin: IconButton(
+                    onPressed: () {
+                      navigateTo(
+                        context,
+                        FacilityView(sessionManager: sessionManager),
+                      );
+                    },
+                    icon: const Icon(Icons.apartment_outlined),
+                  ),
+                  collaborator: null,
+                  instructor: null,
+                  student: null,
+                  responsable: null,
+                )
+              ].whereType<Widget>(),
+            ],
           ),
           body: Scaffold(
             key: drawerViewModel.scaffoldKey,

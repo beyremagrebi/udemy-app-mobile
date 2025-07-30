@@ -39,7 +39,7 @@ class AppStarter {
             }
           } else {
             if (context.mounted) {
-              navigateTo(
+              navigateToDeleteTree(
                 context,
                 FacilityView(
                   sessionManager: sessionManager,

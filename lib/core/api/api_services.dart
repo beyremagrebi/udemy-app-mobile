@@ -18,12 +18,10 @@ class ApiService implements IApiService {
   ApiService._singleton()
       : _dio = Dio(
           BaseOptions(
-            connectTimeout: const Duration(seconds: 10),
-            sendTimeout: const Duration(minutes: 1),
-            receiveTimeout: const Duration(minutes: 1),
-            validateStatus: (status) =>
-                !(status == 498 || status == 500) && status != null,
-          ),
+              connectTimeout: const Duration(seconds: 10),
+              sendTimeout: const Duration(minutes: 1),
+              receiveTimeout: const Duration(minutes: 1),
+              validateStatus: (status) => status != null),
         ) {
     _downloadService = DownloadService(_dio);
     _dio.interceptors.addAll([

@@ -90,7 +90,8 @@ class User extends BaseModel {
     map.add('cin', cin);
     map.add('birthday', birthday);
     map.add('facility', facility?.id);
-    map.add('ownedFacilities', ownedFacilities);
+    map.add('ownedFacilities',
+        ownedFacilities?.map((facility) => facility.id).toList() ?? []);
     map.add(
       'gender',
       gender?.toBackendValue(),
