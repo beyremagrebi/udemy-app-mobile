@@ -24,4 +24,11 @@ abstract class BaseClass extends BaseModel {
         return ClassCollege.fromMap(map);
     }
   }
+
+  bool get isCollege => FacilityManager.facility.type == FacilityType.college;
+
+  bool get isLycee => FacilityManager.facility.type == FacilityType.lycee;
+
+  bool get isTtrainingCenter =>
+      FacilityManager.facility.type == FacilityType.trainingCenter;
 }

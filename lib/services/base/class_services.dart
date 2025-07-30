@@ -17,7 +17,8 @@ abstract class ClassServices<T extends BaseClass> extends BaseService<T> {
     return ApiService.instance.request<List<T>>(
       url: getClassesUrl,
       queryParameters: getClassQueryParams,
-      fromJson: (json) => (json['data'] as List).map<T>(_fromMap).toList(),
+      dataKey: 'data',
+      fromJson: (json) => (json as List).map<T>(_fromMap).toList(),
     );
   }
 }

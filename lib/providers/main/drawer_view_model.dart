@@ -1,6 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/enum/drawer_item.dart';
-import 'package:erudaxis/presentation/main/home/dashboard/actions/classes_view.dart';
+import 'package:erudaxis/presentation/main/home/dashboard/class/classes_view.dart';
 import 'package:erudaxis/presentation/main/home/home_view.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';

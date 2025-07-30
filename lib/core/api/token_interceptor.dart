@@ -20,9 +20,12 @@ class TokenInterceptor extends Interceptor {
           return handler.next(err);
         }
 
+        await TokenManager.shared.load();
+
         final newRequest = _createRetryRequest(err.requestOptions);
         newRequest.headers['Authorization'] =
             'Bearer ${TokenManager.accessToken}';
+
         final retryResponse = await _dio.fetch<dynamic>(newRequest);
         return handler.resolve(retryResponse);
       } on Exception catch (e) {

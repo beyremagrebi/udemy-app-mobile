@@ -8,6 +8,55 @@ Color getColorFromHash(int hash) {
   return Color.fromARGB(255, r, g, b).withOpacity(1);
 }
 
+IconData getCourseIconFromName(String name) {
+  final lower = name.toLowerCase();
+
+  if (lower.contains('math') ||
+      lower.contains('algebra') ||
+      lower.contains('geometry')) {
+    return Symbols.calculate;
+  } else if (lower.contains('science') ||
+      lower.contains('physic') ||
+      lower.contains('chemistry')) {
+    return Symbols.science;
+  } else if (lower.contains('biology') || lower.contains('bio')) {
+    return Symbols.biotech;
+  } else if (lower.contains('history') || lower.contains('philosophy')) {
+    return Symbols.history_edu;
+  } else if (lower.contains('language') ||
+      lower.contains('literature') ||
+      lower.contains('french')) {
+    return Symbols.language;
+  } else if (lower.contains('computer') || lower.contains('informatics')) {
+    return Symbols.computer;
+  } else if (lower.contains('art') || lower.contains('drawing')) {
+    return Symbols.palette;
+  } else if (lower.contains('music')) {
+    return Symbols.mic_external_on;
+  } else if (lower.contains('geography')) {
+    return Symbols.explore;
+  } else if (lower.contains('sport') || lower.contains('physical')) {
+    return Symbols.sports_soccer;
+  } else if (lower.contains('psychology') || lower.contains('social')) {
+    return Symbols.psychology_alt;
+  } else if (lower.contains('economy') || lower.contains('finance')) {
+    return Symbols.eco;
+  } else if (lower.contains('engineering') || lower.contains('mechanic')) {
+    return Symbols.engineering;
+  } else if (lower.contains('logic') || lower.contains('structure')) {
+    return Symbols.account_tree;
+  } else if (lower.contains('innovation') || lower.contains('idea')) {
+    return Symbols.lightbulb;
+  } else if (lower.contains('terminal') ||
+      lower.contains('code') ||
+      lower.contains('programming')) {
+    return Symbols.terminal;
+  } else {
+    // Default icon for unknown course types
+    return Symbols.book_5;
+  }
+}
+
 IconData getIconFromName(String name) {
   final hash = name.hashCode.abs();
   final icons = [

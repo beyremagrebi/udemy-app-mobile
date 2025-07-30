@@ -12,6 +12,8 @@ class ClassTc extends BaseClass {
     required super.id,
     super.name,
     super.scholarityConfigId,
+    this.endDate,
+    this.startDate,
     super.students,
   });
   ClassTc.fromId(String? id) : super(id: id);
@@ -28,6 +30,12 @@ class ClassTc extends BaseClass {
       students: FromJson.modelList(
         map['students'],
         User.fromMap,
+      ),
+      startDate: FromJson.string(
+        map['startDate'],
+      ),
+      endDate: FromJson.string(
+        map['endDate'],
       ),
       scholarityConfigId: FromJson.model(
         map['scholarityConfigId'],

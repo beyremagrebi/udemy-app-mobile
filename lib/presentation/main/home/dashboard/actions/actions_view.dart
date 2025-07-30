@@ -9,7 +9,7 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../../interfaces/language/i_screen_with_localization.dart';
-import 'classes_view.dart';
+import '../class/classes_view.dart';
 
 class ActionsView extends IScreenWithLocalization {
   const ActionsView({super.key});

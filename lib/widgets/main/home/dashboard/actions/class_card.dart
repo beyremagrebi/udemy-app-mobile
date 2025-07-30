@@ -1,13 +1,16 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/models/base/base_class.dart';
+import 'package:erudaxis/models/training_center/class_tc.dart';
 import 'package:erudaxis/presentation/utils/colors_generator.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
+import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
-import '../../../../../presentation/main/home/dashboard/actions/classe_details.dart';
+import '../../../../../presentation/main/home/dashboard/class/classe_details.dart';
 
 class ClassCard extends StatelessWidget {
   final BaseClass classe;
@@ -58,12 +61,21 @@ class ClassCard extends StatelessWidget {
                             color: Colors.white70,
                           ),
                         ),
-                        Text(
-                          'Classe de Terminale Scientifique - Section A',
-                          style: textTheme.labelSmall?.copyWith(
-                            color: Colors.white70,
+                        if (classe.isTtrainingCenter) ...[
+                          Text(
+                            '${DateFormat("d MMMM y", 'fr').format(DateTime.tryParse((classe as ClassTc).startDate ?? '') ?? DateTime.now())}  - ${DateFormat("d MMMM y", 'fr').format(DateTime.tryParse((classe as ClassTc).endDate ?? '') ?? DateTime.now())}',
+                            style: textTheme.labelSmall?.copyWith(
+                              color: Colors.white70,
+                            ),
                           ),
-                        ),
+                        ] else ...[
+                          Text(
+                            FacilityManager.facility.name?.toUpperCase() ?? '',
+                            style: textTheme.labelSmall?.copyWith(
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ],
                         Dimensions.heightSmall,
                         Row(
                           children: [
