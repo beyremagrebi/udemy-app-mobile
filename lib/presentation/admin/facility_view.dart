@@ -9,6 +9,7 @@ import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/enum/facility_type.dart';
@@ -83,7 +84,7 @@ class FacilityView extends StatelessWidget {
                 child: Row(
                   children: [
                     const IconBox(
-                      icon: Icons.school,
+                      icon: Symbols.domain_rounded,
                       size: 50,
                     ),
                     Dimensions.widthMedium,

@@ -1,4 +1,3 @@
-import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/presentation/admin/facility_view.dart';
 import 'package:erudaxis/presentation/main/drawer/drawer_view.dart';
@@ -6,6 +5,7 @@ import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
 
@@ -34,17 +34,20 @@ class MainView extends IScreenWithLocalization {
               drawerViewModel: drawerViewModel,
             ),
             actions: [
-              const Icon(Icons.apartment_outlined),
               ...[
                 sessionManager.valueByRole<Widget?>(
-                  superAdmin: IconButton(
-                    onPressed: () {
+                  superAdmin: InkWell(
+                    onTap: () {
                       navigateTo(
                         context,
                         FacilityView(sessionManager: sessionManager),
                       );
                     },
-                    icon: const Icon(Icons.apartment_outlined),
+                    child: const Material(
+                      color: Colors.transparent,
+                      clipBehavior: Clip.hardEdge,
+                      child: Icon(Symbols.assured_workload_rounded),
+                    ),
                   ),
                   companyAdmin: InkWell(
                     onTap: () {
@@ -53,13 +56,10 @@ class MainView extends IScreenWithLocalization {
                         FacilityView(sessionManager: sessionManager),
                       );
                     },
-                    child: Material(
+                    child: const Material(
                       color: Colors.transparent,
                       clipBehavior: Clip.hardEdge,
-                      child: Padding(
-                        padding: Dimensions.paddingAllSmall,
-                        child: const Icon(Icons.apartment_outlined),
-                      ),
+                      child: Icon(Symbols.assured_workload_rounded),
                     ),
                   ),
                   collaborator: null,
@@ -68,6 +68,9 @@ class MainView extends IScreenWithLocalization {
                   responsable: null,
                 )
               ].whereType<Widget>(),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Symbols.notifications_none_rounded)),
             ],
           ),
           body: Scaffold(
