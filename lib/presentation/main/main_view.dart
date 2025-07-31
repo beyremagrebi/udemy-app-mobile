@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/presentation/admin/facility_view.dart';
 import 'package:erudaxis/presentation/main/drawer/drawer_view.dart';
@@ -33,6 +34,7 @@ class MainView extends IScreenWithLocalization {
               drawerViewModel: drawerViewModel,
             ),
             actions: [
+              const Icon(Icons.apartment_outlined),
               ...[
                 sessionManager.valueByRole<Widget?>(
                   superAdmin: IconButton(
@@ -44,14 +46,21 @@ class MainView extends IScreenWithLocalization {
                     },
                     icon: const Icon(Icons.apartment_outlined),
                   ),
-                  companyAdmin: IconButton(
-                    onPressed: () {
+                  companyAdmin: InkWell(
+                    onTap: () {
                       navigateTo(
                         context,
                         FacilityView(sessionManager: sessionManager),
                       );
                     },
-                    icon: const Icon(Icons.apartment_outlined),
+                    child: Material(
+                      color: Colors.transparent,
+                      clipBehavior: Clip.hardEdge,
+                      child: Padding(
+                        padding: Dimensions.paddingAllSmall,
+                        child: const Icon(Icons.apartment_outlined),
+                      ),
+                    ),
                   ),
                   collaborator: null,
                   instructor: null,

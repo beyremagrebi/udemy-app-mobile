@@ -48,6 +48,7 @@ class MainHeaderView extends IScreenWithLocalization {
                               style: textTheme.titleLarge?.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
+                                overflow: TextOverflow.ellipsis,
                                 fontSize: 20,
                               ),
                             ),
