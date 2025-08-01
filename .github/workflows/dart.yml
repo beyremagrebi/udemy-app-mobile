@@ -10,6 +10,16 @@ env:
    REPO_OWNER: proservices-tc
    REPO_NAME: Erudaxis-mobile
    GITHUB_RELASE: https://api.github.com/repos/proservices-tc/Erudaxis-mobile/releases/latest
+   CHANNEL_MESSAGES_KEY: channel_7a3f9e
+   CHANNEL_MESSAGES_NAME: Messages
+   CHANNEL_COURSES_KEY: channel_fa81cd
+   CHANNEL_COURSES_NAME: Courses
+   CHANNEL_ASSIGNMENTS_KEY: channel_2d94be
+   CHANNEL_ASSIGNMENTS_NAME: Assignments
+   CHANNEL_SCHEDULE_KEY: channel_a6b8c1
+   CHANNEL_SCHEDULE_NAME: Schedule
+   CHANNEL_GRADES_KEY: channel_ef420d
+   CHANNEL_GRADES_NAME: Grades
 
 jobs:
   build:
@@ -34,6 +44,16 @@ jobs:
            echo "REPO_NAME=${{ env.REPO_NAME }}" >> .env
            echo "GITHUB_TOKEN=${{ secrets.ERUDAXIS_TOKEN }}" >> .env
            echo "GITHUB_RELASE=${{env.GITHUB_RELASE}}" >> .env 
+           echo  "CHANNEL_MESSAGES_KEY" >> .env
+           echo "CHANNEL_MESSAGES_NAME" >> .env
+           echo " CHANNEL_COURSES_KEY" >> .env
+           echo "CHANNEL_COURSES_NAME" >> .env
+           echo "CHANNEL_ASSIGNMENTS_KEY" >> .env
+           echo "CHANNEL_ASSIGNMENTS_NAME" >> .env
+           echo "CHANNEL_SCHEDULE_KEY" >> .env
+           echo "CHANNEL_SCHEDULE_NAME" >> .env
+           echo "CHANNEL_GRADES_KEY" >> .env
+           echo "CHANNEL_GRADES_NAME" >> .env
           
       - name: Build release APK
         run: flutter build apk --release
