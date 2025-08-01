@@ -46,6 +46,15 @@ class UserService extends BaseService<User> implements IUserService {
   }
 
   @override
+  Future<ApiResponse<User>> updateFcmTOken(String? id, String? fcmToken) async {
+    return ApiService.instance.request<User>(
+      method: DioMethod.patch,
+      url: '${super.endpoint}/update-fcm-token/$id',
+      fromJson: fromMapFunction,
+    );
+  }
+
+  @override
   Future<ApiResponse<User>> updateUser(User user, String filePath) {
     return ApiService.instance.uploadFile(
       url: '$baseURl/update-profile/${user.id}',
