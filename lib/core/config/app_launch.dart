@@ -22,7 +22,7 @@ class AppLaunch {
         ),
       );
       await FirebaseApi.shared.initialNotification();
-      await ChannelNotification.createChannels();
+      await ChannelNotification.initialize();
       debugPrint('App initialization completed successfully');
     } on FileSystemException catch (err, stackTrace) {
       _handleError('Failed to load .env file', err, stackTrace);

@@ -50,6 +50,7 @@ class UserService extends BaseService<User> implements IUserService {
     return ApiService.instance.request<User>(
       method: DioMethod.patch,
       url: '${super.endpoint}/update-fcm-token/$id',
+      data: {'fcmToken': fcmToken},
       fromJson: fromMapFunction,
     );
   }
