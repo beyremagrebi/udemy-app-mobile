@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "192108255833",
+    "project_id": "erudaxis",
+    "storage_bucket": "erudaxis.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192108255833:android:85441d2e94fe7af6c1ef48",
+        "android_client_info": {
+          "package_name": "com.example.erudaxis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRjuFVzINdaK4DUg6WWMYtNU0QU0uOMSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

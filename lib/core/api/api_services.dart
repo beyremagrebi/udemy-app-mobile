@@ -18,10 +18,10 @@ class ApiService implements IApiService {
   ApiService._singleton()
       : _dio = Dio(
           BaseOptions(
-              connectTimeout: const Duration(seconds: 10),
+              connectTimeout: const Duration(seconds: 30),
               sendTimeout: const Duration(minutes: 1),
               receiveTimeout: const Duration(minutes: 1),
-              validateStatus: (status) => status != null),
+              validateStatus: (status) => !(status == 498) && status != null),
         ) {
     _downloadService = DownloadService(_dio);
     _dio.interceptors.addAll([
@@ -36,7 +36,6 @@ class ApiService implements IApiService {
     ]);
   }
 
-  // Expose download service
   IDownloadService get downloadService => _downloadService;
 
   @override

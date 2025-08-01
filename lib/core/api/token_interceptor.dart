@@ -14,17 +14,14 @@ class TokenInterceptor extends Interceptor {
   ) async {
     if (err.response?.statusCode == 498) {
       try {
-        final success = await TokenManager.shared.refreshTken();
+        final refreshAccessToken = await TokenManager.shared.refreshTken();
 
-        if (!success) {
+        if (refreshAccessToken == null) {
           return handler.next(err);
         }
 
-        await TokenManager.shared.load();
-
         final newRequest = _createRetryRequest(err.requestOptions);
-        newRequest.headers['Authorization'] =
-            'Bearer ${TokenManager.accessToken}';
+        newRequest.headers['Authorization'] = 'Bearer $refreshAccessToken';
 
         final retryResponse = await _dio.fetch<dynamic>(newRequest);
         return handler.resolve(retryResponse);

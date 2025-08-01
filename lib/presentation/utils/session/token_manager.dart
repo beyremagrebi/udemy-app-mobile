@@ -41,20 +41,20 @@ class TokenManager implements ITokenManager {
   }
 
   @override
-  Future<bool> refreshTken() async {
-    bool success = false;
+  Future<String?> refreshTken() async {
+    String? refreshAccessToken;
     await globalApiCall(
       apiCall: AuthService.shared.refreshToken(
         refreshToken: refreshToken,
       ),
       onSuccess: (loginInfo) async {
         if (loginInfo.accessToken != null && loginInfo.refreshToken != null) {
+          refreshAccessToken = loginInfo.accessToken;
           await updateTokens(
             newAccessToken: loginInfo.accessToken!,
             newRefreshToken: loginInfo.refreshToken!,
           );
         }
-        success = true;
       },
       onError: (error) {
         mainContext.read<SessionManager>().logout().whenComplete(() {
@@ -62,7 +62,7 @@ class TokenManager implements ITokenManager {
         });
       },
     );
-    return success;
+    return refreshAccessToken;
   }
 
   @override
