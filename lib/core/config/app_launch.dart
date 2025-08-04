@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:erudaxis/core/firebase/channel_notification.dart';
-import 'package:erudaxis/core/firebase/firebase_api.dart';
 import 'package:erudaxis/presentation/utils/app/app_package_info.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +20,7 @@ class AppLaunch {
           projectId: 'erudaxis',
         ),
       );
-      await FirebaseApi.shared.initialNotification();
-      await ChannelNotification.createChannels();
+      await ChannelNotification.initialize();
       debugPrint('App initialization completed successfully');
     } on FileSystemException catch (err, stackTrace) {
       _handleError('Failed to load .env file', err, stackTrace);

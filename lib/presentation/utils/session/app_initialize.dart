@@ -8,6 +8,7 @@ import 'package:erudaxis/presentation/utils/session/token_manager.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/firebase/firebase_api.dart';
 import '../../../providers/main/test.dart';
 import '../../../services/github/github_service.dart';
 import '../../main/main_view.dart';
@@ -24,18 +25,24 @@ class AppStarter {
         return;
       }
     }
+
     await sessionManager.loadUser();
 
     if (context.mounted) {
       final user = sessionManager.user;
+
       switch (user?.role) {
         case Role.superAdmin:
         case Role.companyAdmin:
           if (await FacilityManager.checkFacilityExist()) {
             final facilityId = await FacilityManager.load();
+
             if (context.mounted) {
               safeNavigateToMainScreen(
-                  context: context, sm: sessionManager, facilityId: facilityId);
+                context: context,
+                sm: sessionManager,
+                facilityId: facilityId,
+              );
             }
           } else {
             if (context.mounted) {
@@ -63,6 +70,8 @@ class AppStarter {
       required SessionManager sm,
       String? facilityId}) async {
     await sm.loadFacility(facilityId);
+
+    await FirebaseApi.shared.initialNotification();
     if (context.mounted) {
       navigateToDeleteTree(
         context,

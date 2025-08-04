@@ -7,5 +7,6 @@ abstract interface class IUserService {
       required String? currentPassword,
       required String? newPassword});
   Future<ApiResponse<User>> getUserById(String id);
+  Future<ApiResponse<User>> updateFcmTOken(String id, String? fcmToken);
   Future<ApiResponse<User>> updateUser(User user, String filePath);
 }

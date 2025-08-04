@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/enum/role.dart';
+import 'package:erudaxis/core/firebase/firebase_api.dart';
 import 'package:erudaxis/presentation/auth/login_view.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
@@ -62,6 +63,7 @@ class SessionManager extends BaseViewModel {
           UserService.shared.getUserById(TokenManager.extractIdFromToken()),
       onSuccess: (model) async {
         user = model;
+        await updateFcmToken(model.id);
       },
       onError: (_) {
         throw Exception('Could not initialize user');
@@ -70,15 +72,30 @@ class SessionManager extends BaseViewModel {
   }
 
   Future<void> logout() async {
+    await updateFcmToken(user?.id, froLogout: true);
     await makeApiCall(
       apiCall: AuthService.shared.logout(),
       onSuccess: (_) async {
         await TokenManager.shared.clear();
-        await FacilityManager.clear();
         if (context.mounted) {
           context.read<BottomNavigationViewModel>().onSelectChange(0);
           navigateToDeleteTree(mainContext, const LoginView());
         }
+      },
+    );
+  }
+
+  Future<void> updateFcmToken(String? id, {bool froLogout = false}) async {
+    final fcmTken =
+        froLogout == false ? await FirebaseApi.shared.getToken() : null;
+    await makeApiCall(
+      displayLoading: false,
+      apiCall: UserService.shared.updateFcmTOken(id, fcmTken),
+      onSuccess: (model) async {
+        user?.fcmToken = model.fcmToken;
+      },
+      onError: (_) {
+        throw Exception('Could not initialize user');
       },
     );
   }

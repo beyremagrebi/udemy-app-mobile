@@ -1,17 +1,16 @@
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
-import 'package:erudaxis/presentation/admin/facility_view.dart';
+import 'package:erudaxis/presentation/global/notification_icon.dart';
 import 'package:erudaxis/presentation/main/drawer/drawer_view.dart';
-import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_hide/scroll_to_hide.dart';
 
 import '../../providers/global/session_manager_view_model.dart';
 import '../../providers/main/bottom_navigation_view_model.dart';
 import '../../widgets/main/transparent_navigation_bar_widget.dart';
+import '../admin/facility_icon.dart';
 import '../utils/app_bar_gradient.dart';
 import '../utils/app_drawer.dart';
 import '../utils/app_scaffold.dart';
@@ -36,31 +35,11 @@ class MainView extends IScreenWithLocalization {
             actions: [
               ...[
                 sessionManager.valueByRole<Widget?>(
-                  superAdmin: InkWell(
-                    onTap: () {
-                      navigateTo(
-                        context,
-                        FacilityView(sessionManager: sessionManager),
-                      );
-                    },
-                    child: const Material(
-                      color: Colors.transparent,
-                      clipBehavior: Clip.hardEdge,
-                      child: Icon(Symbols.assured_workload_rounded),
-                    ),
+                  superAdmin: FacilityIcon(
+                    sessionManager: sessionManager,
                   ),
-                  companyAdmin: InkWell(
-                    onTap: () {
-                      navigateTo(
-                        context,
-                        FacilityView(sessionManager: sessionManager),
-                      );
-                    },
-                    child: const Material(
-                      color: Colors.transparent,
-                      clipBehavior: Clip.hardEdge,
-                      child: Icon(Symbols.assured_workload_rounded),
-                    ),
+                  companyAdmin: FacilityIcon(
+                    sessionManager: sessionManager,
                   ),
                   collaborator: null,
                   instructor: null,
@@ -68,9 +47,7 @@ class MainView extends IScreenWithLocalization {
                   responsable: null,
                 )
               ].whereType<Widget>(),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Symbols.notifications_none_rounded)),
+              const NotificationIcon(),
             ],
           ),
           body: Scaffold(
