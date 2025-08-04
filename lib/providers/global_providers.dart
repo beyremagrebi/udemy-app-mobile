@@ -1,3 +1,4 @@
+import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:provider/provider.dart';
@@ -22,5 +23,8 @@ List<SingleChildWidget> globalProviders = [
   ),
   ChangeNotifierProvider(
     create: SessionManager.new,
+  ),
+  ChangeNotifierProvider(
+    create: NotificationViewModel.new,
   ),
 ];

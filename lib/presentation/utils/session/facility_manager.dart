@@ -13,7 +13,7 @@ class FacilityManager {
   }
 
   static Future<void> clear() async {
-    await FacilityPreferences.shared.clear();
+    await FacilityPreferences.shared.remove();
   }
 
   static T functionByFacility<T>({

@@ -21,8 +21,8 @@ class TokenManager implements ITokenManager {
   TokenManager._internal();
   @override
   Future<void> clear() async {
-    await AccessTokenPreference.shared.remove();
-    await RefreshTokenPreference.shared.remove();
+    //clear all
+    await AccessTokenPreference.shared.clear();
   }
 
   @override

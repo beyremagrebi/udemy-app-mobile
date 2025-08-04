@@ -23,6 +23,7 @@ class User extends BaseModel {
   String? enterprise;
 
   List<Facility>? ownedFacilities;
+  String? fcmToken;
   User({
     required super.id,
     this.role,
@@ -37,6 +38,7 @@ class User extends BaseModel {
     this.gender,
     this.enterprise,
     this.ownedFacilities,
+    this.fcmToken,
   });
   User.fromId(String? id) : super(id: id);
 
@@ -71,6 +73,7 @@ class User extends BaseModel {
         Facility.fromMap,
       ),
       enterprise: FromJson.string(map['enterprise']),
+      fcmToken: FromJson.string('fcmToken'),
     );
   }
 

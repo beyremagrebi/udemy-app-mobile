@@ -77,8 +77,6 @@ class SessionManager extends BaseViewModel {
       apiCall: AuthService.shared.logout(),
       onSuccess: (_) async {
         await TokenManager.shared.clear();
-        await FacilityManager.clear();
-
         if (context.mounted) {
           context.read<BottomNavigationViewModel>().onSelectChange(0);
           navigateToDeleteTree(mainContext, const LoginView());
@@ -94,7 +92,7 @@ class SessionManager extends BaseViewModel {
       displayLoading: false,
       apiCall: UserService.shared.updateFcmTOken(id, fcmTken),
       onSuccess: (model) async {
-        user = model;
+        user?.fcmToken = model.fcmToken;
       },
       onError: (_) {
         throw Exception('Could not initialize user');
