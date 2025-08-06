@@ -72,11 +72,11 @@ class SessionManager extends BaseViewModel {
   }
 
   Future<void> logout() async {
-    await updateFcmToken(user?.id, froLogout: true);
     await makeApiCall(
       apiCall: AuthService.shared.logout(),
       onSuccess: (_) async {
         await TokenManager.shared.clear();
+        await updateFcmToken(user?.id, froLogout: true);
         if (context.mounted) {
           context.read<BottomNavigationViewModel>().onSelectChange(0);
           navigateToDeleteTree(mainContext, const LoginView());

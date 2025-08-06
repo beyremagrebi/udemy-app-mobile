@@ -29,6 +29,7 @@ class Erudaxis extends StatelessWidget {
           child: MaterialApp(
             navigatorKey: mainnavigatorKey,
             debugShowCheckedModeBanner: false,
+            color: Colors.transparent,
             darkTheme: AppTheme.themeData,
             themeMode: ThemeMode.dark,
             locale: viewModel.locale,

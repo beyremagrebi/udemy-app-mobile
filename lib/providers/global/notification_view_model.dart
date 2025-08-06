@@ -1,15 +1,16 @@
+import 'package:erudaxis/models/global/notification.dart';
 import 'package:erudaxis/presentation/utils/preferences/notification_preferences.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
-import 'package:erudaxis/providers/global/session_manager_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:erudaxis/services/global/notification_service.dart';
 
 class NotificationViewModel extends BaseViewModel {
   int notificationCount = 0;
-  late SessionManager sm;
+
   String? _currentKey;
+  List<NotificationModel>? notifications;
 
   NotificationViewModel(super.context) {
-    sm = Provider.of<SessionManager>(context, listen: false);
+    loadNotifications();
   }
 
   Future<void> decrementNotifCount() async {
@@ -22,6 +23,15 @@ class NotificationViewModel extends BaseViewModel {
     notificationCount++;
     await _save();
     update();
+  }
+
+  Future<void> loadNotifications() async {
+    await makeApiCall(
+      apiCall: NotificationService.shared.getAllNotifications(),
+      onSuccess: (listNotif) {
+        notifications = listNotif;
+      },
+    );
   }
 
   Future<void> readAllNotifications() async {
