@@ -2,6 +2,7 @@ import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/interfaces/i_token_manager.dart';
 import 'package:erudaxis/models/auth/login_info.dart';
 import 'package:erudaxis/presentation/utils/preferences/access_token_preference.dart';
+import 'package:erudaxis/presentation/utils/preferences/facility_preferences.dart';
 import 'package:erudaxis/presentation/utils/preferences/refresh_token_preference.dart';
 import 'package:erudaxis/presentation/utils/snackbar_utils.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
@@ -21,8 +22,9 @@ class TokenManager implements ITokenManager {
   TokenManager._internal();
   @override
   Future<void> clear() async {
-    //clear all
-    await AccessTokenPreference.shared.clear();
+    await AccessTokenPreference.shared.remove();
+    await AccessTokenPreference.shared.remove();
+    await FacilityPreferences.shared.remove();
   }
 
   @override

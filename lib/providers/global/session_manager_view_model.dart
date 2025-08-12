@@ -1,12 +1,14 @@
 import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/enum/drawer_item.dart';
 import 'package:erudaxis/core/enum/role.dart';
 import 'package:erudaxis/core/firebase/firebase_api.dart';
 import 'package:erudaxis/presentation/auth/login_view.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/presentation/utils/session/token_manager.dart';
+import 'package:erudaxis/presentation/utils/snackbar_utils.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
-import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
+import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:erudaxis/services/global/user_service.dart';
 import 'package:provider/provider.dart';
@@ -53,6 +55,10 @@ class SessionManager extends BaseViewModel {
         update();
         await FacilityManager.initilizeFacility(model);
       },
+      onError: (error) async {
+        SnackBarUtils.showError(mainContext, error);
+        await logout();
+      },
     );
   }
 
@@ -77,8 +83,8 @@ class SessionManager extends BaseViewModel {
       onSuccess: (_) async {
         await TokenManager.shared.clear();
         await updateFcmToken(user?.id, froLogout: true);
-        if (context.mounted) {
-          context.read<BottomNavigationViewModel>().onSelectChange(0);
+        if (mainContext.mounted) {
+          mainContext.read<DrawerViewModel>().onTapItem(DrawerItem.home);
           navigateToDeleteTree(mainContext, const LoginView());
         }
       },
