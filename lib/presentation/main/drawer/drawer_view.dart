@@ -14,12 +14,15 @@ class DrawerView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GradientAppBarWidget(
-          child: DrawerHeader(
-            duration: Durations.short2,
-            margin: EdgeInsets.zero,
-            padding: Dimensions.paddingAllMedium,
-            decoration: const BoxDecoration(border: Border()),
-            child: const DrawerHeaderWidget(),
+          child: SizedBox(
+            height: 100,
+            child: DrawerHeader(
+              duration: Durations.short2,
+              margin: EdgeInsets.zero,
+              padding: Dimensions.paddingAllMedium,
+              decoration: const BoxDecoration(border: Border()),
+              child: const DrawerHeaderWidget(),
+            ),
           ),
         ),
         Dimensions.heightMedium,

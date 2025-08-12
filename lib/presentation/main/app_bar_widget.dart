@@ -1,6 +1,6 @@
-import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/config/media/asset_image_widget.dart';
+import 'package:erudaxis/core/constants/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/styles/dimensions.dart';
 import '../../providers/main/drawer_view_model.dart';
@@ -30,12 +30,11 @@ class AppBarWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(Icons.school_outlined),
-          Dimensions.widthSmall,
-          Text(
-            intl.appName,
-            style: GoogleFonts.leagueSpartan(),
-          ),
+          const AssetsImageWidget(
+            imageFileName: Assets.logoAppLight,
+            height: 16,
+            fit: BoxFit.contain,
+          )
         ],
       ),
     );

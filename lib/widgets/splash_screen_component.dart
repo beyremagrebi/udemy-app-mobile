@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:erudaxis/core/config/media/asset_image_widget.dart';
+import 'package:erudaxis/core/constants/assets.dart';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +13,6 @@ import '../providers/main/profile/theme/theme_view_model.dart';
 import '../providers/splash_screen_view_model.dart';
 
 class SplashComponents {
-  // Couleurs
-  // static const Color primaryPurple = Color(0xFF8B5CF6);
-  // static const Color secondaryPurple = Color(0xFF7C3AED);
-  // static const Color darkPurple = Color(0xFF5B21B6);
   static const Color textWhite = Colors.white;
 
   static Widget buildAnimatedLogo(BuildContext context,
@@ -51,12 +49,11 @@ class SplashComponents {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: const Center(
-              child: Icon(
-                Icons.school,
-                size: 60,
-                color: textWhite,
-              ),
-            ),
+                child: AssetsImageWidget(
+              imageFileName: Assets.logo,
+              height: 60,
+              width: 60,
+            )),
           ),
         ),
       ),
