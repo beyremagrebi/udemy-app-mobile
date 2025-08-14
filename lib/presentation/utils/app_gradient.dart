@@ -19,9 +19,9 @@ class AppGradients {
     );
   }
 
-  static LinearGradient loginLogoGradient() {
-    return const LinearGradient(colors: [
-      Color.fromARGB(255, 210, 138, 252),
+  static LinearGradient loginLogoGradient(ThemeViewModel viewModel) {
+    return LinearGradient(colors: [
+      viewModel.currentTheme.secondary,
       Colors.white,
       Colors.white,
       Colors.white,

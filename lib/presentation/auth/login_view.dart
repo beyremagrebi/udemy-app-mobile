@@ -10,12 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/styles/dimensions.dart';
+import '../../providers/main/profile/theme/theme_view_model.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final thmeViewModel = context.watch<ThemeViewModel>();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -52,7 +54,8 @@ class LoginView extends StatelessWidget {
                         children: [
                           AssetsImageWidget(
                             imageFileName: Assets.logoAppLight,
-                            gradient: AppGradients.loginLogoGradient(),
+                            gradient:
+                                AppGradients.loginLogoGradient(thmeViewModel),
                             height: 20,
                           ),
                           Dimensions.heightMedium,

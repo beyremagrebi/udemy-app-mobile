@@ -1,6 +1,8 @@
 import 'package:erudaxis/core/config/media/asset_image_widget.dart';
 import 'package:erudaxis/core/constants/assets.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/styles/dimensions.dart';
 import '../../providers/main/drawer_view_model.dart';
@@ -12,6 +14,7 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final thmeViewModel = context.watch<ThemeViewModel>();
     return Padding(
       padding: Dimensions.horizontalPaddingMedium,
       child: Row(
@@ -34,7 +37,7 @@ class AppBarWidget extends StatelessWidget {
           AssetsImageWidget(
             imageFileName: Assets.logoAppLight,
             height: 16,
-            gradient: AppGradients.loginLogoGradient(),
+            gradient: AppGradients.loginLogoGradient(thmeViewModel),
             fit: BoxFit.contain,
           )
         ],
