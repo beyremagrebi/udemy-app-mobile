@@ -23,6 +23,35 @@ class FromJson {
     return null;
   }
 
+  static DateTime? dateTime(dynamic value) {
+    if (value == null) {
+      return null;
+    }
+
+    if (value is DateTime) {
+      return value;
+    }
+
+    if (value is String) {
+      try {
+        return DateTime.parse(value);
+      } on Exception {
+        return null;
+      }
+    }
+
+    if (value is int) {
+      try {
+        // Assuming timestamp in milliseconds
+        return DateTime.fromMillisecondsSinceEpoch(value);
+      } on Exception {
+        return null;
+      }
+    }
+
+    return null;
+  }
+
   static double? doubleValue(value) {
     if (value == null) {
       return null;

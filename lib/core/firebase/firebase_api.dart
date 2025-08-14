@@ -1,4 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/presentation/global/notification_view.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
@@ -27,6 +29,9 @@ class FirebaseApi {
     );
     FirebaseMessaging.onMessage.listen(
       (event) => handleForgroundMessage(event, viewModel),
+    );
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (event) => navigateTo(mainContext, const NotificationView()),
     );
   }
 

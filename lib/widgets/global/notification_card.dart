@@ -1,17 +1,23 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import '../../models/global/notification.dart';
 
-class NotificationCard extends StatelessWidget {
+class NotificationCard extends IScreenWithLocalization {
   final NotificationModel notification;
   const NotificationCard({required this.notification, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+    BuildContext context,
+    LanguageViewModel languageViewModel,
+  ) {
     return Card(
       elevation: 0,
       child: Container(
@@ -39,7 +45,15 @@ class NotificationCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Il y a 5 minutes',
+                    notification.createdAt != null
+                        ? timeago.format(
+                            notification.createdAt is DateTime
+                                ? notification.createdAt!
+                                : DateTime.parse(
+                                    notification.createdAt.toString()),
+                            locale: languageViewModel.locale.toString(),
+                          )
+                        : intl.error,
                     style: textTheme.labelSmall?.copyWith(
                       color: Colors.white70,
                     ),

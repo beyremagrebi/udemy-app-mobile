@@ -12,6 +12,7 @@ class NotificationModel extends BaseModel {
   String? image;
   String? status;
   String? type;
+  DateTime? createdAt;
 
   NotificationModel({
     required super.id,
@@ -22,6 +23,7 @@ class NotificationModel extends BaseModel {
     this.status,
     this.title,
     this.type,
+    this.createdAt,
   });
   NotificationModel.fromId(String? id) : super(id: id);
 
@@ -30,15 +32,15 @@ class NotificationModel extends BaseModel {
       return NotificationModel.fromId(map);
     }
     return NotificationModel(
-      id: FromJson.string(map['_id']),
-      receiver: FromJson.model(map['userId'], User.fromMap),
-      sender: FromJson.model(map['fromUser'], User.fromMap),
-      title: FromJson.string(map['title']),
-      body: FromJson.string(map['body']),
-      image: FromJson.string(map['image']),
-      status: FromJson.string(map['status']),
-      type: FromJson.string(map['type']),
-    );
+        id: FromJson.string(map['_id']),
+        receiver: FromJson.model(map['userId'], User.fromMap),
+        sender: FromJson.model(map['fromUser'], User.fromMap),
+        title: FromJson.string(map['title']),
+        body: FromJson.string(map['body']),
+        image: FromJson.string(map['image']),
+        status: FromJson.string(map['status']),
+        type: FromJson.string(map['type']),
+        createdAt: FromJson.dateTime(map['createdAt']));
   }
 
   bool get unread => status == 'unread';

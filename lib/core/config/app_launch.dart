@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:erudaxis/core/config/ar_messages.dart';
 import 'package:erudaxis/core/firebase/channel_notification.dart';
 import 'package:erudaxis/presentation/utils/app/app_package_info.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class AppLaunch {
   static Future<void> preExecution() async {
@@ -21,6 +23,7 @@ class AppLaunch {
         ),
       );
       await ChannelNotification.initialize();
+      timeago.setLocaleMessages('ar', ArMessages());
       debugPrint('App initialization completed successfully');
     } on FileSystemException catch (err, stackTrace) {
       _handleError('Failed to load .env file', err, stackTrace);
