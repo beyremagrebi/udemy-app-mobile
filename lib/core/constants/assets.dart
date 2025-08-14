@@ -5,6 +5,7 @@ class Assets {
   static const String defaultFemaleAvatar = '$_imageDir/female.png';
 
   static const String logoAppLight = '$_logoDir/erudaxis.svg';
+  static const String logoAppColor = '$_logoDir/logo-color.png';
   static const String logoOutlined = '$_logoDir/logo.svg';
   static const String logo = '$_logoDir/logo-n.svg';
 }

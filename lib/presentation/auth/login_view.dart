@@ -1,11 +1,12 @@
-import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/config/media/asset_image_widget.dart';
+import 'package:erudaxis/core/constants/assets.dart';
+import 'package:erudaxis/presentation/utils/app_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/providers/auth/login_view_model.dart';
 import 'package:erudaxis/providers/auth/validator_view_model.dart';
 import 'package:erudaxis/widgets/auth/login_form.dart';
 import 'package:erudaxis/widgets/auth/welcome_login.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/styles/dimensions.dart';
@@ -49,32 +50,10 @@ class LoginView extends StatelessWidget {
                       padding: Dimensions.paddingAllHuge,
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.school_outlined,
-                                size: 34,
-                                color: Color.fromARGB(255, 227, 151, 247),
-                              ),
-                              Dimensions.widthSmall,
-                              Text(
-                                intl.appName,
-                                style: GoogleFonts.leagueSpartan(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2,
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black45.withOpacity(0.5),
-                                      offset: const Offset(0, 2),
-                                      blurRadius: 4,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                          AssetsImageWidget(
+                            imageFileName: Assets.logoAppLight,
+                            gradient: AppGradients.loginLogoGradient(),
+                            height: 20,
                           ),
                           Dimensions.heightMedium,
                           const WelcomeLogin(),

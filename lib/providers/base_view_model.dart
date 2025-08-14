@@ -1,11 +1,11 @@
 import 'package:erudaxis/core/enum/api_status.dart';
+import 'package:erudaxis/presentation/utils/snackbar_utils.dart';
 import 'package:erudaxis/presentation/utils/spin_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../core/api/api_response.dart';
 import '../core/constants/constant.dart';
-import '../presentation/utils/alert_dialog.dart';
 
 abstract class BaseViewModel extends ChangeNotifier {
   BuildContext context;
@@ -46,10 +46,9 @@ abstract class BaseViewModel extends ChangeNotifier {
       if (context.mounted) {
         mainContext.loaderOverlay.hide();
         if (displayError) {
-          CustomAlertDialog.showErrorDialog(
-            context: mainContext,
-            title: intl.error,
-            message: jsonResponse.errorMessage.toString(),
+          SnackBarUtils.showError(
+            mainContext,
+            jsonResponse.errorMessage.toString(),
           );
         }
       }

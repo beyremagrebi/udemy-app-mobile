@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/styles/dimensions.dart';
 import '../../providers/main/drawer_view_model.dart';
+import '../utils/app_gradient.dart';
 
 class AppBarWidget extends StatelessWidget {
   final DrawerViewModel drawerViewModel;
@@ -30,9 +31,10 @@ class AppBarWidget extends StatelessWidget {
               ),
             ),
           ),
-          const AssetsImageWidget(
+          AssetsImageWidget(
             imageFileName: Assets.logoAppLight,
             height: 16,
+            gradient: AppGradients.loginLogoGradient(),
             fit: BoxFit.contain,
           )
         ],

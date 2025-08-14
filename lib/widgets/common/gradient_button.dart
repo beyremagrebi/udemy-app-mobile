@@ -1,10 +1,8 @@
-import 'package:erudaxis/core/constants/constant.dart';
-import 'package:erudaxis/core/styles/app_colors.dart';
-import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/enum/theme_app.dart';
+import '../../core/styles/dimensions.dart';
+import '../../presentation/utils/app_gradient.dart';
 import '../../providers/main/profile/theme/theme_view_model.dart';
 
 class GradientButton extends StatelessWidget {
@@ -26,24 +24,14 @@ class GradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<ThemeViewModel>();
+
     return Opacity(
       opacity: isDisabled ? 0.4 : 1,
       child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              if (viewModel.currentTheme == ThemeApp.defaultTheme) ...[
-                AppColors.surfaceGradientEnd,
-                const Color.fromARGB(255, 41, 72, 248),
-                const Color.fromARGB(255, 41, 72, 248),
-              ] else ...[
-                viewModel.currentTheme.primary,
-                viewModel.currentTheme.secondary,
-              ]
-            ],
-          ),
+          gradient: AppGradients.buttonGradient(viewModel),
           borderRadius: Dimensions.xsmallBorderRadius,
           boxShadow: [
             BoxShadow(
@@ -61,11 +49,11 @@ class GradientButton extends StatelessWidget {
             child: Center(
               child: Text(
                 text,
-                style: textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
             ),
           ),

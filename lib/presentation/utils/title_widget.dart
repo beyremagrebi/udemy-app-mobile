@@ -46,7 +46,11 @@ class TitleWidget extends StatelessWidget {
                   ),
                 ),
                 if (materialPage != null) ...[
-                  if (totalItem != null) ...[],
+                  const Expanded(child: Dimensions.widthSmall),
+                  Text(
+                    intl.seeMore,
+                    style: textTheme.labelSmall,
+                  ),
                   const Icon(
                     Icons.navigate_next_outlined,
                     size: 15,

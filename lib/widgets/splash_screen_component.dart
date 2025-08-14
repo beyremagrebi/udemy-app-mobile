@@ -51,6 +51,7 @@ class SplashComponents {
             child: const Center(
                 child: AssetsImageWidget(
               imageFileName: Assets.logo,
+              color: Colors.white,
               height: 60,
               width: 60,
             )),

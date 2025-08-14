@@ -56,7 +56,6 @@ abstract class BaseApiImage extends StatelessWidget
         clipBehavior: Clip.hardEdge,
         padding: padding,
         decoration: BoxDecoration(
-          color: color,
           border: border,
           boxShadow: boxShadow,
           borderRadius: isProfilePicture ? null : borderRadius,
@@ -69,6 +68,7 @@ abstract class BaseApiImage extends StatelessWidget
                   fit: fit,
                   height: height,
                   width: width,
+                  color: color,
                 ),
               )
             : Image(
@@ -76,6 +76,7 @@ abstract class BaseApiImage extends StatelessWidget
                 fit: fit,
                 height: height,
                 width: width,
+                color: color,
               ),
       ),
     );
