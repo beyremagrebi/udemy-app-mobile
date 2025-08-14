@@ -28,6 +28,7 @@ class NotificationViewModel extends BaseViewModel {
   Future<void> loadNotifications() async {
     await makeApiCall(
       apiCall: NotificationService.shared.getAllNotifications(),
+      displayLoading: false,
       onSuccess: (listNotif) {
         notifications = listNotif;
       },

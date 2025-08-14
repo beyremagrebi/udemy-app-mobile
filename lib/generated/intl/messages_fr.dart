@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "active_chip": MessageLookupByLibrary.simpleMessage("ACTIF"),
     "active_theme_label": MessageLookupByLibrary.simpleMessage("Thème actif"),
+    "all": MessageLookupByLibrary.simpleMessage("Toutes"),
     "amber_gold": MessageLookupByLibrary.simpleMessage("Or ambré"),
     "appName": MessageLookupByLibrary.simpleMessage("Erudaxis"),
     "appearance_subtitle": MessageLookupByLibrary.simpleMessage(
@@ -76,12 +77,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "Chats et discussions",
     ),
     "chocolate_brown": MessageLookupByLibrary.simpleMessage("Brun chocolat"),
+    "choose_your_institution": MessageLookupByLibrary.simpleMessage(
+      "Choisissez votre établissement",
+    ),
     "class_position": MessageLookupByLibrary.simpleMessage(
       "Position en classe",
     ),
     "classe": MessageLookupByLibrary.simpleMessage("Classe"),
     "classes": MessageLookupByLibrary.simpleMessage("Classes"),
     "closeButton": MessageLookupByLibrary.simpleMessage("Fermer"),
+    "college": MessageLookupByLibrary.simpleMessage("Collège"),
     "confirm_new_password": MessageLookupByLibrary.simpleMessage(
       "Confirmer le nouveau mot de passe",
     ),
@@ -200,7 +205,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Fermer las session",
     ),
     "logout_title": MessageLookupByLibrary.simpleMessage("Se déconnecter"),
+    "lycee": MessageLookupByLibrary.simpleMessage("Lycée"),
     "magenta": MessageLookupByLibrary.simpleMessage("Magenta"),
+    "messages": MessageLookupByLibrary.simpleMessage("Messages"),
     "messaging": MessageLookupByLibrary.simpleMessage("Messagerie"),
     "midnight_blue": MessageLookupByLibrary.simpleMessage("Bleu minuit"),
     "minLength": m2,
@@ -212,11 +219,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_password": MessageLookupByLibrary.simpleMessage(
       "Nouveau mot de passe",
     ),
+    "no_data_available": MessageLookupByLibrary.simpleMessage(
+      "Aucune donnée disponible",
+    ),
     "notNowButton": MessageLookupByLibrary.simpleMessage("Pas maintenant"),
     "notification_subtitle": MessageLookupByLibrary.simpleMessage(
       "Paramètre des notifcations",
     ),
     "notification_title": MessageLookupByLibrary.simpleMessage("Notification"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "obligatoire": MessageLookupByLibrary.simpleMessage("obligatoire"),
     "ocean_blue": MessageLookupByLibrary.simpleMessage("Bleu océan"),
     "olive_green": MessageLookupByLibrary.simpleMessage("Vert olive"),
@@ -287,6 +298,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "recentLibrary": MessageLookupByLibrary.simpleMessage(
       "Bibliothèque Récente",
     ),
+    "refresh": MessageLookupByLibrary.simpleMessage("Rafraîchir"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Se souvenir de moi"),
     "required": MessageLookupByLibrary.simpleMessage("Obligatoire"),
     "role_collaborator": MessageLookupByLibrary.simpleMessage("Collaborateur"),
@@ -327,7 +339,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "support_title": MessageLookupByLibrary.simpleMessage("Aide & Support"),
     "tangerine": MessageLookupByLibrary.simpleMessage("Mandarine"),
+    "trainingCenter": MessageLookupByLibrary.simpleMessage(
+      "Centre de formation",
+    ),
     "turquoise": MessageLookupByLibrary.simpleMessage("Turquoise"),
+    "unread": MessageLookupByLibrary.simpleMessage("Non lues"),
     "unread_messages": MessageLookupByLibrary.simpleMessage("Messages non lus"),
     "upcomingEvents": MessageLookupByLibrary.simpleMessage(
       "Événements Prochains",

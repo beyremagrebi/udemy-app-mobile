@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/models/global/facility.dart';
 import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
@@ -7,6 +8,7 @@ import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/session/app_initialize.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
@@ -14,12 +16,13 @@ import 'package:provider/provider.dart';
 import '../../core/enum/facility_type.dart';
 import '../../providers/admin/facility_view_model.dart';
 
-class FacilityView extends StatelessWidget {
+class FacilityView extends IScreenWithLocalization {
   final SessionManager sessionManager;
   const FacilityView({required this.sessionManager, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     final validFacilities = (sessionManager.user?.ownedFacilities ?? [])
         .where((facility) =>
             FacilityType.fromBackendValue(facility.type?.databaseValue) != null)
@@ -27,7 +30,7 @@ class FacilityView extends StatelessWidget {
 
     return AppScaffold(
       appBar: AppBarGradient(
-        title: const Text('Choisissez votre établissement'),
+        title: Text(intl.choose_your_institution),
       ),
       body: Padding(
         padding: Dimensions.paddingAllMedium,
@@ -105,13 +108,13 @@ class FacilityView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            facility.name ?? intl.error,
+                            facility.name?.toUpperCase() ?? intl.error,
                             style: textTheme.titleLarge?.copyWith(
                               color: Colors.white,
                             ),
                           ),
                           Text(
-                            '${intl.establishment} ${facility.type?.name}',
+                            '${intl.establishment} ${facility.type?.localizedType()}',
                             style: textTheme.labelSmall?.copyWith(
                               color: Colors.grey.shade300,
                             ),

@@ -100,6 +100,11 @@ class S {
     );
   }
 
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
   /// `Amber Gold`
   String get amber_gold {
     return Intl.message('Amber Gold', name: 'amber_gold', desc: '', args: []);
@@ -240,6 +245,16 @@ class S {
     );
   }
 
+  /// `Choose your institution`
+  String get choose_your_institution {
+    return Intl.message(
+      'Choose your institution',
+      name: 'choose_your_institution',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Class Rank`
   String get class_position {
     return Intl.message(
@@ -263,6 +278,11 @@ class S {
   /// `Close`
   String get closeButton {
     return Intl.message('Close', name: 'closeButton', desc: '', args: []);
+  }
+
+  /// `Middle School`
+  String get college {
+    return Intl.message('Middle School', name: 'college', desc: '', args: []);
   }
 
   /// `Confirm New Password`
@@ -775,9 +795,19 @@ class S {
     return Intl.message('Log out', name: 'logout_title', desc: '', args: []);
   }
 
+  /// `High School`
+  String get lycee {
+    return Intl.message('High School', name: 'lycee', desc: '', args: []);
+  }
+
   /// `Magenta`
   String get magenta {
     return Intl.message('Magenta', name: 'magenta', desc: '', args: []);
+  }
+
+  /// `Messages`
+  String get messages {
+    return Intl.message('Messages', name: 'messages', desc: '', args: []);
   }
 
   /// `Messaging`
@@ -840,6 +870,16 @@ class S {
     );
   }
 
+  /// `No data available`
+  String get no_data_available {
+    return Intl.message(
+      'No data available',
+      name: 'no_data_available',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Notification settings`
   String get notification_subtitle {
     return Intl.message(
@@ -855,6 +895,16 @@ class S {
     return Intl.message(
       'Notifications',
       name: 'notification_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
       desc: '',
       args: [],
     );
@@ -1150,6 +1200,11 @@ class S {
     );
   }
 
+  /// `Refresh`
+  String get refresh {
+    return Intl.message('Refresh', name: 'refresh', desc: '', args: []);
+  }
+
   /// `Remember me`
   String get rememberMe {
     return Intl.message('Remember me', name: 'rememberMe', desc: '', args: []);
@@ -1345,9 +1400,24 @@ class S {
     return Intl.message('Tangerine', name: 'tangerine', desc: '', args: []);
   }
 
+  /// `Training Center`
+  String get trainingCenter {
+    return Intl.message(
+      'Training Center',
+      name: 'trainingCenter',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Turquoise`
   String get turquoise {
     return Intl.message('Turquoise', name: 'turquoise', desc: '', args: []);
+  }
+
+  /// `Unread`
+  String get unread {
+    return Intl.message('Unread', name: 'unread', desc: '', args: []);
   }
 
   /// `Unread messages`

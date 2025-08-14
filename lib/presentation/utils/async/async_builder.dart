@@ -1,6 +1,8 @@
 import 'package:erudaxis/core/enum/api_status.dart';
 import 'package:flutter/material.dart';
 
+import '../../../widgets/common/error_widget.dart';
+
 class AsyncBuilder extends StatelessWidget {
   final ApiStatus apiStatus;
   final Widget Function() onSuccess;
@@ -23,7 +25,7 @@ class AsyncBuilder extends StatelessWidget {
         }
         return shimmer!;
       case ApiStatus.error:
-        return const Text('error');
+        return const ErrorMyWidget();
     }
   }
 }

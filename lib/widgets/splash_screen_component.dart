@@ -72,7 +72,7 @@ class SplashComponents {
         child: Column(
           children: [
             Text(
-              intl.appName,
+              'Erudaxis',
               style: GoogleFonts.leagueSpartan(
                 color: textWhite,
                 fontSize: 36,

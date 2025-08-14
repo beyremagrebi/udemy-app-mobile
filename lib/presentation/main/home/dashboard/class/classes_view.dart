@@ -47,6 +47,7 @@ class ClassesView extends StatelessWidget {
                   child: AsyncModelListBuilder(
                 viewModel: viewModel,
                 models: viewModel.classes,
+                onRefresh: viewModel.loadClasses,
                 shimmer: ClassCardShimmer(),
                 builder: (classes) => ListView.separated(
                   separatorBuilder: (context, index) => Dimensions.heightSmall,

@@ -3,6 +3,8 @@ import 'package:erudaxis/core/enum/drawer_item.dart';
 import 'package:erudaxis/core/enum/role.dart';
 import 'package:erudaxis/core/firebase/firebase_api.dart';
 import 'package:erudaxis/presentation/auth/login_view.dart';
+import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
+import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/presentation/utils/session/token_manager.dart';
@@ -11,6 +13,8 @@ import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:erudaxis/services/auth/auth_service.dart';
 import 'package:erudaxis/services/global/user_service.dart';
+import 'package:erudaxis/widgets/common/error_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/global/facility.dart';
@@ -72,6 +76,14 @@ class SessionManager extends BaseViewModel {
         await updateFcmToken(model.id);
       },
       onError: (_) {
+        navigateToDeleteTree(
+          mainContext,
+          AppScaffold(
+              appBar: AppBarGradient(
+                title: Text(intl.error),
+              ),
+              body: const ErrorMyWidget()),
+        );
         throw Exception('Could not initialize user');
       },
     );

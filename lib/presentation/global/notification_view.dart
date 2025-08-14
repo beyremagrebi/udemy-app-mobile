@@ -1,8 +1,11 @@
+import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/presentation/utils/async/async_model_list_builder.dart';
 import 'package:erudaxis/providers/global/notification_view_model.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:erudaxis/widgets/common/gradient_app_bar_widget.dart';
 import 'package:erudaxis/widgets/shimmer/notification_shimmer.dart';
 import 'package:flutter/material.dart';
@@ -12,18 +15,19 @@ import '../../providers/main/profile/theme/theme_view_model.dart';
 import '../../widgets/common/app_filtre_chip.dart';
 import '../../widgets/global/notification_card.dart';
 
-class NotificationView extends StatelessWidget {
+class NotificationView extends IScreenWithLocalization {
   const NotificationView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     final viewModel = context.watch<ThemeViewModel>();
     return ChangeNotifierProvider(
       create: NotificationViewModel.new,
       child: Consumer<NotificationViewModel>(
         builder: (context, notifcationViewModel, child) => AppScaffold(
           appBar: AppBarGradient(
-            title: const Text('Notifications'),
+            title: Text(intl.notifications),
           ),
           body: Column(
             children: [
@@ -37,25 +41,25 @@ class NotificationView extends StatelessWidget {
                         children: [
                           AppFilterChip(
                             viewModel: viewModel,
-                            label: 'toutes (6)',
+                            label: '${intl.all} (6)',
                             selected: false,
                             onTap: () {},
                           ),
                           AppFilterChip(
                             viewModel: viewModel,
-                            label: 'Non lues (6)',
+                            label: '${intl.unread} (6)',
                             selected: false,
                             onTap: () {},
                           ),
                           AppFilterChip(
                             viewModel: viewModel,
-                            label: 'Messages (6)',
+                            label: '${intl.messages} (6)',
                             selected: false,
                             onTap: () {},
                           ),
                           AppFilterChip(
                             viewModel: viewModel,
-                            label: 'Cours (6)',
+                            label: '${intl.courses} (6)',
                             onTap: () {},
                             selected: false,
                           ),
@@ -67,6 +71,7 @@ class NotificationView extends StatelessWidget {
               ),
               Expanded(
                 child: AsyncModelListBuilder(
+                  onRefresh: notifcationViewModel.loadNotifications,
                   viewModel: notifcationViewModel,
                   models: notifcationViewModel.notifications,
                   shimmer: NotificationCardShimmer(),

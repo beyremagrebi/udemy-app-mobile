@@ -198,11 +198,43 @@ class ApiService implements IApiService {
   }
 
   ApiResponse<T> _handleDioException<T>(DioException e) {
+    String errorMessage;
+
+    switch (e.type) {
+      case DioExceptionType.connectionTimeout:
+        errorMessage =
+            'Connection timeout. Please check your internet connection and try again.';
+        break;
+      case DioExceptionType.sendTimeout:
+        errorMessage = 'Sending data timed out. Please try again.';
+        break;
+      case DioExceptionType.receiveTimeout:
+        errorMessage = 'Receiving data timed out. Please try again.';
+        break;
+      case DioExceptionType.badCertificate:
+        errorMessage = 'Security certificate error. Please contact support.';
+        break;
+      case DioExceptionType.badResponse:
+        errorMessage =
+            'Server responded with an error: ${e.response?.statusCode}';
+        break;
+      case DioExceptionType.cancel:
+        errorMessage = 'Request was cancelled';
+        break;
+      case DioExceptionType.connectionError:
+        errorMessage =
+            'Connection error. Please check your internet connection.';
+        break;
+      case DioExceptionType.unknown:
+        errorMessage = 'An unknown error occurred: ${e.message}';
+        break;
+    }
+
     return ApiResponse<T>.error(
       requestOptions: e.requestOptions,
       statusCode: e.response?.statusCode,
       headers: e.response?.headers,
-      errorMessage: e.message ?? 'Unknown error',
+      errorMessage: errorMessage,
     );
   }
 

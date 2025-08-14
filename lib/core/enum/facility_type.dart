@@ -1,3 +1,5 @@
+import 'package:erudaxis/core/constants/constant.dart';
+
 enum FacilityType {
   trainingCenter('centreDeFormation', 'training-company'),
   lycee('lycee', 'lycee'),
@@ -7,6 +9,16 @@ enum FacilityType {
   final String endpoint;
 
   const FacilityType(this.databaseValue, this.endpoint);
+  String localizedType() {
+    switch (this) {
+      case FacilityType.trainingCenter:
+        return intl.trainingCenter;
+      case FacilityType.lycee:
+        return intl.lycee;
+      case FacilityType.college:
+        return intl.college;
+    }
+  }
 
   static FacilityType? fromBackendValue(String? value) {
     switch (value) {

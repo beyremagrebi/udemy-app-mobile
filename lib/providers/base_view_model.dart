@@ -41,7 +41,6 @@ abstract class BaseViewModel extends ChangeNotifier {
       }
     } else {
       _setApiStatus(ApiStatus.error);
-      onError?.call(jsonResponse.errorMessage.toString());
 
       if (context.mounted) {
         mainContext.loaderOverlay.hide();
@@ -52,6 +51,7 @@ abstract class BaseViewModel extends ChangeNotifier {
           );
         }
       }
+      onError?.call(jsonResponse.errorMessage.toString());
     }
   }
 

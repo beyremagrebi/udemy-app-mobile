@@ -1,6 +1,7 @@
 import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/presentation/utils/async/async_builder.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
+import 'package:erudaxis/widgets/common/empty_widget.dart';
 import 'package:flutter/material.dart';
 
 class AsyncModelBuilder<Model extends BaseModel,
@@ -22,8 +23,7 @@ class AsyncModelBuilder<Model extends BaseModel,
     return AsyncBuilder(
       apiStatus: viewModel.apiStatus,
       shimmer: shimmer,
-      onSuccess: () =>
-          model != null ? builder(model!) : const SizedBox.shrink(),
+      onSuccess: () => model != null ? builder(model!) : const EmptyWidget(),
     );
   }
 }
