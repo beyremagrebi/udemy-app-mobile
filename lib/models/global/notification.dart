@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:erudaxis/core/api/form_data_helper.dart';
+import 'package:erudaxis/core/config/media/exstension.dart';
 import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/models/global/user.dart';
 
@@ -46,12 +48,12 @@ class NotificationModel extends BaseModel {
   bool get unread => status == 'unread';
 
   @override
-  FormData toFormData() {
-    throw UnimplementedError();
-  }
+  FormData toFormData() => toMap().toFormData();
 
   @override
   Map<String, Object> toMap() {
-    throw UnimplementedError();
+    final Map<String, Object> map = {};
+    map.add('status', status);
+    return map;
   }
 }

@@ -20,10 +20,14 @@ abstract class BaseViewModel extends ChangeNotifier {
     required Future<ApiResponse<Model>> apiCall,
     bool displayLoading = true,
     bool displayError = true,
+    bool displayShimmer = true,
     void Function(Model model)? onSuccess,
     void Function(String error)? onError,
   }) async {
-    _setApiStatus(ApiStatus.loading);
+    if (displayShimmer) {
+      _setApiStatus(ApiStatus.loading);
+    }
+
     mainContext.loaderOverlay.show(
       widgetBuilder: (progress) => Visibility(
         visible: displayLoading,

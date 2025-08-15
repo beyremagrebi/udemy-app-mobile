@@ -82,3 +82,77 @@ class ArMessages implements timeago.LookupMessages {
     return '$years سنوات';
   }
 }
+
+class EnMessages implements timeago.LookupMessages {
+  @override
+  String aboutAMinute(int minutes) => 'about a minute';
+  @override
+  String aboutAMonth(int days) => 'about a month';
+  @override
+  String aboutAnHour(int minutes) => 'about an hour';
+  @override
+  String aboutAYear(int year) => 'about a year';
+
+  @override
+  String aDay(int hours) => 'a day';
+  @override
+  String days(int days) => '$days days';
+  @override
+  String hours(int hours) => '$hours hours';
+  @override
+  String lessThanOneMinute(int seconds) => 'a moment';
+  @override
+  String minutes(int minutes) => '$minutes minutes';
+  @override
+  String months(int months) => '$months months';
+
+  @override
+  String prefixAgo() => '';
+  @override
+  String prefixFromNow() => 'in';
+  @override
+  String suffixAgo() => 'ago';
+  @override
+  String suffixFromNow() => '';
+  @override
+  String wordSeparator() => ' ';
+  @override
+  String years(int years) => '$years years';
+}
+
+class FrMessages implements timeago.LookupMessages {
+  @override
+  String aboutAMinute(int minutes) => 'environ une minute';
+  @override
+  String aboutAMonth(int days) => 'environ un mois';
+  @override
+  String aboutAnHour(int minutes) => 'environ une heure';
+  @override
+  String aboutAYear(int year) => 'environ un an';
+
+  @override
+  String aDay(int hours) => 'un jour';
+  @override
+  String days(int days) => '$days jours';
+  @override
+  String hours(int hours) => '$hours heures';
+  @override
+  String lessThanOneMinute(int seconds) => 'quelques secondes';
+  @override
+  String minutes(int minutes) => '$minutes minutes';
+  @override
+  String months(int months) => '$months mois';
+
+  @override
+  String prefixAgo() => 'il y a';
+  @override
+  String prefixFromNow() => 'dans';
+  @override
+  String suffixAgo() => '';
+  @override
+  String suffixFromNow() => '';
+  @override
+  String wordSeparator() => ' ';
+  @override
+  String years(int years) => '$years ans';
+}

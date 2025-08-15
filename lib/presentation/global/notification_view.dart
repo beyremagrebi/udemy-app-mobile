@@ -77,8 +77,10 @@ class NotificationView extends IScreenWithLocalization {
                   shimmer: NotificationCardShimmer(),
                   builder: (notifications) => ListView.separated(
                     padding: Dimensions.paddingAllMedium,
-                    itemBuilder: (context, index) =>
-                        NotificationCard(notification: notifications[index]),
+                    itemBuilder: (context, index) => NotificationCard(
+                      notificationViewModel: notifcationViewModel,
+                      notification: notifications[index],
+                    ),
                     separatorBuilder: (context, index) =>
                         Dimensions.heightSmall,
                     itemCount: notifications.length,

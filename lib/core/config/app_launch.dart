@@ -24,6 +24,9 @@ class AppLaunch {
       );
       await ChannelNotification.initialize();
       timeago.setLocaleMessages('ar', ArMessages());
+      timeago.setLocaleMessages('fr', FrMessages());
+      timeago.setLocaleMessages('en', EnMessages());
+
       debugPrint('App initialization completed successfully');
     } on FileSystemException catch (err, stackTrace) {
       _handleError('Failed to load .env file', err, stackTrace);
