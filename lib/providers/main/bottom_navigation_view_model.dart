@@ -6,6 +6,8 @@ import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../widgets/common/empty_widget.dart';
+
 class BottomNavigationViewModel extends BaseViewModel
     implements IBottomNavigationBar {
   int slectedIndex = 0;
@@ -42,9 +44,9 @@ class BottomNavigationViewModel extends BaseViewModel
     final drawerViewModel = mainContext.read<DrawerViewModel>();
     return [
       drawerViewModel.selectedWidget,
-      const Center(child: Text('Cours view')),
-      const Center(child: Text('Chat view')),
-      const Center(child: Text('Planning view')),
+      const EmptyWidget(),
+      const EmptyWidget(),
+      const EmptyWidget(),
       const ProfileView(),
     ];
   }

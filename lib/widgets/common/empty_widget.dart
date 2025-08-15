@@ -1,9 +1,11 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:erudaxis/widgets/common/gradient_button.dart';
 import 'package:flutter/material.dart';
 
-class EmptyWidget extends StatelessWidget {
+class EmptyWidget extends IScreenWithLocalization {
   final String? title;
   final String? message;
   final IconData? icon;
@@ -19,7 +21,8 @@ class EmptyWidget extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
     return Center(
       child: Padding(
         padding: Dimensions.paddingAllExtraLarge,
@@ -29,13 +32,13 @@ class EmptyWidget extends StatelessWidget {
             Icon(
               icon ?? Icons.inbox_outlined,
               size: 64,
-              color: Colors.grey[400],
+              color: Colors.white70,
             ),
             Dimensions.heightSmall,
             Text(
               title ?? intl.no_data_available,
               style: textTheme.titleLarge?.copyWith(
-                color: Colors.grey[600],
+                color: Colors.white38,
               ),
               textAlign: TextAlign.center,
             ),
@@ -43,9 +46,10 @@ class EmptyWidget extends StatelessWidget {
               Dimensions.heightSmall,
               Text(
                 message!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey[500],
-                    ),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Colors.white38),
                 textAlign: TextAlign.center,
               ),
             ],

@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "assignments_due": MessageLookupByLibrary.simpleMessage(
       "الواجبات المستحقة",
     ),
+    "attendance_call": MessageLookupByLibrary.simpleMessage("نداء الحضور"),
     "birth_date": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
     "bonjour": MessageLookupByLibrary.simpleMessage("مرحبا"),
     "burgundy": MessageLookupByLibrary.simpleMessage("نبيذي"),
@@ -205,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout_title": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "lycee": MessageLookupByLibrary.simpleMessage("ثانوية"),
     "magenta": MessageLookupByLibrary.simpleMessage("ماجنتا"),
+    "members": MessageLookupByLibrary.simpleMessage("الأعضاء"),
     "messages": MessageLookupByLibrary.simpleMessage("الرسائل"),
     "messaging": MessageLookupByLibrary.simpleMessage("المراسلة"),
     "midnight_blue": MessageLookupByLibrary.simpleMessage("أزرق منتصف الليل"),
@@ -274,6 +276,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "quizzes": MessageLookupByLibrary.simpleMessage("اختبارات قصيرة"),
     "quizzesToDo": MessageLookupByLibrary.simpleMessage("الاختبارات المطلوبة"),
     "recentLibrary": MessageLookupByLibrary.simpleMessage("المكتبة الحديثة"),
+    "recent_activity": MessageLookupByLibrary.simpleMessage("النشاط الأخير"),
     "refresh": MessageLookupByLibrary.simpleMessage("تحديث"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "required": MessageLookupByLibrary.simpleMessage("إجباري"),

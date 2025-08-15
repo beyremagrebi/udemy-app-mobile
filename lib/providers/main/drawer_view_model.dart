@@ -5,6 +5,7 @@ import 'package:erudaxis/presentation/main/home/home_view.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
+import 'package:erudaxis/widgets/common/empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,37 +36,37 @@ class DrawerViewModel extends BaseViewModel {
 
       case DrawerItem.subjects:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Subjects View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.exams:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Exams View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.quizzes:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Quizzes View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.library:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Library View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.documents:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Documents View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.invoices:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Invoices View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.absences:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Absences View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.schedule:
@@ -74,12 +75,12 @@ class DrawerViewModel extends BaseViewModel {
 
       case DrawerItem.calendar:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Calendar View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.videoConference:
         viewModel.onSelectChange(0);
-        selectedWidget = const Center(child: Text('Video Conference View'));
+        selectedWidget = const EmptyWidget();
         break;
 
       case DrawerItem.settings:

@@ -3,6 +3,7 @@ import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/models/base/base_class.dart';
 import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/presentation/utils/async/async_model_list_builder.dart';
+import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/providers/main/home/class/members_class_view_model.dart';
 import 'package:erudaxis/widgets/shimmer/member_card_shimmer.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MembersClassView extends StatelessWidget {
           builder: (context, viewModel, child) => AsyncModelListBuilder(
             models: viewModel.students,
             viewModel: viewModel,
+            onRefresh: viewModel.loadStudents,
             shimmer: MemberCardShimmer(),
             builder: (users) => LimitedListView(
               children: List.generate(
@@ -37,7 +39,7 @@ class MembersClassView extends StatelessWidget {
             ),
           ),
         ),
-        title: 'Memebers',
+        title: intl.members,
         materialPage: Container(),
         onTap: () {},
         icon: Icons.people_alt_outlined,
@@ -57,7 +59,8 @@ class MembersClassView extends StatelessWidget {
               height: 35,
               width: 35,
               hasImageView: true,
-              imageNetworUrl: '$baseURl/enterprise-${user.enterprise}/images',
+              imageNetworUrl:
+                  '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images',
               isMen: user.isMen,
               imageFileName: user.image,
               isProfilePicture: true,

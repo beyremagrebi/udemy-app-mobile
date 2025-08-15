@@ -77,7 +77,7 @@ class ApiImageWidget extends BaseApiImage {
   }
 
   String _getDefaultPlaceholderPath() {
-    if (isMen ?? false) {
+    if ((isMen ?? false) == true) {
       return Assets.defaultMaleAvatar;
     } else {
       return Assets.defaultFemaleAvatar;

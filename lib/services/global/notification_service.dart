@@ -32,6 +32,14 @@ class NotificationService extends BaseService<NotificationModel> {
     );
   }
 
+  Future<ApiResponse<List<NotificationModel>>> getRecentAcitivity() async {
+    return ApiService.instance.request<List<NotificationModel>>(
+      url: '$endpoint/get-recent-activity',
+      fromJson: (json) =>
+          (json as List).map<NotificationModel>(fromMapFunction).toList(),
+    );
+  }
+
   Future<ApiResponse<NotificationModel>> updateNotification(
       NotificationModel notifcation) async {
     return ApiService.instance.request<NotificationModel>(

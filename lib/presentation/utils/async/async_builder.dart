@@ -21,7 +21,7 @@ class AsyncBuilder extends StatelessWidget {
         return onSuccess.call();
       case ApiStatus.loading:
         if (shimmer == null) {
-          return const Text('loading');
+          return const SizedBox.shrink();
         }
         return shimmer!;
       case ApiStatus.error:

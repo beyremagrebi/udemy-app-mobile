@@ -25,7 +25,7 @@ class Erudaxis extends StatelessWidget {
           closeOnBackButton: true,
           useBackButtonInterceptor: true,
           overlayWidgetBuilder: (progress) => const SpinLoading(),
-          overlayColor: Colors.black.withOpacity(0.5),
+          overlayColor: Colors.black.withOpacity(0.2),
           child: MaterialApp(
             navigatorKey: mainnavigatorKey,
             debugShowCheckedModeBanner: false,

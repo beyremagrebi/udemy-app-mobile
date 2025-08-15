@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appearance_title": MessageLookupByLibrary.simpleMessage("Apparence"),
     "aqua_marine": MessageLookupByLibrary.simpleMessage("Aigue-marine"),
     "assignments_due": MessageLookupByLibrary.simpleMessage("Devoirs à rendre"),
+    "attendance_call": MessageLookupByLibrary.simpleMessage("Appel"),
     "birth_date": MessageLookupByLibrary.simpleMessage("Date de naissance"),
     "bonjour": MessageLookupByLibrary.simpleMessage("Bonjour"),
     "burgundy": MessageLookupByLibrary.simpleMessage("Bordeaux"),
@@ -207,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout_title": MessageLookupByLibrary.simpleMessage("Se déconnecter"),
     "lycee": MessageLookupByLibrary.simpleMessage("Lycée"),
     "magenta": MessageLookupByLibrary.simpleMessage("Magenta"),
+    "members": MessageLookupByLibrary.simpleMessage("Membres"),
     "messages": MessageLookupByLibrary.simpleMessage("Messages"),
     "messaging": MessageLookupByLibrary.simpleMessage("Messagerie"),
     "midnight_blue": MessageLookupByLibrary.simpleMessage("Bleu minuit"),
@@ -298,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "recentLibrary": MessageLookupByLibrary.simpleMessage(
       "Bibliothèque Récente",
     ),
+    "recent_activity": MessageLookupByLibrary.simpleMessage("Activité récente"),
     "refresh": MessageLookupByLibrary.simpleMessage("Rafraîchir"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Se souvenir de moi"),
     "required": MessageLookupByLibrary.simpleMessage("Obligatoire"),

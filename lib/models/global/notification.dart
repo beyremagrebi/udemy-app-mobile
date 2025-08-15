@@ -13,6 +13,7 @@ class NotificationModel extends BaseModel {
   String? body;
   String? image;
   String? status;
+
   String? type;
   DateTime? createdAt;
 

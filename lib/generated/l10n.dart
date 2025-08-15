@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `Attendance Call`
+  String get attendance_call {
+    return Intl.message(
+      'Attendance Call',
+      name: 'attendance_call',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Birth Date`
   String get birth_date {
     return Intl.message('Birth Date', name: 'birth_date', desc: '', args: []);
@@ -805,6 +815,11 @@ class S {
     return Intl.message('Magenta', name: 'magenta', desc: '', args: []);
   }
 
+  /// `Members`
+  String get members {
+    return Intl.message('Members', name: 'members', desc: '', args: []);
+  }
+
   /// `Messages`
   String get messages {
     return Intl.message('Messages', name: 'messages', desc: '', args: []);
@@ -1185,6 +1200,16 @@ class S {
     return Intl.message(
       'Quizzes to Do',
       name: 'quizzesToDo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Activity`
+  String get recent_activity {
+    return Intl.message(
+      'Recent Activity',
+      name: 'recent_activity',
       desc: '',
       args: [],
     );

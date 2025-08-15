@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,7 @@ class LoginFooterRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeViewModel = context.watch<ThemeViewModel>();
     return ChangeNotifierProvider(
       create: LoginFooterViewModel.new,
       child: Consumer<LoginFooterViewModel>(
@@ -25,19 +27,27 @@ class LoginFooterRow extends StatelessWidget {
                   Checkbox(
                     value: viewModel.rememberMe,
                     onChanged: (val) => viewModel.toggleRemember(value: val),
-                    checkColor: const Color(0xFF8B4A9C),
+                    checkColor: themeViewModel.currentTheme.primary,
                     fillColor: WidgetStateProperty.all(Colors.white),
                     side: const BorderSide(color: Colors.white, width: 2),
                   ),
                   Flexible(
-                    child: Text(
-                      intl.rememberMe,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          viewModel.toggleRemember(
+                              value: !viewModel.rememberMe);
+                        },
+                        child: Text(
+                          intl.rememberMe,
+                          style: textTheme.labelSmall?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
@@ -45,17 +55,21 @@ class LoginFooterRow extends StatelessWidget {
             ),
             Dimensions.widthSmall,
             Flexible(
-              child: GestureDetector(
-                onTap: () {},
-                child: Text(
-                  intl.forgotPassword,
-                  style: textTheme.bodyMedium?.copyWith(
-                    color: const Color.fromARGB(255, 227, 151, 247),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {},
+                  child: Text(
+                    intl.forgotPassword,
+                    style: textTheme.labelSmall?.copyWith(
+                      color: themeViewModel.currentTheme.secondary,
+                      decoration: TextDecoration.underline,
+                      decorationColor: themeViewModel.currentTheme.secondary,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.end,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.end,
                 ),
               ),
             ),
