@@ -1,13 +1,4 @@
 {
-    "@downloadFailedError": {
-        "description": "Download failed with specific error message",
-        "placeholders": {
-            "error": {
-                "description": "Error message",
-                "type": "String"
-            }
-        }
-    },
     "about_title": "حول",
     "absences": "الغيابات",
     "access_classes_groups": "الوصول إلى فصولك ومجموعاتك",
@@ -184,6 +175,7 @@
     "statistics": "الإحصائيات",
     "steel_blue": "أزرق فولاذي",
     "studyCompanion": "رفيق دراستك",
+    "subject_quote": "إذا فشلت كل الأمور التي فعلتها - وهذا ليس الحال، أعتقد أنها في الواقع تنجح.",
     "subjects": "المواد",
     "sunset_orange": "برتقالي الغروب",
     "support_subtitle": "الأسئلة الشائعة والمساعدة",

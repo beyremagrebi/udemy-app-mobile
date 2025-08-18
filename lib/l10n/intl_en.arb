@@ -1,13 +1,4 @@
 {
-    "@downloadFailedError": {
-        "description": "Download failed with specific error message",
-        "placeholders": {
-            "error": {
-                "description": "Error message",
-                "type": "String"
-            }
-        }
-    },
     "about_title": "About",
     "absences": "Absences",
     "access_classes_groups": "Access your classes and groups",
@@ -184,6 +175,7 @@
     "statistics": "Statistics",
     "steel_blue": "Steel Blue",
     "studyCompanion": "Your study companion",
+    "subject_quote": "If everything I did failed - which it doesn''t, I think that it actually succeeds.",
     "subjects": "Subjects",
     "sunset_orange": "Sunset Orange",
     "support_subtitle": "FAQ & assistance",

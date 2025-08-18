@@ -9,7 +9,6 @@ class ActivityRecentCardShimmer extends BaseShimmer {
   @override
   Widget get child => ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
-        padding: Dimensions.paddingAllMedium,
         separatorBuilder: (context, index) => Dimensions.heightSmall,
         itemCount: 3,
         itemBuilder: (context, index) => Card(

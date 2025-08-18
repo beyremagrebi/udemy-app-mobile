@@ -12,6 +12,7 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
     avoid_slow_async_io: ignore
+    inference_failure_on_untyped_parameter: ignore
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"

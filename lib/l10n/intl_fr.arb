@@ -1,13 +1,4 @@
 {
-    "@downloadFailedError": {
-        "description": "Download failed with specific error message",
-        "placeholders": {
-            "error": {
-                "description": "Error message",
-                "type": "String"
-            }
-        }
-    },
     "about_title": "À propos",
     "absences": "Absences",
     "access_classes_groups": "Accéder à vos classes et groupes",
@@ -184,6 +175,7 @@
     "statistics": "Statistiques",
     "steel_blue": "Bleu acier",
     "studyCompanion": "Votre compagnon d''études",
+    "subject_quote": "Si tout ce que j''ai fait échouait - ce qui n''est pas le cas, je pense que cela réussit en fait.",
     "subjects": "Matières",
     "sunset_orange": "Orange coucher de soleil",
     "support_subtitle": "FAQ  & assistance",

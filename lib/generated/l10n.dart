@@ -476,11 +476,11 @@ class S {
   }
 
   /// `Download failed: {error}`
-  String downloadFailedError(String error) {
+  String downloadFailedError(Object error) {
     return Intl.message(
       'Download failed: $error',
       name: 'downloadFailedError',
-      desc: 'Download failed with specific error message',
+      desc: '',
       args: [error],
     );
   }
@@ -1380,6 +1380,16 @@ class S {
     return Intl.message(
       'Your study companion',
       name: 'studyCompanion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If everything I did failed - which it doesn''t, I think that it actually succeeds.`
+  String get subject_quote {
+    return Intl.message(
+      'If everything I did failed - which it doesn\'\'t, I think that it actually succeeds.',
+      name: 'subject_quote',
       desc: '',
       args: [],
     );
