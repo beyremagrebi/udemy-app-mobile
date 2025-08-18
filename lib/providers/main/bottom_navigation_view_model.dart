@@ -6,6 +6,7 @@ import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../presentation/main/subject/subject_view.dart';
 import '../../widgets/common/empty_widget.dart';
 
 class BottomNavigationViewModel extends BaseViewModel
@@ -44,7 +45,7 @@ class BottomNavigationViewModel extends BaseViewModel
     final drawerViewModel = mainContext.read<DrawerViewModel>();
     return [
       drawerViewModel.selectedWidget,
-      const EmptyWidget(),
+      const SubjectView(),
       const EmptyWidget(),
       const EmptyWidget(),
       const ProfileView(),

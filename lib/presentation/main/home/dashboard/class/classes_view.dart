@@ -36,6 +36,7 @@ class ClassesView extends StatelessWidget {
                   Icons.search,
                   color: Colors.white30,
                 ),
+                onTapOutside: false,
                 hintText: 'Recherche',
               ),
             ),

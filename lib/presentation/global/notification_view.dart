@@ -22,6 +22,7 @@ class NotificationView extends IScreenWithLocalization {
   Widget buildLocalized(
       BuildContext context, LanguageViewModel languageViewModel) {
     final viewModel = context.watch<ThemeViewModel>();
+
     return ChangeNotifierProvider(
       create: NotificationViewModel.new,
       child: Consumer<NotificationViewModel>(
@@ -34,37 +35,35 @@ class NotificationView extends IScreenWithLocalization {
               GradientAppBarWidget(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Scrollbar(
-                    child: Padding(
-                      padding: Dimensions.horizontalPaddingMedium,
-                      child: Row(
-                        children: [
-                          AppFilterChip(
-                            viewModel: viewModel,
-                            label: '${intl.all} (6)',
-                            selected: false,
-                            onTap: () {},
-                          ),
-                          AppFilterChip(
-                            viewModel: viewModel,
-                            label: '${intl.unread} (6)',
-                            selected: false,
-                            onTap: () {},
-                          ),
-                          AppFilterChip(
-                            viewModel: viewModel,
-                            label: '${intl.messages} (6)',
-                            selected: false,
-                            onTap: () {},
-                          ),
-                          AppFilterChip(
-                            viewModel: viewModel,
-                            label: '${intl.courses} (6)',
-                            onTap: () {},
-                            selected: false,
-                          ),
-                        ],
-                      ),
+                  child: Padding(
+                    padding: Dimensions.horizontalPaddingMedium,
+                    child: Row(
+                      children: [
+                        AppFilterChip(
+                          viewModel: viewModel,
+                          label: '${intl.all} (6)',
+                          selected: false,
+                          onTap: () {},
+                        ),
+                        AppFilterChip(
+                          viewModel: viewModel,
+                          label: '${intl.unread} (6)',
+                          selected: false,
+                          onTap: () {},
+                        ),
+                        AppFilterChip(
+                          viewModel: viewModel,
+                          label: '${intl.messages} (6)',
+                          selected: false,
+                          onTap: () {},
+                        ),
+                        AppFilterChip(
+                          viewModel: viewModel,
+                          label: '${intl.courses} (6)',
+                          onTap: () {},
+                          selected: false,
+                        ),
+                      ],
                     ),
                   ),
                 ),

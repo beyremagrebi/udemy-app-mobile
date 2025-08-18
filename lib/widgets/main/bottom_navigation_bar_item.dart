@@ -16,7 +16,7 @@ List<BottomNavigationBarItem> bottomNavigationBarItem(BuildContext context) {
         Symbols.book_5_rounded,
         size: 22,
       ),
-      label: intl.courses,
+      label: intl.subjects,
     ),
     BottomNavigationBarItem(
       icon: const Icon(

@@ -20,25 +20,39 @@ class AppFilterChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: Dimensions.paddingAllxSmall,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: Dimensions.xsmallBorderRadius,
-        child: Card(
-          elevation: 0,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-            decoration: BoxDecoration(
-              color: selected
-                  ? viewModel.currentTheme.primary.withOpacity(0.4)
-                  : Colors.transparent,
-              border: Border.all(color: Colors.white, width: 0.5),
-              borderRadius: Dimensions.xsmallBorderRadius,
-            ),
-            child: Text(
-              label,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: Dimensions.xsmallBorderRadius,
+          child: Card(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                color: selected
+                    ? viewModel.currentTheme.secondary.withOpacity(0.6)
+                    : Colors.transparent,
+                border: Border.all(
+                    color: Colors.white, width: selected ? 0.3 : 0.5),
+                borderRadius: Dimensions.xsmallBorderRadius,
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                  Dimensions.widthxSmall,
+                  if (selected)
+                    const Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 12,
+                    )
+                ],
               ),
             ),
           ),

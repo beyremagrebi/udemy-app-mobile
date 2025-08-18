@@ -34,6 +34,7 @@ class InputText extends IScreenWithLocalization {
   final AutovalidateMode? autovalidateMode;
   final String? errorText;
   final bool showErrorText;
+  final bool onTapOutside;
 
   const InputText({
     super.key,
@@ -57,6 +58,7 @@ class InputText extends IScreenWithLocalization {
     this.validator,
     this.autovalidateMode,
     this.errorText,
+    this.onTapOutside = true,
     this.showErrorText = true,
   });
 
@@ -164,7 +166,9 @@ class InputText extends IScreenWithLocalization {
                         height: -1,
                       ),
               ),
-              onTapOutside: (event) => FocusScope.of(context).unfocus(),
+              onTapOutside: onTapOutside == true
+                  ? (event) => FocusScope.of(context).unfocus()
+                  : null,
             ),
           ),
         ),
