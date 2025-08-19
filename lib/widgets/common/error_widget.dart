@@ -1,3 +1,5 @@
+import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class ErrorMyWidget extends StatelessWidget {
@@ -20,35 +22,35 @@ class ErrorMyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: Dimensions.paddingAllMedium,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               icon ?? Icons.error_outline,
-              size: 64,
-              color: Colors.red[400],
+              size: 45,
+              color: Colors.red.shade400,
             ),
             const SizedBox(height: 16),
             Text(
               title ?? 'Something went wrong',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Colors.red[600],
-                  ),
+              style: textTheme.titleLarge?.copyWith(
+                color: Colors.red.shade600,
+              ),
               textAlign: TextAlign.center,
             ),
             if (message != null) ...[
-              const SizedBox(height: 8),
+              Dimensions.heightSmall,
               Text(
                 message!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey[600],
-                    ),
+                style: textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[600],
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
             if (onRetry != null || action != null) ...[
-              const SizedBox(height: 24),
+              Dimensions.heightMedium,
               action ??
                   ElevatedButton.icon(
                     icon: const Icon(Icons.refresh),
@@ -57,6 +59,9 @@ class ErrorMyWidget extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red[50],
                       foregroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Dimensions.s),
+                      ),
                     ),
                   ),
             ],

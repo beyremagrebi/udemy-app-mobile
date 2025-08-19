@@ -27,6 +27,7 @@ class AsyncModelListBuilder<Model extends BaseModel,
     return AsyncBuilder(
       apiStatus: viewModel.apiStatus,
       shimmer: shimmer,
+      onRefresh: onRefresh,
       onSuccess: () {
         if (models != null && models!.isNotEmpty) {
           return onRefresh != null

@@ -33,6 +33,7 @@ class SubjectDetailsView extends StatelessWidget {
               TitleWidget(
                 child: InstructorsListView(
                   subject: subject,
+                  classe: classe,
                 ),
                 title: 'instructors',
                 icon: Icons.people_rounded,

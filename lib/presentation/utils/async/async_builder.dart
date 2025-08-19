@@ -7,10 +7,12 @@ class AsyncBuilder extends StatelessWidget {
   final ApiStatus apiStatus;
   final Widget Function() onSuccess;
   final Widget? shimmer;
+  final Future<void> Function()? onRefresh;
   const AsyncBuilder({
     required this.apiStatus,
     required this.onSuccess,
     this.shimmer,
+    this.onRefresh,
     super.key,
   });
 
@@ -25,7 +27,9 @@ class AsyncBuilder extends StatelessWidget {
         }
         return shimmer!;
       case ApiStatus.error:
-        return const ErrorMyWidget();
+        return ErrorMyWidget(
+          onRetry: onRefresh,
+        );
     }
   }
 }

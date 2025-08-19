@@ -1,6 +1,10 @@
 import 'package:erudaxis/models/lycee/subject_lycee.dart';
 import 'package:erudaxis/services/base/subject_services.dart';
 
+import '../../core/api/api_response.dart';
+import '../../core/api/api_services.dart';
+import '../../models/global/user.dart';
+
 class SubjectLyceeServices extends SubjectServices<SubjectLycee> {
   SubjectLyceeServices() : super(SubjectLycee.fromMap);
   @override
@@ -11,4 +15,15 @@ class SubjectLyceeServices extends SubjectServices<SubjectLycee> {
   @override
   String get getSubjectUrl =>
       '$endpoint/$institution/subjects-by-class-and-role';
+
+  @override
+  Future<ApiResponse<List<User>>> getInstructorsBysubject({
+    String? subjectId,
+    String? classId,
+  }) async {
+    return ApiService.instance.request<List<User>>(
+      url: '$getInstructorBySubjectUrl/$classId/$subjectId',
+      fromJson: (json) => (json as List).map<User>(User.fromMap).toList(),
+    );
+  }
 }

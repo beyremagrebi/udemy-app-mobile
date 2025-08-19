@@ -1,3 +1,4 @@
+import 'package:erudaxis/models/base/base_class.dart';
 import 'package:erudaxis/models/base/base_subject.dart';
 import 'package:erudaxis/presentation/utils/async/async_model_list_builder.dart';
 import 'package:erudaxis/providers/main/subject/instructors_for_subject_view_model.dart';
@@ -11,13 +12,15 @@ import '../../utils/limited_list_view.dart';
 
 class InstructorsListView extends StatelessWidget {
   final BaseSubject subject;
-  const InstructorsListView({required this.subject, super.key});
+  final BaseClass classe;
+  const InstructorsListView(
+      {required this.subject, required this.classe, super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) =>
-          InstructorsForSubjectViewModel(context, subject: subject),
+      create: (context) => InstructorsForSubjectViewModel(context,
+          subject: subject, classe: classe),
       child: Consumer<InstructorsForSubjectViewModel>(
         builder: (context, viewModel, child) => AsyncModelListBuilder(
           viewModel: viewModel,

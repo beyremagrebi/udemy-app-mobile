@@ -1,3 +1,4 @@
+import 'package:erudaxis/models/base/base_class.dart';
 import 'package:erudaxis/models/base/base_subject.dart';
 import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
@@ -10,8 +11,10 @@ import '../../../services/training_center/subject_tc_services.dart';
 
 class InstructorsForSubjectViewModel extends BaseViewModel {
   final BaseSubject subject;
+  final BaseClass classe;
   List<User>? instructors;
-  InstructorsForSubjectViewModel(super.context, {required this.subject}) {
+  InstructorsForSubjectViewModel(super.context,
+      {required this.subject, required this.classe}) {
     loadInstructors();
   }
 
@@ -20,12 +23,10 @@ class InstructorsForSubjectViewModel extends BaseViewModel {
       displayLoading: false,
       displayError: false,
       apiCall: FacilityManager.functionByFacility(
-        college: () => SubjectCollegeServices().getInstructorsBysubject(
-          subjectId: subject.id,
-        ),
-        lycee: () => SubjectLyceeServices().getInstructorsBysubject(
-          subjectId: subject.id,
-        ),
+        college: () => SubjectCollegeServices()
+            .getInstructorsBysubject(subjectId: subject.id, classId: classe.id),
+        lycee: () => SubjectLyceeServices()
+            .getInstructorsBysubject(subjectId: subject.id, classId: classe.id),
         trainingCenter: () => SubjectTcServices().getInstructorsBysubject(
           subjectId: subject.id,
         ),

@@ -34,7 +34,7 @@ class CourseCard extends StatelessWidget {
                   ),
                   Dimensions.widthSmall,
                   Text(
-                    '${cours.instructor?.firstName} ${cours.instructor?.lastName} ',
+                    '${cours.instructor?.firstName} ${cours.instructor?.lastName} (${cours.instructor?.role?.localizedName()}) ',
                     style: textTheme.labelSmall,
                   ),
                 ],
