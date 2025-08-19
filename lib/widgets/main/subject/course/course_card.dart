@@ -40,10 +40,11 @@ class CourseCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(
-              Icons.lock_outline_rounded,
-              size: 20,
-            ),
+            if (cours.isLocked ?? false)
+              const Icon(
+                Icons.lock_outline_rounded,
+                size: 20,
+              ),
           ],
         ),
       ),

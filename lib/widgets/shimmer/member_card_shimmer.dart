@@ -3,7 +3,8 @@ import 'package:erudaxis/widgets/shimmer/base_shimmer.dart';
 import 'package:flutter/material.dart';
 
 class MemberCardShimmer extends BaseShimmer {
-  MemberCardShimmer({super.key});
+  final bool isCircular;
+  MemberCardShimmer({super.key, this.isCircular = true});
 
   @override
   Widget get child => SizedBox(
@@ -21,9 +22,9 @@ class MemberCardShimmer extends BaseShimmer {
                   Container(
                     height: 35,
                     width: 35,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
-                      shape: BoxShape.circle,
+                      shape: isCircular ? BoxShape.circle : BoxShape.rectangle,
                     ),
                   ),
                   Dimensions.widthSmall,

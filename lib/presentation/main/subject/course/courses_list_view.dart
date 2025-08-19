@@ -26,7 +26,9 @@ class CoursesListView extends StatelessWidget {
           viewModel: viewModel,
           models: viewModel.courses,
           onRefresh: viewModel.loadCourses,
-          shimmer: MemberCardShimmer(),
+          shimmer: MemberCardShimmer(
+            isCircular: false,
+          ),
           builder: (courses) => LimitedListView(
             separator: Dimensions.heightSmall,
             children: List.generate(

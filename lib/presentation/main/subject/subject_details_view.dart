@@ -31,6 +31,16 @@ class SubjectDetailsView extends StatelessWidget {
             padding: Dimensions.paddingAllMedium,
             children: [
               TitleWidget(
+                child: InstructorsListView(
+                  subject: subject,
+                ),
+                title: 'instructors',
+                icon: Icons.people_rounded,
+                onTap: () {},
+                materialPage: Container(),
+              ),
+              Dimensions.heightExtraLarge,
+              TitleWidget(
                 child: CoursesListView(
                   classe: classe,
                   subject: subject,
@@ -40,14 +50,6 @@ class SubjectDetailsView extends StatelessWidget {
                 onTap: () {},
                 materialPage: Container(),
               ),
-              Dimensions.heightSmall,
-              TitleWidget(
-                child: const InstructorsListView(),
-                title: 'instructors',
-                icon: Icons.people_rounded,
-                onTap: () {},
-                materialPage: Container(),
-              )
             ],
           ))
         ],

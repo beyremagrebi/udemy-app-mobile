@@ -3,7 +3,9 @@ import 'package:erudaxis/services/base/subject_services.dart';
 
 class SubjectLyceeServices extends SubjectServices<SubjectLycee> {
   SubjectLyceeServices() : super(SubjectLycee.fromMap);
-
+  @override
+  String get getInstructorBySubjectUrl =>
+      '$endpoint/$institution/instructors-by-subject';
   @override
   Map<String, dynamic>? get getSubjectQueryParams => {'page': 1, 'limit': 1000};
   @override
