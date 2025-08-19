@@ -2,8 +2,10 @@ import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/models/base/base_subject.dart';
+import 'package:erudaxis/presentation/main/subject/subject_details_view.dart';
 import 'package:erudaxis/presentation/utils/colors_generator.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,9 @@ class SubjectCard extends IScreenWithLocalization {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            navigateTo(context, SubjectDetailsView(subject: subject));
+          },
           child: Padding(
             padding: Dimensions.paddingAllSmall,
             child: Column(

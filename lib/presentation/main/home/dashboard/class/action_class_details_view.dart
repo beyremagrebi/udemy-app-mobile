@@ -1,4 +1,7 @@
+import 'package:erudaxis/models/base/base_class.dart';
+import 'package:erudaxis/presentation/main/subject/subject_for_class_view.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -7,7 +10,8 @@ import '../../../../../core/styles/dimensions.dart';
 import '../../../../utils/statics_grid.dart';
 
 class ActionClassDetailsView extends StatelessWidget {
-  const ActionClassDetailsView({super.key});
+  final BaseClass? classe;
+  const ActionClassDetailsView({required this.classe, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +39,10 @@ class ActionClassDetailsView extends StatelessWidget {
         _buildActionClass(
           icon: Symbols.book_5_rounded,
           color: Colors.green,
-          title: intl.courses,
-          onTap: () {},
+          title: intl.subjects,
+          onTap: () {
+            navigateTo(context, SubjectForClassView(classe: classe));
+          },
         ),
       ],
       screenWidth: Dimensions.screenWidth,

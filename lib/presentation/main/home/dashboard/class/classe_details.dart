@@ -33,7 +33,9 @@ class ClasseDetails extends StatelessWidget {
             child: ListView(
               padding: Dimensions.paddingAllMedium,
               children: [
-                const ActionClassDetailsView(),
+                ActionClassDetailsView(
+                  classe: classe,
+                ),
                 Dimensions.heightMedium,
                 MembersClassView(
                   classe: classe,

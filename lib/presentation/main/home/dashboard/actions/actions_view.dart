@@ -1,5 +1,8 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/presentation/main/subject/subject_view.dart';
+import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
+import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/statics_grid.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
@@ -29,7 +32,12 @@ class ActionsView extends IScreenWithLocalization {
           iconColor: Colors.redAccent,
           onTap: () => navigateTo(
             context,
-            const ClassesView(),
+            AppScaffold(
+              appBar: AppBarGradient(
+                title: Text(intl.my_classes),
+              ),
+              body: const ClassesView(),
+            ),
           ),
         ),
         ActionCard(
@@ -39,10 +47,21 @@ class ActionsView extends IScreenWithLocalization {
           iconColor: Colors.blueAccent,
         ),
         ActionCard(
-          title: intl.my_courses,
+          title: intl.subjects,
           subTitle: intl.access_educational_content,
           icon: Symbols.book_5_rounded,
           iconColor: Colors.green,
+          onTap: () {
+            navigateTo(
+              context,
+              AppScaffold(
+                appBar: AppBarGradient(
+                  title: Text(intl.subjects),
+                ),
+                body: const SubjectView(),
+              ),
+            );
+          },
         ),
         ActionCard(
           title: intl.messaging,

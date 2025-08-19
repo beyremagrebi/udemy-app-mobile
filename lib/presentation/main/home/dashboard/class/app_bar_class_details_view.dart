@@ -9,10 +9,10 @@ import '../../../../../widgets/common/gradient_app_bar_widget.dart';
 import '../../../../utils/colors_generator.dart';
 import '../../../../utils/icon_box.dart';
 import '../../../../utils/session/facility_manager.dart';
-import 'statistic_header_view.dart';
+import 'statistic_class_details_header_view.dart';
 
 class AppBarClassDetailsView extends StatelessWidget {
-  final BaseClass classe;
+  final BaseClass? classe;
   const AppBarClassDetailsView({required this.classe, super.key});
 
   @override
@@ -27,16 +27,17 @@ class AppBarClassDetailsView extends StatelessWidget {
             Row(
               children: [
                 IconBox(
-                  icon: getIconFromName(classe.name ?? ''),
+                  icon: getIconFromName(classe?.name ?? ''),
                   size: 50,
-                  iconBackgroundColor: getColorFromHash(classe.name.hashCode),
+                  iconBackgroundColor: getColorFromHash(
+                      classe?.name.hashCode ?? intl.error.hashCode),
                 ),
                 Dimensions.widthSmall,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      classe.name?.toUpperCase() ?? '',
+                      classe?.name?.toUpperCase() ?? '',
                       style: textTheme.titleMedium?.copyWith(),
                     ),
                     Text(
@@ -45,7 +46,7 @@ class AppBarClassDetailsView extends StatelessWidget {
                         color: Colors.white70,
                       ),
                     ),
-                    if (classe.isTtrainingCenter) ...[
+                    if (classe?.isTtrainingCenter ?? false) ...[
                       Text(
                         '${DateFormat("d MMMM y", 'fr').format(DateTime.tryParse((classe as ClassTc).startDate ?? '') ?? DateTime.now())}  - ${DateFormat("d MMMM y", 'fr').format(DateTime.tryParse((classe as ClassTc).endDate ?? '') ?? DateTime.now())}',
                         style: textTheme.labelSmall?.copyWith(
@@ -65,7 +66,7 @@ class AppBarClassDetailsView extends StatelessWidget {
               ],
             ),
             Dimensions.heightMedium,
-            const StatisticHeaderView()
+            const StatisticClassDetailsHeaderView()
           ],
         ),
       ),
