@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 Color getColorFromHash(int hash) {
-  final int r = (hash & 0xFF0000) >> 16;
-  final int g = (hash & 0x00FF00) >> 8;
-  final int b = hash & 0x0000FF;
-  return Color.fromARGB(255, r, g, b).withOpacity(1);
+  final safeHash = hash & 0xFFFFFF;
+
+  final int r = (safeHash >> 16) & 0xFF;
+  final int g = (safeHash >> 8) & 0xFF;
+  final int b = safeHash & 0xFF;
+
+  return Color.fromARGB(255, r, g, b);
 }
 
 IconData getCourseIconFromName(String name) {

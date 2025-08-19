@@ -1,6 +1,7 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/models/base/base_class.dart';
 import 'package:erudaxis/models/base/base_subject.dart';
 import 'package:erudaxis/presentation/main/subject/subject_details_view.dart';
 import 'package:erudaxis/presentation/utils/colors_generator.dart';
@@ -11,8 +12,9 @@ import 'package:erudaxis/providers/main/profile/language/language_view_model.dar
 import 'package:flutter/material.dart';
 
 class SubjectCard extends IScreenWithLocalization {
+  final BaseClass classe;
   final BaseSubject subject;
-  const SubjectCard({required this.subject, super.key});
+  const SubjectCard({required this.subject, required this.classe, super.key});
 
   @override
   Widget buildLocalized(
@@ -24,7 +26,12 @@ class SubjectCard extends IScreenWithLocalization {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            navigateTo(context, SubjectDetailsView(subject: subject));
+            navigateTo(
+                context,
+                SubjectDetailsView(
+                  subject: subject,
+                  classe: classe,
+                ));
           },
           child: Padding(
             padding: Dimensions.paddingAllSmall,

@@ -1,8 +1,8 @@
-import 'package:erudaxis/models/lycee/subject_lycee.dart';
+import 'package:erudaxis/models/college/subject_college.dart';
 import 'package:erudaxis/services/base/subject_services.dart';
 
-class SubjectCollegeServices extends SubjectServices<SubjectLycee> {
-  SubjectCollegeServices() : super(SubjectLycee.fromMap);
+class SubjectCollegeServices extends SubjectServices<SubjectCollege> {
+  SubjectCollegeServices() : super(SubjectCollege.fromMap);
 
   @override
   Map<String, dynamic>? get getSubjectQueryParams => {'page': 1, 'limit': 1000};

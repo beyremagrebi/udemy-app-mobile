@@ -1,4 +1,6 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/models/base/base_lesson.dart';
+import 'package:erudaxis/presentation/utils/colors_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
@@ -6,7 +8,8 @@ import '../../../../core/constants/constant.dart';
 import '../../../../presentation/utils/icon_box.dart';
 
 class CourseCard extends StatelessWidget {
-  const CourseCard({super.key});
+  final BaseLesson cours;
+  const CourseCard({required this.cours, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,9 @@ class CourseCard extends StatelessWidget {
         padding: Dimensions.paddingAllSmall,
         child: Row(
           children: [
-            const IconBox(
+            IconBox(
               icon: Symbols.book_5_rounded,
-              iconBackgroundColor: Colors.green,
-              size: 44,
+              iconBackgroundColor: getColorFromHash(cours.name.hashCode),
             ),
             Dimensions.widthSmall,
             Expanded(
@@ -27,12 +29,12 @@ class CourseCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Course 1',
-                    style: textTheme.titleMedium,
+                    cours.name?.toUpperCase() ?? intl.error,
+                    style: textTheme.titleSmall,
                   ),
                   Dimensions.widthSmall,
                   Text(
-                    'beyrem Agrebi',
+                    '${cours.instructor?.firstName} ${cours.instructor?.lastName} ',
                     style: textTheme.labelSmall,
                   ),
                 ],
@@ -42,8 +44,6 @@ class CourseCard extends StatelessWidget {
               Icons.lock_outline_rounded,
               size: 20,
             ),
-            Dimensions.widthxSmall,
-            const Icon(Icons.navigate_next_outlined)
           ],
         ),
       ),

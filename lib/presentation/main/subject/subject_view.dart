@@ -79,6 +79,7 @@ class SubjectView extends IScreenWithLocalization {
                   padding: Dimensions.paddingAllMedium,
                   itemCount: subjects.length,
                   itemBuilder: (context, index) => SubjectCard(
+                    classe: subjectViewModel.selectedClass!,
                     subject: subjects[index],
                   ),
                 ),

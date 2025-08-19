@@ -91,8 +91,18 @@ class SessionManager extends BaseViewModel {
 
   Future<void> logout() async {
     await makeApiCall(
+      displayError: false,
+      displayShimmer: false,
       apiCall: AuthService.shared.logout(),
       onSuccess: (_) async {
+        await TokenManager.shared.clear();
+        await updateFcmToken(user?.id, froLogout: true);
+        if (mainContext.mounted) {
+          mainContext.read<DrawerViewModel>().onTapItem(DrawerItem.home);
+          navigateToDeleteTree(mainContext, const LoginView());
+        }
+      },
+      onError: (error) async {
         await TokenManager.shared.clear();
         await updateFcmToken(user?.id, froLogout: true);
         if (mainContext.mounted) {

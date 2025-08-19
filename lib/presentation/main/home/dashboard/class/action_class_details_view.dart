@@ -10,7 +10,7 @@ import '../../../../../core/styles/dimensions.dart';
 import '../../../../utils/statics_grid.dart';
 
 class ActionClassDetailsView extends StatelessWidget {
-  final BaseClass? classe;
+  final BaseClass classe;
   const ActionClassDetailsView({required this.classe, super.key});
 
   @override

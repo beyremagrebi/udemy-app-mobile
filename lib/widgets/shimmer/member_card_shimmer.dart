@@ -46,9 +46,9 @@ class MemberCardShimmer extends BaseShimmer {
                     ),
                   ),
                   Dimensions.widthSmall,
-                  const Icon(
-                    Icons.more_vert_outlined,
-                    size: 16,
+                  Container(
+                    width: 20,
+                    height: 20,
                     color: Colors.grey,
                   )
                 ],

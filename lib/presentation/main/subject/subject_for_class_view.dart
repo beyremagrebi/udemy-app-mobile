@@ -13,7 +13,7 @@ import '../../utils/async/async_model_list_builder.dart';
 import '../home/dashboard/class/app_bar_class_details_view.dart';
 
 class SubjectForClassView extends StatelessWidget {
-  final BaseClass? classe;
+  final BaseClass classe;
   const SubjectForClassView({required this.classe, super.key});
 
   @override
@@ -42,6 +42,7 @@ class SubjectForClassView extends StatelessWidget {
                     itemCount: subjects.length,
                     itemBuilder: (context, index) => SubjectCard(
                       subject: subjects[index],
+                      classe: classe,
                     ),
                   ),
                 ),
