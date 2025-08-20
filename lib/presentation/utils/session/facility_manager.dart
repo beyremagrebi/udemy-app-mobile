@@ -6,6 +6,12 @@ import '../../../core/enum/facility_type.dart';
 class FacilityManager {
   static late Facility facility;
 
+  static bool get isCollege => facility.type == FacilityType.college;
+
+  static bool get isLycee => facility.type == FacilityType.lycee;
+
+  static bool get isTrainingCenter =>
+      facility.type == FacilityType.trainingCenter;
   static Future<bool> checkFacilityExist() async {
     final ficilityId = await FacilityPreferences.shared.load();
 

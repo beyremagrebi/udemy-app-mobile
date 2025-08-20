@@ -4,11 +4,10 @@ import 'package:erudaxis/models/base/base_subject.dart';
 import 'package:erudaxis/presentation/utils/async/async_model_list_builder.dart';
 import 'package:erudaxis/presentation/utils/limited_list_view.dart';
 import 'package:erudaxis/providers/main/subject/cours/cours_list_view_model.dart';
+import 'package:erudaxis/widgets/main/subject/course/course_card.dart';
 import 'package:erudaxis/widgets/shimmer/member_card_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../widgets/main/subject/course/course_card.dart';
 
 class CoursesListView extends StatelessWidget {
   final BaseClass classe;

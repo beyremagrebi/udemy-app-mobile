@@ -7,11 +7,12 @@ import '../../../widgets/common/gradient_app_bar_widget.dart';
 import '../../utils/colors_generator.dart';
 import '../../utils/icon_box.dart';
 import '../../utils/session/facility_manager.dart';
-import 'statics_subject_details_header_view.dart';
 
 class AppBarSubjectDetailsView extends StatelessWidget {
   final BaseSubject subject;
-  const AppBarSubjectDetailsView({required this.subject, super.key});
+  final Widget child;
+  const AppBarSubjectDetailsView(
+      {required this.child, required this.subject, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class AppBarSubjectDetailsView extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: Dimensions.s),
         padding: Dimensions.horizontalExtrrePaddingLarge,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -47,7 +49,7 @@ class AppBarSubjectDetailsView extends StatelessWidget {
               ],
             ),
             Dimensions.heightMedium,
-            const StaticsSubjectDetailsHeaderView()
+            child,
           ],
         ),
       ),

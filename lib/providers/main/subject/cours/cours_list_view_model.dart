@@ -29,10 +29,12 @@ class CoursListViewModel extends BaseViewModel {
         college: () => LessonCollegeServices().getLessonBySubjectAndClass(
           classId: classe.id,
           subjectId: subject.id,
+          subjectType: 'Cours',
         ),
         lycee: () => LessonLyceeServices().getLessonBySubjectAndClass(
           classId: classe.id,
           subjectId: subject.id,
+          subjectType: 'Cours',
         ),
         trainingCenter: () => LessonTcServices().getLessonBySubjectAndClass(
           classId: classe.id,

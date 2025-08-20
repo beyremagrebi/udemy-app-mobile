@@ -21,13 +21,14 @@ class LessonCollegeServices extends LessonServices<LessonCollege> {
   Future<ApiResponse<List<LessonCollege>>> getLessonBySubjectAndClass({
     String? classId,
     String? subjectId,
+    String? subjectType,
   }) async {
     return ApiService.instance.request<List<LessonCollege>>(
       url: '$getLessonUrl/$classId',
       dataKey: 'data',
       queryParameters: {
         ...?getLessonQueryParams,
-        'subjectType': 'Cours',
+        'subjectType': subjectType,
         'subjectId': subjectId
       },
       fromJson: (json) =>

@@ -14,6 +14,14 @@ class AppTheme {
       textTheme: AppTextTheme.textTheme,
       colorScheme: AppColorScheme.colorScheme,
       appBarTheme: AppBarThemes.appBarTheme,
+      expansionTileTheme: const ExpansionTileThemeData(
+        iconColor: Colors.white, // collapsed icon
+        collapsedIconColor: Colors.white, // collapsed state
+        textColor: Colors.white, // expanded text
+        collapsedTextColor: Colors.white, // collapsed text
+        shape: RoundedRectangleBorder(),
+        collapsedShape: RoundedRectangleBorder(),
+      ),
       datePickerTheme: const DatePickerThemeData(),
       bottomNavigationBarTheme:
           AppBottomNavigationBarTheme.bottomNavigationBarTheme,

@@ -1,23 +1,23 @@
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppFilterChip extends StatelessWidget {
   final String label;
   final bool selected;
   final VoidCallback onTap;
-  final ThemeViewModel viewModel;
 
   const AppFilterChip({
     required this.label,
     required this.selected,
     required this.onTap,
-    required this.viewModel,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<ThemeViewModel>();
     return Padding(
       padding: Dimensions.paddingAllxSmall,
       child: Material(
@@ -26,6 +26,7 @@ class AppFilterChip extends StatelessWidget {
           onTap: onTap,
           borderRadius: Dimensions.xsmallBorderRadius,
           child: Card(
+            elevation: 0,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(

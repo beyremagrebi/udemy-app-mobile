@@ -11,7 +11,6 @@ import 'package:erudaxis/widgets/shimmer/notification_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/main/profile/theme/theme_view_model.dart';
 import '../../widgets/common/app_filtre_chip.dart';
 import '../../widgets/global/notification_card.dart';
 
@@ -21,8 +20,6 @@ class NotificationView extends IScreenWithLocalization {
   @override
   Widget buildLocalized(
       BuildContext context, LanguageViewModel languageViewModel) {
-    final viewModel = context.watch<ThemeViewModel>();
-
     return ChangeNotifierProvider(
       create: NotificationViewModel.new,
       child: Consumer<NotificationViewModel>(
@@ -40,25 +37,21 @@ class NotificationView extends IScreenWithLocalization {
                     child: Row(
                       children: [
                         AppFilterChip(
-                          viewModel: viewModel,
                           label: '${intl.all} (6)',
                           selected: false,
                           onTap: () {},
                         ),
                         AppFilterChip(
-                          viewModel: viewModel,
                           label: '${intl.unread} (6)',
                           selected: false,
                           onTap: () {},
                         ),
                         AppFilterChip(
-                          viewModel: viewModel,
                           label: '${intl.messages} (6)',
                           selected: false,
                           onTap: () {},
                         ),
                         AppFilterChip(
-                          viewModel: viewModel,
                           label: '${intl.courses} (6)',
                           onTap: () {},
                           selected: false,

@@ -244,8 +244,11 @@ class ApiService implements IApiService {
     String? dataKey,
   ) {
     if (_isSuccessResponse(response)) {
-      final responseData =
+      var responseData =
           dataKey != null ? response.data[dataKey] : response.data;
+      if (responseData is List) {
+        responseData = responseData.where((item) => item != null).toList();
+      }
       final convertedData = fromJson(responseData);
 
       final typedResponse = Response<T>(

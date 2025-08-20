@@ -12,7 +12,6 @@ import 'package:erudaxis/widgets/shimmer/subject_card_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../providers/main/profile/theme/theme_view_model.dart';
 import '../../../widgets/main/subject/subject_card.dart';
 
 class SubjectView extends IScreenWithLocalization {
@@ -23,7 +22,6 @@ class SubjectView extends IScreenWithLocalization {
     BuildContext context,
     LanguageViewModel languageViewModel,
   ) {
-    final viewModel = context.watch<ThemeViewModel>();
     return ChangeNotifierProvider(
       create: SubjectViewModel.new,
       child: Consumer<SubjectViewModel>(
@@ -56,7 +54,6 @@ class SubjectView extends IScreenWithLocalization {
                                 classes[index].id,
                             onTap: () => subjectViewModel
                                 .selectedClassIndex(classes[index].id),
-                            viewModel: viewModel,
                           ),
                           separatorBuilder: (context, index) =>
                               Dimensions.widthSmall,
