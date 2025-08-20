@@ -67,21 +67,21 @@ class StudyMaterialItem extends StatelessWidget {
   IconData _getActionIcon(FileType fileType) {
     switch (fileType) {
       case FileType.image:
-        return Icons.visibility_outlined; // Show image
+        return Icons.visibility_outlined;
       case FileType.video:
-        return Icons.play_arrow_outlined; // Play video
+        return Icons.play_arrow_outlined;
       case FileType.pdf:
-        return Icons.open_in_new_outlined; // Open PDF
+        return Icons.open_in_new_outlined;
       case FileType.presentation:
-        return Icons.slideshow_outlined; // Start presentation
+        return Icons.slideshow_outlined;
       case FileType.word:
       case FileType.excel:
-        return Icons.open_in_new_outlined; // Open document
+        return Icons.open_in_new_outlined;
       case FileType.archive:
-        return Icons.folder_open_outlined; // Open archive
+        return Icons.folder_open_outlined;
       case FileType.unknown:
       default:
-        return Icons.open_in_new_outlined; // Open document
+        return Icons.open_in_new_outlined;
     }
   }
 
