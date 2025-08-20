@@ -160,7 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "hot_pink": MessageLookupByLibrary.simpleMessage("Hot Pink"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
-      "The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don\'\'t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select \"erudaxis\"\n3. Tap \"Uninstall\"\n4. Then retry the update",
+      "The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don‘t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select \"erudaxis\"\n3. Tap \"Uninstall\"\n4. Then retry the update",
     ),
     "installationConflictTitle": MessageLookupByLibrary.simpleMessage(
       "Installation Conflict",
@@ -301,7 +301,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Your study companion",
     ),
     "subject_quote": MessageLookupByLibrary.simpleMessage(
-      "If everything I did failed - which it doesn\'\'t, I think that it actually succeeds.",
+      "If everything I did failed - which it doesn‘t, I think that it actually succeeds.",
     ),
     "subjects": MessageLookupByLibrary.simpleMessage("Subjects"),
     "sunset_orange": MessageLookupByLibrary.simpleMessage("Sunset Orange"),

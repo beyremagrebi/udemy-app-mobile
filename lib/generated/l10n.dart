@@ -670,10 +670,10 @@ class S {
     return Intl.message('Hot Pink', name: 'hot_pink', desc: '', args: []);
   }
 
-  /// `The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don''t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update`
+  /// `The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don‘t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update`
   String get installationConflictMessage {
     return Intl.message(
-      'The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don\'\'t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update',
+      'The update cannot be installed because it conflicts with the current version.\n\nThis usually happens when app signatures don‘t match.\n\nPlease uninstall the current app first:\n1. Go to Settings > Apps\n2. Find and select "erudaxis"\n3. Tap "Uninstall"\n4. Then retry the update',
       name: 'installationConflictMessage',
       desc: '',
       args: [],
@@ -1385,10 +1385,10 @@ class S {
     );
   }
 
-  /// `If everything I did failed - which it doesn''t, I think that it actually succeeds.`
+  /// `If everything I did failed - which it doesn‘t, I think that it actually succeeds.`
   String get subject_quote {
     return Intl.message(
-      'If everything I did failed - which it doesn\'\'t, I think that it actually succeeds.',
+      'If everything I did failed - which it doesn‘t, I think that it actually succeeds.',
       name: 'subject_quote',
       desc: '',
       args: [],

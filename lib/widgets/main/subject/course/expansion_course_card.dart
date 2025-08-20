@@ -25,38 +25,37 @@ class ExpansionCourseCard extends StatelessWidget {
       child: AnimatedBuilder(
         animation: viewModel,
         builder: (context, _) => ExpansionTile(
-          tilePadding: EdgeInsets.zero,
-          title: Text(
-            cours.name?.toUpperCase() ?? intl.error,
-            style: textTheme.titleSmall,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          subtitle: Column(
+          tilePadding: Dimensions.horizontalPaddingSmall,
+          title: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '${cours.instructor?.firstName} ${cours.instructor?.lastName} (${cours.instructor?.role?.localizedName()}) ',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: textTheme.bodySmall?.copyWith(color: Colors.white70),
+              IconBox(
+                icon: Symbols.book_5_rounded,
+                iconBackgroundColor: getColorFromHash(cours.name.hashCode),
               ),
-              Text(
-                cours.description ?? intl.error,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: textTheme.bodySmall?.copyWith(color: Colors.white70),
-              ),
-            ],
-          ),
-          leading: Column(
-            children: [
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 48, maxHeight: 48),
-                child: IconBox(
-                  icon: Symbols.book_5_rounded,
-                  iconBackgroundColor: getColorFromHash(cours.name.hashCode),
-                ),
+              Dimensions.widthSmall,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    cours.name?.toUpperCase() ?? intl.error,
+                    style: textTheme.titleSmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${cours.instructor?.firstName} ${cours.instructor?.lastName} (${cours.instructor?.role?.localizedName()}) ',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTheme.labelSmall
+                            ?.copyWith(color: Colors.white70),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
@@ -75,8 +74,48 @@ class ExpansionCourseCard extends StatelessWidget {
           ),
           onExpansionChanged: (cours.isLocked ?? false)
               ? null
-              : (value) =>
-                  viewModel.toggleExpanded(value: value, courseId: cours.id),
+              : (value) => viewModel.toggleExpanded(
+                    value: value,
+                    courseId: cours.id,
+                  ),
+          children: [
+            Dimensions.heightMedium,
+            Padding(
+              padding: Dimensions.horizontalPaddingMedium,
+              // Wrap with Align to ensure left alignment
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  cours.description ?? intl.error,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: textTheme.bodySmall?.copyWith(color: Colors.white70),
+                ),
+              ),
+            ),
+            Padding(
+              padding: Dimensions.horizontalPaddingMedium,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '${cours.studyMaterials?.length ?? 0} Contenu de cours',
+                    style: textTheme.titleSmall?.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                  TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.arrow_forward_rounded, size: 18),
+                    label: Text(intl.seeMore),
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blueAccent,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

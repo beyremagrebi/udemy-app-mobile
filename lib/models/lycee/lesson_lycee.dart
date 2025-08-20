@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:erudaxis/core/api/from_json.dart';
 import 'package:erudaxis/models/base/base_lesson.dart';
+import 'package:erudaxis/models/common/study_material.dart';
 import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/models/lycee/class_lycee.dart';
 
@@ -27,6 +28,8 @@ class LessonLycee extends BaseLesson {
         map['classId'],
         ClassLycee.fromMap,
       ),
+      studyMaterials:
+          FromJson.modelList(map['studyMaterials'], StudyMaterial.fromMap),
       isLocked: FromJson.boolean(map['isLocked']),
       instructor: FromJson.model(map['instructorId'], User.fromMap),
     );

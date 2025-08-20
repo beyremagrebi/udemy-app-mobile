@@ -4,6 +4,8 @@ import 'package:erudaxis/models/base/base_lesson.dart';
 import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/models/training_center/class_tc.dart';
 
+import '../common/study_material.dart';
+
 class LessonTc extends BaseLesson {
   LessonTc({
     required super.id,
@@ -27,6 +29,8 @@ class LessonTc extends BaseLesson {
         map['classId'],
         ClassTc.fromMap,
       ),
+      studyMaterials:
+          FromJson.modelList(map['studyMaterials'], StudyMaterial.fromMap),
       isLocked: FromJson.boolean(map['isLocked']),
       instructor: FromJson.model(map['instructorId'], User.fromMap),
     );

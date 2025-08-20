@@ -95,7 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Activité de connexion",
     ),
     "connection_activity_description": MessageLookupByLibrary.simpleMessage(
-      "Gérer les appareils connectés et l\'\'historique.",
+      "Gérer les appareils connectés et l‘historique.",
     ),
     "continueDownloadButton": MessageLookupByLibrary.simpleMessage(
       "Continuer le téléchargement",
@@ -126,7 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Téléchargement terminé",
     ),
     "downloadCompleteMessage": MessageLookupByLibrary.simpleMessage(
-      "La mise à jour a été téléchargée avec succès. Veuillez suivre les invites d\'\'installation pour terminer la mise à jour.",
+      "La mise à jour a été téléchargée avec succès. Veuillez suivre les invites d‘installation pour terminer la mise à jour.",
     ),
     "downloadCompleteTitle": MessageLookupByLibrary.simpleMessage(
       "Téléchargement terminé",
@@ -147,7 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "electric_blue": MessageLookupByLibrary.simpleMessage("Bleu électrique"),
     "emailField": MessageLookupByLibrary.simpleMessage("E-mail"),
     "emailRequired": MessageLookupByLibrary.simpleMessage(
-      "L\'\'adresse e-mail est requise",
+      "L‘adresse e-mail est requise",
     ),
     "email_address": MessageLookupByLibrary.simpleMessage("Adresse email"),
     "emerald_green": MessageLookupByLibrary.simpleMessage("Vert émeraude"),
@@ -173,13 +173,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "home": MessageLookupByLibrary.simpleMessage("Accueil"),
     "hot_pink": MessageLookupByLibrary.simpleMessage("Rose vif"),
     "installationConflictMessage": MessageLookupByLibrary.simpleMessage(
-      "La mise à jour ne peut pas être installée car elle entre en conflit avec la version actuelle.\n\nCela se produit généralement lorsque les signatures d\'\'application ne correspondent pas.\n\nVeuillez d\'abord désinstaller l\'application actuelle :\n1. Allez dans Paramètres > Applications\n2. Trouvez et sélectionnez \"erudaxis\"\n3. Appuyez sur \"Désinstaller\"\n4. Puis réessayez la mise à jour",
+      "La mise à jour ne peut pas être installée car elle entre en conflit avec la version actuelle.\n\nCela se produit généralement lorsque les signatures d‘application ne correspondent pas.\n\nVeuillez d‘abord désinstaller l‘application actuelle :\n1. Allez dans Paramètres > Applications\n2. Trouvez et sélectionnez \"erudaxis\"\n3. Appuyez sur \"Désinstaller\"\n4. Puis réessayez la mise à jour",
     ),
     "installationConflictTitle": MessageLookupByLibrary.simpleMessage(
-      "Conflit d\'\'installation",
+      "Conflit d‘installation",
     ),
     "installationFailedTitle": MessageLookupByLibrary.simpleMessage(
-      "Échec de l\'\'installation",
+      "Échec de l‘installation",
     ),
     "institution": MessageLookupByLibrary.simpleMessage("Établissement"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -306,7 +306,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "required": MessageLookupByLibrary.simpleMessage("Obligatoire"),
     "role_collaborator": MessageLookupByLibrary.simpleMessage("Collaborateur"),
     "role_company_admin": MessageLookupByLibrary.simpleMessage(
-      "Administrateur d\'\'entreprise",
+      "Administrateur d‘entreprise",
     ),
     "role_instructor": MessageLookupByLibrary.simpleMessage("Formateur"),
     "role_responsable": MessageLookupByLibrary.simpleMessage("Responsable"),
@@ -331,10 +331,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "statistics": MessageLookupByLibrary.simpleMessage("Statistiques"),
     "steel_blue": MessageLookupByLibrary.simpleMessage("Bleu acier"),
     "studyCompanion": MessageLookupByLibrary.simpleMessage(
-      "Votre compagnon d\'\'études",
+      "Votre compagnon d‘études",
     ),
     "subject_quote": MessageLookupByLibrary.simpleMessage(
-      "Si tout ce que j\'\'ai fait échouait - ce qui n\'\'est pas le cas, je pense que cela réussit en fait.",
+      "Si tout ce que j‘ai fait échouait - ce qui n‘est pas le cas, je pense que cela réussit en fait.",
     ),
     "subjects": MessageLookupByLibrary.simpleMessage("Matières"),
     "sunset_orange": MessageLookupByLibrary.simpleMessage(
@@ -381,7 +381,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "videoConference": MessageLookupByLibrary.simpleMessage("Vidéo-Conférence"),
     "view_connection_activity": MessageLookupByLibrary.simpleMessage(
-      "Voir l\'\'activité de la connexion",
+      "Voir l‘activité de la connexion",
     ),
     "view_timetable": MessageLookupByLibrary.simpleMessage(
       "Consulter votre planning",
