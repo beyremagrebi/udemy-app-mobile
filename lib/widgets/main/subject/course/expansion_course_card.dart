@@ -1,11 +1,13 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/models/base/base_lesson.dart';
+import 'package:erudaxis/presentation/main/subject/course/course_details_view.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
+import 'package:erudaxis/widgets/main/subject/course/course_header_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../presentation/utils/colors_generator.dart';
-import '../../../../presentation/utils/icon_box.dart';
 import '../../../../providers/main/subject/cours/expansion_course_view_model.dart';
 
 class ExpansionCourseCard extends StatelessWidget {
@@ -20,44 +22,15 @@ class ExpansionCourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeViewModel = context.watch<ThemeViewModel>();
     return Card(
       elevation: 0,
       child: AnimatedBuilder(
         animation: viewModel,
         builder: (context, _) => ExpansionTile(
           tilePadding: Dimensions.horizontalPaddingSmall,
-          title: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconBox(
-                icon: Symbols.book_5_rounded,
-                iconBackgroundColor: getColorFromHash(cours.name.hashCode),
-              ),
-              Dimensions.widthSmall,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    cours.name?.toUpperCase() ?? intl.error,
-                    style: textTheme.titleSmall,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${cours.instructor?.firstName} ${cours.instructor?.lastName} (${cours.instructor?.role?.localizedName()}) ',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: textTheme.labelSmall
-                            ?.copyWith(color: Colors.white70),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+          title: CourseHeaderWidget(
+            cours: cours,
           ),
           trailing: Padding(
             padding: const EdgeInsets.only(right: Dimensions.s),
@@ -82,7 +55,6 @@ class ExpansionCourseCard extends StatelessWidget {
             Dimensions.heightMedium,
             Padding(
               padding: Dimensions.horizontalPaddingMedium,
-              // Wrap with Align to ensure left alignment
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -105,11 +77,18 @@ class ExpansionCourseCard extends StatelessWidget {
                     ),
                   ),
                   TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateTo(
+                          context,
+                          CourseDetailsView(
+                            cours: cours,
+                          ));
+                    },
                     icon: const Icon(Icons.arrow_forward_rounded, size: 18),
                     label: Text(intl.seeMore),
                     style: TextButton.styleFrom(
-                      foregroundColor: Colors.blueAccent,
+                      foregroundColor:
+                          themeViewModel.currentTheme.secondary.withGreen(200),
                     ),
                   ),
                 ],
