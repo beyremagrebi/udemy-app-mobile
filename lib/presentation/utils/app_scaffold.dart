@@ -32,15 +32,19 @@ class AppScaffold extends Scaffold {
   });
 
   @override
-  Color? get backgroundColor => super.backgroundColor ?? Colors.transparent;
-
-  @override
-  Widget? get body => GradientSurfaceWidget(
-        child: Container(
+  Widget? get body => super.backgroundColor != null
+      ? Container(
           width: double.maxFinite,
           height: double.maxFinite,
           color: Colors.black54,
           child: super.body,
-        ),
-      );
+        )
+      : GradientSurfaceWidget(
+          child: Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            color: Colors.black54,
+            child: super.body,
+          ),
+        );
 }

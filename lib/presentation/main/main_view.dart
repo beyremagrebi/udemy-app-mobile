@@ -64,17 +64,19 @@ class MainView extends IScreenWithLocalization {
               children: viewModel.pages(drawerViewModel),
             ),
           ),
-          bottomNavigationBar: Visibility(
-            visible: !drawerViewModel.isDrowerOpen,
-            child: ScrollToHide(
-              key: ValueKey(viewModel.slectedIndex),
-              scrollController: viewModel.currentScrollController,
-              height: 50,
-              duration: const Duration(milliseconds: 250),
-              hideDirection: Axis.vertical,
-              child: buildTransparentBottomNav(
-                context,
-                viewModel,
+          bottomNavigationBar: SafeArea(
+            child: Visibility(
+              visible: !drawerViewModel.isDrowerOpen,
+              child: ScrollToHide(
+                key: ValueKey(viewModel.slectedIndex),
+                scrollController: viewModel.currentScrollController,
+                height: 50,
+                duration: const Duration(milliseconds: 250),
+                hideDirection: Axis.vertical,
+                child: buildTransparentBottomNav(
+                  context,
+                  viewModel,
+                ),
               ),
             ),
           ),

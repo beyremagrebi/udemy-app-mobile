@@ -8,6 +8,7 @@ import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/config/media/video_viewer.dart';
 import '../../../../presentation/utils/session/facility_manager.dart';
 
 enum FileType {
@@ -38,13 +39,26 @@ class StudyMaterialItem extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            navigateTo(
-              context,
-              ImageViewer(
-                imageProvider: CachedNetworkImageProvider(
-                    '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}'),
-              ),
-            );
+            if (fileType == FileType.image) {
+              navigateTo(
+                context,
+                ImageViewer(
+                  imageProvider: CachedNetworkImageProvider(
+                    '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                  ),
+                ),
+              );
+            } else if (fileType == FileType.video) {
+              navigateTo(
+                context,
+                VideoViewer(
+                  videoUrl:
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                ),
+              );
+            } else {
+              // fallback for other file types
+            }
           },
           child: Padding(
             padding: Dimensions.paddingAllSmall,
