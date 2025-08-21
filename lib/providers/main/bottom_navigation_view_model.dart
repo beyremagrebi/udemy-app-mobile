@@ -4,7 +4,6 @@ import 'package:erudaxis/presentation/main/profile/profile_view.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/main/drawer_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../presentation/main/subject/subject_view.dart';
 import '../../widgets/common/empty_widget.dart';
@@ -41,8 +40,7 @@ class BottomNavigationViewModel extends BaseViewModel
   }
 
   @override
-  List<Widget> pages() {
-    final drawerViewModel = mainContext.read<DrawerViewModel>();
+  List<Widget> pages(DrawerViewModel drawerViewModel) {
     return [
       drawerViewModel.selectedWidget,
       const SubjectView(),

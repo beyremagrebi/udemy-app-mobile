@@ -61,7 +61,7 @@ class MainView extends IScreenWithLocalization {
             backgroundColor: Colors.transparent,
             body: IndexedStack(
               index: viewModel.slectedIndex,
-              children: viewModel.pages(),
+              children: viewModel.pages(drawerViewModel),
             ),
           ),
           bottomNavigationBar: Visibility(

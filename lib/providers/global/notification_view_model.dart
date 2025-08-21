@@ -60,6 +60,11 @@ class NotificationViewModel extends BaseViewModel {
     }
   }
 
+  Future<void> resetCount() async {
+    notificationCount = 0;
+    update();
+  }
+
   Future<void> updateNotification(NotificationModel notification) async {
     if (notification.status == 'read') {
       return;

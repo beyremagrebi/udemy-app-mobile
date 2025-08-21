@@ -5,7 +5,6 @@ import 'package:erudaxis/models/global/facility.dart';
 import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
-import 'package:erudaxis/presentation/utils/session/app_initialize.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
@@ -78,19 +77,6 @@ class FacilityView extends IScreenWithLocalization {
                   FacilityViewModel(context, sessionManager: sessionManager);
 
               await viewModel.onSelect(facility);
-
-              if (context.mounted) {
-                if (!Navigator.canPop(context)) {
-                  AppStarter.safeNavigateToMainScreen(
-                    context: context,
-                    sm: sessionManager,
-                    facilityId: facility.id,
-                  );
-                } else {
-                  navViewModel.onSelectChange(0);
-                  Navigator.of(context).pop(true);
-                }
-              }
             },
             child: SizedBox(
               width: double.maxFinite,

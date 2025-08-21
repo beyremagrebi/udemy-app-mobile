@@ -41,6 +41,7 @@ class FacilityManager {
 
   static Future<void> initilizeFacility(Facility facilityLoaded) async {
     facility = facilityLoaded;
+
     await FacilityPreferences.shared.save(facilityLoaded.id!);
   }
 

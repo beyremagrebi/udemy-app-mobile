@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 import '../../models/global/facility.dart';
 import '../../models/global/user.dart';
 import '../../services/global/facility_services.dart';
+import 'notification_view_model.dart';
 
 class SessionManager extends BaseViewModel {
   User? user;
@@ -56,6 +57,13 @@ class SessionManager extends BaseViewModel {
       onSuccess: (model) async {
         facility = model;
         user?.facility = model;
+        final viewModel = mainContext.read<NotificationViewModel>();
+        viewModel.updateNotificationKey(
+          userId: user?.id ?? '',
+          facilityId: model.id ?? '',
+        );
+        await FirebaseApi.shared.disposeListeners();
+
         update();
         await FacilityManager.initilizeFacility(model);
       },
