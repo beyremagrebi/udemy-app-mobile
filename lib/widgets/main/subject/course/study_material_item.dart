@@ -1,8 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:erudaxis/core/config/media/image_viewer.dart';
 import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/models/common/study_material.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
+import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../presentation/utils/session/facility_manager.dart';
 
 enum FileType {
   image,
@@ -54,9 +60,18 @@ class StudyMaterialItem extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(
-              _getActionIcon(fileType),
-              size: 20,
+            IconButton(
+              onPressed: () {
+                navigateTo(
+                    context,
+                    ImageViewer(
+                        imageProvider: CachedNetworkImageProvider(
+                            '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}')));
+              },
+              icon: Icon(
+                _getActionIcon(fileType),
+                size: 20,
+              ),
             ),
           ],
         ),

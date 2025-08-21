@@ -11,7 +11,7 @@ class SpinLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeViewModel = context.watch<ThemeViewModel>();
     return SpinKitDualRing(
-      color: themeViewModel.currentTheme.primary,
+      color: themeViewModel.currentTheme.secondary,
       size: 35,
     );
   }
