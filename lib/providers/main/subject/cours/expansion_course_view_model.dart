@@ -100,13 +100,4 @@ class ExpansionCourseViewModel extends BaseViewModel {
     loadCourses();
     update();
   }
-
-  void toggleExpanded({required bool value, String? courseId}) {
-    if (value) {
-      expandedCourseId = courseId;
-    } else if (expandedCourseId == courseId) {
-      expandedCourseId = null;
-    }
-    update();
-  }
 }

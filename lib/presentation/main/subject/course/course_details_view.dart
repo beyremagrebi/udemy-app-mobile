@@ -32,8 +32,10 @@ class CourseDetailsView extends StatelessWidget {
               padding: Dimensions.paddingAllMedium,
               child: TitleWidget(
                 child: Expanded(
-                  child: ListView.builder(
-                    itemCount: cours.studyMaterials?.length,
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        Dimensions.heightSmall,
+                    itemCount: cours.studyMaterials?.length ?? 0,
                     itemBuilder: (context, index) => StudyMaterialItem(
                       studyMaterial: cours.studyMaterials![index],
                     ),
