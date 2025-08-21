@@ -105,6 +105,7 @@ class SessionManager extends BaseViewModel {
       onSuccess: (_) async {
         await TokenManager.shared.clear();
         await updateFcmToken(user?.id, froLogout: true);
+        await FirebaseApi.shared.disposeListeners();
         if (mainContext.mounted) {
           mainContext.read<DrawerViewModel>().onTapItem(DrawerItem.home);
           navigateToDeleteTree(mainContext, const LoginView());
