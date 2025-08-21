@@ -33,47 +33,56 @@ class StudyMaterialItem extends StatelessWidget {
 
     return Card(
       elevation: 0,
-      child: Padding(
-        padding: Dimensions.paddingAllSmall,
-        child: Row(
-          children: [
-            IconBox(
-              icon: _getFileTypeIcon(fileType),
-              iconBackgroundColor: const Color(0x20B0BEC5),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    _shortenFileName(fileName),
-                    style: textTheme.labelMedium,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    fileTypeName,
-                    style: textTheme.labelSmall?.copyWith(
-                      color: Colors.white70,
-                    ),
-                  ),
-                ],
+      clipBehavior: Clip.antiAlias,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            navigateTo(
+              context,
+              ImageViewer(
+                imageProvider: CachedNetworkImageProvider(
+                    '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}'),
               ),
+            );
+          },
+          child: Padding(
+            padding: Dimensions.paddingAllSmall,
+            child: Row(
+              children: [
+                IconBox(
+                  icon: _getFileTypeIcon(fileType),
+                  iconBackgroundColor: const Color(0x20B0BEC5),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _shortenFileName(fileName),
+                        style: textTheme.labelMedium,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        fileTypeName,
+                        style: textTheme.labelSmall?.copyWith(
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: Dimensions.horizontalPaddingSmall,
+                  child: Icon(
+                    _getActionIcon(fileType),
+                    size: 20,
+                  ),
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {
-                navigateTo(
-                    context,
-                    ImageViewer(
-                        imageProvider: CachedNetworkImageProvider(
-                            '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}')));
-              },
-              icon: Icon(
-                _getActionIcon(fileType),
-                size: 20,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
