@@ -9,6 +9,7 @@ class VideoPlayerViewModel extends BaseViewModel {
 
   bool screenTaped = false;
   bool isFullScreen = false;
+  bool isMute = false;
   VideoPlayerViewModel(
     super.context, {
     required this.videoUrl,
@@ -48,6 +49,16 @@ class VideoPlayerViewModel extends BaseViewModel {
 
   void play() {
     player.play();
+    update();
+  }
+
+  void setVoume() {
+    if (isMute) {
+      player.setVolume(1);
+    } else {
+      player.setVolume(0);
+    }
+    isMute = !isMute;
     update();
   }
 

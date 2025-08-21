@@ -9,6 +9,7 @@ import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/config/media/video_viewer.dart';
+import '../../../../models/global/user.dart';
 import '../../../../presentation/utils/session/facility_manager.dart';
 
 enum FileType {
@@ -24,7 +25,12 @@ enum FileType {
 
 class StudyMaterialItem extends StatelessWidget {
   final StudyMaterial studyMaterial;
-  const StudyMaterialItem({required this.studyMaterial, super.key});
+  final User? creator;
+  const StudyMaterialItem({
+    required this.studyMaterial,
+    this.creator,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +58,7 @@ class StudyMaterialItem extends StatelessWidget {
               navigateTo(
                 context,
                 VideoViewer(
+                  owenerVideo: creator,
                   videoUrl:
                       '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
                 ),

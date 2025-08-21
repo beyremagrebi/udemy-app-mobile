@@ -5,31 +5,15 @@ import 'package:erudaxis/providers/media/video_player_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/global/user.dart';
 import 'video_player_controls.dart';
-
-class FullScreenVideoViewer extends StatelessWidget {
-  final CachedVideoPlayerPlusController player;
-
-  const FullScreenVideoViewer({required this.player, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: AspectRatio(
-          aspectRatio: player.value.aspectRatio,
-          child: CachedVideoPlayerPlus(player),
-        ),
-      ),
-    );
-  }
-}
 
 class VideoViewer extends StatelessWidget {
   final String videoUrl;
+  final User? owenerVideo;
   const VideoViewer({
     required this.videoUrl,
+    this.owenerVideo,
     super.key,
   });
 
@@ -55,6 +39,7 @@ class VideoViewer extends StatelessWidget {
                   !viewModel.player.value.isInitialized)
                 VideoPlayerControls(
                   viewModel: viewModel,
+                  owenerVideo: owenerVideo,
                 )
             ],
           ),

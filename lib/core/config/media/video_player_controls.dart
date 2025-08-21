@@ -1,14 +1,21 @@
+import 'package:erudaxis/core/config/media/api_image_widget.dart';
+import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/constants/env.dart';
+import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/presentation/utils/spin_loading.dart';
 import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:erudaxis/providers/media/video_player_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/global/user.dart';
 import '../../styles/dimensions.dart';
 
 class VideoPlayerControls extends StatelessWidget {
   final VideoPlayerViewModel viewModel;
-  const VideoPlayerControls({required this.viewModel, super.key});
+  final User? owenerVideo;
+  const VideoPlayerControls(
+      {required this.viewModel, this.owenerVideo, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +30,46 @@ class VideoPlayerControls extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // --- Main Play/Pause/Skip Buttons ---
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Row(
+                    children: [
+                      ApiImageWidget(
+                        imageFileName: owenerVideo?.image,
+                        hasImageView: true,
+                        imageNetworUrl:
+                            '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images',
+                        isMen: owenerVideo?.isMen,
+                        borderRadius: Dimensions.smallBorderRadius,
+                        height: 32,
+                        width: 32,
+                      ),
+                      Dimensions.widthSmall,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '${owenerVideo?.firstName} ${owenerVideo?.lastName}',
+                              style: textTheme.labelSmall,
+                            ),
+                            Text(
+                              '${owenerVideo?.role?.localizedName()}',
+                              style: textTheme.labelSmall
+                                  ?.copyWith(color: Colors.white70),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: viewModel.setVoume,
+                        icon: Icon(viewModel.isMute
+                            ? Icons.volume_off_outlined
+                            : Icons.volume_up_outlined),
+                      ),
+                    ],
+                  )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -66,7 +112,6 @@ class VideoPlayerControls extends StatelessWidget {
                     ),
                 ],
               ),
-
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Column(
@@ -78,41 +123,70 @@ class VideoPlayerControls extends StatelessWidget {
                           child: ValueListenableBuilder(
                             valueListenable: viewModel.player,
                             builder: (context, value, child) {
-                              final duration = value.duration.inMilliseconds;
-                              final position = value.position.inMilliseconds;
+                              final duration = value.duration;
+                              final position = value.position;
 
-                              if (duration <= 0) {
+                              if (!value.isInitialized) {
                                 return const SizedBox();
                               }
 
-                              return SliderTheme(
-                                data: SliderTheme.of(context).copyWith(
-                                  thumbShape: const RoundSliderThumbShape(
-                                    enabledThumbRadius: 6,
+                              String formatDuration(Duration d) {
+                                String twoDigits(int n) =>
+                                    n.toString().padLeft(2, '0');
+                                final hours = d.inHours;
+                                final minutes = d.inMinutes.remainder(60);
+                                final seconds = d.inSeconds.remainder(60);
+                                if (hours > 0) {
+                                  return '${twoDigits(hours)}:${twoDigits(minutes)}:${twoDigits(seconds)}';
+                                }
+                                return '${twoDigits(minutes)}:${twoDigits(seconds)}';
+                              }
+
+                              return Row(
+                                children: [
+                                  Text(
+                                    formatDuration(position),
+                                    style: textTheme.labelSmall,
                                   ),
-                                  overlayShape: const RoundSliderOverlayShape(
-                                    overlayRadius: 12,
+                                  Expanded(
+                                    child: SliderTheme(
+                                      data: SliderTheme.of(context).copyWith(
+                                        thumbShape: const RoundSliderThumbShape(
+                                          enabledThumbRadius: 6,
+                                        ),
+                                        overlayShape:
+                                            const RoundSliderOverlayShape(
+                                          overlayRadius: 12,
+                                        ),
+                                      ),
+                                      child: Slider(
+                                        value: position.inMilliseconds
+                                            .clamp(0, duration.inMilliseconds)
+                                            .toDouble(),
+                                        max: duration.inMilliseconds.toDouble(),
+                                        activeColor:
+                                            themeViewModel.currentTheme.primary,
+                                        inactiveColor: themeViewModel
+                                            .currentTheme.secondary,
+                                        onChanged: (v) {
+                                          viewModel.player.seekTo(Duration(
+                                              milliseconds: v.toInt()));
+                                        },
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                child: Slider(
-                                  value: position.clamp(0, duration).toDouble(),
-                                  max: duration.toDouble(),
-                                  activeColor:
-                                      themeViewModel.currentTheme.primary,
-                                  inactiveColor:
-                                      themeViewModel.currentTheme.secondary,
-                                  onChanged: (v) {
-                                    viewModel.player.seekTo(
-                                        Duration(milliseconds: v.toInt()));
-                                  },
-                                ),
+                                  Text(
+                                    formatDuration(duration),
+                                    style: textTheme.labelSmall,
+                                  ),
+                                  IconButton(
+                                    onPressed: viewModel.togglefullScreen,
+                                    icon: const Icon(Icons.fullscreen_outlined),
+                                  ),
+                                ],
                               );
                             },
                           ),
-                        ),
-                        IconButton(
-                          onPressed: viewModel.togglefullScreen,
-                          icon: const Icon(Icons.fullscreen_outlined),
                         ),
                       ],
                     ),
