@@ -19,7 +19,6 @@ class ThemeView extends IScreenWithLocalization {
   Widget buildLocalized(
       BuildContext context, LanguageViewModel languageViewModel) {
     return AppScaffold(
-      backgroundColor: Colors.grey[50],
       appBar: AppBarGradient(
         title: Text(intl.appearance_subtitle),
         elevation: 0,
