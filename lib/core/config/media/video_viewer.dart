@@ -1,5 +1,4 @@
 import 'package:cached_video_player_plus/cached_video_player_plus.dart';
-import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';
 import 'package:erudaxis/providers/media/video_player_view_model.dart';
 import 'package:flutter/material.dart';
@@ -22,26 +21,50 @@ class VideoViewer extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => VideoPlayerViewModel(context, videoUrl: videoUrl),
       child: Consumer<VideoPlayerViewModel>(
-        builder: (context, viewModel, child) => AppScaffold(
-          backgroundColor: viewModel.isFullScreen ? Colors.black : null,
-          appBar: viewModel.isFullScreen ? null : AppBarGradient(),
-          body: Stack(
-            alignment: Alignment.center,
-            children: [
-              InkWell(
-                onTap: viewModel.onTapScreen,
-                child: AspectRatio(
-                  aspectRatio: viewModel.player.value.aspectRatio,
-                  child: CachedVideoPlayerPlus(viewModel.player),
-                ),
+        builder: (context, viewModel, child) => SafeArea(
+          child: AppScaffold(
+            backgroundColor: Colors.black,
+            body: InkWell(
+              onTap: viewModel.onTapScreen,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  /// Video Player
+                  AspectRatio(
+                    aspectRatio: viewModel.player.value.aspectRatio,
+                    child: CachedVideoPlayerPlus(viewModel.player),
+                  ),
+
+                  /// Controls with Fade Animation
+                  AnimatedOpacity(
+                    opacity: viewModel.screenTaped ||
+                            !viewModel.player.value.isInitialized
+                        ? 1.0
+                        : 0.0,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    child: VideoPlayerControls(
+                      viewModel: viewModel,
+                      owenerVideo: owenerVideo,
+                    ),
+                  ),
+
+                  /// Close Button with Fade Animation
+                  AnimatedOpacity(
+                    opacity: viewModel.screenTaped ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(
+                        onPressed: viewModel.closeVideoViewer,
+                        icon: const Icon(Icons.close_outlined),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              if (viewModel.screenTaped ||
-                  !viewModel.player.value.isInitialized)
-                VideoPlayerControls(
-                  viewModel: viewModel,
-                  owenerVideo: owenerVideo,
-                )
-            ],
+            ),
           ),
         ),
       ),

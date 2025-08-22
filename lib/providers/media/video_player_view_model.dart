@@ -1,6 +1,7 @@
 import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class VideoPlayerViewModel extends BaseViewModel {
   final String videoUrl;
@@ -16,6 +17,10 @@ class VideoPlayerViewModel extends BaseViewModel {
   }) {
     initialize();
   }
+  void closeVideoViewer() {
+    Navigator.of(context).pop();
+  }
+
   @override
   Future<void> dispose() async {
     player.dispose();
