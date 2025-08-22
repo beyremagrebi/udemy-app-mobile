@@ -8,6 +8,7 @@ import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/config/media/pdf_viwer.dart';
 import '../../../../core/config/media/video_viewer.dart';
 import '../../../../models/global/user.dart';
 import '../../../../presentation/utils/session/facility_manager.dart';
@@ -63,8 +64,14 @@ class StudyMaterialItem extends StatelessWidget {
                       '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
                 ),
               );
-            } else {
-              // fallback for other file types
+            } else if (fileType == FileType.pdf) {
+              navigateTo(
+                context,
+                PdfViewer(
+                  pdfUrl:
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                ),
+              );
             }
           },
           child: Padding(

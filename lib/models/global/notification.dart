@@ -11,6 +11,7 @@ class NotificationModel extends BaseModel {
   User? sender;
   String? title;
   String? body;
+  String? screen;
   String? image;
   String? status;
 
@@ -25,6 +26,7 @@ class NotificationModel extends BaseModel {
     this.sender,
     this.status,
     this.title,
+    this.screen,
     this.type,
     this.createdAt,
   });
@@ -41,6 +43,7 @@ class NotificationModel extends BaseModel {
         title: FromJson.string(map['title']),
         body: FromJson.string(map['body']),
         image: FromJson.string(map['image']),
+        screen: FromJson.string(map['screen']).toString().split('/').last,
         status: FromJson.string(map['status']),
         type: FromJson.string(map['type']),
         createdAt: FromJson.dateTime(map['createdAt']));

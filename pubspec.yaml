@@ -42,6 +42,8 @@ dependencies:
   flutter_svg: ^2.1.0
   timeago: ^3.7.1
   cached_video_player_plus: ^3.0.3
+  flutter_cached_pdfview: ^0.4.3
+  jitsi_meet_flutter_sdk: ^11.4.0
 
 
 

@@ -3,9 +3,11 @@ import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/providers/global/notification_view_model.dart';
+import 'package:erudaxis/providers/global/video_conferance_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../models/global/notification.dart';
@@ -29,8 +31,13 @@ class NotificationCard extends IScreenWithLocalization {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {
+          onTap: () async {
             notificationViewModel.updateNotification(notification);
+            if (notification.type == 'meet') {
+              context
+                  .read<VideoConferenceViewModel>()
+                  .joinConference(notification.screen ?? '');
+            }
           },
           child: Container(
             padding: Dimensions.paddingAllSmall,
