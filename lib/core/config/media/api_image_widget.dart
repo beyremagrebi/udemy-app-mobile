@@ -47,6 +47,7 @@ class ApiImageWidget extends BaseApiImage {
               height: height,
               decoration: BoxDecoration(
                 shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
+                border: border,
               ),
               child: const SpinKitSpinningLines(
                 color: AppColors.primaryColor,

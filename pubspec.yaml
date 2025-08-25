@@ -44,6 +44,7 @@ dependencies:
   cached_video_player_plus: ^3.0.3
   flutter_cached_pdfview: ^0.4.3
   jitsi_meet_flutter_sdk: ^11.4.0
+  image_cropper: ^9.1.0
 
 
 

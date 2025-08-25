@@ -3,6 +3,7 @@ import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -78,11 +79,45 @@ class PersonalInformationValidator extends BaseViewModel {
   }
 
   Future<void> selectImage() async {
+    final themeViewModel = context.read<ThemeViewModel>();
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    imageFilePath = image?.path;
-    if (imageFilePath != null) {
-      update();
+
+    if (image != null) {
+      final CroppedFile? croppedFile = await ImageCropper().cropImage(
+        sourcePath: image.path,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+        uiSettings: [
+          AndroidUiSettings(
+            toolbarTitle: 'Edit Profile Picture',
+            cropStyle: CropStyle.circle,
+            toolbarColor: themeViewModel.currentTheme.primary,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: true,
+            activeControlsWidgetColor: themeViewModel.currentTheme.secondary,
+            // backgroundColor: themeViewModel.currentTheme.primary,
+            statusBarColor: themeViewModel.currentTheme.primary,
+            // dimmedLayerColor:
+            //     themeViewModel.currentTheme.primary.withOpacity(0.7),
+            cropFrameStrokeWidth: 2,
+            cropFrameColor: Colors.white.withOpacity(0.5),
+            cropGridColor: Colors.white.withOpacity(0.3),
+            hideBottomControls: false,
+          ),
+          IOSUiSettings(
+            title: 'Edit Profile Picture',
+            doneButtonTitle: 'Done',
+            cancelButtonTitle: 'Cancel',
+            aspectRatioLockEnabled: true,
+          ),
+        ],
+      );
+
+      if (croppedFile != null) {
+        imageFilePath = croppedFile.path;
+        update();
+      }
     }
   }
 

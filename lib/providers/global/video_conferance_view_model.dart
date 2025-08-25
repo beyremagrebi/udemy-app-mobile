@@ -23,7 +23,6 @@ class VideoConferenceViewModel extends BaseViewModel {
     if (roomName.isEmpty) {
       throw Exception('Room name cannot be empty');
     }
-
     final options = JitsiMeetConferenceOptions(
       serverURL: 'https://sadkbhwp62nt7x.studiffy.com',
       room: roomName.trim(),
@@ -42,10 +41,10 @@ class VideoConferenceViewModel extends BaseViewModel {
         'resolution': FeatureFlagVideoResolutions.resolution720p,
       },
       userInfo: JitsiMeetUserInfo(
-        displayName: '${user.firstName} ${user.firstName}',
+        displayName: '${user.firstName} ${user.lastName}',
         email: user.email,
         avatar:
-            '$baseURl/${FacilityManager.facility.enterprise?.id}/images/${user.image}',
+            '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images/${user.image}',
       ),
     );
 

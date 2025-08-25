@@ -31,8 +31,8 @@ class DrawerHeaderWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     ApiImageWidget(
-                      height: 60,
-                      width: 60,
+                      height: 50,
+                      width: 50,
                       imageFileName: viewModel.user?.image,
                       hasImageView: true,
                       isMen: viewModel.user?.isMen,
