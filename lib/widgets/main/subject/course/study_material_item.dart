@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:erudaxis/core/config/media/excel_viewer.dart';
 import 'package:erudaxis/core/config/media/image_viewer.dart';
+import 'package:erudaxis/core/config/media/zip_viewer.dart';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
-import 'package:erudaxis/models/common/study_material.dart';
 import 'package:erudaxis/presentation/utils/icon_box.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
@@ -26,18 +26,17 @@ enum FileType {
 }
 
 class StudyMaterialItem extends StatelessWidget {
-  final StudyMaterial studyMaterial;
+  final String? fileName;
   final User? creator;
   const StudyMaterialItem({
-    required this.studyMaterial,
+    required this.fileName,
     this.creator,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final fileName = studyMaterial.displayName ?? intl.error;
-    final fileType = _getFileTypeFromExtension(fileName);
+    final fileType = _getFileTypeFromExtension(fileName ?? intl.error);
     final fileTypeName = _getFileTypeName(fileType);
 
     return Card(
@@ -52,7 +51,7 @@ class StudyMaterialItem extends StatelessWidget {
                 context,
                 ImageViewer(
                   imageProvider: CachedNetworkImageProvider(
-                    '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                    '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/$fileName',
                   ),
                 ),
               );
@@ -62,7 +61,7 @@ class StudyMaterialItem extends StatelessWidget {
                 VideoViewer(
                   owenerVideo: creator,
                   videoUrl:
-                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/$fileName',
                 ),
               );
             } else if (fileType == FileType.pdf) {
@@ -70,7 +69,7 @@ class StudyMaterialItem extends StatelessWidget {
                 context,
                 PdfViewer(
                   pdfUrl:
-                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/$fileName',
                 ),
               );
             } else if (fileType == FileType.excel) {
@@ -78,7 +77,16 @@ class StudyMaterialItem extends StatelessWidget {
                 context,
                 ExcelViewer(
                   excelUrl:
-                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/$fileName',
+                ),
+              );
+            } else if (fileType == FileType.archive) {
+              navigateTo(
+                context,
+                ZipViewer(
+                  zipUrl:
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/$fileName',
+                  creator: creator,
                 ),
               );
             }
@@ -97,7 +105,7 @@ class StudyMaterialItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _shortenFileName(fileName),
+                        _shortenFileName(fileName ?? intl.error),
                         style: textTheme.labelMedium,
                         overflow: TextOverflow.ellipsis,
                       ),
