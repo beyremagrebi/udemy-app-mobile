@@ -46,7 +46,6 @@ class ZipViewerViewModel extends BaseViewModel {
       if (response.statusCode == 200 && response.data != null) {
         final archive = ZipDecoder().decodeBytes(response.data!);
 
-        // Create maps to organize files and directories
         final Map<String, List<ArchiveFile>> filesByDirectory = {};
         final Set<String> allDirectories = {};
 
@@ -66,13 +65,11 @@ class ZipViewerViewModel extends BaseViewModel {
               ? parts.sublist(0, parts.length - 1).join('/')
               : '';
 
-          // Add to files map
           if (!filesByDirectory.containsKey(directoryPath)) {
             filesByDirectory[directoryPath] = [];
           }
           filesByDirectory[directoryPath]!.add(file);
 
-          // Build directory hierarchy by adding all parent directories
           String currentPath = '';
           for (int i = 0; i < parts.length - 1; i++) {
             currentPath =
@@ -81,11 +78,9 @@ class ZipViewerViewModel extends BaseViewModel {
           }
         }
 
-        // Recursive function to build the folder hierarchy
         List<ZipEntry> buildFolderStructure(String currentPath) {
           final List<ZipEntry> entries = [];
 
-          // Add files in the current directory
           if (filesByDirectory.containsKey(currentPath)) {
             for (final file in filesByDirectory[currentPath]!) {
               final List<String> parts = file.name.split('/');
@@ -111,7 +106,6 @@ class ZipViewerViewModel extends BaseViewModel {
             }
           }
 
-          // Find all immediate subdirectories of the current path
           final subdirectories = allDirectories.where((dirPath) {
             if (dirPath.isEmpty) {
               return false;
@@ -121,7 +115,6 @@ class ZipViewerViewModel extends BaseViewModel {
                 currentPath.isEmpty ? [] : currentPath.split('/');
             final dirPathParts = dirPath.split('/');
 
-            // Check if this directory is a direct child of currentPath
             final bool isDirectChild =
                 dirPathParts.length == currentPathParts.length + 1;
 
@@ -132,14 +125,13 @@ class ZipViewerViewModel extends BaseViewModel {
             }
           }).toList();
 
-          // For each subdirectory, create a folder entry with its children
           for (final subdirectory in subdirectories) {
             final folderName = subdirectory.split('/').last;
 
             final folderEntry = ZipEntry(
               name: folderName,
               isFile: false,
-              children: buildFolderStructure(subdirectory), // Recursive call
+              children: buildFolderStructure(subdirectory),
             );
 
             entries.add(folderEntry);
@@ -148,26 +140,24 @@ class ZipViewerViewModel extends BaseViewModel {
           return entries;
         }
 
-        // Start building from the root directory (empty path)
         files = buildFolderStructure('');
       }
     } on Exception catch (e) {
       debugPrint('Error loading zip: $e');
     } finally {
       isLoading = false;
-      notifyListeners();
+      update();
     }
   }
 
   void onTapScreen() {
     screenTaped = !screenTaped;
-    notifyListeners();
+    update();
   }
 
   void openFile(ZipEntry file) {
     if (file.isFile) {
       debugPrint('Open file: ${file.name}');
-      // Implement file open logic here
     }
   }
 }
