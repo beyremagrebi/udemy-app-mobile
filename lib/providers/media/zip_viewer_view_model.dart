@@ -51,14 +51,17 @@ class ZipViewerViewModel extends BaseViewModel {
         final Set<String> allDirectories = {};
 
         for (final file in archive) {
-          if (!file.isFile) continue;
+          if (!file.isFile) {
+            continue;
+          }
 
           final List<String> parts = file.name.split('/');
           parts.removeWhere((part) => part.isEmpty);
 
-          if (parts.isEmpty) continue;
+          if (parts.isEmpty) {
+            continue;
+          }
 
-          final String fileName = parts.last;
           final String directoryPath = parts.length > 1
               ? parts.sublist(0, parts.length - 1).join('/')
               : '';
@@ -110,9 +113,11 @@ class ZipViewerViewModel extends BaseViewModel {
 
           // Find all immediate subdirectories of the current path
           final subdirectories = allDirectories.where((dirPath) {
-            if (dirPath.isEmpty) return false;
+            if (dirPath.isEmpty) {
+              return false;
+            }
 
-            final currentPathParts =
+            final List<String> currentPathParts =
                 currentPath.isEmpty ? [] : currentPath.split('/');
             final dirPathParts = dirPath.split('/');
 
