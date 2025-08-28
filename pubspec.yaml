@@ -45,6 +45,7 @@ dependencies:
   flutter_cached_pdfview: ^0.4.3
   jitsi_meet_flutter_sdk: ^11.4.0
   image_cropper: ^9.1.0
+  excel: ^4.0.6
 
 
 

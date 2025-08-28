@@ -3,6 +3,7 @@ import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 import 'package:provider/provider.dart';
 
@@ -27,19 +28,13 @@ class VideoConferenceViewModel extends BaseViewModel {
       serverURL: 'https://sadkbhwp62nt7x.studiffy.com',
       room: roomName.trim(),
       configOverrides: {
-        'startWithAudioMuted': false,
-        'startWithVideoMuted': false,
-        'prejoinPageEnabled': true,
-        'enableWelcomePage': false,
-        'subject': 'Erudaxis Conference',
-        'disableModeratorIndicator': false,
+        'startWithAudioMuted': true,
+        'startWithVideoMuted': true,
+        'enableWelcomePage': true,
+        'subject': 'Erudaxis',
         'startScreenSharing': false,
       },
-      featureFlags: {
-        'pip.enabled': true,
-        'fullscreen.enabled': true,
-        'resolution': FeatureFlagVideoResolutions.resolution720p,
-      },
+      featureFlags: {},
       userInfo: JitsiMeetUserInfo(
         displayName: '${user.firstName} ${user.lastName}',
         email: user.email,
@@ -47,7 +42,44 @@ class VideoConferenceViewModel extends BaseViewModel {
             '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images/${user.image}',
       ),
     );
+    await _jitsiMeet.setAudioMuted(true);
+    await _jitsiMeet.setVideoMuted(true);
+    await _jitsiMeet.join(options, listener());
+  }
 
-    await _jitsiMeet.join(options);
+  JitsiMeetEventListener listener() {
+    final JitsiMeetEventListener listener = JitsiMeetEventListener(
+      conferenceWillJoin: (url) {
+        debugPrint('Conference will join: $url');
+      },
+      conferenceJoined: (url) {
+        debugPrint('Conference joined: $url');
+      },
+      conferenceTerminated: (url, error) {
+        debugPrint('Conference terminated: $url, error: $error');
+      },
+      audioMutedChanged: (muted) {
+        debugPrint('Audio muted: $muted');
+      },
+      videoMutedChanged: (muted) {
+        debugPrint('Video muted: $muted');
+      },
+      participantJoined: (email, name, role, participantId) {
+        debugPrint(
+            'Participant joined: $name, id: $participantId, role: $role');
+      },
+      participantLeft: (participantId) {
+        debugPrint('Participant left: id $participantId');
+      },
+      chatMessageReceived: (senderId, message, isPrivate, timestamp) => {
+        debugPrint(
+            'Chat message from $senderId: $message (private: $isPrivate)')
+      },
+      screenShareToggled: (participantId, sharing) {
+        debugPrint('Screen share by $participantId: $sharing');
+      },
+    );
+
+    return listener;
   }
 }

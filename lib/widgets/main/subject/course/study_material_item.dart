@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:erudaxis/core/config/media/excel_viewer.dart';
 import 'package:erudaxis/core/config/media/image_viewer.dart';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/constants/env.dart';
@@ -69,6 +70,14 @@ class StudyMaterialItem extends StatelessWidget {
                 context,
                 PdfViewer(
                   pdfUrl:
+                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
+                ),
+              );
+            } else if (fileType == FileType.excel) {
+              navigateTo(
+                context,
+                ExcelViewer(
+                  excelUrl:
                       '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/${studyMaterial.fileName}',
                 ),
               );
