@@ -1,9 +1,17 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
+import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/presentation/utils/snackbar_utils.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import '../../presentation/utils/alert_dialog.dart';
 
 class ZipEntry {
   final String name;
@@ -17,7 +25,7 @@ class ZipEntry {
     required this.isFile,
     this.data,
     this.preview,
-    this.children = const [], // Provide default empty list
+    this.children = const [],
   });
 }
 
@@ -26,6 +34,7 @@ class ZipViewerViewModel extends BaseViewModel {
   bool isLoading = true;
   bool screenTaped = false;
   List<ZipEntry> files = [];
+  ZipEntry? selectedFile;
 
   ZipViewerViewModel(super.context, {required this.url}) {
     loadZip();
@@ -89,10 +98,17 @@ class ZipViewerViewModel extends BaseViewModel {
 
               final data = Uint8List.fromList(file.content as List<int>);
               String? preview;
-              if (file.name.endsWith('.txt')) {
-                preview = String.fromCharCodes(data).trim();
-                if (preview.length > 200) {
-                  preview = '${preview.substring(0, 200)}...';
+              if (file.name.endsWith('.txt') ||
+                  file.name.endsWith('.csv') ||
+                  file.name.endsWith('.json') ||
+                  file.name.endsWith('.xml')) {
+                try {
+                  preview = String.fromCharCodes(data).trim();
+                  if (preview.length > 200) {
+                    preview = '${preview.substring(0, 200)}...';
+                  }
+                } on Exception catch (e) {
+                  preview = 'Cannot preview file content :$e';
                 }
               }
 
@@ -144,6 +160,9 @@ class ZipViewerViewModel extends BaseViewModel {
       }
     } on Exception catch (e) {
       debugPrint('Error loading zip: $e');
+      if (context.mounted) {
+        SnackBarUtils.showError(context, 'Error loading zip file: $e');
+      }
     } finally {
       isLoading = false;
       update();
@@ -155,9 +174,141 @@ class ZipViewerViewModel extends BaseViewModel {
     update();
   }
 
-  void openFile(ZipEntry file) {
-    if (file.isFile) {
-      debugPrint('Open file: ${file.name}');
+  Future<void> openFile(ZipEntry file) async {
+    if (file.isFile && file.data != null) {
+      selectedFile = file;
+      update();
+
+      try {
+        final extension = file.name.split('.').last.toLowerCase();
+
+        switch (extension) {
+          case 'txt':
+          case 'csv':
+          case 'json':
+          case 'xml':
+          case 'html':
+          case 'htm':
+            showTextPreview(file);
+            break;
+          case 'png':
+          case 'jpg':
+          case 'jpeg':
+          case 'gif':
+          case 'bmp':
+            showImagePreview(file);
+            break;
+          default:
+            await openWithExternalApp(file);
+        }
+      } on Exception catch (e) {
+        debugPrint('Error opening file: $e');
+        if (context.mounted) {
+          SnackBarUtils.showError(context, 'Cannot open file: ${file.name}');
+        }
+      }
+    }
+  }
+
+  Future<void> openWithExternalApp(ZipEntry file) async {
+    try {
+      if (Platform.isAndroid) {
+        final status = await Permission.storage.status;
+        if (!status.isGranted) {
+          final result = await Permission.storage.request();
+          if (!result.isGranted) {
+            if (context.mounted) {
+              SnackBarUtils.showError(context, 'Storage permission denied');
+            }
+            return;
+          }
+        }
+      }
+
+      final tempDir = await getTemporaryDirectory();
+      final filePath = '${tempDir.path}/${file.name}';
+
+      final File tempFile = File(filePath);
+      await tempFile.writeAsBytes(file.data!);
+
+      final result = await OpenFile.open(filePath);
+
+      if (result.type != ResultType.done) {
+        if (context.mounted) {
+          SnackBarUtils.showError(
+              context, 'Cannot open file: ${result.message}');
+        }
+      }
+    } on Exception catch (e) {
+      debugPrint('Error opening with external app: $e');
+      if (context.mounted) {
+        SnackBarUtils.showError(context, 'Error opening file: $e');
+      }
+    }
+  }
+
+  void showImagePreview(ZipEntry file) {
+    if (file.data != null) {
+      CustomAlertDialog.build(
+        context: context,
+        title: file.name,
+        primaryButtonText: 'Open Externally',
+        content: Expanded(
+          child: InteractiveViewer(
+            child: Image.memory(
+              file.data!,
+              fit: BoxFit.none,
+            ),
+          ),
+        ),
+        onPrimaryPressed: () {
+          Navigator.of(context).pop(); // Close the dialog first
+          openWithExternalApp(file);
+        },
+        secondaryButtonText: intl.closeButton,
+        onSecondaryPressed: () => Navigator.of(context).pop(),
+      );
+    }
+  }
+
+  void showTextPreview(ZipEntry file) {
+    if (file.data != null) {
+      try {
+        final content = String.fromCharCodes(file.data!);
+
+        CustomAlertDialog.build(
+          context: context,
+          title: file.name,
+          primaryButtonText: 'Open Externally',
+          content: Expanded(
+            child: SingleChildScrollView(
+                child: Theme(
+              data: Theme.of(context).copyWith(
+                textSelectionTheme: const TextSelectionThemeData(
+                  cursorColor: Colors.white,
+                  selectionColor: Colors.white24, // highlight color
+                  selectionHandleColor: Colors.white,
+                ),
+              ),
+              child: SelectableText(
+                content,
+                style: const TextStyle(
+                  fontFamily: 'monospace',
+                  color: Colors.white,
+                ),
+              ),
+            )),
+          ),
+          onPrimaryPressed: () {
+            Navigator.of(context).pop();
+            openWithExternalApp(file);
+          },
+          secondaryButtonText: intl.closeButton,
+          onSecondaryPressed: () => Navigator.of(context).pop(),
+        );
+      } on Exception {
+        SnackBarUtils.showError(context, 'Cannot read text file: ${file.name}');
+      }
     }
   }
 }

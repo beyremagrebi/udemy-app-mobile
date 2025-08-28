@@ -8,13 +8,13 @@ class ProfessionalFileItem extends StatelessWidget {
   final User? creator;
 
   final String? fileType;
-  final String? preview;
 
+  final VoidCallback? onTap;
   const ProfessionalFileItem({
     required this.fileName,
     this.creator,
     this.fileType,
-    this.preview,
+    this.onTap,
     super.key,
   });
 
@@ -23,7 +23,7 @@ class ProfessionalFileItem extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Padding(
           padding: Dimensions.paddingAllxSmall,
           child: Column(

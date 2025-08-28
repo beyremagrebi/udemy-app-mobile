@@ -27,9 +27,11 @@ enum FileType {
 
 class StudyMaterialItem extends StatelessWidget {
   final String? fileName;
+  final String? displayName;
   final User? creator;
   const StudyMaterialItem({
     required this.fileName,
+    this.displayName,
     this.creator,
     super.key,
   });
@@ -87,6 +89,7 @@ class StudyMaterialItem extends StatelessWidget {
                   zipUrl:
                       '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/storage/lesson/$fileName',
                   creator: creator,
+                  diplayName: _shortenFileName(displayName ?? intl.error),
                 ),
               );
             }

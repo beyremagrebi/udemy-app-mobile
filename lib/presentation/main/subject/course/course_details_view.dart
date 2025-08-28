@@ -38,7 +38,8 @@ class CourseDetailsView extends StatelessWidget {
                     itemCount: cours.studyMaterials?.length ?? 0,
                     itemBuilder: (context, index) => StudyMaterialItem(
                       creator: cours.instructor,
-                      fileName: cours.studyMaterials![index].fileName,
+                      fileName: cours.studyMaterials?[index].fileName,
+                      displayName: cours.studyMaterials?[index].displayName,
                     ),
                   ),
                 ),

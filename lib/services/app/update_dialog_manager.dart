@@ -21,11 +21,11 @@ class UpdateDialogManager implements IUpdateDialogManager {
         return CustomAlertDialog.buildCustomDialog(
           context: context,
           icon: Icons.cancel_outlined,
-          iconColor: CustomAlertDialog.warningColor,
+          iconColor: Colors.amber,
           title: intl.cancelDownloadTitle,
           message: intl.cancelDownloadMessage,
           primaryButtonText: intl.cancelDownloadButton,
-          primaryButtonColor: CustomAlertDialog.errorColor,
+          primaryButtonColor: Colors.red,
           secondaryButtonText: intl.continueDownloadButton,
           onPrimaryPressed: () => Navigator.of(context).pop(true),
           onSecondaryPressed: () => Navigator.of(context).pop(false),
@@ -94,7 +94,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                 Text(
                   intl.downloadingUpdateTitle,
                   style: const TextStyle(
-                    color: CustomAlertDialog.textWhite,
+                    color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -111,7 +111,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                         status.isEmpty ? intl.downloadingStatus : status,
                         key: ValueKey(status),
                         style: const TextStyle(
-                          color: CustomAlertDialog.textGray,
+                          color: Colors.white70,
                           fontSize: 14,
                         ),
                         textAlign: TextAlign.center,
@@ -142,7 +142,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                         Text(
                           '${(progress * 100).toStringAsFixed(1)}%',
                           style: const TextStyle(
-                            color: CustomAlertDialog.textWhite,
+                            color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -168,21 +168,21 @@ class UpdateDialogManager implements IUpdateDialogManager {
                                           Text(
                                             downloaded,
                                             style: const TextStyle(
-                                              color: CustomAlertDialog.textGray,
+                                              color: Colors.white70,
                                               fontSize: 12,
                                             ),
                                           ),
                                           const Text(
                                             ' / ',
                                             style: TextStyle(
-                                              color: CustomAlertDialog.textGray,
+                                              color: Colors.white70,
                                               fontSize: 12,
                                             ),
                                           ),
                                           Text(
                                             total,
                                             style: const TextStyle(
-                                              color: CustomAlertDialog.textGray,
+                                              color: Colors.white70,
                                               fontSize: 12,
                                             ),
                                           ),
@@ -214,8 +214,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color:
-                                  CustomAlertDialog.errorColor.withOpacity(0.5),
+                              color: Colors.red.withOpacity(0.5),
                             ),
                           ),
                           child: Material(
@@ -237,7 +236,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                                 child: Text(
                                   intl.cancelDownloadButton,
                                   style: const TextStyle(
-                                    color: CustomAlertDialog.errorColor,
+                                    color: Colors.red,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -265,7 +264,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
                                 child: Text(
                                   intl.closeButton,
                                   style: const TextStyle(
-                                    color: CustomAlertDialog.textWhite,
+                                    color: Colors.white,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -310,7 +309,7 @@ class UpdateDialogManager implements IUpdateDialogManager {
         return CustomAlertDialog.buildCustomDialog(
           context: context,
           icon: Icons.warning,
-          iconColor: CustomAlertDialog.warningColor,
+          iconColor: Colors.amber,
           title: intl.installationConflictTitle,
           message: intl.installationConflictMessage,
           primaryButtonText: intl.openSettingsButton,

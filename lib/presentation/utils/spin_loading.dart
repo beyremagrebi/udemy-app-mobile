@@ -1,3 +1,4 @@
+import 'package:erudaxis/core/enum/theme_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,9 @@ class SpinLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeViewModel = context.watch<ThemeViewModel>();
     return SpinKitDualRing(
-      color: themeViewModel.currentTheme.secondary,
+      color: themeViewModel.currentTheme == ThemeApp.charcoal
+          ? Colors.white
+          : themeViewModel.currentTheme.secondary,
       size: 35,
     );
   }

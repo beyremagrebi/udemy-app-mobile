@@ -6,12 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomAlertDialog {
-  static const Color darkPurple = Color(0xFF5B21B6);
-  static const Color successColor = Color(0xFF10B981);
-  static const Color errorColor = Color(0xFFEF4444);
-  static const Color warningColor = Color(0xFFF59E0B);
-  static const Color textWhite = Colors.white;
-  static const Color textGray = Color(0xFFB8B5C3);
   static Future<void> build({
     required BuildContext context,
     required String title,
@@ -61,7 +55,6 @@ class CustomAlertDialog {
                     Text(
                       title,
                       style: const TextStyle(
-                        color: textWhite,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -82,7 +75,7 @@ class CustomAlertDialog {
                             child: _buildDialogButton(
                               text: secondaryButtonText,
                               color: Colors.transparent,
-                              textColor: textGray,
+                              textColor: Colors.white70,
                               borderColor: Colors.white.withOpacity(0.3),
                               onPressed: onSecondaryPressed ??
                                   () => Navigator.of(context).pop(),
@@ -93,7 +86,7 @@ class CustomAlertDialog {
                             child: _buildDialogButton(
                               text: primaryButtonText,
                               color: themeViewModel.currentTheme.secondary,
-                              textColor: textWhite,
+                              textColor: Colors.white,
                               borderColor: Colors.white.withOpacity(0.3),
                               onPressed: onPrimaryPressed ??
                                   () => Navigator.of(context).pop(),
@@ -107,7 +100,7 @@ class CustomAlertDialog {
                         child: _buildDialogButton(
                           text: primaryButtonText,
                           color: themeViewModel.currentTheme.secondary,
-                          textColor: textWhite,
+                          textColor: Colors.white,
                           borderColor: Colors.white.withOpacity(0.3),
                           onPressed: onPrimaryPressed ??
                               () => Navigator.of(context).pop(),
@@ -193,7 +186,7 @@ class CustomAlertDialog {
               Text(
                 title,
                 style: const TextStyle(
-                  color: textWhite,
+                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -205,7 +198,7 @@ class CustomAlertDialog {
               Text(
                 message,
                 style: const TextStyle(
-                  color: textGray,
+                  color: Colors.white70,
                   fontSize: 14,
                   height: 1.4,
                 ),
@@ -222,7 +215,7 @@ class CustomAlertDialog {
                       child: _buildDialogButton(
                         text: secondaryButtonText,
                         color: Colors.transparent,
-                        textColor: textGray,
+                        textColor: Colors.white70,
                         borderColor: Colors.white.withOpacity(0.3),
                         onPressed: onSecondaryPressed ??
                             () => Navigator.of(context).pop(),
@@ -233,7 +226,7 @@ class CustomAlertDialog {
                       child: _buildDialogButton(
                         text: primaryButtonText,
                         color: primaryButtonColor,
-                        textColor: textWhite,
+                        textColor: Colors.white,
                         borderColor: Colors.white.withOpacity(0.3),
                         onPressed: onPrimaryPressed ??
                             () => Navigator.of(context).pop(),
@@ -248,7 +241,7 @@ class CustomAlertDialog {
                   child: _buildDialogButton(
                     text: primaryButtonText,
                     color: primaryButtonColor,
-                    textColor: textWhite,
+                    textColor: Colors.white,
                     borderColor: Colors.white.withOpacity(0.3),
                     onPressed:
                         onPrimaryPressed ?? () => Navigator.of(context).pop(),
@@ -270,7 +263,7 @@ class CustomAlertDialog {
     String cancelText = 'Cancel',
     Color? confirmColor,
     IconData icon = Icons.help_outline,
-    Color iconColor = warningColor,
+    Color iconColor = Colors.amber,
   }) {
     return showDialog<bool>(
       context: context,
@@ -308,11 +301,11 @@ class CustomAlertDialog {
         return buildCustomDialog(
           context: context,
           icon: Icons.error_outline,
-          iconColor: errorColor,
+          iconColor: Colors.red,
           title: title,
           message: message,
           primaryButtonText: buttonText,
-          primaryButtonColor: errorColor,
+          primaryButtonColor: Colors.red,
           onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
         );
       },
@@ -333,11 +326,11 @@ class CustomAlertDialog {
         return buildCustomDialog(
           context: context,
           icon: Icons.check_circle_outline,
-          iconColor: successColor,
+          iconColor: Colors.green,
           title: title,
           message: message,
           primaryButtonText: buttonText,
-          primaryButtonColor: successColor,
+          primaryButtonColor: Colors.green,
           onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
         );
       },
@@ -358,11 +351,11 @@ class CustomAlertDialog {
         return buildCustomDialog(
           context: context,
           icon: Icons.warning_amber_outlined,
-          iconColor: warningColor,
+          iconColor: Colors.amber,
           title: title,
           message: message,
           primaryButtonText: buttonText,
-          primaryButtonColor: warningColor,
+          primaryButtonColor: Colors.amber,
           onPrimaryPressed: onPressed ?? () => Navigator.of(context).pop(),
         );
       },
