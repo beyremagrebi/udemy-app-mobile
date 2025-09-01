@@ -1,5 +1,6 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/interfaces/i_bottom_navigation_bar.dart';
+import 'package:erudaxis/presentation/main/chat/chat_view.dart';
 import 'package:erudaxis/presentation/main/profile/profile_view.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/providers/main/drawer_view_model.dart';
@@ -44,7 +45,7 @@ class BottomNavigationViewModel extends BaseViewModel
     return [
       drawerViewModel.selectedWidget,
       const SubjectView(),
-      const EmptyWidget(),
+      const ChatView(),
       const EmptyWidget(),
       const ProfileView(),
     ];

@@ -94,7 +94,9 @@ class InputText extends IScreenWithLocalization {
           borderRadius: Dimensions.smallBorderRadius,
           child: BackdropFilter(
             filter: ImageFilter.blur(
-                sigmaX: enabled ? 10 : 40, sigmaY: enabled ? 10 : 40),
+              sigmaX: enabled ? 0 : 40,
+              sigmaY: enabled ? 0 : 40,
+            ),
             child: TextFormField(
               controller: controller,
               focusNode: focusNode,

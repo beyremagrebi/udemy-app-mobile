@@ -6,14 +6,14 @@ import '../../presentation/utils/app_gradient.dart';
 import '../../providers/main/profile/theme/theme_view_model.dart';
 
 class GradientButton extends StatelessWidget {
-  final String text;
+  final String? text;
   final VoidCallback? onPressed;
   final double width;
   final double height;
   final bool isDisabled;
 
   const GradientButton({
-    required this.text,
+    this.text,
     super.key,
     this.onPressed,
     this.isDisabled = false,
@@ -47,14 +47,16 @@ class GradientButton extends StatelessWidget {
             onTap: isDisabled ? null : onPressed,
             borderRadius: Dimensions.smallBorderRadius,
             child: Center(
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
+              child: text != null
+                  ? Text(
+                      text!,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                    )
+                  : const Icon(Icons.send),
             ),
           ),
         ),
