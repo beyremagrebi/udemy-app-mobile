@@ -2,15 +2,32 @@ import 'package:erudaxis/core/config/media/asset_image_widget.dart';
 import 'package:erudaxis/core/constants/assets.dart';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
+import 'package:erudaxis/models/base/base_chat.dart';
+import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/presentation/main/chat/chat_view_details.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
+import 'package:erudaxis/presentation/utils/session/token_manager.dart';
+import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
-class ChatRoomCard extends StatelessWidget {
-  const ChatRoomCard({super.key});
+class ChatRoomCard extends IScreenWithLocalization {
+  final BaseChat chatRoom;
+  const ChatRoomCard({required this.chatRoom, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLocalized(
+      BuildContext context, LanguageViewModel languageViewModel) {
+    User? user;
+    if (chatRoom.users != null && chatRoom.users!.isNotEmpty) {
+      user = chatRoom.users!.firstWhere(
+        (u) => u.id != TokenManager.extractIdFromToken(),
+        orElse: () => chatRoom.users!.firstWhere(
+          (u) => u.id == TokenManager.extractIdFromToken(),
+        ),
+      );
+    }
     return Card(
       clipBehavior: Clip.hardEdge,
       elevation: 0,
@@ -18,7 +35,10 @@ class ChatRoomCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            navigateTo(context, const ChatViewDetails());
+            navigateTo(
+              context,
+              ChatViewDetails(chatRoom: chatRoom),
+            );
           },
           child: Container(
             padding: Dimensions.paddingAllSmall,
@@ -39,12 +59,24 @@ class ChatRoomCard extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              'Beyrem agrbei',
+                              (chatRoom.isGroupChat ?? false)
+                                  ? chatRoom.name ?? ''
+                                  : '${user?.firstName ?? ''} ${user?.lastName ?? ''}',
                               style: textTheme.titleSmall,
                             ),
                           ),
                           Text(
-                            '14:00',
+                            chatRoom.lastMessage != null &&
+                                    chatRoom.lastMessage?.createdAt != null
+                                ? timeago.format(
+                                    chatRoom.lastMessage?.createdAt! is DateTime
+                                        ? chatRoom.lastMessage!.createdAt!
+                                        : DateTime.parse(chatRoom
+                                            .lastMessage!.createdAt!
+                                            .toString()),
+                                    locale: languageViewModel.locale.toString(),
+                                  )
+                                : intl.error,
                             style: textTheme.labelSmall?.copyWith(
                               color: Colors.white70,
                             ),
@@ -69,29 +101,32 @@ class ChatRoomCard extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              'ahla bik cv ahla bik cv ahla bik cv ahla bik cv ahla bik cv ahla bik cv ahla bik cv',
+                              chatRoom.lastMessage?.message ?? intl.error,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: textTheme.labelMedium
-                                  ?.copyWith(color: Colors.white70),
-                            ),
-                          ),
-                          Dimensions.widthMedium,
-                          const Icon(
-                            Icons.people_alt_outlined,
-                            size: 18,
-                            color: Colors.white70,
-                          ),
-                          Dimensions.widthxSmall,
-                          Padding(
-                            padding: Dimensions.horizontalPaddingxSmall,
-                            child: Text(
-                              '4',
-                              style: textTheme.labelSmall?.copyWith(
+                              style: textTheme.labelMedium?.copyWith(
                                 color: Colors.white70,
                               ),
                             ),
                           ),
+                          Dimensions.widthMedium,
+                          if (chatRoom.isGroupChat ?? false) ...[
+                            const Icon(
+                              Icons.people_alt_outlined,
+                              size: 18,
+                              color: Colors.white70,
+                            ),
+                            Dimensions.widthxSmall,
+                            Padding(
+                              padding: Dimensions.horizontalPaddingxSmall,
+                              child: Text(
+                                '${chatRoom.users?.length ?? 0}',
+                                style: textTheme.labelSmall?.copyWith(
+                                  color: Colors.white70,
+                                ),
+                              ),
+                            ),
+                          ],
                         ],
                       ),
                     ],

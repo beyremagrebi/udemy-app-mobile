@@ -1,6 +1,7 @@
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/enum/theme_app.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/models/global/message.dart';
 import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../core/styles/app_colors.dart';
 
 class MessageWidget extends StatelessWidget {
-  final String message;
+  final Message message;
   final bool isMe;
 
   const MessageWidget({
@@ -41,14 +42,19 @@ class MessageWidget extends StatelessWidget {
                       const Color.fromARGB(255, 41, 72, 248),
                       const Color.fromARGB(255, 41, 72, 248),
                     ]
-                  : [
-                      viewModel.currentTheme.primary,
-                      viewModel.currentTheme.secondary,
-                    ],
+                  : viewModel.currentTheme == ThemeApp.charcoal
+                      ? [
+                          const Color.fromARGB(255, 41, 72, 248),
+                          const Color.fromARGB(255, 41, 72, 248),
+                        ]
+                      : [
+                          viewModel.currentTheme.primary,
+                          viewModel.currentTheme.secondary,
+                        ],
             ),
           ),
           child: Text(
-            message,
+            message.message ?? intl.error,
             style: textTheme.bodyMedium,
           ),
         ),
@@ -68,7 +74,8 @@ class MessageWidget extends StatelessWidget {
           ),
           child: Padding(
             padding: Dimensions.paddingAllMedium,
-            child: Text(message, style: textTheme.bodyMedium),
+            child: Text(message.message ?? intl.error,
+                style: textTheme.bodyMedium),
           ),
         ),
       );
