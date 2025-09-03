@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
+import '../constants/env.dart';
+
 class SocketManager {
   static late io.Socket socket;
 
@@ -11,7 +13,7 @@ class SocketManager {
   static Future<void> initialize() async {
     try {
       socket = io.io(
-        'http://192.168.1.198:8800',
+        socketUrl,
         io.OptionBuilder()
             .setTransports(['websocket', 'polling'])
             .enableAutoConnect()

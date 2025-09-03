@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:erudaxis/models/base/base_chat.dart';
 import 'package:erudaxis/models/global/message.dart';
@@ -22,6 +23,7 @@ class MessagesViewModel extends BaseViewModel {
   @override
   void dispose() {
     _typingTimer?.cancel();
+    SocketManager.socket.off('message-received');
     _typingTimer = null;
     super.dispose();
   }
@@ -42,6 +44,7 @@ class MessagesViewModel extends BaseViewModel {
     SocketManager.socket.on(
       'message-received',
       (data) {
+        log('Hello world');
         messages ??= [];
         messages?.insert(
             0,
@@ -51,7 +54,6 @@ class MessagesViewModel extends BaseViewModel {
                 author: User(
                   id: data['userId'].toString(),
                 )));
-        update();
       },
     );
   }
