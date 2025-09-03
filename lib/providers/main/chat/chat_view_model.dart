@@ -1,7 +1,9 @@
 import 'package:erudaxis/models/base/base_chat.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
+import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:erudaxis/services/global/chat_group_services.dart';
 import 'package:erudaxis/services/global/chat_private_services.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/config/socket_manager.dart';
 
@@ -14,6 +16,7 @@ class ChatViewModel extends BaseViewModel {
   }
 
   Future<void> loadChats() async {
+    final viewModel = context.read<NotificationViewModel>();
     await makeApiCall(
       displayLoading: false,
       apiCall: privateScreen
@@ -22,6 +25,7 @@ class ChatViewModel extends BaseViewModel {
       onSuccess: (chats) {
         chatRooms = chats;
         final chatIds = chats.map((c) => c.id.toString()).toList();
+        viewModel.loadAllRoomNotifications(chatIds);
         SocketManager.joinChatRooms(chatIds);
       },
     );

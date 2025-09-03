@@ -73,7 +73,7 @@ class FirebaseApi {
     }
     if (message.notification?.android?.channelId.toString() ==
         dotenv.env['CHANNEL_MESSAGES_KEY'].toString()) {
-      viewModel.incrementChatNotifCount();
+      await viewModel.incrementChatNotifCount(message: message);
     }
 
     debugPrint('${message.notification?.title}');

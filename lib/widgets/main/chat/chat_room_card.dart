@@ -11,6 +11,7 @@ import 'package:erudaxis/presentation/main/chat/chat_view_details.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/presentation/utils/session/token_manager.dart';
+import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:erudaxis/providers/main/chat/typing_listener_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,9 @@ class ChatRoomCard extends IScreenWithLocalization {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
+            context
+                .read<NotificationViewModel>()
+                .readAllChatRoomNotifications(chatRoom.id);
             navigateTo(
               context,
               ChatViewDetails(
@@ -107,16 +111,24 @@ class ChatRoomCard extends IScreenWithLocalization {
                             ),
                           ),
                           Dimensions.widthxSmall,
-                          Container(
-                            padding: Dimensions.horizontalPaddingxSmall,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.red,
-                            ),
-                            child: Text(
-                              '2',
-                              style: textTheme.labelSmall?.copyWith(
-                                color: Colors.white70,
+                          Consumer<NotificationViewModel>(
+                            builder: (context, viewModel, child) => Visibility(
+                              visible: viewModel.roomChatCounts[chatRoom.id] !=
+                                      0 &&
+                                  viewModel.roomChatCounts[chatRoom.id] != null,
+                              child: Container(
+                                padding: Dimensions.horizontalPaddingxSmall,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red,
+                                ),
+                                child: Text(
+                                  viewModel.roomChatCounts[chatRoom.id]
+                                      .toString(),
+                                  style: textTheme.labelSmall?.copyWith(
+                                    color: Colors.white70,
+                                  ),
+                                ),
                               ),
                             ),
                           ),

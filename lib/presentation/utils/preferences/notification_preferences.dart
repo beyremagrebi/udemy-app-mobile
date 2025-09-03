@@ -74,10 +74,6 @@ class NotificationPreferences extends BasePreferences<int> {
     }
   }
 
-  void setNotificationId(String userId) {
-    notificationId = userId;
-  }
-
   String _buildKey(String notificationId) =>
       '$sharedNotificationKey-$notificationId';
 }
