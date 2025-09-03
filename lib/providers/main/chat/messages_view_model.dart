@@ -16,10 +16,10 @@ class MessagesViewModel extends BaseViewModel {
   List<Message>? messages;
   final TextEditingController controller = TextEditingController();
   Timer? _typingTimer;
+  final GlobalKey<AnimatedListState> listKey = GlobalKey();
   MessagesViewModel(super.context, {required this.chatRoom}) {
     loadMessages();
   }
-
   @override
   void dispose() {
     _typingTimer?.cancel();
@@ -44,16 +44,20 @@ class MessagesViewModel extends BaseViewModel {
     SocketManager.socket.on(
       'message-received',
       (data) {
-        log('Hello world');
+        log('listener');
         messages ??= [];
         messages?.insert(
-            0,
-            Message(
-                id: '',
-                message: data['message']?.toString(),
-                author: User(
-                  id: data['userId'].toString(),
-                )));
+          0,
+          Message(
+            id: '',
+            message: data['message']?.toString(),
+            author: User(
+              id: data['userId'].toString(),
+            ),
+          ),
+        );
+        listKey.currentState?.insertItem(0);
+        update();
       },
     );
   }

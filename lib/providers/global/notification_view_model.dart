@@ -1,3 +1,4 @@
+import 'package:erudaxis/models/global/message.dart';
 import 'package:erudaxis/models/global/notification.dart';
 import 'package:erudaxis/presentation/utils/preferences/chat_room_preference.dart';
 import 'package:erudaxis/presentation/utils/preferences/notification_preferences.dart';
@@ -12,6 +13,7 @@ class NotificationViewModel extends BaseViewModel {
   String? _currentKey;
   Map<String, int> roomChatCounts = {};
   List<NotificationModel>? notifications;
+  Map<String, Message?> roomChatLatestMessage = {};
 
   NotificationViewModel(super.context) {
     loadNotifications();
@@ -35,7 +37,8 @@ class NotificationViewModel extends BaseViewModel {
     chatNotificationCount++;
     final current = roomChatCounts[message.data['chatId'].toString()] ?? 0;
     roomChatCounts[message.data['chatId'].toString()] = current + 1;
-
+    roomChatLatestMessage[message.data['chatId'].toString()] =
+        Message(id: '', message: '${message.notification?.body?.toString()}');
     await _saveChatRoomNotification(message.data['chatId'].toString());
     update();
   }

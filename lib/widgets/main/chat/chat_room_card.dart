@@ -136,8 +136,11 @@ class ChatRoomCard extends IScreenWithLocalization {
                       ),
                       Row(
                         children: [
-                          Consumer<TypingListenerViewModel>(
-                            builder: (context, viewModel, child) => Expanded(
+                          Consumer2<TypingListenerViewModel,
+                              NotificationViewModel>(
+                            builder: (context, viewModel, notificationViewModel,
+                                    child) =>
+                                Expanded(
                               child: viewModel.typingUsers
                                       .containsKey(chatRoom.id.toString())
                                   ? Padding(
@@ -145,13 +148,30 @@ class ChatRoomCard extends IScreenWithLocalization {
                                       child: const TypingIndecatorWidget(),
                                     )
                                   : Text(
-                                      chatRoom.lastMessage?.message ??
-                                          intl.error,
+                                      notificationViewModel
+                                              .roomChatLatestMessage[
+                                                  chatRoom.id ?? '']
+                                              ?.message ??
+                                          (chatRoom.lastMessage?.message ??
+                                              intl.error),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: textTheme.labelMedium?.copyWith(
-                                        color: Colors.white70,
-                                      ),
+                                          color: notificationViewModel.roomChatCounts[chatRoom.id ?? ''] != 0 &&
+                                                  notificationViewModel.roomChatCounts[
+                                                          chatRoom.id ?? ''] !=
+                                                      null
+                                              ? Colors.white
+                                              : Colors.white70,
+                                          fontWeight: notificationViewModel
+                                                              .roomChatCounts[
+                                                          chatRoom.id ?? ''] !=
+                                                      0 &&
+                                                  notificationViewModel
+                                                          .roomChatCounts[chatRoom.id ?? ''] !=
+                                                      null
+                                              ? FontWeight.w900
+                                              : null),
                                     ),
                             ),
                           ),

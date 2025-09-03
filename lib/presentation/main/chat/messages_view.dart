@@ -22,14 +22,22 @@ class MessagesView extends StatelessWidget {
       models: viewModel.messages,
       onRefresh: viewModel.loadMessages,
       shimmer: MessageShimmer(),
-      builder: (messages) => ListView.builder(
+      builder: (messages) => AnimatedList(
+        key: viewModel.listKey, // attach key
         reverse: true,
         padding: Dimensions.paddingAllMedium,
-        itemCount: messages.length,
-        itemBuilder: (context, index) => MessageWidget(
-          message: messages[index],
-          isMe: messages[index].author?.id == TokenManager.extractIdFromToken(),
-        ),
+        initialItemCount: messages.length,
+        itemBuilder: (context, index, animation) {
+          final message = messages[index];
+          return SizeTransition(
+            sizeFactor: animation,
+            axisAlignment: -1,
+            child: MessageWidget(
+              message: message,
+              isMe: message.author?.id == TokenManager.extractIdFromToken(),
+            ),
+          );
+        },
       ),
     );
   }
