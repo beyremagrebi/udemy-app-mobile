@@ -6,18 +6,12 @@ import 'package:erudaxis/services/global/notification_service.dart';
 
 class NotificationViewModel extends BaseViewModel {
   int notificationCount = 0;
-
+  int chatNotificationCount = 0;
   String? _currentKey;
   List<NotificationModel>? notifications;
 
   NotificationViewModel(super.context) {
     loadNotifications();
-  }
-
-  Future<void> decrementNotifCount() async {
-    notificationCount--;
-    await _save();
-    update();
   }
 
   Future<void> deleteNotification(String? id) async {
@@ -34,9 +28,14 @@ class NotificationViewModel extends BaseViewModel {
     );
   }
 
+  Future<void> incrementChatNotifCount() async {
+    chatNotificationCount++;
+    update();
+  }
+
   Future<void> incrementNotifCount() async {
     notificationCount++;
-    await _save();
+    _save();
     update();
   }
 

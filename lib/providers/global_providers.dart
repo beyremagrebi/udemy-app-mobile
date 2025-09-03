@@ -1,5 +1,6 @@
 import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
+import 'package:erudaxis/providers/main/chat/typing_listener_view_model.dart';
 import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -30,5 +31,8 @@ List<SingleChildWidget> globalProviders = [
   ),
   ChangeNotifierProvider(
     create: VideoConferenceViewModel.new,
+  ),
+  ChangeNotifierProvider(
+    create: (context) => TypingListenerViewModel(context)..initializeListener(),
   ),
 ];

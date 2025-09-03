@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/assets.dart';
 import '../../constants/env.dart';
-import '../../styles/app_colors.dart';
 import '../../styles/dimensions.dart';
 import 'base_api_image.dart';
 
@@ -35,6 +36,7 @@ class ApiImageWidget extends BaseApiImage {
   Widget placeHolderImage(BuildContext context, {bool isLoading = false}) {
     final String finalPlaceholderPath =
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
+    final themeViewModel = context.watch<ThemeViewModel>();
 
     return InkWell(
       onTap: () => hasImageView
@@ -49,8 +51,8 @@ class ApiImageWidget extends BaseApiImage {
                 shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
                 border: border,
               ),
-              child: const SpinKitSpinningLines(
-                color: AppColors.primaryColor,
+              child: SpinKitSpinningLines(
+                color: themeViewModel.currentTheme.secondary,
               ),
             )
           : buildImage(context, AssetImage(finalPlaceholderPath)),

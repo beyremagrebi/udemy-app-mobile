@@ -21,24 +21,28 @@ abstract class BaseViewModel extends ChangeNotifier {
     bool displayLoading = true,
     bool displayError = true,
     bool displayShimmer = true,
+    bool displayOverlay = true,
     void Function(Model model)? onSuccess,
     void Function(String error)? onError,
   }) async {
     if (displayShimmer) {
       _setApiStatus(ApiStatus.loading);
     }
-
-    mainContext.loaderOverlay.show(
-      widgetBuilder: (progress) => Visibility(
-        visible: displayLoading,
-        child: const SpinLoading(),
-      ),
-    );
+    if (displayOverlay) {
+      mainContext.loaderOverlay.show(
+        widgetBuilder: (progress) => Visibility(
+          visible: displayLoading,
+          child: const SpinLoading(),
+        ),
+      );
+    }
     final jsonResponse = await apiCall;
     if (jsonResponse.isSuccess) {
       _setApiStatus(ApiStatus.success);
       if (context.mounted) {
-        mainContext.loaderOverlay.hide();
+        if (displayOverlay) {
+          mainContext.loaderOverlay.hide();
+        }
       }
       if (jsonResponse.data != null) {
         onSuccess?.call(jsonResponse.data as Model);
@@ -47,7 +51,9 @@ abstract class BaseViewModel extends ChangeNotifier {
       _setApiStatus(ApiStatus.error);
 
       if (context.mounted) {
-        mainContext.loaderOverlay.hide();
+        if (displayOverlay) {
+          mainContext.loaderOverlay.hide();
+        }
         if (displayError) {
           SnackBarUtils.showError(
             mainContext,

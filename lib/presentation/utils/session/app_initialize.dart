@@ -8,7 +8,7 @@ import 'package:erudaxis/presentation/utils/session/token_manager.dart';
 import 'package:erudaxis/providers/global/session_manager_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/firebase/firebase_api.dart';
+import '../../../core/config/firebase/firebase_api.dart';
 import '../../../providers/main/test.dart';
 import '../../../services/github/github_service.dart';
 import '../../main/main_view.dart';

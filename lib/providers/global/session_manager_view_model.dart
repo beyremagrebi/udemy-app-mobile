@@ -1,7 +1,7 @@
+import 'package:erudaxis/core/config/firebase/firebase_api.dart';
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/enum/drawer_item.dart';
 import 'package:erudaxis/core/enum/role.dart';
-import 'package:erudaxis/core/firebase/firebase_api.dart';
 import 'package:erudaxis/presentation/auth/login_view.dart';
 import 'package:erudaxis/presentation/utils/app_bar_gradient.dart';
 import 'package:erudaxis/presentation/utils/app_scaffold.dart';

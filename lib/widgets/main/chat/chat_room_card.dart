@@ -1,20 +1,31 @@
+import 'package:erudaxis/core/config/media/api_image_widget.dart';
 import 'package:erudaxis/core/config/media/asset_image_widget.dart';
 import 'package:erudaxis/core/constants/assets.dart';
 import 'package:erudaxis/core/constants/constant.dart';
+import 'package:erudaxis/core/constants/env.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
 import 'package:erudaxis/interfaces/language/i_screen_with_localization.dart';
 import 'package:erudaxis/models/base/base_chat.dart';
 import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/presentation/main/chat/chat_view_details.dart';
 import 'package:erudaxis/presentation/utils/navigator_utils.dart';
+import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/presentation/utils/session/token_manager.dart';
+import 'package:erudaxis/providers/main/chat/typing_listener_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import 'typing_indecator_widget.dart';
 
 class ChatRoomCard extends IScreenWithLocalization {
   final BaseChat chatRoom;
-  const ChatRoomCard({required this.chatRoom, super.key});
+
+  const ChatRoomCard({
+    required this.chatRoom,
+    super.key,
+  });
 
   @override
   Widget buildLocalized(
@@ -28,6 +39,7 @@ class ChatRoomCard extends IScreenWithLocalization {
         ),
       );
     }
+
     return Card(
       clipBehavior: Clip.hardEdge,
       elevation: 0,
@@ -37,19 +49,32 @@ class ChatRoomCard extends IScreenWithLocalization {
           onTap: () {
             navigateTo(
               context,
-              ChatViewDetails(chatRoom: chatRoom),
+              ChatViewDetails(
+                chatRoom: chatRoom,
+              ),
             );
           },
           child: Container(
             padding: Dimensions.paddingAllSmall,
             child: Row(
               children: [
-                const AssetsImageWidget(
-                  imageFileName: Assets.defaultMaleAvatar,
-                  height: 45,
-                  width: 45,
-                  isProfilePicture: true,
-                ),
+                if (chatRoom.isGroupChat ?? false)
+                  const AssetsImageWidget(
+                    imageFileName: Assets.defaultMaleAvatar,
+                    height: 45,
+                    width: 45,
+                    isProfilePicture: true,
+                  )
+                else
+                  ApiImageWidget(
+                    imageFileName: user?.image,
+                    height: 45,
+                    hasImageView: true,
+                    width: 45,
+                    imageNetworUrl:
+                        '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images/',
+                    isProfilePicture: true,
+                  ),
                 Dimensions.widthSmall,
                 Expanded(
                   child: Column(
@@ -99,14 +124,23 @@ class ChatRoomCard extends IScreenWithLocalization {
                       ),
                       Row(
                         children: [
-                          Expanded(
-                            child: Text(
-                              chatRoom.lastMessage?.message ?? intl.error,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: textTheme.labelMedium?.copyWith(
-                                color: Colors.white70,
-                              ),
+                          Consumer<TypingListenerViewModel>(
+                            builder: (context, viewModel, child) => Expanded(
+                              child: viewModel.typingUsers
+                                      .containsKey(chatRoom.id.toString())
+                                  ? Padding(
+                                      padding: Dimensions.verticalPaddingxSmall,
+                                      child: const TypingIndecatorWidget(),
+                                    )
+                                  : Text(
+                                      chatRoom.lastMessage?.message ??
+                                          intl.error,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: textTheme.labelMedium?.copyWith(
+                                        color: Colors.white70,
+                                      ),
+                                    ),
                             ),
                           ),
                           Dimensions.widthMedium,

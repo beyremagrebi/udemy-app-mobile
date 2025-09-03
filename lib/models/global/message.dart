@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:erudaxis/core/config/media/exstension.dart';
 import 'package:erudaxis/models/base/base_chat.dart';
 import 'package:erudaxis/models/base_model.dart';
 import 'package:erudaxis/models/global/user.dart';
@@ -43,6 +44,9 @@ class Message extends BaseModel {
 
   @override
   Map<String, Object> toMap() {
-    throw UnimplementedError();
+    final Map<String, Object> map = {};
+    map.add('message', message);
+    map.add('author', author?.toMap());
+    return map;
   }
 }

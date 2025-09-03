@@ -6,6 +6,7 @@ import 'package:erudaxis/presentation/utils/navigator_utils.dart';
 import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:vibration/vibration.dart';
 
@@ -62,10 +63,19 @@ class FirebaseApi {
     NotificationViewModel viewModel,
   ) async {
     debugPrint('Notification received on Forground');
-    if (await Vibration.hasVibrator()) {
-      Vibration.vibrate();
+
+    if (message.notification?.android?.channelId.toString() !=
+        dotenv.env['CHANNEL_MESSAGES_KEY'].toString()) {
+      if (await Vibration.hasVibrator()) {
+        Vibration.vibrate();
+      }
+      viewModel.incrementNotifCount();
     }
-    viewModel.incrementNotifCount();
+    if (message.notification?.android?.channelId.toString() ==
+        dotenv.env['CHANNEL_MESSAGES_KEY'].toString()) {
+      viewModel.incrementChatNotifCount();
+    }
+
     debugPrint('${message.notification?.title}');
     debugPrint('${message.notification?.body}');
   }

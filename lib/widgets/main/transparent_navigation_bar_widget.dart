@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:erudaxis/core/constants/constant.dart';
 import 'package:erudaxis/core/styles/dimensions.dart';
+import 'package:erudaxis/providers/global/notification_view_model.dart';
 import 'package:erudaxis/providers/main/bottom_navigation_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'bottom_navigation_bar_item.dart';
 
@@ -63,10 +65,52 @@ Widget _buildBottomNavigationBar(
     final item = navItems[index];
     final bool isSelected = viewModel.slectedIndex == index;
 
+    Widget iconWidget = item.icon;
+
+    // ✅ Wrap index == 2 with Stack to show notification badge
+    if (index == 2) {
+      iconWidget = Consumer<NotificationViewModel>(
+        builder: (context, notificationViewModel, child) => Stack(
+          clipBehavior: Clip.none,
+          children: [
+            item.icon,
+            if (notificationViewModel.chatNotificationCount > 0)
+              Positioned(
+                right: -6,
+                top: -4,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 16,
+                    minHeight: 16,
+                  ),
+                  child: Center(
+                    child: Text(
+                      notificationViewModel.chatNotificationCount > 99
+                          ? '99+'
+                          : notificationViewModel.chatNotificationCount
+                              .toString(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      );
+    }
+
     navWidgets.add(
       GestureDetector(
         onTap: () => viewModel.onSelectChange(index),
-        behavior: HitTestBehavior.opaque,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
@@ -83,7 +127,7 @@ Widget _buildBottomNavigationBar(
               AnimatedScale(
                 scale: isSelected ? 1.0 : 0.9,
                 duration: const Duration(milliseconds: 300),
-                child: item.icon,
+                child: iconWidget, // 👈 updated here
               ),
               if (item.label?.isNotEmpty ?? false)
                 Text(
@@ -104,7 +148,7 @@ Widget _buildBottomNavigationBar(
   }
 
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: navWidgets,
   );
 }

@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:erudaxis/core/config/ar_messages.dart';
-import 'package:erudaxis/core/firebase/channel_notification.dart';
+import 'package:erudaxis/core/config/firebase/channel_notification.dart';
+import 'package:erudaxis/core/config/socket_manager.dart';
 import 'package:erudaxis/presentation/utils/app/app_package_info.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class AppLaunch {
         ),
       );
       await ChannelNotification.initialize();
+      await SocketManager.initialize();
       timeago.setLocaleMessages('ar', ArMessages());
       timeago.setLocaleMessages('fr', FrMessages());
       timeago.setLocaleMessages('en', EnMessages());
