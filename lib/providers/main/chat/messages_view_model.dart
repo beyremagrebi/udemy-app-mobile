@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:erudaxis/models/base/base_chat.dart';
 import 'package:erudaxis/models/global/message.dart';
@@ -7,9 +6,11 @@ import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/services/global/message_services.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/config/socket_manager.dart';
 import '../../../presentation/utils/session/token_manager.dart';
+import '../../global/notification_view_model.dart';
 
 class MessagesViewModel extends BaseViewModel {
   BaseChat chatRoom;
@@ -17,13 +18,16 @@ class MessagesViewModel extends BaseViewModel {
   final TextEditingController controller = TextEditingController();
   Timer? _typingTimer;
   final GlobalKey<AnimatedListState> listKey = GlobalKey();
+  late NotificationViewModel _notificationVM;
   MessagesViewModel(super.context, {required this.chatRoom}) {
     loadMessages();
+    _notificationVM = context.read<NotificationViewModel>();
   }
   @override
   void dispose() {
     _typingTimer?.cancel();
     SocketManager.socket.off('message-received');
+    readAllMessages();
     _typingTimer = null;
     super.dispose();
   }
@@ -39,12 +43,15 @@ class MessagesViewModel extends BaseViewModel {
     );
   }
 
+  void readAllMessages() {
+    _notificationVM.readAllChatRoomNotifications(chatRoom.id);
+  }
+
   void recieveMessage() {
     SocketManager.socket.off('message-received');
     SocketManager.socket.on(
       'message-received',
       (data) {
-        log('listener');
         messages ??= [];
         messages?.insert(
           0,

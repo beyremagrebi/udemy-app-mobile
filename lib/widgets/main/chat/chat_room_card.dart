@@ -48,9 +48,6 @@ class ChatRoomCard extends IScreenWithLocalization {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            context
-                .read<NotificationViewModel>()
-                .readAllChatRoomNotifications(chatRoom.id);
             navigateTo(
               context,
               ChatViewDetails(
@@ -63,10 +60,11 @@ class ChatRoomCard extends IScreenWithLocalization {
             child: Row(
               children: [
                 if (chatRoom.isGroupChat ?? false)
-                  const AssetsImageWidget(
+                  AssetsImageWidget(
                     imageFileName: Assets.defaultMaleAvatar,
                     height: 45,
                     width: 45,
+                    border: Border.all(color: Colors.white, width: 1.2),
                     isProfilePicture: true,
                   )
                 else
@@ -74,6 +72,7 @@ class ChatRoomCard extends IScreenWithLocalization {
                     imageFileName: user?.image,
                     height: 45,
                     hasImageView: true,
+                    border: Border.all(color: Colors.white, width: 1.2),
                     width: 45,
                     imageNetworUrl:
                         '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images/',
