@@ -29,12 +29,18 @@ class MessagesView extends StatelessWidget {
         initialItemCount: messages.length,
         itemBuilder: (context, index, animation) {
           final message = messages[index];
+          final nextMessage = index - 1 >= 0 ? messages[index - 1] : null;
+
+          final showAvatar = nextMessage == null ||
+              nextMessage.author?.id != message.author?.id;
           return SizeTransition(
             sizeFactor: animation,
             axisAlignment: -1,
             child: MessageWidget(
               message: message,
+              isGroup: chatRoom.isGroupChat ?? false,
               isMe: message.author?.id == TokenManager.extractIdFromToken(),
+              showAvatar: showAvatar,
             ),
           );
         },

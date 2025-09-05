@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:erudaxis/models/base/base_chat.dart';
 import 'package:erudaxis/models/global/message.dart';
-import 'package:erudaxis/models/global/user.dart';
 import 'package:erudaxis/providers/base_view_model.dart';
 import 'package:erudaxis/services/global/message_services.dart';
 import 'package:flutter/material.dart';
@@ -58,8 +57,8 @@ class MessagesViewModel extends BaseViewModel {
           Message(
             id: '',
             message: data['message']?.toString(),
-            author: User(
-              id: data['userId'].toString(),
+            author: chatRoom.users?.firstWhere(
+              (user) => user.id == data['userId'].toString(),
             ),
           ),
         );

@@ -15,12 +15,6 @@ class ChatViewModel extends BaseViewModel {
     loadChats();
   }
 
-  @override
-  void dispose() {
-    print('dipsose');
-    super.dispose();
-  }
-
   Future<void> loadChats() async {
     final viewModel = context.read<NotificationViewModel>();
     await makeApiCall(

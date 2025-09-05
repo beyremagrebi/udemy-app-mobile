@@ -12,6 +12,7 @@ import 'package:erudaxis/presentation/utils/session/facility_manager.dart';
 import 'package:erudaxis/providers/main/chat/messages_view_model.dart';
 import 'package:erudaxis/providers/main/chat/typing_listener_view_model.dart';
 import 'package:erudaxis/providers/main/profile/language/language_view_model.dart';
+import 'package:erudaxis/providers/main/profile/theme/theme_view_model.dart';
 import 'package:erudaxis/widgets/common/form/input_text.dart';
 import 'package:erudaxis/widgets/common/gradient_button.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class ChatViewDetails extends IScreenWithLocalization {
   Widget buildLocalized(
       BuildContext context, LanguageViewModel languageViewModel) {
     User? user;
+    final themeViewModel = context.watch<ThemeViewModel>();
     if (chatRoom.users != null && chatRoom.users!.isNotEmpty) {
       user = chatRoom.users!.firstWhere(
         (u) => u.id != TokenManager.extractIdFromToken(),
@@ -114,27 +116,106 @@ class ChatViewDetails extends IScreenWithLocalization {
                         },
                         child: viewModel.typingUsers
                                 .containsKey(chatRoom.id.toString())
-                            ? Card(
-                                key: const ValueKey('typingCard'),
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: Dimensions.l,
-                                  vertical: Dimensions.s,
-                                ),
-                                elevation: 0,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(16),
-                                    topRight: Radius.circular(16),
-                                    bottomRight: Radius.circular(16),
-                                  ),
-                                ),
-                                child: Container(
-                                  padding: Dimensions.paddingAllMedium,
-                                  child: const TypingIndecatorWidget(),
-                                ),
+                            ? Builder(
+                                builder: (context) {
+                                  final List<User> typingUsers = chatRoom.users
+                                          ?.where((u) => viewModel
+                                              .getTypingUsers(
+                                                  chatRoom.id.toString())
+                                              .contains(u.id))
+                                          .toList() ??
+                                      [];
+
+                                  if (typingUsers.isEmpty) {
+                                    return const SizedBox.shrink(
+                                        key: ValueKey('empty'));
+                                  }
+
+                                  return Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: Dimensions.l,
+                                      vertical: Dimensions.s,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: typingUsers.map((user) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: Dimensions.s),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              if (chatRoom.isGroupChat ??
+                                                  false) ...[
+                                                ApiImageWidget(
+                                                  imageFileName: user.image,
+                                                  imageNetworUrl:
+                                                      '$baseURl/enterprise-${FacilityManager.facility.enterprise?.id}/images/',
+                                                  height: 24,
+                                                  width: 24,
+                                                  hasImageView: true,
+                                                  isMen: user.isMen,
+                                                  isProfilePicture: true,
+                                                ),
+                                                Dimensions.widthSmall,
+                                              ],
+                                              Card(
+                                                key: ValueKey(
+                                                    'typingCard_${user.id}'),
+                                                elevation: 0,
+                                                shape:
+                                                    const RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(16),
+                                                    topRight:
+                                                        Radius.circular(16),
+                                                    bottomRight:
+                                                        Radius.circular(16),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: Dimensions
+                                                      .paddingAllMedium,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      if (chatRoom
+                                                              .isGroupChat ??
+                                                          false) ...[
+                                                        Text(
+                                                          '${user.firstName} ${user.lastName} is typing...',
+                                                          style: textTheme
+                                                              .labelSmall
+                                                              ?.copyWith(
+                                                            color: themeViewModel
+                                                                .currentTheme
+                                                                .primary
+                                                                .withGreen(200),
+                                                          ),
+                                                        ),
+                                                        Dimensions.heightxSmall,
+                                                      ],
+                                                      const TypingIndecatorWidget(),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }).toList(),
+                                    ),
+                                  );
+                                },
                               )
                             : const SizedBox.shrink(key: ValueKey('empty')),
-                      ),
+                      )
                     ],
                   ),
                 ),
