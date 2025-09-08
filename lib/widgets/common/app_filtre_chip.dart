@@ -6,12 +6,14 @@ import 'package:provider/provider.dart';
 class AppFilterChip extends StatelessWidget {
   final String label;
   final bool selected;
+  final bool expandedSlectedIcon;
   final VoidCallback onTap;
 
   const AppFilterChip({
     required this.label,
     required this.selected,
     required this.onTap,
+    this.expandedSlectedIcon = false,
     super.key,
   });
 
@@ -46,13 +48,17 @@ class AppFilterChip extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  Dimensions.widthxSmall,
-                  if (selected)
+                  if (selected) ...[
+                    if (expandedSlectedIcon)
+                      Dimensions.widthxSmall
+                    else
+                      Dimensions.widthxSmall,
                     const Icon(
                       Icons.check,
                       color: Colors.white,
                       size: 12,
                     )
+                  ]
                 ],
               ),
             ),

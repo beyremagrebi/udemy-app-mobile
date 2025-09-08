@@ -21,6 +21,12 @@ class BottomNavigationViewModel extends BaseViewModel
     switch (slectedIndex) {
       case 0:
         return homeScrollController;
+      case 1:
+        return subjectScrollController;
+      case 2:
+        return chatScrollController;
+      case 3:
+        return planningScrollController;
       case 4:
         return profileScrollController;
       default:

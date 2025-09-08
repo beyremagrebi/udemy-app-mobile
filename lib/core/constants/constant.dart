@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
 
+final ScrollController chatScrollController = ScrollController();
 final ScrollController homeScrollController = ScrollController();
 late S intl;
 
 final GlobalKey<NavigatorState> mainnavigatorKey = GlobalKey();
+final ScrollController planningScrollController = ScrollController();
 final ScrollController profileScrollController = ScrollController();
+final ScrollController subjectScrollController = ScrollController();
 
 late TextTheme textTheme;
 String get defualtIconAvatar => 'default-avatar-icon.jpg';
